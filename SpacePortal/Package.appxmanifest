@@ -29,7 +29,9 @@
   </Dependencies>
 
   <Resources>
-    <Resource Language="x-generate"/>
+    <!--<Resource Language="x-generate"/>-->
+	<Resource Language="vi-vn"/>
+	<Resource Language="en-us"/>
   </Resources>
 
   <Applications>
