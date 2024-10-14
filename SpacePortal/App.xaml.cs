@@ -4,7 +4,9 @@ using Microsoft.UI.Xaml;
 
 using SpacePortal.Activation;
 using SpacePortal.Contracts.Services;
+using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Contracts.Services;
+using SpacePortal.Core.Models;
 using SpacePortal.Core.Services;
 using SpacePortal.Helpers;
 using SpacePortal.Models;
