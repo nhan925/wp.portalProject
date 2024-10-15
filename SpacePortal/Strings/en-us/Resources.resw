@@ -1,5 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -61,9 +120,9 @@
   <data name="AppDisplayName" xml:space="preserve">
     <value>SpacePortal</value>
   </data>
-	<data name="AppDescription" xml:space="preserve">
-		<value>SpacePortal</value>
-  	</data>
+  <data name="AppDescription" xml:space="preserve">
+    <value>SpacePortal</value>
+  </data>
   <data name="Shell_Dashboard.Content" xml:space="preserve">
     <value>Dashboard</value>
   </data>
@@ -126,5 +185,62 @@
   </data>
   <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
+  </data>
+  <data name="Information_CustomContact.Text" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Information_Address.Text" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Information_Contact.Text" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Information_DateOfBirth.Text" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="Information_Details.Text" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Information_EducationSystem.Text" xml:space="preserve">
+    <value>Education System</value>
+  </data>
+  <data name="Information_StudentID.Text" xml:space="preserve">
+    <value>Student ID</value>
+  </data>
+  <data name="Information_Ethnicity.Text" xml:space="preserve">
+    <value>Ethnicity</value>
+  </data>
+  <data name="Information_Fullname.Text" xml:space="preserve">
+    <value>Fullname</value>
+  </data>
+  <data name="Information_Gender.Text" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="Information_General.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Information_Identification.Text" xml:space="preserve">
+    <value>Identification ID</value>
+  </data>
+  <data name="Information_Major.Text" xml:space="preserve">
+    <value>Major</value>
+  </data>
+  <data name="Information_Nationality.Text" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="Information_PersonalEmail.Text" xml:space="preserve">
+    <value>Personal email</value>
+  </data>
+  <data name="Information_PhoneNumber.Text" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="Information_StudentEmail.Text" xml:space="preserve">
+    <value>Student email</value>
+  </data>
+  <data name="Information_Course.Text" xml:space="preserve">
+    <value>Course</value>
+  </data>
+  <data name="Information_Separate.Text" xml:space="preserve">
+    <value>:</value>
   </data>
 </root>
