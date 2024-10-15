@@ -186,4 +186,61 @@
   <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
   </data>
+  <data name="Information_General.Text" xml:space="preserve">
+    <value>Thông tin chung</value>
+  </data>
+  <data name="Information_Fullname.Text" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
+  <data name="Information_Major.Text" xml:space="preserve">
+    <value>Ngành</value>
+  </data>
+  <data name="Information_EducationSystem.Text" xml:space="preserve">
+    <value>Hệ đào tạo</value>
+  </data>
+  <data name="Information_StudentID.Text" xml:space="preserve">
+    <value>MSSV</value>
+  </data>
+  <data name="Information_Course.Text" xml:space="preserve">
+    <value>Khóa</value>
+  </data>
+  <data name="Information_Gender.Text" xml:space="preserve">
+    <value>Giới tính</value>
+  </data>
+  <data name="Information_Details.Text" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="Information_DateOfBirth.Text" xml:space="preserve">
+    <value>Ngày sinh</value>
+  </data>
+  <data name="Information_Nationality.Text" xml:space="preserve">
+    <value>Quốc tịch</value>
+  </data>
+  <data name="Information_Ethnicity.Text" xml:space="preserve">
+    <value>Dân tộc</value>
+  </data>
+  <data name="Information_Identification.Text" xml:space="preserve">
+    <value>CCCD/ CMND</value>
+  </data>
+  <data name="Information_StudentEmail.Text" xml:space="preserve">
+    <value>Email sinh viên</value>
+  </data>
+  <data name="Information_Contact.Text" xml:space="preserve">
+    <value>Liên lạc</value>
+  </data>
+  <data name="Information_PersonalEmail.Text" xml:space="preserve">
+    <value>Email cá nhân</value>
+  </data>
+  <data name="Information_PhoneNumber.Text" xml:space="preserve">
+    <value>SĐT</value>
+  </data>
+  <data name="Information_Address.Text" xml:space="preserve">
+    <value>Địa chỉ</value>
+  </data>
+  <data name="Information_CustomContact.Text" xml:space="preserve">
+    <value>Chỉnh sửa</value>
+  </data>
+  <data name="Information_Separate.Text" xml:space="preserve">
+    <value>:</value>
+  </data>
 </root>

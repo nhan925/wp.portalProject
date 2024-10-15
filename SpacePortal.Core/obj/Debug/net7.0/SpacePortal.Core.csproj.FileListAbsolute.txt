@@ -1,0 +1,15 @@
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\bin\Debug\net7.0\SpacePortal.Core.deps.json
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\bin\Debug\net7.0\SpacePortal.Core.dll
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\bin\Debug\net7.0\SpacePortal.Core.pdb
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.csproj.AssemblyReference.cache
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.AssemblyInfoInputs.cache
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.AssemblyInfo.cs
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.csproj.CoreCompileInputs.cache
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.sourcelink.json
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.csproj.Fody.CopyLocal.cache
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.csproj.Fody.RuntimeCopyLocal.cache
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.dll
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\refint\SpacePortal.Core.dll
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\SpacePortal.Core.pdb
+E:\ProJect-HK5\WP-Project\SpacePortal.Core\obj\Debug\net7.0\ref\SpacePortal.Core.dll

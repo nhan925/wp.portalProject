@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "qS2ZEky6sAM=",
+  "success": true,
+  "projectFilePath": "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\SpacePortal.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nguye\\.nuget\\packages\\fody\\6.6.4\\fody.6.6.4.nupkg.sha512",
+    "C:\\Users\\nguye\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\nguye\\.nuget\\packages\\propertychanged.fody\\4.1.0\\propertychanged.fody.4.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}
