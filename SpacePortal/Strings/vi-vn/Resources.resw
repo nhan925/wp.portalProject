@@ -186,4 +186,19 @@
   <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
   </data>
+  <data name="Dashboard_GradeResult.Text" xml:space="preserve">
+    <value>KẾT QUẢ HỌC TẬP</value>
+  </data>
+  <data name="Dashboard_StudyProgress.Text" xml:space="preserve">
+    <value>TIẾN ĐỘ HỌC TẬP</value>
+  </data>
+  <data name="Dashboard_MoreFeatures.Text" xml:space="preserve">
+    <value>CHỨC NĂNG KHÁC</value>
+  </data>
+  <data name="Dashboard_Welcome.Text" xml:space="preserve">
+    <value>Xin chào</value>
+  </data>
+  <data name="Dashboard_WelcomeText.Text" xml:space="preserve">
+    <value>Luôn cập nhật thông tin mới nhất nhé !</value>
+  </data>
 </root>

@@ -4,9 +4,86 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea">
-        
-    </Grid>
+    <ScrollView VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="ContentArea" Padding="36" RowSpacing="16" ColumnSpacing="16"
+              Background="Transparent" BorderThickness="0">
+            <Grid.Resources>
+                <Style TargetType="Grid">
+                    <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                    <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="220"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="150"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.ColumnSpan="6" Grid.Row="0" UseSystemFocusVisuals="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Assets/dashboard_student.png" Grid.Column="1" Grid.RowSpan="2" Stretch="UniformToFill"/>
+                <TextBlock Text="{x:Bind ViewModel.TodayDate}" Grid.Row="0" Grid.Column="0" Margin="24,16,0,0" 
+                           Style="{ThemeResource BodyStrongTextBlockStyle}" Opacity="0.8"/>
+                <StackPanel Grid.Row="1" Grid.Column="0" Margin="24,0,0,48" Spacing="8" VerticalAlignment="Bottom">
+                    <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}">
+                        <Run x:Uid="Dashboard_Welcome"/>, <Run Text="{x:Bind ViewModel.Informations.StudentName}"/>
+                    </TextBlock>
+                    <TextBlock x:Uid ="Dashboard_WelcomeText" Style="{ThemeResource BodyTextBlockStyle}" Opacity="0.8"/>
+                </StackPanel>
+
+            </Grid>
+            <TextBlock x:Uid="Dashboard_GradeResult" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"/>
+            <TextBlock x:Uid="Dashboard_StudyProgress" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"/>
+            <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0">
+
+            </Grid>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="4">
+
+            </Grid>
+            <TextBlock x:Uid="Dashboard_MoreFeatures" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="3" Grid.ColumnSpan="6"/>
+            <Grid Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="0">
+
+            </Grid>
+            <Grid Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="0">
+
+            </Grid>
+            <Grid Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="0">
+
+            </Grid>
+            <Grid Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="3">
+
+            </Grid>
+            <Grid Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="3">
+
+            </Grid>
+            <Grid Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="3">
+
+            </Grid>
+        </Grid>
+    </ScrollView>
 </Page>

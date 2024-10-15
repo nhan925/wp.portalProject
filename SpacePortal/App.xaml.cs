@@ -8,6 +8,7 @@ using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Contracts.Services;
 using SpacePortal.Core.Models;
 using SpacePortal.Core.Services;
+using SpacePortal.DataAccess;
 using SpacePortal.Helpers;
 using SpacePortal.Models;
 using SpacePortal.Services;
@@ -105,6 +106,7 @@ public partial class App : Application
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+            services.AddSingleton<IDao<InformationsForDashboard>, InformationsForDashboardDao>();
         }).
         Build();
 
