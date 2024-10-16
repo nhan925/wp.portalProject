@@ -19,15 +19,30 @@ public class InformationsForDashboardDao : IDao<InformationsForDashboard>
         return new InformationsForDashboard
         {
             StudentFullName = "John Doe",
-            GPAs = new Dictionary<string, double>
+            GPAs = new ObservableCollection<KeyValuePair<string, double>>
             {
-                { "Fall 2021", 9.4 },
-                { "Spring 2022", 9.8 }
+                new("HK1/22-23", 9.4),
+                new("HK2/22-23", 9.8),
+                new("HK1/23-24", 10),
+                new("HK2/23-24", 9.6),
+                new("HK1/24-25", 9.2),
+                new("HK1/22-23", 9.4),
+                new("HK2/22-23", 9.8),
+                new("HK1/23-24", 10),
+                new("HK2/23-24", 9.6),
+                new("HK1/24-25", 9.2),
+                new("HK1/22-23", 9.4),
+                new("HK2/22-23", 9.8),
+                new("HK1/23-24", 10),
+                new("HK2/23-24", 9.6),
+                new("HK1/24-25", 9.2),
             },
             CGPA = 9.3,
-            TotalCredits = 120,
-            CurrentCredits = 30
+            CurrentCredit = 24,
+            TotalCredit = 120,
         };
+
+
     }
     public void Update(InformationsForDashboard entity) => throw new NotImplementedException();
 }

@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:lvc="using:LiveChartsCore.SkiaSharpView.WinUI"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Charts"
     mc:Ignorable="d">
 
     <ScrollView VerticalScrollBarVisibility="Auto">
@@ -59,11 +59,142 @@
             </Grid>
             <TextBlock x:Uid="Dashboard_GradeResult" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"/>
             <TextBlock x:Uid="Dashboard_StudyProgress" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"/>
-            <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0">
-
+            <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Padding="12,16,16,12">
+                <syncfusion:SfCartesianChart>
+                    <syncfusion:SfCartesianChart.Resources>
+                        <BrushCollection x:Key="GPAChartBrush">
+                            <LinearGradientBrush>
+                                <GradientStop Offset="1" Color="#FFE7C7" />
+                                <GradientStop Offset="0" Color="#FCB69F" />
+                            </LinearGradientBrush>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="1" Color="#fadd7d" />
+                                <GradientStop Offset="0" Color="#fccc2d" />
+                            </LinearGradientBrush>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="1" Color="#DCFA97" />
+                                <GradientStop Offset="0" Color="#96E6A1" />
+                            </LinearGradientBrush>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="1" Color="#DDD6F3" />
+                                <GradientStop Offset="0" Color="#FAACA8" />
+                            </LinearGradientBrush>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="1" Color="#A8EAEE" />
+                                <GradientStop Offset="0" Color="#7BB0F9" />
+                            </LinearGradientBrush>
+                        </BrushCollection>
+                        <DataTemplate x:Key="tooltipTemplate">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Item.Key}" Style="{ThemeResource BodyStrongTextBlockStyle}" 
+                                           Foreground="Black"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Foreground="Black" Grid.Column="0">
+                                        <Run x:Uid="Dashboard_GPAChartTooltips"/>:
+                                    </TextBlock>
+                                    <TextBlock Text="{Binding Item.Value}" Style="{ThemeResource CaptionTextBlockStyle}" 
+                                               Foreground="Black" HorizontalTextAlignment="Right" Grid.Column="1"/>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                        <Style TargetType="Path" x:Key="toolTipStyle">
+                            <Setter Property="Fill" Value="WhiteSmoke"/>
+                        </Style>
+                    </syncfusion:SfCartesianChart.Resources>
+                    <syncfusion:SfCartesianChart.TooltipBehavior >
+                        <syncfusion:ChartTooltipBehavior EnableAnimation="True" Style="{StaticResource toolTipStyle}"/>
+                    </syncfusion:SfCartesianChart.TooltipBehavior>
+                    <syncfusion:SfCartesianChart.XAxes>
+                        <syncfusion:CategoryAxis x:Uid="Dashboard_GPAChartX"
+                                                 PlotOffsetStart="8"
+                                                 PlotOffsetEnd="16"
+                                                 TickLineSize="0">
+                            <syncfusion:CategoryAxis.LabelStyle>
+                                <syncfusion:LabelStyle  FontSize="1" Foreground="Transparent"/>
+                            </syncfusion:CategoryAxis.LabelStyle>
+                        </syncfusion:CategoryAxis>
+                    </syncfusion:SfCartesianChart.XAxes>
+                    <syncfusion:SfCartesianChart.YAxes>
+                        <syncfusion:NumericalAxis Maximum="10"
+                                                  x:Uid="Dashboard_GPAChartY"
+                                                  PlotOffsetStart="0"
+                                                  PlotOffsetEnd="16"
+                                                  TickLineSize="0"
+                                                  ShowMajorGridLines="False">
+                            <syncfusion:NumericalAxis.LabelStyle>
+                                <syncfusion:LabelStyle  FontSize="1" Foreground="Transparent"/>
+                            </syncfusion:NumericalAxis.LabelStyle>
+                        </syncfusion:NumericalAxis>
+                    </syncfusion:SfCartesianChart.YAxes>
+                    <syncfusion:SfCartesianChart.Series>
+                        <syncfusion:ColumnSeries ItemsSource="{x:Bind ViewModel.Informations.GPAs}" 
+                       XBindingPath="Key" 
+                       YBindingPath="Value" 
+                       EnableAnimation="True"
+                       ShowDataLabels="False"
+                       PaletteBrushes="{StaticResource GPAChartBrush}"
+                       EnableTooltip="True"
+                       TooltipTemplate="{StaticResource tooltipTemplate}"/>
+                    </syncfusion:SfCartesianChart.Series>
+                </syncfusion:SfCartesianChart>
             </Grid>
-            <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="4">
-
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="4" Padding="16,16,16,16">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <syncfusion:SfCircularChart Grid.Row="0">
+                    <syncfusion:SfCircularChart.Resources>
+                        <BrushCollection x:Key="CreditChartBrush">
+                            <LinearGradientBrush>
+                                <GradientStop Offset="1" Color="#DCFA97" />
+                                <GradientStop Offset="0" Color="#96E6A1" />
+                            </LinearGradientBrush>
+                            <LinearGradientBrush>
+                                <GradientStop Offset="1" Color="#A8EAEE" />
+                                <GradientStop Offset="0" Color="#7BB0F9" />
+                            </LinearGradientBrush>
+                        </BrushCollection>
+                        <DataTemplate x:Key="tooltipTemplatePie">
+                            <TextBlock Foreground="Black" Style="{ThemeResource BodyTextBlockStyle}">
+                                <Run Foreground="Black" Text="{Binding Item.Key}"/>: 
+                                <Run Text="{Binding Item.Value}" Foreground="Black"/>
+                            </TextBlock>
+                        </DataTemplate>
+                        <Style TargetType="Path" x:Key="toolTipStylePie">
+                            <Setter Property="Fill" Value="WhiteSmoke"/>
+                        </Style>
+                    </syncfusion:SfCircularChart.Resources>
+                    <syncfusion:SfCircularChart.TooltipBehavior >
+                        <syncfusion:ChartTooltipBehavior EnableAnimation="True" Style="{StaticResource toolTipStylePie}"/>
+                    </syncfusion:SfCircularChart.TooltipBehavior>
+                    <syncfusion:SfCircularChart.Series>
+                        <syncfusion:PieSeries ItemsSource="{x:Bind ViewModel.Informations.CreditDistribution}"
+                                              XBindingPath="Key"
+                                              YBindingPath="Value"
+                                              ShowDataLabels="True"
+                                              EnableAnimation="True"
+                                              StartAngle="-90"
+                                              EndAngle="270"
+                                              EnableTooltip="True"
+                                              TooltipTemplate="{StaticResource tooltipTemplatePie}"
+                                              PaletteBrushes="{StaticResource CreditChartBrush}">
+                            <syncfusion:PieSeries.DataLabelSettings>
+                                <syncfusion:CircularDataLabelSettings ShowConnectorLine="True"
+                                                                      ConnectorHeight="80" 
+                                                                      Context="DataLabelItem"
+                                                                      Position="OutsideExtended"/>
+                            </syncfusion:PieSeries.DataLabelSettings>
+                        </syncfusion:PieSeries>
+                    </syncfusion:SfCircularChart.Series>
+                </syncfusion:SfCircularChart>
+                <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Grid.Row="1" HorizontalTextAlignment="Right">
+                    <Run x:Uid="Dashboard_TotalCredits"/>: <Run Text="{x:Bind ViewModel.Informations.CurrentCredit}"/>/<Run Text="{x:Bind ViewModel.Informations.TotalCredit}"/>
+                </TextBlock>
             </Grid>
             <TextBlock x:Uid="Dashboard_MoreFeatures" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="3" Grid.ColumnSpan="6"/>
             <Grid Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="0">

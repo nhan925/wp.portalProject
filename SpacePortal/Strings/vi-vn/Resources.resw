@@ -201,4 +201,22 @@
   <data name="Dashboard_WelcomeText.Text" xml:space="preserve">
     <value>Luôn cập nhật thông tin mới nhất nhé !</value>
   </data>
+  <data name="Dashboard_GPAChartX.Header" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="Dashboard_GPAChartY.Header" xml:space="preserve">
+    <value>GPA</value>
+  </data>
+  <data name="Dashboard_GPAChartTooltips.Text" xml:space="preserve">
+    <value>GPA</value>
+  </data>
+  <data name="Dashboard_CreditsChartCurrent" xml:space="preserve">
+    <value>Đã tích lũy</value>
+  </data>
+  <data name="Dashboard_CreditsChartRemain" xml:space="preserve">
+    <value>Chưa tích lũy</value>
+  </data>
+  <data name="Dashboard_TotalCredits.Text" xml:space="preserve">
+    <value>Tổng số tín chỉ</value>
+  </data>
 </root>
