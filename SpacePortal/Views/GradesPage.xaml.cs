@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 
 using SpacePortal.ViewModels;
 
@@ -13,7 +14,13 @@ public sealed partial class GradesPage : Page
 
     public GradesPage()
     {
-        ViewModel = App.GetService<GradesViewModel>();
-        InitializeComponent();
+        this.InitializeComponent();
+        ViewModel = new GradesViewModel();
+        ViewModel.Init();
+    }
+
+    private void ToggleThemeTeachingTip2_ActionButtonClick(global::Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
+    {
+        // Your event handling code here
     }
 }

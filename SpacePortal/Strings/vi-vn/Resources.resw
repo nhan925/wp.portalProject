@@ -186,4 +186,37 @@
   <data name="SettingsPage_PrivacyTermsLink.NavigateUri" xml:space="preserve">
     <value>https://YourPrivacyUrlGoesHere/</value>
   </data>
+  <data name="GradesPage_ComboBoxYear.PlaceholderText" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_ComboBoxSemester.PlaceholderText" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="GradesPage_ButtonShowGradesPage.Content" xml:space="preserve">
+    <value>Xem bảng điểm</value>
+  </data>
+  <data name="GradesPage_ButtonRequest.Content" xml:space="preserve">
+    <value>Yêu cầu</value>
+  </data>
+  <data name="GradesPage_ScaleGrade4.Text" xml:space="preserve">
+    <value>Thang 4:</value>
+  </data>
+  <data name="GradesPage_ScaleGrade10.Text" xml:space="preserve">
+    <value>Thang 10:</value>
+  </data>
+  <data name="GradesPage_NumberOfCourses.Text" xml:space="preserve">
+    <value>Số học phần:</value>
+  </data>
+  <data name="GradesPage_NumberOfCredits.Text" xml:space="preserve">
+    <value>Số tín chỉ tích lũy:</value>
+  </data>
+  <data name="GradesPage_CourseID.Text" xml:space="preserve">
+    <value>Mã môn học</value>
+  </data>
+  <data name="GradesPage_CourseName.Text" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="GradesPage_NumberOfCreditsBrief.Text" xml:space="preserve">
+    <value>Số TC</value>
+  </data>
 </root>

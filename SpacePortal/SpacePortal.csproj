@@ -24,10 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="C1.WinUI.Grid" Version="1.5.20241.924" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
+    <PackageReference Include="Syncfusion.Grid.WinUI" Version="27.1.53" />
     <PackageReference Include="WinUIEx" Version="2.4.2" />
   </ItemGroup>
 
