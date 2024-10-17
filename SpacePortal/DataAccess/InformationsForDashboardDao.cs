@@ -18,7 +18,7 @@ public class InformationsForDashboardDao : IDao<InformationsForDashboard>
     {
         return new InformationsForDashboard
         {
-            StudentFullName = "John Doe",
+            StudentFullName = "Nguyễn Trọng Nhân",
             GPAs = new ObservableCollection<KeyValuePair<string, double>>
             {
                 new("HK1/22-23", 9.4),

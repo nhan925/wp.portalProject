@@ -219,4 +219,49 @@
   <data name="Dashboard_TotalCredits.Text" xml:space="preserve">
     <value>Tổng số tín chỉ</value>
   </data>
+  <data name="Dashboard_InfoButton.Text" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="Dashboard_GradeButton.Text" xml:space="preserve">
+    <value>Điểm số</value>
+  </data>
+  <data name="Dashboard_ScheduleButton.Text" xml:space="preserve">
+    <value>Lịch học</value>
+  </data>
+  <data name="Dashboard_RegistrationButton.Text" xml:space="preserve">
+    <value>Đăng ký học phần</value>
+  </data>
+  <data name="Dashboard_FeeButton.Text" xml:space="preserve">
+    <value>Học phí</value>
+  </data>
+  <data name="Dashboard_ScholarshipButton.Text" xml:space="preserve">
+    <value>Học bổng</value>
+  </data>
+  <data name="Dashboard_InfoButtonDetail.Text" xml:space="preserve">
+    <value>Xem chi tiết và thay đổi thông tin, cũng như cập nhật avatar</value>
+  </data>
+  <data name="Dashboard_ScheduleButtonDetail.Text" xml:space="preserve">
+    <value>Xem lịch học, lấy thông tin liên lạc của giảng viên phụ trách môn học, tải đề cương môn học, in thời khóa biểu</value>
+  </data>
+  <data name="Dashboard_RegistrationButtonDetail.Text" xml:space="preserve">
+    <value>Đăng ký học phần trong danh sách các học phần được mở</value>
+  </data>
+  <data name="Dashboard_GradeButtonDetail.Text" xml:space="preserve">
+    <value>Xem điểm của các học phần, GPA, in bảng điểm, xin bảng điểm vật lý</value>
+  </data>
+  <data name="Dashboard_FeeButtonDetail.Text" xml:space="preserve">
+    <value>Xem học phí và thanh toán online</value>
+  </data>
+  <data name="Dashboard_ScholarshipButtonDetail.Text" xml:space="preserve">
+    <value>Xem thông tin và đăng ký các học bổng</value>
+  </data>
+  <data name="Shell_AccountFlyoutInfo.Text" xml:space="preserve">
+    <value>Thông tin chi tiết</value>
+  </data>
+  <data name="Shell_AccountFlyoutChangePassword.Text" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="Shell_AccountFlyoutLogout.Text" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
 </root>

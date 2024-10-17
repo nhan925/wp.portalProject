@@ -8,24 +8,33 @@
     mc:Ignorable="d">
 
     <ScrollView VerticalScrollBarVisibility="Auto">
-        <Grid x:Name="ContentArea" Padding="36" RowSpacing="16" ColumnSpacing="16"
-              Background="Transparent" BorderThickness="0">
+        <Grid x:Name="ContentArea" Padding="36" RowSpacing="16" ColumnSpacing="16">
             <Grid.Resources>
-                <Style TargetType="Grid">
+                <Style x:Key="cardStyle" TargetType="Grid">
                     <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
                     <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
                     <Setter Property="BorderThickness" Value="1"/>
                     <Setter Property="CornerRadius" Value="10"/>
                 </Style>
+                <Style x:Key="buttonStyle" TargetType="Button">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                    <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="CornerRadius" Value="10"/>
+                    <Setter Property="Padding" Value="0"/>
+                </Style>
             </Grid.Resources>
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="220"/>
+                <RowDefinition Height="256"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="150"/>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -36,7 +45,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Grid Grid.ColumnSpan="6" Grid.Row="0" UseSystemFocusVisuals="True">
+            <Grid Grid.ColumnSpan="6" Grid.Row="0" UseSystemFocusVisuals="True" Style="{StaticResource cardStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
@@ -59,7 +68,7 @@
             </Grid>
             <TextBlock x:Uid="Dashboard_GradeResult" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"/>
             <TextBlock x:Uid="Dashboard_StudyProgress" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"/>
-            <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Padding="12,16,16,12">
+            <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Padding="12,16,16,12" Style="{StaticResource cardStyle}">
                 <syncfusion:SfCartesianChart>
                     <syncfusion:SfCartesianChart.Resources>
                         <BrushCollection x:Key="GPAChartBrush">
@@ -142,7 +151,7 @@
                     </syncfusion:SfCartesianChart.Series>
                 </syncfusion:SfCartesianChart>
             </Grid>
-            <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="4" Padding="16,16,16,16">
+            <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="4" Padding="16,16,16,12" Style="{StaticResource cardStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
@@ -197,24 +206,84 @@
                 </TextBlock>
             </Grid>
             <TextBlock x:Uid="Dashboard_MoreFeatures" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="3" Grid.ColumnSpan="6"/>
-            <Grid Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="0">
-
+            <Button x:Name="InforButton" Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="0" Style="{StaticResource buttonStyle}" Click="InforButton_Click"> 
+                <Grid Padding="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Assets/dashboard_info.png" Grid.Column="0" VerticalAlignment="Center"/>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1" Spacing="12" Margin="12,0,0,0">
+                        <TextBlock x:Uid="Dashboard_InfoButton" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                        <TextBlock x:Uid="Dashboard_InfoButtonDetail" Style="{ThemeResource BodyTextBlockStyle}" Opacity="0.8" HorizontalTextAlignment="Justify"/>
+                    </StackPanel>
+                </Grid>
+            </Button>
+            <Button x:Name="ScheduleButton" Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="0" Style="{StaticResource buttonStyle}" Click="ScheduleButton_Click">
+                <Grid Padding="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Assets/dashboard_schedule.png" Grid.Column="0" VerticalAlignment="Center"/>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1" Spacing="12" Margin="12,0,0,0">
+                        <TextBlock x:Uid="Dashboard_ScheduleButton" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                        <TextBlock x:Uid="Dashboard_ScheduleButtonDetail" Style="{ThemeResource BodyTextBlockStyle}" Opacity="0.8" HorizontalTextAlignment="Justify"/>
+                    </StackPanel>
+                </Grid>
+            </Button>
+            <Button x:Name="FeeButton" Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="0" Style="{StaticResource buttonStyle}" Click="FeeButton_Click">
+                <Grid Padding="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Assets/dashboard_fee.png" Grid.Column="0" VerticalAlignment="Center"/>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1" Spacing="12" Margin="12,0,0,0">
+                        <TextBlock x:Uid="Dashboard_FeeButton" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                        <TextBlock x:Uid="Dashboard_FeeButtonDetail" Style="{ThemeResource BodyTextBlockStyle}" Opacity="0.8" HorizontalTextAlignment="Justify"/>
+                    </StackPanel>
+                </Grid>
+            </Button>
+            <Button x:Name="GradeButton" Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="3" Style="{StaticResource buttonStyle}" Click="GradeButton_Click">
+                <Grid Padding="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Assets/dashboard_grade.png" Grid.Column="0" VerticalAlignment="Center"/>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1" Spacing="12" Margin="12,0,0,0">
+                        <TextBlock x:Uid="Dashboard_GradeButton" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                        <TextBlock x:Uid="Dashboard_GradeButtonDetail" Style="{ThemeResource BodyTextBlockStyle}" Opacity="0.8" HorizontalTextAlignment="Justify"/>
+                    </StackPanel>
+                </Grid>
+            </Button>
+            <Button x:Name="RegistrationButton" Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="3" Style="{StaticResource buttonStyle}" Click="RegistrationButton_Click">
+                <Grid Padding="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Assets/dashboard_registration.png" Grid.Column="0" VerticalAlignment="Center"/>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1" Spacing="12" Margin="12,0,0,0">
+                        <TextBlock x:Uid="Dashboard_RegistrationButton" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                        <TextBlock x:Uid="Dashboard_RegistrationButtonDetail" Style="{ThemeResource BodyTextBlockStyle}" Opacity="0.8" HorizontalTextAlignment="Justify"/>
+                    </StackPanel>
+                </Grid>
+            </Button>
+            <Button x:Name="ScholarshipButton" Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="3" Style="{StaticResource buttonStyle}" Click="ScholarshipButton_Click">
+                <Grid Padding="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                <Image Source="/Assets/dashboard_scholarship.png" Grid.Column="0" VerticalAlignment="Center"/>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Grid.Column="1" Spacing="12" Margin="12,0,0,0">
+                    <TextBlock x:Uid="Dashboard_ScholarshipButton" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+                    <TextBlock x:Uid="Dashboard_ScholarshipButtonDetail" Style="{ThemeResource BodyTextBlockStyle}" Opacity="0.8" HorizontalTextAlignment="Justify"/>
+                </StackPanel>
             </Grid>
-            <Grid Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="0">
-
-            </Grid>
-            <Grid Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="0">
-
-            </Grid>
-            <Grid Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="3">
-
-            </Grid>
-            <Grid Grid.Row="5" Grid.ColumnSpan="3" Grid.Column="3">
-
-            </Grid>
-            <Grid Grid.Row="6" Grid.ColumnSpan="3" Grid.Column="3">
-
-            </Grid>
+            </Button>
         </Grid>
     </ScrollView>
 </Page>

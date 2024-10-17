@@ -10,8 +10,6 @@ namespace SpacePortal.Models;
 
 public class InformationsForDashboard : INotifyPropertyChanged
 {
-
-
     public string StudentFullName
     {
         get; set;

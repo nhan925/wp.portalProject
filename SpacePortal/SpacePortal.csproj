@@ -16,6 +16,13 @@
     <DefaultLanguage>vi-VN</DefaultLanguage>
   </PropertyGroup>
   <ItemGroup>
+    <Content Remove="Assets\dashboard_fee.png" />
+    <Content Remove="Assets\dashboard_grade.png" />
+    <Content Remove="Assets\dashboard_info.png" />
+    <Content Remove="Assets\dashboard_registration.png" />
+    <Content Remove="Assets\dashboard_schedule.png" />
+    <Content Remove="Assets\dashboard_scholarship.png" />
+    <Content Remove="Assets\dashboard_student.png" />
     <Content Remove="Assets\defaultAvt.png" />
   </ItemGroup>
 
@@ -48,6 +55,27 @@
     </None>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\dashboard_fee.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\dashboard_grade.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\dashboard_info.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\dashboard_registration.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\dashboard_schedule.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\dashboard_scholarship.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\dashboard_student.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\defaultAvt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

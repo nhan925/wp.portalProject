@@ -115,6 +115,7 @@ public partial class App : Application
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
             services.AddSingleton<IDao<InformationsForDashboard>, InformationsForDashboardDao>();
+            services.AddSingleton<IDao<InformationsForShellPage>, InformationsForShellPageDao>();
         }).
         Build();
 
