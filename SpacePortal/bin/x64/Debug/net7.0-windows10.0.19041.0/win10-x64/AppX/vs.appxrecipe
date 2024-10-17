@@ -29,13 +29,13 @@
     <AppXManifest Include="E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-10-15T01:04:15.557</Modified>
+      <Modified>2024-10-17T06:02:14.938</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-10-15T01:04:14.958</Modified>
+      <Modified>2024-10-17T06:02:14.751</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\SpacePortal.runtimeconfig.json">
       <PackagePath>SpacePortal.runtimeconfig.json</PackagePath>
@@ -43,7 +43,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\SpacePortal.dll">
       <PackagePath>SpacePortal.dll</PackagePath>
-      <Modified>2024-10-15T01:04:14.217</Modified>
+      <Modified>2024-10-17T06:02:14.626</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\appsettings.json">
       <PackagePath>appsettings.json</PackagePath>
@@ -51,7 +51,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>SpacePortal.exe</PackagePath>
-      <Modified>2024-10-15T01:04:14.373</Modified>
+      <Modified>2024-10-17T06:02:14.642</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -1027,7 +1027,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\SpacePortal.deps.json">
       <PackagePath>SpacePortal.deps.json</PackagePath>
-      <Modified>2024-10-14T15:21:46.663</Modified>
+      <Modified>2024-10-17T04:26:47.485</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\nguye\.nuget\packages\microsoft.xaml.behaviors.winui.managed\2.0.9\lib\net5.0-windows10.0.17763.0\Microsoft.Xaml.Interactions.pri">
       <PackagePath>Microsoft.Xaml.Interactions.pri</PackagePath>
@@ -1040,6 +1040,10 @@
     <AppxPackagedFile Include="C:\Users\nguye\.nuget\packages\winuiex\2.4.2\lib\net6.0-windows10.0.19041\WinUIEx.pri">
       <PackagePath>WinUIEx.pri</PackagePath>
       <Modified>2024-09-25T16:32:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\Assets\edit_square.png">
+      <PackagePath>Assets\edit_square.png</PackagePath>
+      <Modified>2024-10-17T05:46:12.047</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>

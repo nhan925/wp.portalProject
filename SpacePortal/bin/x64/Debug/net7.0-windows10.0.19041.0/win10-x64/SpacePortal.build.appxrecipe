@@ -781,6 +781,9 @@
     <AppxPackagedFile Include="C:\Users\nguye\.nuget\packages\winuiex\2.4.2\lib\net6.0-windows10.0.19041\WinUIEx.pri">
       <PackagePath>WinUIEx.pri</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\Assets\edit_square.png">
+      <PackagePath>Assets\edit_square.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
     </AppxPackagedFile>

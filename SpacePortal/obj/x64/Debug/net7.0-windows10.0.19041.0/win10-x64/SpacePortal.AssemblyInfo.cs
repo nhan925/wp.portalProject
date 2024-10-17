@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpacePortal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28f2dd0cfe8417382ba3e1cb2f8516792cb156d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+033d4413eef95958b56c1fd46ef47dcfdd8ccb64")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpacePortal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpacePortal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
