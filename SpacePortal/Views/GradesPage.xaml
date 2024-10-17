@@ -5,22 +5,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncfuion="using:Syncfusion.UI.Xaml.DataGrid"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.DataGrid" 
+    xmlns:syncfusion1="using:Syncfusion.UI.Xaml.Grids"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 
     <Page.Resources>
-        <Style x:Key="MicaStyle" TargetType="StackPanel">
+        <Style x:Key="MicaStyle" TargetType="Grid">
             <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
             <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
             <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="CornerRadius" Value="10"/>
         </Style>
         <Style x:Key="HorizontalStackPanel" TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Width" Value="Auto"/>
             <Setter Property="Height" Value="Auto"/>
         </Style>
@@ -31,6 +32,11 @@
         <Style TargetType="Button">
             <Setter Property="Width" Value="128"/>
             <Setter Property="Height" Value="32"/>
+        </Style>
+        <Style x:Key="SubtitleStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{ThemeResource SubtitleTextBlockFontSize}"/>
+            <Setter Property="Foreground" Value=" Black"/>
+            <Setter Property="Opacity" Value="0.5"/>
         </Style>
     </Page.Resources>
 
@@ -44,70 +50,107 @@
 
         <!--ComboBoxes and Button-->
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="40" Margin="36,0,0,0" >
-            <ComboBox x:Name="ComboBoxYear" x:Uid="GradesPage_ComboBoxYear"/>
-            <ComboBox x:Name="ComboBoxTerm" x:Uid="GradesPage_ComboBoxSemester"/>
-            <Button x:Uid="GradesPage_ButtonShowGradesPage" Style="{StaticResource AccentButtonStyle}"/>
+            <ComboBox x:Name="ComboBoxYear" x:Uid="GradesPage_ComboBoxYear" ItemsSource="{x:Bind ViewModel.Years}"/>
+            <ComboBox x:Name="ComboBoxSemester" x:Uid="GradesPage_ComboBoxSemester" ItemsSource="{x:Bind ViewModel.Semesters}"/>
+            <Button x:Uid="GradesPage_ButtonShowGradesPage" Style="{StaticResource AccentButtonStyle}" Click="ShowGradeButton_Click"/>
         </StackPanel>
-                
+
         <!--Button and TeachingTip-->
         <StackPanel Grid.Row="0" Style="{StaticResource HorizontalStackPanel}" HorizontalAlignment="Right"  Margin="0,0,36,0" >
-            <Button x:Uid="GradesPage_ButtonRequest" Style="{StaticResource AccentButtonStyle}"/>
-            <TeachingTip x:Name="ToggleThemeTeachingTip2"
-                Title="Yeu cau"
-                Subtitle="Chon yeu cau ban muon thuc hien"
-                PreferredPlacement="Auto"
-                PlacementMargin="20"
-                IsLightDismissEnabled="True"
-                ActionButtonClick="ToggleThemeTeachingTip2_ActionButtonClick"
-                ActionButtonContent="Toggle theme now"
-                CloseButtonContent="Got it!">
-            </TeachingTip>
+            <Button x:Uid="GradesPage_ButtonRequest" Style="{StaticResource AccentButtonStyle}">
+                <Button.Flyout >
+                    <MenuFlyout>
+                        <MenuFlyoutItem x:Uid="GradesPage_RequestMenuFlyout" FontSize="{ThemeResource BodyStrongTextBlockFontSize}" HorizontalAlignment="Center"/>
+                        <MenuFlyoutSeparator/>
+                        <MenuFlyoutItem x:Uid="GradesPage_RequestReview" Foreground="{ThemeResource AccentAAFillColorDefaultBrush}" />
+                        <MenuFlyoutItem x:Uid="GradesPage_RequestForTranscript" Foreground="{ThemeResource AccentAAFillColorDefaultBrush}" />
+                        <MenuFlyoutItem x:Uid="GradesPage_RequestPrintTranscript" Foreground="{ThemeResource AccentAAFillColorDefaultBrush}" />
+                    </MenuFlyout>
+                </Button.Flyout>
+            </Button>
         </StackPanel>
-        
+
         <!--General Information-->
-        <StackPanel Grid.Row="1" Orientation ="Horizontal" Style="{StaticResource MicaStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="36,0,36,12" Spacing="200">
-            <StackPanel Style="{StaticResource HorizontalStackPanel}" Margin="71,30,71,30" Height="36">
-                <TextBlock Text="GPA" Foreground="Black"  FontSize="24" Opacity="0.5" Margin="12,0,50,0"/>
-                <StackPanel Style="{StaticResource HorizontalStackPanel}" HorizontalAlignment="Center" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" Padding="8">
+        <Grid Grid.Row="1" Style="{StaticResource MicaStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="36,0,36,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" Style="{StaticResource HorizontalStackPanel}" Height="36">
+                <TextBlock x:Uid="GradesPage_TextBlockGPA" Style="{StaticResource SubtitleStyle}" Margin="20,0,40,0"/>
+                <StackPanel Style="{StaticResource HorizontalStackPanel}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" Padding="8">
                     <StackPanel Style="{StaticResource HorizontalStackPanel}" Margin="0,0,100,0">
-                        <TextBlock x:Uid="GradesPage_ScaleGrade4"  Foreground="Black" Opacity="0.4"/>
-                        <TextBlock Text="3.5" Foreground="Black" Opacity="0.4" Margin="20,0,0,0"/>
+                        <TextBlock FontSize="{ThemeResource BodyStrongTextBlockFontSize}" Foreground="Black" Opacity="0.4">
+                            <Run x:Uid="GradesPage_ScaleGrade4"/>: <Run/>
+                        </TextBlock> 
+                        <TextBlock Text="{x:Bind ViewModel.GpaScale_4}" FontSize="{ThemeResource BodyStrongTextBlockFontSize}" Foreground="Black" Opacity="0.4" Margin="20,0,0,0"/>
                     </StackPanel>
                     <StackPanel Style="{StaticResource HorizontalStackPanel}" >
-                        <TextBlock x:Uid="GradesPage_ScaleGrade10" Foreground="Black" Opacity="0.4"/>
-                        <TextBlock Text="8.5" Foreground="Black" Opacity="0.4"  Margin="20,0,0,0" />
+                        <TextBlock FontSize="{ThemeResource BodyStrongTextBlockFontSize}" Foreground="Black" Opacity="0.4">
+                            <Run x:Uid="GradesPage_ScaleGrade10"/>: <Run/>
+                        </TextBlock>
+                        <TextBlock Text="{x:Bind ViewModel.GpaScale_10}" FontSize="{ThemeResource BodyStrongTextBlockFontSize}" Foreground="Black" Opacity="0.4"  Margin="20,0,0,0"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel  Style="{StaticResource HorizontalStackPanel}">
-                <TextBlock x:Uid="GradesPage_NumberOfCourses" Foreground="Black" FontSize="24" Opacity="0.5"/>
-                <TextBlock Text="5" Foreground="Black" FontSize="24" Opacity="0.5" Margin="20,0,0,0"/>
+            <StackPanel Grid.Column="1" Style="{StaticResource HorizontalStackPanel}">
+                <TextBlock x:Uid="GradesPage_NumberOfCourses" Style="{StaticResource SubtitleStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.NumberOfCourses}" Style="{StaticResource SubtitleStyle}" Margin="20,0,0,0"/>
             </StackPanel>
 
-            <StackPanel  Style="{StaticResource HorizontalStackPanel}">
-                <TextBlock x:Uid="GradesPage_NumberOfCredits"  Foreground="Black" FontSize="24" Opacity="0.5"/>
-                <TextBlock Text="50" Foreground="Black" FontSize="24" Opacity="0.5" Margin="20,0,0,0"/>
+            <StackPanel Grid.Column="2" Style="{StaticResource HorizontalStackPanel}">
+                <TextBlock x:Uid="GradesPage_NumberOfCredits" Style="{StaticResource SubtitleStyle}"/>
+                <TextBlock Text="{x:Bind ViewModel.NumberOfCredits}" Style="{StaticResource SubtitleStyle}" Margin="20,0,0,0"/>
             </StackPanel>
-        </StackPanel>
+        </Grid>
 
-        
+
         <!--DataGrid-->
-        <StackPanel Grid.Row="2" Orientation ="Horizontal" Style="{StaticResource MicaStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="36,0,36,12" Spacing="200">
-            <!--<ListView  Name="employeesComboBox" Width="500" Height="500" 
-                ItemsSource="{x:Bind ViewModel.Grades}">
-            </ListView>-->
-            
-            <!--Advanced: wait for community license request is approved-->
-            <Grid x:Name="rootGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <syncfuion:SfDataGrid x:Name="sfDataGrid"
-                                      AutoGenerateColumns="True"
-                                      ItemsSource="{x:Bind ViewModel.Grades}"
-                                      HorizontalAlignment="Stretch"
-                                      VerticalAlignment="Stretch"/>
-            </Grid>
-            
-            
-        </StackPanel>
+        <Grid Grid.Row="2" Style="{StaticResource MicaStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="36,0,36,12">
+            <!--Wait for community license request is approved-->
+            <syncfusion:SfDataGrid x:Name="sfDataGrid"
+                                    AutoGenerateColumns="True"
+                                    AllowSorting="True"
+                                    ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                    ItemsSource="{x:Bind ViewModel.Grades}"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Stretch"
+                                    Margin="12,12,12,12">
+                
+                <syncfusion:SfDataGrid.Resources>
+                    <Style TargetType="syncfusion:GridHeaderCellControl">
+                        <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorSecondaryBrush}"/>
+                        <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
+                    </Style>
+                    <Style TargetType="syncfusion:DataGridRowControl">
+                        <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                        <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
+                    </Style>
+                </syncfusion:SfDataGrid.Resources>
+
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_Year" MappingName="Year" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_Semester" MappingName="Semester" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_CourseId" MappingName="CourseId" Width="170" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_CourseName" MappingName="CourseName" Width="250" AllowResizing="True"/>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_CourseCredit" MappingName="CourseCredit" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_ClassId" MappingName="ClassId" Width="170" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_GradeScaleTen" MappingName="GradeScaleTen" Width="170" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_GradeScaleFour" MappingName="GradeScaleFour" Width="170" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="GradesPage_Note" MappingName="Note" Width="200" TextAlignment="Center" AllowResizing="True"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </Grid>
+        
+        <!--Button calculate grade-->
+        <Button Grid.Row="3" Style="{ThemeResource AccentButtonStyle}" Background="{ThemeResource SmokeFillColorDefaultBrush}" Width="43" Height="43" CornerRadius="43" HorizontalAlignment="Right" Margin="0,0,36,0">
+            <SymbolIcon Symbol="Calculator" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+        </Button>
     </Grid>
 </Page>

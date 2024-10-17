@@ -1,12 +1,16 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-
+using Microsoft.UI.Xaml.Media;
+using SpacePortal.Core.Contracts;
+using SpacePortal.Core.DataAccess;
+using SpacePortal.Core.Models;
 using SpacePortal.ViewModels;
 
 namespace SpacePortal.Views;
 
 public sealed partial class GradesPage : Page
 {
+
     public GradesViewModel ViewModel
     {
         get;
@@ -19,8 +23,27 @@ public sealed partial class GradesPage : Page
         ViewModel.Init();
     }
 
-    private void ToggleThemeTeachingTip2_ActionButtonClick(global::Microsoft.UI.Xaml.Controls.TeachingTip sender, object args)
+    private void ShowGradeButton_Click(object sender, RoutedEventArgs e)
     {
-        // Your event handling code here
+        var cbYear = ComboBoxYear.SelectedItem?.ToString();
+        var cbSemester = ComboBoxSemester.SelectedItem?.ToString();
+
+        if (cbYear != null && cbSemester != null)
+        {
+            ViewModel.ShowGradeByYearAndSemester(cbYear,cbSemester);
+        }
+        else if (cbYear != null)
+        {
+            ViewModel.ShowGradeByYear(cbYear);
+        }
+        else if (cbSemester != null)
+        {
+            ViewModel.ShowGradeBySemester(cbSemester);
+        }
+        else
+        {
+            ViewModel.Init();
+        }
     }
+
 }
