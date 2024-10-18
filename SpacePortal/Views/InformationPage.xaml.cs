@@ -42,6 +42,8 @@ public sealed partial class InformationPage : Page
         if (message == "Success")
         {
             ViewModel.AcceptChanges();
+
+            //ViewModel.Save();
         }
         else
         {
@@ -72,6 +74,8 @@ public sealed partial class InformationPage : Page
     private void UploadAvatar_Click(object sender, RoutedEventArgs e)
     {
         ViewModel.UploadAvatar();
+
+        
     }
 
     private void RemoveAvatar_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

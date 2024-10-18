@@ -113,6 +113,7 @@ public partial class InformationViewModel : ObservableRecipient
 
             BitmapImage avatarImage = new BitmapImage(new Uri(file.Path));
             informations.AvatarUrl = avatarImage;
+            //Update database
         }
         else
         {

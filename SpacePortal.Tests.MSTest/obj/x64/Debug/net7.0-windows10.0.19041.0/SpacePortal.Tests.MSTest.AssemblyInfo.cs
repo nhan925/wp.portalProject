@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpacePortal.Tests.MSTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+28f2dd0cfe8417382ba3e1cb2f8516792cb156d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+163b9a92225dc05bc46c6cc7b3b4eda131bba89b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpacePortal.Tests.MSTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpacePortal.Tests.MSTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

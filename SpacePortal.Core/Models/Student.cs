@@ -64,6 +64,17 @@ public class Student : INotifyPropertyChanged
     {
         get; set;
     }
-
+    public string Major
+    {
+        get; set;
+    }
+    public string Ethnicity
+    {
+        get; set;
+    }
+    public string Nationality
+    {
+        get; set;
+    }
     public event PropertyChangedEventHandler PropertyChanged;
 }
