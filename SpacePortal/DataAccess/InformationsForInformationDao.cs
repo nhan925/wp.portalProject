@@ -38,7 +38,7 @@ public class InformationsForInformationDao : IDao<InformationsForInformation>
             StudentID = "22120238",
             YearOfAdmission = 2022,
             Gender = "Nam",
-            DateOfBirth = new DateTime(2004, 10, 10),
+            DateOfBirth = new DateTime(2024, 10, 18),
             IdentityCardNumber = "082204000661",
             Nationality = "Việt Nam",
             Ethnicity = "Kinh",

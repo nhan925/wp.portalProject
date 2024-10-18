@@ -5,10 +5,12 @@ using SpacePortal.Models;
 using SpacePortal.Core.Contracts;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
+using System.Globalization;
 namespace SpacePortal.ViewModels;
 
 public partial class InformationViewModel : ObservableRecipient
 {
+    
     public InformationsForInformation informations
     {
         get; set;
