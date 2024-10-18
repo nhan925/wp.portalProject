@@ -226,7 +226,7 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
         
         private void InitTypeTables()
         {
-            _typeNameTable = new string[103];
+            _typeNameTable = new string[105];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -263,75 +263,77 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
             _typeNameTable[33] = "SpacePortal.ViewModels.DashboardViewModel";
             _typeNameTable[34] = "SpacePortal.Views.GradesPage";
             _typeNameTable[35] = "SpacePortal.ViewModels.GradesViewModel";
-            _typeNameTable[36] = "Microsoft.UI.Xaml.Controls.ScrollView";
-            _typeNameTable[37] = "Microsoft.UI.Xaml.Controls.Control";
-            _typeNameTable[38] = "Microsoft.UI.Xaml.UIElement";
-            _typeNameTable[39] = "Microsoft.UI.Xaml.Visibility";
-            _typeNameTable[40] = "Microsoft.UI.Xaml.Controls.ScrollingScrollMode";
-            _typeNameTable[41] = "Microsoft.UI.Xaml.Controls.ScrollingContentOrientation";
-            _typeNameTable[42] = "Microsoft.UI.Composition.CompositionPropertySet";
-            _typeNameTable[43] = "Microsoft.UI.Composition.CompositionObject";
-            _typeNameTable[44] = "Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility";
-            _typeNameTable[45] = "Microsoft.UI.Xaml.Controls.ScrollingChainMode";
-            _typeNameTable[46] = "Microsoft.UI.Xaml.Controls.ScrollingRailMode";
-            _typeNameTable[47] = "Microsoft.UI.Xaml.Controls.ScrollingInputKinds";
-            _typeNameTable[48] = "Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter";
-            _typeNameTable[49] = "Microsoft.UI.Xaml.FrameworkElement";
-            _typeNameTable[50] = "Microsoft.UI.Xaml.Controls.ScrollingInteractionState";
-            _typeNameTable[51] = "Single";
-            _typeNameTable[52] = "Microsoft.UI.Xaml.Controls.ScrollingZoomMode";
-            _typeNameTable[53] = "SpacePortal.Views.InformationPage";
-            _typeNameTable[54] = "SpacePortal.ViewModels.InformationViewModel";
-            _typeNameTable[55] = "SpacePortal.Views.NotificationPage";
-            _typeNameTable[56] = "SpacePortal.ViewModels.NotificationViewModel";
-            _typeNameTable[57] = "SpacePortal.Views.PaymentHistoryPage";
-            _typeNameTable[58] = "SpacePortal.ViewModels.PaymentHistoryViewModel";
-            _typeNameTable[59] = "SpacePortal.Views.RequestPage";
-            _typeNameTable[60] = "SpacePortal.ViewModels.RequestViewModel";
-            _typeNameTable[61] = "SpacePortal.Views.SchedulePage";
-            _typeNameTable[62] = "SpacePortal.ViewModels.ScheduleViewModel";
-            _typeNameTable[63] = "SpacePortal.Views.ScholarshipPage";
-            _typeNameTable[64] = "SpacePortal.ViewModels.ScholarshipViewModel";
-            _typeNameTable[65] = "SpacePortal.Helpers.EnumToBooleanConverter";
-            _typeNameTable[66] = "SpacePortal.Views.SettingsPage";
-            _typeNameTable[67] = "SpacePortal.ViewModels.SettingsViewModel";
-            _typeNameTable[68] = "Microsoft.UI.Xaml.Controls.NavigationView";
-            _typeNameTable[69] = "Microsoft.UI.Xaml.Controls.ContentControl";
-            _typeNameTable[70] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
-            _typeNameTable[71] = "System.Collections.Generic.IList`1<Object>";
-            _typeNameTable[72] = "Microsoft.UI.Xaml.DataTemplate";
-            _typeNameTable[73] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
-            _typeNameTable[74] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
-            _typeNameTable[75] = "Microsoft.UI.Xaml.Style";
-            _typeNameTable[76] = "Microsoft.UI.Xaml.Controls.StyleSelector";
-            _typeNameTable[77] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
-            _typeNameTable[78] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
-            _typeNameTable[79] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
-            _typeNameTable[80] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
-            _typeNameTable[81] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
-            _typeNameTable[82] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
-            _typeNameTable[83] = "Microsoft.UI.Xaml.DependencyObject";
-            _typeNameTable[84] = "Microsoft.Xaml.Interactivity.Interaction";
-            _typeNameTable[85] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
-            _typeNameTable[86] = "Microsoft.UI.Xaml.DependencyObjectCollection";
-            _typeNameTable[87] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
-            _typeNameTable[88] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
-            _typeNameTable[89] = "Microsoft.UI.Xaml.Controls.IconElement";
-            _typeNameTable[90] = "Microsoft.UI.Xaml.Controls.InfoBadge";
-            _typeNameTable[91] = "SpacePortal.Helpers.NavigationHelper";
-            _typeNameTable[92] = "SpacePortal.Behaviors.NavigationViewHeaderBehavior";
-            _typeNameTable[93] = "Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>";
-            _typeNameTable[94] = "Microsoft.Xaml.Interactivity.Behavior";
-            _typeNameTable[95] = "SpacePortal.Behaviors.NavigationViewHeaderMode";
-            _typeNameTable[96] = "SpacePortal.Views.ShellPage";
-            _typeNameTable[97] = "SpacePortal.ViewModels.ShellViewModel";
-            _typeNameTable[98] = "SpacePortal.Views.TuitionFeePage";
-            _typeNameTable[99] = "SpacePortal.ViewModels.TuitionFeeViewModel";
-            _typeNameTable[100] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[101] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
-            _typeNameTable[102] = "Int32";
+            _typeNameTable[36] = "SpacePortal.BoolToVisibilityConverter";
+            _typeNameTable[37] = "SpacePortal.InvertedBoolToVisibilityConverter";
+            _typeNameTable[38] = "Microsoft.UI.Xaml.Controls.ScrollView";
+            _typeNameTable[39] = "Microsoft.UI.Xaml.Controls.Control";
+            _typeNameTable[40] = "Microsoft.UI.Xaml.UIElement";
+            _typeNameTable[41] = "Microsoft.UI.Xaml.Visibility";
+            _typeNameTable[42] = "Microsoft.UI.Xaml.Controls.ScrollingScrollMode";
+            _typeNameTable[43] = "Microsoft.UI.Xaml.Controls.ScrollingContentOrientation";
+            _typeNameTable[44] = "Microsoft.UI.Composition.CompositionPropertySet";
+            _typeNameTable[45] = "Microsoft.UI.Composition.CompositionObject";
+            _typeNameTable[46] = "Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility";
+            _typeNameTable[47] = "Microsoft.UI.Xaml.Controls.ScrollingChainMode";
+            _typeNameTable[48] = "Microsoft.UI.Xaml.Controls.ScrollingRailMode";
+            _typeNameTable[49] = "Microsoft.UI.Xaml.Controls.ScrollingInputKinds";
+            _typeNameTable[50] = "Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter";
+            _typeNameTable[51] = "Microsoft.UI.Xaml.FrameworkElement";
+            _typeNameTable[52] = "Microsoft.UI.Xaml.Controls.ScrollingInteractionState";
+            _typeNameTable[53] = "Single";
+            _typeNameTable[54] = "Microsoft.UI.Xaml.Controls.ScrollingZoomMode";
+            _typeNameTable[55] = "SpacePortal.Views.InformationPage";
+            _typeNameTable[56] = "SpacePortal.ViewModels.InformationViewModel";
+            _typeNameTable[57] = "SpacePortal.Views.NotificationPage";
+            _typeNameTable[58] = "SpacePortal.ViewModels.NotificationViewModel";
+            _typeNameTable[59] = "SpacePortal.Views.PaymentHistoryPage";
+            _typeNameTable[60] = "SpacePortal.ViewModels.PaymentHistoryViewModel";
+            _typeNameTable[61] = "SpacePortal.Views.RequestPage";
+            _typeNameTable[62] = "SpacePortal.ViewModels.RequestViewModel";
+            _typeNameTable[63] = "SpacePortal.Views.SchedulePage";
+            _typeNameTable[64] = "SpacePortal.ViewModels.ScheduleViewModel";
+            _typeNameTable[65] = "SpacePortal.Views.ScholarshipPage";
+            _typeNameTable[66] = "SpacePortal.ViewModels.ScholarshipViewModel";
+            _typeNameTable[67] = "SpacePortal.Helpers.EnumToBooleanConverter";
+            _typeNameTable[68] = "SpacePortal.Views.SettingsPage";
+            _typeNameTable[69] = "SpacePortal.ViewModels.SettingsViewModel";
+            _typeNameTable[70] = "Microsoft.UI.Xaml.Controls.NavigationView";
+            _typeNameTable[71] = "Microsoft.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[72] = "Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible";
+            _typeNameTable[73] = "System.Collections.Generic.IList`1<Object>";
+            _typeNameTable[74] = "Microsoft.UI.Xaml.DataTemplate";
+            _typeNameTable[75] = "Microsoft.UI.Xaml.Controls.AutoSuggestBox";
+            _typeNameTable[76] = "Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode";
+            _typeNameTable[77] = "Microsoft.UI.Xaml.Style";
+            _typeNameTable[78] = "Microsoft.UI.Xaml.Controls.StyleSelector";
+            _typeNameTable[79] = "Microsoft.UI.Xaml.Controls.DataTemplateSelector";
+            _typeNameTable[80] = "Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode";
+            _typeNameTable[81] = "Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode";
+            _typeNameTable[82] = "Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus";
+            _typeNameTable[83] = "Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled";
+            _typeNameTable[84] = "Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings";
+            _typeNameTable[85] = "Microsoft.UI.Xaml.DependencyObject";
+            _typeNameTable[86] = "Microsoft.Xaml.Interactivity.Interaction";
+            _typeNameTable[87] = "Microsoft.Xaml.Interactivity.BehaviorCollection";
+            _typeNameTable[88] = "Microsoft.UI.Xaml.DependencyObjectCollection";
+            _typeNameTable[89] = "Microsoft.UI.Xaml.Controls.NavigationViewItem";
+            _typeNameTable[90] = "Microsoft.UI.Xaml.Controls.NavigationViewItemBase";
+            _typeNameTable[91] = "Microsoft.UI.Xaml.Controls.IconElement";
+            _typeNameTable[92] = "Microsoft.UI.Xaml.Controls.InfoBadge";
+            _typeNameTable[93] = "SpacePortal.Helpers.NavigationHelper";
+            _typeNameTable[94] = "SpacePortal.Behaviors.NavigationViewHeaderBehavior";
+            _typeNameTable[95] = "Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>";
+            _typeNameTable[96] = "Microsoft.Xaml.Interactivity.Behavior";
+            _typeNameTable[97] = "SpacePortal.Behaviors.NavigationViewHeaderMode";
+            _typeNameTable[98] = "SpacePortal.Views.ShellPage";
+            _typeNameTable[99] = "SpacePortal.ViewModels.ShellViewModel";
+            _typeNameTable[100] = "SpacePortal.Views.TuitionFeePage";
+            _typeNameTable[101] = "SpacePortal.ViewModels.TuitionFeeViewModel";
+            _typeNameTable[102] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[103] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
+            _typeNameTable[104] = "Int32";
 
-            _typeTable = new global::System.Type[103];
+            _typeTable = new global::System.Type[105];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -370,73 +372,75 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
             _typeTable[33] = typeof(global::SpacePortal.ViewModels.DashboardViewModel);
             _typeTable[34] = typeof(global::SpacePortal.Views.GradesPage);
             _typeTable[35] = typeof(global::SpacePortal.ViewModels.GradesViewModel);
-            _typeTable[36] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollView);
-            _typeTable[37] = typeof(global::Microsoft.UI.Xaml.Controls.Control);
-            _typeTable[38] = typeof(global::Microsoft.UI.Xaml.UIElement);
-            _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Visibility);
-            _typeTable[40] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingScrollMode);
-            _typeTable[41] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingContentOrientation);
-            _typeTable[42] = typeof(global::Microsoft.UI.Composition.CompositionPropertySet);
-            _typeTable[43] = typeof(global::Microsoft.UI.Composition.CompositionObject);
-            _typeTable[44] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility);
-            _typeTable[45] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingChainMode);
-            _typeTable[46] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingRailMode);
-            _typeTable[47] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingInputKinds);
-            _typeTable[48] = typeof(global::Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter);
-            _typeTable[49] = typeof(global::Microsoft.UI.Xaml.FrameworkElement);
-            _typeTable[50] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingInteractionState);
-            _typeTable[51] = typeof(global::System.Single);
-            _typeTable[52] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingZoomMode);
-            _typeTable[53] = typeof(global::SpacePortal.Views.InformationPage);
-            _typeTable[54] = typeof(global::SpacePortal.ViewModels.InformationViewModel);
-            _typeTable[55] = typeof(global::SpacePortal.Views.NotificationPage);
-            _typeTable[56] = typeof(global::SpacePortal.ViewModels.NotificationViewModel);
-            _typeTable[57] = typeof(global::SpacePortal.Views.PaymentHistoryPage);
-            _typeTable[58] = typeof(global::SpacePortal.ViewModels.PaymentHistoryViewModel);
-            _typeTable[59] = typeof(global::SpacePortal.Views.RequestPage);
-            _typeTable[60] = typeof(global::SpacePortal.ViewModels.RequestViewModel);
-            _typeTable[61] = typeof(global::SpacePortal.Views.SchedulePage);
-            _typeTable[62] = typeof(global::SpacePortal.ViewModels.ScheduleViewModel);
-            _typeTable[63] = typeof(global::SpacePortal.Views.ScholarshipPage);
-            _typeTable[64] = typeof(global::SpacePortal.ViewModels.ScholarshipViewModel);
-            _typeTable[65] = typeof(global::SpacePortal.Helpers.EnumToBooleanConverter);
-            _typeTable[66] = typeof(global::SpacePortal.Views.SettingsPage);
-            _typeTable[67] = typeof(global::SpacePortal.ViewModels.SettingsViewModel);
-            _typeTable[68] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
-            _typeTable[69] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
-            _typeTable[70] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
-            _typeTable[71] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
-            _typeTable[72] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
-            _typeTable[73] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
-            _typeTable[74] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
-            _typeTable[75] = typeof(global::Microsoft.UI.Xaml.Style);
-            _typeTable[76] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
-            _typeTable[77] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
-            _typeTable[78] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
-            _typeTable[79] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
-            _typeTable[80] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
-            _typeTable[81] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
-            _typeTable[82] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
-            _typeTable[83] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
-            _typeTable[84] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
-            _typeTable[85] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
-            _typeTable[86] = typeof(global::Microsoft.UI.Xaml.DependencyObjectCollection);
-            _typeTable[87] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
-            _typeTable[88] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
-            _typeTable[89] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
-            _typeTable[90] = typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge);
-            _typeTable[91] = typeof(global::SpacePortal.Helpers.NavigationHelper);
-            _typeTable[92] = typeof(global::SpacePortal.Behaviors.NavigationViewHeaderBehavior);
-            _typeTable[93] = typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Microsoft.UI.Xaml.Controls.NavigationView>);
-            _typeTable[94] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
-            _typeTable[95] = typeof(global::SpacePortal.Behaviors.NavigationViewHeaderMode);
-            _typeTable[96] = typeof(global::SpacePortal.Views.ShellPage);
-            _typeTable[97] = typeof(global::SpacePortal.ViewModels.ShellViewModel);
-            _typeTable[98] = typeof(global::SpacePortal.Views.TuitionFeePage);
-            _typeTable[99] = typeof(global::SpacePortal.ViewModels.TuitionFeeViewModel);
-            _typeTable[100] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[101] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
-            _typeTable[102] = typeof(global::System.Int32);
+            _typeTable[36] = typeof(global::SpacePortal.BoolToVisibilityConverter);
+            _typeTable[37] = typeof(global::SpacePortal.InvertedBoolToVisibilityConverter);
+            _typeTable[38] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollView);
+            _typeTable[39] = typeof(global::Microsoft.UI.Xaml.Controls.Control);
+            _typeTable[40] = typeof(global::Microsoft.UI.Xaml.UIElement);
+            _typeTable[41] = typeof(global::Microsoft.UI.Xaml.Visibility);
+            _typeTable[42] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingScrollMode);
+            _typeTable[43] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingContentOrientation);
+            _typeTable[44] = typeof(global::Microsoft.UI.Composition.CompositionPropertySet);
+            _typeTable[45] = typeof(global::Microsoft.UI.Composition.CompositionObject);
+            _typeTable[46] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility);
+            _typeTable[47] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingChainMode);
+            _typeTable[48] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingRailMode);
+            _typeTable[49] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingInputKinds);
+            _typeTable[50] = typeof(global::Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter);
+            _typeTable[51] = typeof(global::Microsoft.UI.Xaml.FrameworkElement);
+            _typeTable[52] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingInteractionState);
+            _typeTable[53] = typeof(global::System.Single);
+            _typeTable[54] = typeof(global::Microsoft.UI.Xaml.Controls.ScrollingZoomMode);
+            _typeTable[55] = typeof(global::SpacePortal.Views.InformationPage);
+            _typeTable[56] = typeof(global::SpacePortal.ViewModels.InformationViewModel);
+            _typeTable[57] = typeof(global::SpacePortal.Views.NotificationPage);
+            _typeTable[58] = typeof(global::SpacePortal.ViewModels.NotificationViewModel);
+            _typeTable[59] = typeof(global::SpacePortal.Views.PaymentHistoryPage);
+            _typeTable[60] = typeof(global::SpacePortal.ViewModels.PaymentHistoryViewModel);
+            _typeTable[61] = typeof(global::SpacePortal.Views.RequestPage);
+            _typeTable[62] = typeof(global::SpacePortal.ViewModels.RequestViewModel);
+            _typeTable[63] = typeof(global::SpacePortal.Views.SchedulePage);
+            _typeTable[64] = typeof(global::SpacePortal.ViewModels.ScheduleViewModel);
+            _typeTable[65] = typeof(global::SpacePortal.Views.ScholarshipPage);
+            _typeTable[66] = typeof(global::SpacePortal.ViewModels.ScholarshipViewModel);
+            _typeTable[67] = typeof(global::SpacePortal.Helpers.EnumToBooleanConverter);
+            _typeTable[68] = typeof(global::SpacePortal.Views.SettingsPage);
+            _typeTable[69] = typeof(global::SpacePortal.ViewModels.SettingsViewModel);
+            _typeTable[70] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationView);
+            _typeTable[71] = typeof(global::Microsoft.UI.Xaml.Controls.ContentControl);
+            _typeTable[72] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible);
+            _typeTable[73] = typeof(global::System.Collections.Generic.IList<global::System.Object>);
+            _typeTable[74] = typeof(global::Microsoft.UI.Xaml.DataTemplate);
+            _typeTable[75] = typeof(global::Microsoft.UI.Xaml.Controls.AutoSuggestBox);
+            _typeTable[76] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode);
+            _typeTable[77] = typeof(global::Microsoft.UI.Xaml.Style);
+            _typeTable[78] = typeof(global::Microsoft.UI.Xaml.Controls.StyleSelector);
+            _typeTable[79] = typeof(global::Microsoft.UI.Xaml.Controls.DataTemplateSelector);
+            _typeTable[80] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode);
+            _typeTable[81] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode);
+            _typeTable[82] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus);
+            _typeTable[83] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled);
+            _typeTable[84] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings);
+            _typeTable[85] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
+            _typeTable[86] = typeof(global::Microsoft.Xaml.Interactivity.Interaction);
+            _typeTable[87] = typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection);
+            _typeTable[88] = typeof(global::Microsoft.UI.Xaml.DependencyObjectCollection);
+            _typeTable[89] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem);
+            _typeTable[90] = typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase);
+            _typeTable[91] = typeof(global::Microsoft.UI.Xaml.Controls.IconElement);
+            _typeTable[92] = typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge);
+            _typeTable[93] = typeof(global::SpacePortal.Helpers.NavigationHelper);
+            _typeTable[94] = typeof(global::SpacePortal.Behaviors.NavigationViewHeaderBehavior);
+            _typeTable[95] = typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Microsoft.UI.Xaml.Controls.NavigationView>);
+            _typeTable[96] = typeof(global::Microsoft.Xaml.Interactivity.Behavior);
+            _typeTable[97] = typeof(global::SpacePortal.Behaviors.NavigationViewHeaderMode);
+            _typeTable[98] = typeof(global::SpacePortal.Views.ShellPage);
+            _typeTable[99] = typeof(global::SpacePortal.ViewModels.ShellViewModel);
+            _typeTable[100] = typeof(global::SpacePortal.Views.TuitionFeePage);
+            _typeTable[101] = typeof(global::SpacePortal.ViewModels.TuitionFeeViewModel);
+            _typeTable[102] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[103] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
+            _typeTable[104] = typeof(global::System.Int32);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -485,32 +489,34 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
         private object Activate_33_DashboardViewModel() { return new global::SpacePortal.ViewModels.DashboardViewModel(); }
         private object Activate_34_GradesPage() { return new global::SpacePortal.Views.GradesPage(); }
         private object Activate_35_GradesViewModel() { return new global::SpacePortal.ViewModels.GradesViewModel(); }
-        private object Activate_36_ScrollView() { return new global::Microsoft.UI.Xaml.Controls.ScrollView(); }
-        private object Activate_48_ScrollPresenter() { return new global::Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter(); }
-        private object Activate_53_InformationPage() { return new global::SpacePortal.Views.InformationPage(); }
-        private object Activate_54_InformationViewModel() { return new global::SpacePortal.ViewModels.InformationViewModel(); }
-        private object Activate_55_NotificationPage() { return new global::SpacePortal.Views.NotificationPage(); }
-        private object Activate_56_NotificationViewModel() { return new global::SpacePortal.ViewModels.NotificationViewModel(); }
-        private object Activate_57_PaymentHistoryPage() { return new global::SpacePortal.Views.PaymentHistoryPage(); }
-        private object Activate_58_PaymentHistoryViewModel() { return new global::SpacePortal.ViewModels.PaymentHistoryViewModel(); }
-        private object Activate_59_RequestPage() { return new global::SpacePortal.Views.RequestPage(); }
-        private object Activate_60_RequestViewModel() { return new global::SpacePortal.ViewModels.RequestViewModel(); }
-        private object Activate_61_SchedulePage() { return new global::SpacePortal.Views.SchedulePage(); }
-        private object Activate_62_ScheduleViewModel() { return new global::SpacePortal.ViewModels.ScheduleViewModel(); }
-        private object Activate_63_ScholarshipPage() { return new global::SpacePortal.Views.ScholarshipPage(); }
-        private object Activate_64_ScholarshipViewModel() { return new global::SpacePortal.ViewModels.ScholarshipViewModel(); }
-        private object Activate_65_EnumToBooleanConverter() { return new global::SpacePortal.Helpers.EnumToBooleanConverter(); }
-        private object Activate_66_SettingsPage() { return new global::SpacePortal.Views.SettingsPage(); }
-        private object Activate_68_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
-        private object Activate_82_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
-        private object Activate_85_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
-        private object Activate_87_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
-        private object Activate_90_InfoBadge() { return new global::Microsoft.UI.Xaml.Controls.InfoBadge(); }
-        private object Activate_91_NavigationHelper() { return new global::SpacePortal.Helpers.NavigationHelper(); }
-        private object Activate_92_NavigationViewHeaderBehavior() { return new global::SpacePortal.Behaviors.NavigationViewHeaderBehavior(); }
-        private object Activate_98_TuitionFeePage() { return new global::SpacePortal.Views.TuitionFeePage(); }
-        private object Activate_99_TuitionFeeViewModel() { return new global::SpacePortal.ViewModels.TuitionFeeViewModel(); }
-        private object Activate_100_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_36_BoolToVisibilityConverter() { return new global::SpacePortal.BoolToVisibilityConverter(); }
+        private object Activate_37_InvertedBoolToVisibilityConverter() { return new global::SpacePortal.InvertedBoolToVisibilityConverter(); }
+        private object Activate_38_ScrollView() { return new global::Microsoft.UI.Xaml.Controls.ScrollView(); }
+        private object Activate_50_ScrollPresenter() { return new global::Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter(); }
+        private object Activate_55_InformationPage() { return new global::SpacePortal.Views.InformationPage(); }
+        private object Activate_56_InformationViewModel() { return new global::SpacePortal.ViewModels.InformationViewModel(); }
+        private object Activate_57_NotificationPage() { return new global::SpacePortal.Views.NotificationPage(); }
+        private object Activate_58_NotificationViewModel() { return new global::SpacePortal.ViewModels.NotificationViewModel(); }
+        private object Activate_59_PaymentHistoryPage() { return new global::SpacePortal.Views.PaymentHistoryPage(); }
+        private object Activate_60_PaymentHistoryViewModel() { return new global::SpacePortal.ViewModels.PaymentHistoryViewModel(); }
+        private object Activate_61_RequestPage() { return new global::SpacePortal.Views.RequestPage(); }
+        private object Activate_62_RequestViewModel() { return new global::SpacePortal.ViewModels.RequestViewModel(); }
+        private object Activate_63_SchedulePage() { return new global::SpacePortal.Views.SchedulePage(); }
+        private object Activate_64_ScheduleViewModel() { return new global::SpacePortal.ViewModels.ScheduleViewModel(); }
+        private object Activate_65_ScholarshipPage() { return new global::SpacePortal.Views.ScholarshipPage(); }
+        private object Activate_66_ScholarshipViewModel() { return new global::SpacePortal.ViewModels.ScholarshipViewModel(); }
+        private object Activate_67_EnumToBooleanConverter() { return new global::SpacePortal.Helpers.EnumToBooleanConverter(); }
+        private object Activate_68_SettingsPage() { return new global::SpacePortal.Views.SettingsPage(); }
+        private object Activate_70_NavigationView() { return new global::Microsoft.UI.Xaml.Controls.NavigationView(); }
+        private object Activate_84_NavigationViewTemplateSettings() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings(); }
+        private object Activate_87_BehaviorCollection() { return new global::Microsoft.Xaml.Interactivity.BehaviorCollection(); }
+        private object Activate_89_NavigationViewItem() { return new global::Microsoft.UI.Xaml.Controls.NavigationViewItem(); }
+        private object Activate_92_InfoBadge() { return new global::Microsoft.UI.Xaml.Controls.InfoBadge(); }
+        private object Activate_93_NavigationHelper() { return new global::SpacePortal.Helpers.NavigationHelper(); }
+        private object Activate_94_NavigationViewHeaderBehavior() { return new global::SpacePortal.Behaviors.NavigationViewHeaderBehavior(); }
+        private object Activate_100_TuitionFeePage() { return new global::SpacePortal.Views.TuitionFeePage(); }
+        private object Activate_101_TuitionFeeViewModel() { return new global::SpacePortal.ViewModels.TuitionFeeViewModel(); }
+        private object Activate_102_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void StaticInitializer_0_XamlControlsResources() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources).TypeHandle);
         private void StaticInitializer_4_WindowEx() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::WinUIEx.WindowEx).TypeHandle);
         private void StaticInitializer_8_AppWindow() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Windowing.AppWindow).TypeHandle);
@@ -540,58 +546,60 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
         private void StaticInitializer_33_DashboardViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.DashboardViewModel).TypeHandle);
         private void StaticInitializer_34_GradesPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.GradesPage).TypeHandle);
         private void StaticInitializer_35_GradesViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.GradesViewModel).TypeHandle);
-        private void StaticInitializer_36_ScrollView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollView).TypeHandle);
-        private void StaticInitializer_40_ScrollingScrollMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingScrollMode).TypeHandle);
-        private void StaticInitializer_41_ScrollingContentOrientation() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingContentOrientation).TypeHandle);
-        private void StaticInitializer_42_CompositionPropertySet() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.CompositionPropertySet).TypeHandle);
-        private void StaticInitializer_43_CompositionObject() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.CompositionObject).TypeHandle);
-        private void StaticInitializer_44_ScrollingScrollBarVisibility() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility).TypeHandle);
-        private void StaticInitializer_45_ScrollingChainMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingChainMode).TypeHandle);
-        private void StaticInitializer_46_ScrollingRailMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingRailMode).TypeHandle);
-        private void StaticInitializer_47_ScrollingInputKinds() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingInputKinds).TypeHandle);
-        private void StaticInitializer_48_ScrollPresenter() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter).TypeHandle);
-        private void StaticInitializer_50_ScrollingInteractionState() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingInteractionState).TypeHandle);
-        private void StaticInitializer_52_ScrollingZoomMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingZoomMode).TypeHandle);
-        private void StaticInitializer_53_InformationPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.InformationPage).TypeHandle);
-        private void StaticInitializer_54_InformationViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.InformationViewModel).TypeHandle);
-        private void StaticInitializer_55_NotificationPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.NotificationPage).TypeHandle);
-        private void StaticInitializer_56_NotificationViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.NotificationViewModel).TypeHandle);
-        private void StaticInitializer_57_PaymentHistoryPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.PaymentHistoryPage).TypeHandle);
-        private void StaticInitializer_58_PaymentHistoryViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.PaymentHistoryViewModel).TypeHandle);
-        private void StaticInitializer_59_RequestPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.RequestPage).TypeHandle);
-        private void StaticInitializer_60_RequestViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.RequestViewModel).TypeHandle);
-        private void StaticInitializer_61_SchedulePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.SchedulePage).TypeHandle);
-        private void StaticInitializer_62_ScheduleViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.ScheduleViewModel).TypeHandle);
-        private void StaticInitializer_63_ScholarshipPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.ScholarshipPage).TypeHandle);
-        private void StaticInitializer_64_ScholarshipViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.ScholarshipViewModel).TypeHandle);
-        private void StaticInitializer_65_EnumToBooleanConverter() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Helpers.EnumToBooleanConverter).TypeHandle);
-        private void StaticInitializer_66_SettingsPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.SettingsPage).TypeHandle);
-        private void StaticInitializer_67_SettingsViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.SettingsViewModel).TypeHandle);
-        private void StaticInitializer_68_NavigationView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationView).TypeHandle);
-        private void StaticInitializer_70_NavigationViewBackButtonVisible() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible).TypeHandle);
-        private void StaticInitializer_71_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::System.Object>).TypeHandle);
-        private void StaticInitializer_74_NavigationViewDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode).TypeHandle);
-        private void StaticInitializer_78_NavigationViewOverflowLabelMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode).TypeHandle);
-        private void StaticInitializer_79_NavigationViewPaneDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode).TypeHandle);
-        private void StaticInitializer_80_NavigationViewSelectionFollowsFocus() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus).TypeHandle);
-        private void StaticInitializer_81_NavigationViewShoulderNavigationEnabled() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled).TypeHandle);
-        private void StaticInitializer_82_NavigationViewTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings).TypeHandle);
-        private void StaticInitializer_84_Interaction() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.Xaml.Interactivity.Interaction).TypeHandle);
-        private void StaticInitializer_85_BehaviorCollection() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection).TypeHandle);
-        private void StaticInitializer_87_NavigationViewItem() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem).TypeHandle);
-        private void StaticInitializer_88_NavigationViewItemBase() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase).TypeHandle);
-        private void StaticInitializer_90_InfoBadge() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge).TypeHandle);
-        private void StaticInitializer_91_NavigationHelper() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Helpers.NavigationHelper).TypeHandle);
-        private void StaticInitializer_92_NavigationViewHeaderBehavior() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Behaviors.NavigationViewHeaderBehavior).TypeHandle);
-        private void StaticInitializer_93_Behavior() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Microsoft.UI.Xaml.Controls.NavigationView>).TypeHandle);
-        private void StaticInitializer_94_Behavior() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.Xaml.Interactivity.Behavior).TypeHandle);
-        private void StaticInitializer_95_NavigationViewHeaderMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Behaviors.NavigationViewHeaderMode).TypeHandle);
-        private void StaticInitializer_96_ShellPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.ShellPage).TypeHandle);
-        private void StaticInitializer_97_ShellViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.ShellViewModel).TypeHandle);
-        private void StaticInitializer_98_TuitionFeePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.TuitionFeePage).TypeHandle);
-        private void StaticInitializer_99_TuitionFeeViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.TuitionFeeViewModel).TypeHandle);
-        private void StaticInitializer_100_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
-        private void StaticInitializer_101_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
+        private void StaticInitializer_36_BoolToVisibilityConverter() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.BoolToVisibilityConverter).TypeHandle);
+        private void StaticInitializer_37_InvertedBoolToVisibilityConverter() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.InvertedBoolToVisibilityConverter).TypeHandle);
+        private void StaticInitializer_38_ScrollView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollView).TypeHandle);
+        private void StaticInitializer_42_ScrollingScrollMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingScrollMode).TypeHandle);
+        private void StaticInitializer_43_ScrollingContentOrientation() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingContentOrientation).TypeHandle);
+        private void StaticInitializer_44_CompositionPropertySet() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.CompositionPropertySet).TypeHandle);
+        private void StaticInitializer_45_CompositionObject() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Composition.CompositionObject).TypeHandle);
+        private void StaticInitializer_46_ScrollingScrollBarVisibility() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility).TypeHandle);
+        private void StaticInitializer_47_ScrollingChainMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingChainMode).TypeHandle);
+        private void StaticInitializer_48_ScrollingRailMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingRailMode).TypeHandle);
+        private void StaticInitializer_49_ScrollingInputKinds() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingInputKinds).TypeHandle);
+        private void StaticInitializer_50_ScrollPresenter() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter).TypeHandle);
+        private void StaticInitializer_52_ScrollingInteractionState() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingInteractionState).TypeHandle);
+        private void StaticInitializer_54_ScrollingZoomMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.ScrollingZoomMode).TypeHandle);
+        private void StaticInitializer_55_InformationPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.InformationPage).TypeHandle);
+        private void StaticInitializer_56_InformationViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.InformationViewModel).TypeHandle);
+        private void StaticInitializer_57_NotificationPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.NotificationPage).TypeHandle);
+        private void StaticInitializer_58_NotificationViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.NotificationViewModel).TypeHandle);
+        private void StaticInitializer_59_PaymentHistoryPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.PaymentHistoryPage).TypeHandle);
+        private void StaticInitializer_60_PaymentHistoryViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.PaymentHistoryViewModel).TypeHandle);
+        private void StaticInitializer_61_RequestPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.RequestPage).TypeHandle);
+        private void StaticInitializer_62_RequestViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.RequestViewModel).TypeHandle);
+        private void StaticInitializer_63_SchedulePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.SchedulePage).TypeHandle);
+        private void StaticInitializer_64_ScheduleViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.ScheduleViewModel).TypeHandle);
+        private void StaticInitializer_65_ScholarshipPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.ScholarshipPage).TypeHandle);
+        private void StaticInitializer_66_ScholarshipViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.ScholarshipViewModel).TypeHandle);
+        private void StaticInitializer_67_EnumToBooleanConverter() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Helpers.EnumToBooleanConverter).TypeHandle);
+        private void StaticInitializer_68_SettingsPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.SettingsPage).TypeHandle);
+        private void StaticInitializer_69_SettingsViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.SettingsViewModel).TypeHandle);
+        private void StaticInitializer_70_NavigationView() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationView).TypeHandle);
+        private void StaticInitializer_72_NavigationViewBackButtonVisible() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible).TypeHandle);
+        private void StaticInitializer_73_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::System.Object>).TypeHandle);
+        private void StaticInitializer_76_NavigationViewDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode).TypeHandle);
+        private void StaticInitializer_80_NavigationViewOverflowLabelMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode).TypeHandle);
+        private void StaticInitializer_81_NavigationViewPaneDisplayMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode).TypeHandle);
+        private void StaticInitializer_82_NavigationViewSelectionFollowsFocus() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus).TypeHandle);
+        private void StaticInitializer_83_NavigationViewShoulderNavigationEnabled() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled).TypeHandle);
+        private void StaticInitializer_84_NavigationViewTemplateSettings() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings).TypeHandle);
+        private void StaticInitializer_86_Interaction() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.Xaml.Interactivity.Interaction).TypeHandle);
+        private void StaticInitializer_87_BehaviorCollection() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.Xaml.Interactivity.BehaviorCollection).TypeHandle);
+        private void StaticInitializer_89_NavigationViewItem() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItem).TypeHandle);
+        private void StaticInitializer_90_NavigationViewItemBase() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.NavigationViewItemBase).TypeHandle);
+        private void StaticInitializer_92_InfoBadge() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.InfoBadge).TypeHandle);
+        private void StaticInitializer_93_NavigationHelper() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Helpers.NavigationHelper).TypeHandle);
+        private void StaticInitializer_94_NavigationViewHeaderBehavior() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Behaviors.NavigationViewHeaderBehavior).TypeHandle);
+        private void StaticInitializer_95_Behavior() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.Xaml.Interactivity.Behavior<global::Microsoft.UI.Xaml.Controls.NavigationView>).TypeHandle);
+        private void StaticInitializer_96_Behavior() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.Xaml.Interactivity.Behavior).TypeHandle);
+        private void StaticInitializer_97_NavigationViewHeaderMode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Behaviors.NavigationViewHeaderMode).TypeHandle);
+        private void StaticInitializer_98_ShellPage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.ShellPage).TypeHandle);
+        private void StaticInitializer_99_ShellViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.ShellViewModel).TypeHandle);
+        private void StaticInitializer_100_TuitionFeePage() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.Views.TuitionFeePage).TypeHandle);
+        private void StaticInitializer_101_TuitionFeeViewModel() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::SpacePortal.ViewModels.TuitionFeeViewModel).TypeHandle);
+        private void StaticInitializer_102_TreeViewNode() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode).TypeHandle);
+        private void StaticInitializer_103_IList() => global::System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>).TypeHandle);
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -599,19 +607,19 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
         }
-        private void VectorAdd_71_IList(object instance, object item)
+        private void VectorAdd_73_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::System.Object>)instance;
             var newItem = (global::System.Object)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_85_BehaviorCollection(object instance, object item)
+        private void VectorAdd_87_BehaviorCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.DependencyObject>)instance;
             var newItem = (global::Microsoft.UI.Xaml.DependencyObject)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_101_IList(object instance, object item)
+        private void VectorAdd_103_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -904,10 +912,26 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 36:   //  Microsoft.UI.Xaml.Controls.ScrollView
+            case 36:   //  SpacePortal.BoolToVisibilityConverter
+                userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_36_BoolToVisibilityConverter;
+                userType.StaticInitializer = StaticInitializer_36_BoolToVisibilityConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 37:   //  SpacePortal.InvertedBoolToVisibilityConverter
+                userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_37_InvertedBoolToVisibilityConverter;
+                userType.StaticInitializer = StaticInitializer_37_InvertedBoolToVisibilityConverter;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 38:   //  Microsoft.UI.Xaml.Controls.ScrollView
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Control"));
-                userType.Activator = Activate_36_ScrollView;
-                userType.StaticInitializer = StaticInitializer_36_ScrollView;
+                userType.Activator = Activate_38_ScrollView;
+                userType.StaticInitializer = StaticInitializer_38_ScrollView;
                 userType.SetContentPropertyName("Microsoft.UI.Xaml.Controls.ScrollView.Content");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("ComputedHorizontalScrollBarVisibility");
@@ -946,30 +970,30 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 37:   //  Microsoft.UI.Xaml.Controls.Control
+            case 39:   //  Microsoft.UI.Xaml.Controls.Control
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 38:   //  Microsoft.UI.Xaml.UIElement
+            case 40:   //  Microsoft.UI.Xaml.UIElement
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 39:   //  Microsoft.UI.Xaml.Visibility
+            case 41:   //  Microsoft.UI.Xaml.Visibility
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 40:   //  Microsoft.UI.Xaml.Controls.ScrollingScrollMode
+            case 42:   //  Microsoft.UI.Xaml.Controls.ScrollingScrollMode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_40_ScrollingScrollMode;
+                userType.StaticInitializer = StaticInitializer_42_ScrollingScrollMode;
                 userType.AddEnumValue("Enabled", global::Microsoft.UI.Xaml.Controls.ScrollingScrollMode.Enabled);
                 userType.AddEnumValue("Disabled", global::Microsoft.UI.Xaml.Controls.ScrollingScrollMode.Disabled);
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.ScrollingScrollMode.Auto);
                 xamlType = userType;
                 break;
 
-            case 41:   //  Microsoft.UI.Xaml.Controls.ScrollingContentOrientation
+            case 43:   //  Microsoft.UI.Xaml.Controls.ScrollingContentOrientation
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_41_ScrollingContentOrientation;
+                userType.StaticInitializer = StaticInitializer_43_ScrollingContentOrientation;
                 userType.AddEnumValue("Vertical", global::Microsoft.UI.Xaml.Controls.ScrollingContentOrientation.Vertical);
                 userType.AddEnumValue("Horizontal", global::Microsoft.UI.Xaml.Controls.ScrollingContentOrientation.Horizontal);
                 userType.AddEnumValue("None", global::Microsoft.UI.Xaml.Controls.ScrollingContentOrientation.None);
@@ -977,48 +1001,48 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 42:   //  Microsoft.UI.Composition.CompositionPropertySet
+            case 44:   //  Microsoft.UI.Composition.CompositionPropertySet
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Composition.CompositionObject"));
-                userType.StaticInitializer = StaticInitializer_42_CompositionPropertySet;
+                userType.StaticInitializer = StaticInitializer_44_CompositionPropertySet;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 43:   //  Microsoft.UI.Composition.CompositionObject
+            case 45:   //  Microsoft.UI.Composition.CompositionObject
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.StaticInitializer = StaticInitializer_43_CompositionObject;
+                userType.StaticInitializer = StaticInitializer_45_CompositionObject;
                 xamlType = userType;
                 break;
 
-            case 44:   //  Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility
+            case 46:   //  Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_44_ScrollingScrollBarVisibility;
+                userType.StaticInitializer = StaticInitializer_46_ScrollingScrollBarVisibility;
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility.Auto);
                 userType.AddEnumValue("Visible", global::Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility.Visible);
                 userType.AddEnumValue("Hidden", global::Microsoft.UI.Xaml.Controls.ScrollingScrollBarVisibility.Hidden);
                 xamlType = userType;
                 break;
 
-            case 45:   //  Microsoft.UI.Xaml.Controls.ScrollingChainMode
+            case 47:   //  Microsoft.UI.Xaml.Controls.ScrollingChainMode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_45_ScrollingChainMode;
+                userType.StaticInitializer = StaticInitializer_47_ScrollingChainMode;
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.ScrollingChainMode.Auto);
                 userType.AddEnumValue("Always", global::Microsoft.UI.Xaml.Controls.ScrollingChainMode.Always);
                 userType.AddEnumValue("Never", global::Microsoft.UI.Xaml.Controls.ScrollingChainMode.Never);
                 xamlType = userType;
                 break;
 
-            case 46:   //  Microsoft.UI.Xaml.Controls.ScrollingRailMode
+            case 48:   //  Microsoft.UI.Xaml.Controls.ScrollingRailMode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_46_ScrollingRailMode;
+                userType.StaticInitializer = StaticInitializer_48_ScrollingRailMode;
                 userType.AddEnumValue("Enabled", global::Microsoft.UI.Xaml.Controls.ScrollingRailMode.Enabled);
                 userType.AddEnumValue("Disabled", global::Microsoft.UI.Xaml.Controls.ScrollingRailMode.Disabled);
                 xamlType = userType;
                 break;
 
-            case 47:   //  Microsoft.UI.Xaml.Controls.ScrollingInputKinds
+            case 49:   //  Microsoft.UI.Xaml.Controls.ScrollingInputKinds
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_47_ScrollingInputKinds;
+                userType.StaticInitializer = StaticInitializer_49_ScrollingInputKinds;
                 userType.AddEnumValue("None", global::Microsoft.UI.Xaml.Controls.ScrollingInputKinds.None);
                 userType.AddEnumValue("Touch", global::Microsoft.UI.Xaml.Controls.ScrollingInputKinds.Touch);
                 userType.AddEnumValue("Pen", global::Microsoft.UI.Xaml.Controls.ScrollingInputKinds.Pen);
@@ -1029,22 +1053,22 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 48:   //  Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter
+            case 50:   //  Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.FrameworkElement"));
-                userType.StaticInitializer = StaticInitializer_48_ScrollPresenter;
+                userType.StaticInitializer = StaticInitializer_50_ScrollPresenter;
                 userType.SetContentPropertyName("Microsoft.UI.Xaml.Controls.Primitives.ScrollPresenter.Content");
                 userType.AddMemberName("Content");
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 49:   //  Microsoft.UI.Xaml.FrameworkElement
+            case 51:   //  Microsoft.UI.Xaml.FrameworkElement
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 50:   //  Microsoft.UI.Xaml.Controls.ScrollingInteractionState
+            case 52:   //  Microsoft.UI.Xaml.Controls.ScrollingInteractionState
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_50_ScrollingInteractionState;
+                userType.StaticInitializer = StaticInitializer_52_ScrollingInteractionState;
                 userType.AddEnumValue("Idle", global::Microsoft.UI.Xaml.Controls.ScrollingInteractionState.Idle);
                 userType.AddEnumValue("Interaction", global::Microsoft.UI.Xaml.Controls.ScrollingInteractionState.Interaction);
                 userType.AddEnumValue("Inertia", global::Microsoft.UI.Xaml.Controls.ScrollingInteractionState.Inertia);
@@ -1052,149 +1076,149 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 51:   //  Single
+            case 53:   //  Single
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 52:   //  Microsoft.UI.Xaml.Controls.ScrollingZoomMode
+            case 54:   //  Microsoft.UI.Xaml.Controls.ScrollingZoomMode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_52_ScrollingZoomMode;
+                userType.StaticInitializer = StaticInitializer_54_ScrollingZoomMode;
                 userType.AddEnumValue("Enabled", global::Microsoft.UI.Xaml.Controls.ScrollingZoomMode.Enabled);
                 userType.AddEnumValue("Disabled", global::Microsoft.UI.Xaml.Controls.ScrollingZoomMode.Disabled);
                 xamlType = userType;
                 break;
 
-            case 53:   //  SpacePortal.Views.InformationPage
+            case 55:   //  SpacePortal.Views.InformationPage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_53_InformationPage;
-                userType.StaticInitializer = StaticInitializer_53_InformationPage;
+                userType.Activator = Activate_55_InformationPage;
+                userType.StaticInitializer = StaticInitializer_55_InformationPage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 54:   //  SpacePortal.ViewModels.InformationViewModel
+            case 56:   //  SpacePortal.ViewModels.InformationViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_54_InformationViewModel;
+                userType.StaticInitializer = StaticInitializer_56_InformationViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 55:   //  SpacePortal.Views.NotificationPage
+            case 57:   //  SpacePortal.Views.NotificationPage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_55_NotificationPage;
-                userType.StaticInitializer = StaticInitializer_55_NotificationPage;
+                userType.Activator = Activate_57_NotificationPage;
+                userType.StaticInitializer = StaticInitializer_57_NotificationPage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 56:   //  SpacePortal.ViewModels.NotificationViewModel
+            case 58:   //  SpacePortal.ViewModels.NotificationViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_56_NotificationViewModel;
+                userType.StaticInitializer = StaticInitializer_58_NotificationViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 57:   //  SpacePortal.Views.PaymentHistoryPage
+            case 59:   //  SpacePortal.Views.PaymentHistoryPage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_57_PaymentHistoryPage;
-                userType.StaticInitializer = StaticInitializer_57_PaymentHistoryPage;
+                userType.Activator = Activate_59_PaymentHistoryPage;
+                userType.StaticInitializer = StaticInitializer_59_PaymentHistoryPage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 58:   //  SpacePortal.ViewModels.PaymentHistoryViewModel
+            case 60:   //  SpacePortal.ViewModels.PaymentHistoryViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_58_PaymentHistoryViewModel;
+                userType.StaticInitializer = StaticInitializer_60_PaymentHistoryViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 59:   //  SpacePortal.Views.RequestPage
+            case 61:   //  SpacePortal.Views.RequestPage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_59_RequestPage;
-                userType.StaticInitializer = StaticInitializer_59_RequestPage;
+                userType.Activator = Activate_61_RequestPage;
+                userType.StaticInitializer = StaticInitializer_61_RequestPage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 60:   //  SpacePortal.ViewModels.RequestViewModel
+            case 62:   //  SpacePortal.ViewModels.RequestViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_60_RequestViewModel;
+                userType.StaticInitializer = StaticInitializer_62_RequestViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 61:   //  SpacePortal.Views.SchedulePage
+            case 63:   //  SpacePortal.Views.SchedulePage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_61_SchedulePage;
-                userType.StaticInitializer = StaticInitializer_61_SchedulePage;
+                userType.Activator = Activate_63_SchedulePage;
+                userType.StaticInitializer = StaticInitializer_63_SchedulePage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 62:   //  SpacePortal.ViewModels.ScheduleViewModel
+            case 64:   //  SpacePortal.ViewModels.ScheduleViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_62_ScheduleViewModel;
+                userType.StaticInitializer = StaticInitializer_64_ScheduleViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 63:   //  SpacePortal.Views.ScholarshipPage
+            case 65:   //  SpacePortal.Views.ScholarshipPage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_63_ScholarshipPage;
-                userType.StaticInitializer = StaticInitializer_63_ScholarshipPage;
+                userType.Activator = Activate_65_ScholarshipPage;
+                userType.StaticInitializer = StaticInitializer_65_ScholarshipPage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 64:   //  SpacePortal.ViewModels.ScholarshipViewModel
+            case 66:   //  SpacePortal.ViewModels.ScholarshipViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_64_ScholarshipViewModel;
+                userType.StaticInitializer = StaticInitializer_66_ScholarshipViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 65:   //  SpacePortal.Helpers.EnumToBooleanConverter
+            case 67:   //  SpacePortal.Helpers.EnumToBooleanConverter
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_65_EnumToBooleanConverter;
-                userType.StaticInitializer = StaticInitializer_65_EnumToBooleanConverter;
+                userType.Activator = Activate_67_EnumToBooleanConverter;
+                userType.StaticInitializer = StaticInitializer_67_EnumToBooleanConverter;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 66:   //  SpacePortal.Views.SettingsPage
+            case 68:   //  SpacePortal.Views.SettingsPage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_66_SettingsPage;
-                userType.StaticInitializer = StaticInitializer_66_SettingsPage;
+                userType.Activator = Activate_68_SettingsPage;
+                userType.StaticInitializer = StaticInitializer_68_SettingsPage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 67:   //  SpacePortal.ViewModels.SettingsViewModel
+            case 69:   //  SpacePortal.ViewModels.SettingsViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_67_SettingsViewModel;
+                userType.StaticInitializer = StaticInitializer_69_SettingsViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 68:   //  Microsoft.UI.Xaml.Controls.NavigationView
+            case 70:   //  Microsoft.UI.Xaml.Controls.NavigationView
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
-                userType.Activator = Activate_68_NavigationView;
-                userType.StaticInitializer = StaticInitializer_68_NavigationView;
+                userType.Activator = Activate_70_NavigationView;
+                userType.StaticInitializer = StaticInitializer_70_NavigationView;
                 userType.AddMemberName("IsBackButtonVisible");
                 userType.AddMemberName("IsBackEnabled");
                 userType.AddMemberName("SelectedItem");
@@ -1235,67 +1259,67 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 69:   //  Microsoft.UI.Xaml.Controls.ContentControl
+            case 71:   //  Microsoft.UI.Xaml.Controls.ContentControl
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 70:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
+            case 72:   //  Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_70_NavigationViewBackButtonVisible;
+                userType.StaticInitializer = StaticInitializer_72_NavigationViewBackButtonVisible;
                 userType.AddEnumValue("Collapsed", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Collapsed);
                 userType.AddEnumValue("Visible", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Visible);
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewBackButtonVisible.Auto);
                 xamlType = userType;
                 break;
 
-            case 71:   //  System.Collections.Generic.IList`1<Object>
+            case 73:   //  System.Collections.Generic.IList`1<Object>
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_71_IList;
-                userType.CollectionAdd = VectorAdd_71_IList;
+                userType.StaticInitializer = StaticInitializer_73_IList;
+                userType.CollectionAdd = VectorAdd_73_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 72:   //  Microsoft.UI.Xaml.DataTemplate
+            case 74:   //  Microsoft.UI.Xaml.DataTemplate
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 73:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
+            case 75:   //  Microsoft.UI.Xaml.Controls.AutoSuggestBox
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 74:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
+            case 76:   //  Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_74_NavigationViewDisplayMode;
+                userType.StaticInitializer = StaticInitializer_76_NavigationViewDisplayMode;
                 userType.AddEnumValue("Minimal", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Minimal);
                 userType.AddEnumValue("Compact", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Compact);
                 userType.AddEnumValue("Expanded", global::Microsoft.UI.Xaml.Controls.NavigationViewDisplayMode.Expanded);
                 xamlType = userType;
                 break;
 
-            case 75:   //  Microsoft.UI.Xaml.Style
+            case 77:   //  Microsoft.UI.Xaml.Style
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 76:   //  Microsoft.UI.Xaml.Controls.StyleSelector
+            case 78:   //  Microsoft.UI.Xaml.Controls.StyleSelector
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 77:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
+            case 79:   //  Microsoft.UI.Xaml.Controls.DataTemplateSelector
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 78:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
+            case 80:   //  Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_78_NavigationViewOverflowLabelMode;
+                userType.StaticInitializer = StaticInitializer_80_NavigationViewOverflowLabelMode;
                 userType.AddEnumValue("MoreLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.MoreLabel);
                 userType.AddEnumValue("NoLabel", global::Microsoft.UI.Xaml.Controls.NavigationViewOverflowLabelMode.NoLabel);
                 xamlType = userType;
                 break;
 
-            case 79:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
+            case 81:   //  Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_79_NavigationViewPaneDisplayMode;
+                userType.StaticInitializer = StaticInitializer_81_NavigationViewPaneDisplayMode;
                 userType.AddEnumValue("Auto", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Auto);
                 userType.AddEnumValue("Left", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Left);
                 userType.AddEnumValue("Top", global::Microsoft.UI.Xaml.Controls.NavigationViewPaneDisplayMode.Top);
@@ -1304,57 +1328,57 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 80:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
+            case 82:   //  Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_80_NavigationViewSelectionFollowsFocus;
+                userType.StaticInitializer = StaticInitializer_82_NavigationViewSelectionFollowsFocus;
                 userType.AddEnumValue("Disabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Disabled);
                 userType.AddEnumValue("Enabled", global::Microsoft.UI.Xaml.Controls.NavigationViewSelectionFollowsFocus.Enabled);
                 xamlType = userType;
                 break;
 
-            case 81:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
+            case 83:   //  Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_81_NavigationViewShoulderNavigationEnabled;
+                userType.StaticInitializer = StaticInitializer_83_NavigationViewShoulderNavigationEnabled;
                 userType.AddEnumValue("WhenSelectionFollowsFocus", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.WhenSelectionFollowsFocus);
                 userType.AddEnumValue("Always", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Always);
                 userType.AddEnumValue("Never", global::Microsoft.UI.Xaml.Controls.NavigationViewShoulderNavigationEnabled.Never);
                 xamlType = userType;
                 break;
 
-            case 82:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
+            case 84:   //  Microsoft.UI.Xaml.Controls.NavigationViewTemplateSettings
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.StaticInitializer = StaticInitializer_82_NavigationViewTemplateSettings;
+                userType.StaticInitializer = StaticInitializer_84_NavigationViewTemplateSettings;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 83:   //  Microsoft.UI.Xaml.DependencyObject
+            case 85:   //  Microsoft.UI.Xaml.DependencyObject
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 84:   //  Microsoft.Xaml.Interactivity.Interaction
+            case 86:   //  Microsoft.Xaml.Interactivity.Interaction
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.StaticInitializer = StaticInitializer_84_Interaction;
+                userType.StaticInitializer = StaticInitializer_86_Interaction;
                 userType.AddMemberName("Behaviors");
                 xamlType = userType;
                 break;
 
-            case 85:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
+            case 87:   //  Microsoft.Xaml.Interactivity.BehaviorCollection
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObjectCollection"));
-                userType.StaticInitializer = StaticInitializer_85_BehaviorCollection;
-                userType.CollectionAdd = VectorAdd_85_BehaviorCollection;
+                userType.StaticInitializer = StaticInitializer_87_BehaviorCollection;
+                userType.CollectionAdd = VectorAdd_87_BehaviorCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 86:   //  Microsoft.UI.Xaml.DependencyObjectCollection
+            case 88:   //  Microsoft.UI.Xaml.DependencyObjectCollection
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 87:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
+            case 89:   //  Microsoft.UI.Xaml.Controls.NavigationViewItem
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.NavigationViewItemBase"));
-                userType.Activator = Activate_87_NavigationViewItem;
-                userType.StaticInitializer = StaticInitializer_87_NavigationViewItem;
+                userType.Activator = Activate_89_NavigationViewItem;
+                userType.StaticInitializer = StaticInitializer_89_NavigationViewItem;
                 userType.AddMemberName("Icon");
                 userType.AddMemberName("CompactPaneLength");
                 userType.AddMemberName("HasUnrealizedChildren");
@@ -1367,37 +1391,37 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 88:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
+            case 90:   //  Microsoft.UI.Xaml.Controls.NavigationViewItemBase
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.ContentControl"));
-                userType.StaticInitializer = StaticInitializer_88_NavigationViewItemBase;
+                userType.StaticInitializer = StaticInitializer_90_NavigationViewItemBase;
                 userType.AddMemberName("IsSelected");
                 xamlType = userType;
                 break;
 
-            case 89:   //  Microsoft.UI.Xaml.Controls.IconElement
+            case 91:   //  Microsoft.UI.Xaml.Controls.IconElement
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 90:   //  Microsoft.UI.Xaml.Controls.InfoBadge
+            case 92:   //  Microsoft.UI.Xaml.Controls.InfoBadge
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Control"));
-                userType.StaticInitializer = StaticInitializer_90_InfoBadge;
+                userType.StaticInitializer = StaticInitializer_92_InfoBadge;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 91:   //  SpacePortal.Helpers.NavigationHelper
+            case 93:   //  SpacePortal.Helpers.NavigationHelper
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_91_NavigationHelper;
-                userType.StaticInitializer = StaticInitializer_91_NavigationHelper;
+                userType.Activator = Activate_93_NavigationHelper;
+                userType.StaticInitializer = StaticInitializer_93_NavigationHelper;
                 userType.AddMemberName("NavigateTo");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 92:   //  SpacePortal.Behaviors.NavigationViewHeaderBehavior
+            case 94:   //  SpacePortal.Behaviors.NavigationViewHeaderBehavior
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>"));
-                userType.Activator = Activate_92_NavigationViewHeaderBehavior;
-                userType.StaticInitializer = StaticInitializer_92_NavigationViewHeaderBehavior;
+                userType.Activator = Activate_94_NavigationViewHeaderBehavior;
+                userType.StaticInitializer = StaticInitializer_94_NavigationViewHeaderBehavior;
                 userType.AddMemberName("DefaultHeader");
                 userType.AddMemberName("DefaultHeaderTemplate");
                 userType.AddMemberName("HeaderMode");
@@ -1407,22 +1431,22 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 93:   //  Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>
+            case 95:   //  Microsoft.Xaml.Interactivity.Behavior`1<Microsoft.UI.Xaml.Controls.NavigationView>
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.Xaml.Interactivity.Behavior"));
-                userType.StaticInitializer = StaticInitializer_93_Behavior;
+                userType.StaticInitializer = StaticInitializer_95_Behavior;
                 userType.AddMemberName("AssociatedObject");
                 xamlType = userType;
                 break;
 
-            case 94:   //  Microsoft.Xaml.Interactivity.Behavior
+            case 96:   //  Microsoft.Xaml.Interactivity.Behavior
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.StaticInitializer = StaticInitializer_94_Behavior;
+                userType.StaticInitializer = StaticInitializer_96_Behavior;
                 xamlType = userType;
                 break;
 
-            case 95:   //  SpacePortal.Behaviors.NavigationViewHeaderMode
+            case 97:   //  SpacePortal.Behaviors.NavigationViewHeaderMode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.StaticInitializer = StaticInitializer_95_NavigationViewHeaderMode;
+                userType.StaticInitializer = StaticInitializer_97_NavigationViewHeaderMode;
                 userType.AddEnumValue("Always", global::SpacePortal.Behaviors.NavigationViewHeaderMode.Always);
                 userType.AddEnumValue("Never", global::SpacePortal.Behaviors.NavigationViewHeaderMode.Never);
                 userType.AddEnumValue("Minimal", global::SpacePortal.Behaviors.NavigationViewHeaderMode.Minimal);
@@ -1430,43 +1454,43 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 96:   //  SpacePortal.Views.ShellPage
+            case 98:   //  SpacePortal.Views.ShellPage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.StaticInitializer = StaticInitializer_96_ShellPage;
+                userType.StaticInitializer = StaticInitializer_98_ShellPage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 97:   //  SpacePortal.ViewModels.ShellViewModel
+            case 99:   //  SpacePortal.ViewModels.ShellViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_97_ShellViewModel;
+                userType.StaticInitializer = StaticInitializer_99_ShellViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 98:   //  SpacePortal.Views.TuitionFeePage
+            case 100:   //  SpacePortal.Views.TuitionFeePage
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_98_TuitionFeePage;
-                userType.StaticInitializer = StaticInitializer_98_TuitionFeePage;
+                userType.Activator = Activate_100_TuitionFeePage;
+                userType.StaticInitializer = StaticInitializer_100_TuitionFeePage;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 99:   //  SpacePortal.ViewModels.TuitionFeeViewModel
+            case 101:   //  SpacePortal.ViewModels.TuitionFeeViewModel
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("CommunityToolkit.Mvvm.ComponentModel.ObservableRecipient"));
-                userType.StaticInitializer = StaticInitializer_99_TuitionFeeViewModel;
+                userType.StaticInitializer = StaticInitializer_101_TuitionFeeViewModel;
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 100:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 102:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_100_TreeViewNode;
-                userType.StaticInitializer = StaticInitializer_100_TreeViewNode;
+                userType.Activator = Activate_102_TreeViewNode;
+                userType.StaticInitializer = StaticInitializer_102_TreeViewNode;
                 userType.AddMemberName("Children");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("Depth");
@@ -1478,15 +1502,15 @@ namespace SpacePortal.SpacePortal_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 101:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 103:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.StaticInitializer = StaticInitializer_101_IList;
-                userType.CollectionAdd = VectorAdd_101_IList;
+                userType.StaticInitializer = StaticInitializer_103_IList;
+                userType.CollectionAdd = VectorAdd_103_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 102:   //  Int32
+            case 104:   //  Int32
                 xamlType = new global::SpacePortal.SpacePortal_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }

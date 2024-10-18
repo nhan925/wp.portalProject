@@ -252,4 +252,22 @@
   <data name="Information_RemoveAvatar.Text" xml:space="preserve">
     <value>Xóa ảnh đại diện</value>
   </data>
+  <data name="App_Error.Text" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="App_Close.Text" xml:space="preserve">
+    <value>Đóng</value>
+  </data>
+  <data name="App_Yes.Text" xml:space="preserve">
+    <value>Đồng ý</value>
+  </data>
+  <data name="App_No.Text" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="Information_Error_NotEmpty.Text" xml:space="preserve">
+    <value>Các trường không được để trống</value>
+  </data>
+  <data name="Information_Error_PhoneNumber.Text" xml:space="preserve">
+    <value>Số điện thoại phải có đúng 10 chữ số và không được chứa chữ cái.</value>
+  </data>
 </root>

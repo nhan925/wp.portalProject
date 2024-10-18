@@ -77,7 +77,6 @@ E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\w
 E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Xaml.Interactions.dll
 E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Microsoft.Xaml.Interactivity.dll
 E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Newtonsoft.Json.dll
-E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\PropertyChanged.dll
 E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\System.Diagnostics.DiagnosticSource.dll
 E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\System.Diagnostics.EventLog.Messages.dll
 E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\System.Diagnostics.EventLog.dll
@@ -370,3 +369,5 @@ E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\w
 E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
 E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\edit.png
+E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\SpacePortal.csproj.Fody.CopyLocal.cache
+E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\SpacePortal.csproj.Fody.RuntimeCopyLocal.cache

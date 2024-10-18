@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.UI.Xaml.Media.Imaging;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Models;
 
@@ -45,7 +46,7 @@ public class InformationsForInformationDao : IDao<InformationsForInformation>
             PersonalEmail = "nguyenptn1104@gmail.com",
             PhoneNumber = "0987654321",
             Address = "123 Đường Nguyễn Trãi, Quận 1, TP.HCM",
-            AvatarUrl = "ms-appx:///Assets/defaultAvt.png"
+            AvatarUrl = new BitmapImage(new Uri("ms-appx:///Assets/defaultAvt.png"))
 
         };
 
