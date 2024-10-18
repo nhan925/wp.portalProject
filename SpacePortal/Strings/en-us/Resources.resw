@@ -201,8 +201,8 @@
   <data name="Information_Details.Text" xml:space="preserve">
     <value>Details</value>
   </data>
-  <data name="Information_EducationSystem.Text" xml:space="preserve">
-    <value>Education System</value>
+  <data name="Information_AcademicProgram.Text" xml:space="preserve">
+    <value>AcademicProgram</value>
   </data>
   <data name="Information_StudentID.Text" xml:space="preserve">
     <value>Student ID</value>
@@ -237,10 +237,19 @@
   <data name="Information_StudentEmail.Text" xml:space="preserve">
     <value>Student email</value>
   </data>
-  <data name="Information_Course.Text" xml:space="preserve">
-    <value>Course</value>
+  <data name="Information_YearOfAdmission.Text" xml:space="preserve">
+    <value>Year Of Admission</value>
   </data>
   <data name="Information_Separate.Text" xml:space="preserve">
     <value>:</value>
+  </data>
+  <data name="Information_EditAvatarTitle.Text" xml:space="preserve">
+    <value>Custom Your Avatar</value>
+  </data>
+  <data name="Information_UploadAvatar.Text" xml:space="preserve">
+    <value>Upload a new photo</value>
+  </data>
+  <data name="Information_RemoveAvatar.Text" xml:space="preserve">
+    <value>Remove your avatar</value>
   </data>
 </root>

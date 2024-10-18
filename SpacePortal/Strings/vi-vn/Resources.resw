@@ -195,13 +195,13 @@
   <data name="Information_Major.Text" xml:space="preserve">
     <value>Ngành</value>
   </data>
-  <data name="Information_EducationSystem.Text" xml:space="preserve">
+  <data name="Information_AcademicProgram.Text" xml:space="preserve">
     <value>Hệ đào tạo</value>
   </data>
   <data name="Information_StudentID.Text" xml:space="preserve">
     <value>MSSV</value>
   </data>
-  <data name="Information_Course.Text" xml:space="preserve">
+  <data name="Information_YearOfAdmission.Text" xml:space="preserve">
     <value>Khóa</value>
   </data>
   <data name="Information_Gender.Text" xml:space="preserve">
@@ -242,5 +242,14 @@
   </data>
   <data name="Information_Separate.Text" xml:space="preserve">
     <value>:</value>
+  </data>
+  <data name="Information_EditAvatarTitle.Text" xml:space="preserve">
+    <value>Chỉnh sửa ảnh đại diện</value>
+  </data>
+  <data name="Information_UploadAvatar.Text" xml:space="preserve">
+    <value>Tải ảnh đại diện mới</value>
+  </data>
+  <data name="Information_RemoveAvatar.Text" xml:space="preserve">
+    <value>Xóa ảnh đại diện</value>
   </data>
 </root>

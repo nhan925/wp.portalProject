@@ -369,3 +369,4 @@ E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\w
 E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
+E:\ProJect-HK5\WP-Project\SpacePortal\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\Assets\edit.png

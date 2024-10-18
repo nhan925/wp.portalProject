@@ -40,6 +40,9 @@
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\obj\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>SpacePortal.exe</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\Assets\edit.png">
+      <PackagePath>Assets\edit.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="E:\ProJect-HK5\WP-Project\SpacePortal\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>

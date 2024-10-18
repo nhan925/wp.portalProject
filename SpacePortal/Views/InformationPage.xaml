@@ -72,44 +72,78 @@
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
 
-                    <Border Width="108" Height="108" CornerRadius="108" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3">
-                        <Image Source="ms-appx:///Assets/defaultAvt.png" Stretch="UniformToFill"/>
-                    </Border>
+                    <Button x:Name="Avatar" Style="{StaticResource ResetButton}" Grid.Column="0" Grid.Row="0"  Grid.RowSpan="3" Click="EditAvatar_Click" CornerRadius="108"  Width="108" Height="108" Margin="50,0,0,0">
+                        <Image Source="{x:Bind ViewModel.informations.AvatarUrl}" Stretch="UniformToFill" />
+
+                        <Button.Flyout>
+
+                            <Flyout Placement="BottomEdgeAlignedLeft">
+                                <StackPanel Spacing="4">
+                                    <TextBlock x:Uid="Information_EditAvatarTitle" Style="{ThemeResource BodyStrongTextBlockStyle}" FontSize="16" />
+                                    
+                                    <Button HorizontalAlignment="Stretch" Background="Transparent" 
+                                        VerticalAlignment="Center"
+                                        BorderThickness="1" BorderBrush="Transparent"
+                                        HorizontalContentAlignment="Left"
+                                        Click="ChangeAvatar_Click">            
+                                        
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="12" VerticalAlignment="Center">
+                                            <FontIcon Glyph="&#xE771;"/>
+                                            <TextBlock x:Uid="Information_UploadAvatar"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button HorizontalAlignment="Stretch" Background="Transparent" 
+                                        VerticalAlignment="Center"
+                                        BorderThickness="1" BorderBrush="Transparent"
+                                        HorizontalContentAlignment="Left"
+                                        Click="RemoveAvatar_Click">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="12" VerticalAlignment="Center">
+                                            <FontIcon Glyph="&#xECC9;"/>
+                                            <TextBlock x:Uid="Information_RemoveAvatar"/>
+                                        </StackPanel>
+                                    </Button>
+
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    
 
                     <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Fullname" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="Nguyễn Minh Nguyên" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.FullName}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_Major" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="Công nghệ thông tin" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.Major}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
-                        <TextBlock x:Uid="Information_EducationSystem" Style="{ThemeResource Subtitle}"/>
+                        <TextBlock x:Uid="Information_AcademicProgram" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="Đại trà" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.AcademicProgram}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_StudentID" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="22120238" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.StudentID}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
-                        <TextBlock x:Uid="Information_Course" Style="{ThemeResource Subtitle}"/>
+                        <TextBlock x:Uid="Information_YearOfAdmission" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="2022" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.YearOfAdmission}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Gender" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="Nam" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.Gender}" Style="{ThemeResource Content}"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -136,32 +170,32 @@
                     <StackPanel Grid.Row="0" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_DateOfBirth" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="01/01/2004" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.DateOfBirth}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_Nationality" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="Việt Nam" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.Nationality}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Ethnicity" Style="{ThemeResource Subtitle}" />
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="Kinh" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.Ethnicity}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="3" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Identification" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="082204000123" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.StudentID}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_StudentEmail" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="22120238@student.hcmus.edu.vn" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.SchoolEmail}" Style="{ThemeResource Content}"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -188,27 +222,27 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Button x:Name="SettingBtn" Grid.Row="0" Grid.Column="1" Style="{StaticResource ResetButton}" Width="28" Height="28" Margin="0,0,10,0">
-                        <Image Source="../Assets/edit_square.png" Stretch="Uniform" />
+                    <Button x:Name="SettingBtn" Grid.Row="0" Grid.Column="1" Style="{StaticResource ResetButton}" Width="28" Height="28" Margin="0,0,10,0" Click="ChangeContact_Click">
+                        <Image Source="ms-appx:///Assets/edit.png" Stretch="UniformToFill" />
                     </Button>
                     
                     <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_PersonalEmail" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="nguyenptn1104@gmail.com" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.PersonalEmail}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
 
                     <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_PhoneNumber" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="0376566169" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.PhoneNumber}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Address" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="KTX Khu B ĐHQG TPHCM" Style="{ThemeResource Content}" />
+                        <TextBlock Text="{x:Bind ViewModel.informations.Address}" Style="{ThemeResource Content}" />
 
                     </StackPanel>
                 </Grid>
