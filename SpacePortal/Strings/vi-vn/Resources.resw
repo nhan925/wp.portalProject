@@ -272,6 +272,7 @@
   </data>
   <data name="Information_Error_Email.Text" xml:space="preserve">
     <value>Mail không hợp lệ</value>
+  </data>
   <data name="Dashboard_GradeResult.Text" xml:space="preserve">
     <value>KẾT QUẢ HỌC TẬP</value>
   </data>

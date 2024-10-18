@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ProJect-HK5\\WP-Project\\SpacePortal\\SpacePortal.csproj": {}
+    "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal\\SpacePortal.csproj": {}
   },
   "projects": {
-    "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\SpacePortal.Core.csproj": {
+    "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal.Core\\SpacePortal.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\SpacePortal.Core.csproj",
+        "projectUniqueName": "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal.Core\\SpacePortal.Core.csproj",
         "projectName": "SpacePortal.Core",
-        "projectPath": "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\SpacePortal.Core.csproj",
-        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-        "outputPath": "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\obj\\",
+        "projectPath": "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal.Core\\SpacePortal.Core.csproj",
+        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -49,11 +50,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Fody": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "DotNetEnv": {
               "target": "Package",
-              "version": "[6.8.2, )"
+              "version": "[3.1.1, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -76,40 +75,41 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\ProJect-HK5\\WP-Project\\SpacePortal\\SpacePortal.csproj": {
+    "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal\\SpacePortal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ProJect-HK5\\WP-Project\\SpacePortal\\SpacePortal.csproj",
+        "projectUniqueName": "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal\\SpacePortal.csproj",
         "projectName": "SpacePortal",
-        "projectPath": "E:\\ProJect-HK5\\WP-Project\\SpacePortal\\SpacePortal.csproj",
-        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-        "outputPath": "E:\\ProJect-HK5\\WP-Project\\SpacePortal\\obj\\",
+        "projectPath": "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal\\SpacePortal.csproj",
+        "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0-windows10.0.19041.0"
+          "net8.0-windows10.0.26100.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows10.0.19041": {
-            "targetAlias": "net8.0-windows10.0.19041.0",
+          "net8.0-windows10.0.26100": {
+            "targetAlias": "net8.0-windows10.0.26100.0",
             "projectReferences": {
-              "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\SpacePortal.Core.csproj": {
-                "projectPath": "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\SpacePortal.Core.csproj"
+              "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal.Core\\SpacePortal.Core.csproj": {
+                "projectPath": "C:\\Users\\Windows\\Desktop\\wp.portalProject\\SpacePortal.Core\\SpacePortal.Core.csproj"
               }
             }
           }
@@ -126,22 +126,28 @@
         }
       },
       "frameworks": {
-        "net8.0-windows10.0.19041": {
-          "targetAlias": "net8.0-windows10.0.19041.0",
+        "net8.0-windows10.0.26100": {
+          "targetAlias": "net8.0-windows10.0.26100.0",
           "dependencies": {
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.3.2, )"
             },
-            "Fody": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "CommunityToolkit.WinUI.Controls.Primitives": {
               "target": "Package",
-              "version": "[6.8.2, )"
+              "version": "[8.1.240916, )"
+            },
+            "CommunityToolkit.WinUI.Controls.SettingsControls": {
+              "target": "Package",
+              "version": "[8.1.240916, )"
+            },
+            "CommunityToolkit.WinUI.Helpers": {
+              "target": "Package",
+              "version": "[8.1.240916, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
-              "version": "[8.0.1, )"
+              "version": "[9.0.0-rc.2.24473.5, )"
             },
             "Microsoft.WindowsAppSDK": {
               "target": "Package",
@@ -154,6 +160,10 @@
             "PropertyChanged.Fody": {
               "target": "Package",
               "version": "[4.1.0, )"
+            },
+            "Syncfusion.Chart.WinUI": {
+              "target": "Package",
+              "version": "[27.1.53, )"
             },
             "WinUIEx": {
               "target": "Package",
@@ -174,43 +184,43 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
-              "version": "[10.0.19041.38, 10.0.19041.38]"
+              "version": "[10.0.26100.44, 10.0.26100.44]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[8.0.8, 8.0.8]"
+              "version": "[8.0.10, 8.0.10]"
             }
           ],
           "frameworkReferences": {
@@ -221,7 +231,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
