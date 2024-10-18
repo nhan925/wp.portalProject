@@ -12,58 +12,82 @@ public class Student : INotifyPropertyChanged
     {
         get; set;
     }
+    
     public string IdentityCardNumber
     {
         get; set;
     }
+    
     public string FullName
     {
         get; set;
     }
+    
     public string Address
     {
         get; set;
     }
+    
     public string Gender
     {
         get; set;
     }
+    
     public DateTime DateOfBirth
     {
         get; set;
     }
+    
     public string PhoneNumber
     {
         get; set;
     }
+    
     public string AcademicProgram
     {
         get; set;
     }
+    
     public string PersonalEmail
     {
         get; set;
     }
+    
     public string SchoolEmail
     {
         get; set;
     }
+    
     public string AvatarUrl
     {
         get; set;
     }
+    
     public int YearOfAdmission
     {
         get; set;
     }
+    
     public int EarnedCredits
     {
         get; set;
     }
+    
     public decimal CGPA
     {
         get; set;
     }
-
+    public string Major
+    {
+        get; set;
+    }
+    public string Ethnicity
+    {
+        get; set;
+    }
+    public string Nationality
+    {
+        get; set;
+    }
     public event PropertyChangedEventHandler PropertyChanged;
 }

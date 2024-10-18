@@ -116,9 +116,10 @@ public partial class App : Application
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
             services.AddSingleton<IDao<InformationsForDashboard>, InformationsForDashboardDao>();
             services.AddSingleton<IDao<InformationsForShellPage>, InformationsForShellPageDao>();
+            services.AddSingleton<IDao<InformationsForInformation>, InformationsForInformationDao>();
         }).
         Build();
-
+         
         UnhandledException += App_UnhandledException;
     }
 
