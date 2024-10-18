@@ -371,6 +371,7 @@
   </data>
   <data name="Settings_AboutLicense" xml:space="preserve">
     <value>© 2024. All rights reserved.</value>
+  </data>
   <data name="GradesPage_ComboBoxYear.PlaceholderText" xml:space="preserve">
     <value>Năm học</value>
   </data>

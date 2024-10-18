@@ -41,12 +41,9 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0-rc.2.24473.5" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
-<<<<<<< HEAD
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageReference Include="Syncfusion.Chart.WinUI" Version="27.1.53" />
-=======
     <PackageReference Include="Syncfusion.Grid.WinUI" Version="27.1.53" />
->>>>>>> origin/GradesPage
     <PackageReference Include="WinUIEx" Version="2.4.2" />
   </ItemGroup>
 
