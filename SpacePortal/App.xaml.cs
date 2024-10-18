@@ -1,16 +1,21 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using DotNetEnv;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
-
+using Microsoft.Windows.System;
 using SpacePortal.Activation;
 using SpacePortal.Contracts.Services;
+using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Contracts.Services;
+using SpacePortal.Core.Models;
 using SpacePortal.Core.Services;
+using SpacePortal.DataAccess;
 using SpacePortal.Helpers;
 using SpacePortal.Models;
 using SpacePortal.Services;
 using SpacePortal.ViewModels;
 using SpacePortal.Views;
+using Syncfusion.Licensing;
 
 namespace SpacePortal;
 
@@ -45,6 +50,15 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
+
+        // Load .env file
+        var envFilePath = Path.Combine(AppContext.BaseDirectory, ".env");
+        Env.Load(envFilePath);
+        var syncfusionLicenseKey = Env.GetString("SYNCFUSION");
+        SyncfusionLicenseProvider.RegisterLicense(syncfusionLicenseKey);
+
+        // TODO: Set the default language here
+        Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "vi-VN";
 
         Host = Microsoft.Extensions.Hosting.Host.
         CreateDefaultBuilder().
@@ -100,6 +114,8 @@ public partial class App : Application
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+            services.AddSingleton<IDao<InformationsForDashboard>, InformationsForDashboardDao>();
+            services.AddSingleton<IDao<InformationsForShellPage>, InformationsForShellPageDao>();
         }).
         Build();
 

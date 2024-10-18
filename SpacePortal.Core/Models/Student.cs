@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SpacePortal.Core.Models;
-internal class Student : INotifyPropertyChanged
+public class Student : INotifyPropertyChanged
 {
     public string StudentId
     {
