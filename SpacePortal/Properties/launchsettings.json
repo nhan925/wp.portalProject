@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "SpacePortal (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "SpacePortal (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
