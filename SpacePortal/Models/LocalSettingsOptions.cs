@@ -1,6 +1,6 @@
 ﻿namespace SpacePortal.Models;
 
-public class LocalSettingsOptions
+public class LocalSettingsOptions 
 {
     public string? ApplicationDataFolder
     {
