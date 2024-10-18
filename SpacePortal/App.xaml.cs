@@ -13,7 +13,7 @@ using SpacePortal.Models;
 using SpacePortal.Services;
 using SpacePortal.ViewModels;
 using SpacePortal.Views;
-
+using SpacePortal.DataAccess;
 namespace SpacePortal;
 
 // To learn more about WinUI 3, see https://docs.microsoft.com/windows/apps/winui/winui3/.
@@ -105,9 +105,10 @@ public partial class App : Application
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+            services.AddSingleton<IDao<InformationsForInformation>, InformationsForInformationDao>();
         }).
         Build();
-
+         
         UnhandledException += App_UnhandledException;
     }
 
