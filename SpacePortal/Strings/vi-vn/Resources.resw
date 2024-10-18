@@ -162,8 +162,8 @@
   <data name="Settings_Personalization.Text" xml:space="preserve">
     <value>Tùy chỉnh giao diện</value>
   </data>
-  <data name="Settings_Theme.Text" xml:space="preserve">
-    <value>Theme</value>
+  <data name="Settings_Appearance.Text" xml:space="preserve">
+    <value>Giao diện</value>
   </data>
   <data name="Settings_Theme_Light.Content" xml:space="preserve">
     <value>Light</value>
@@ -178,7 +178,7 @@
     <value>Giới thiệu App</value>
   </data>
   <data name="Settings_AboutDescription.Text" xml:space="preserve">
-    <value>TODO: Replace with your app description.</value>
+    <value>Ứng dụng Portal dành cho sinh viên và cán bộ trường đại học.</value>
   </data>
   <data name="SettingsPage_PrivacyTermsLink.Content" xml:space="preserve">
     <value>Quyền riêng tư</value>
@@ -272,5 +272,103 @@
   </data>
   <data name="Information_Error_Email.Text" xml:space="preserve">
     <value>Mail không hợp lệ</value>
+  <data name="Dashboard_GradeResult.Text" xml:space="preserve">
+    <value>KẾT QUẢ HỌC TẬP</value>
+  </data>
+  <data name="Dashboard_StudyProgress.Text" xml:space="preserve">
+    <value>TIẾN ĐỘ HỌC TẬP</value>
+  </data>
+  <data name="Dashboard_MoreFeatures.Text" xml:space="preserve">
+    <value>CHỨC NĂNG KHÁC</value>
+  </data>
+  <data name="Dashboard_Welcome.Text" xml:space="preserve">
+    <value>Xin chào</value>
+  </data>
+  <data name="Dashboard_WelcomeText.Text" xml:space="preserve">
+    <value>Luôn cập nhật thông tin mới nhất nhé !</value>
+  </data>
+  <data name="Dashboard_GPAChartX.Header" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="Dashboard_GPAChartY.Header" xml:space="preserve">
+    <value>GPA</value>
+  </data>
+  <data name="Dashboard_GPAChartTooltips.Text" xml:space="preserve">
+    <value>GPA</value>
+  </data>
+  <data name="Dashboard_CreditsChartCurrent" xml:space="preserve">
+    <value>Đã tích lũy</value>
+  </data>
+  <data name="Dashboard_CreditsChartRemain" xml:space="preserve">
+    <value>Chưa tích lũy</value>
+  </data>
+  <data name="Dashboard_TotalCredits.Text" xml:space="preserve">
+    <value>Tổng số tín chỉ</value>
+  </data>
+  <data name="Dashboard_InfoButton.Text" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="Dashboard_GradeButton.Text" xml:space="preserve">
+    <value>Điểm số</value>
+  </data>
+  <data name="Dashboard_ScheduleButton.Text" xml:space="preserve">
+    <value>Lịch học</value>
+  </data>
+  <data name="Dashboard_RegistrationButton.Text" xml:space="preserve">
+    <value>Đăng ký học phần</value>
+  </data>
+  <data name="Dashboard_FeeButton.Text" xml:space="preserve">
+    <value>Học phí</value>
+  </data>
+  <data name="Dashboard_ScholarshipButton.Text" xml:space="preserve">
+    <value>Học bổng</value>
+  </data>
+  <data name="Dashboard_InfoButtonDetail.Text" xml:space="preserve">
+    <value>Xem chi tiết và thay đổi thông tin, cũng như cập nhật avatar</value>
+  </data>
+  <data name="Dashboard_ScheduleButtonDetail.Text" xml:space="preserve">
+    <value>Xem lịch học, lấy thông tin liên lạc của giảng viên phụ trách môn học, tải đề cương môn học, in thời khóa biểu</value>
+  </data>
+  <data name="Dashboard_RegistrationButtonDetail.Text" xml:space="preserve">
+    <value>Đăng ký học phần trong danh sách các học phần được mở</value>
+  </data>
+  <data name="Dashboard_GradeButtonDetail.Text" xml:space="preserve">
+    <value>Xem điểm của các học phần, GPA, in bảng điểm, xin bảng điểm vật lý</value>
+  </data>
+  <data name="Dashboard_FeeButtonDetail.Text" xml:space="preserve">
+    <value>Xem học phí và thanh toán online</value>
+  </data>
+  <data name="Dashboard_ScholarshipButtonDetail.Text" xml:space="preserve">
+    <value>Xem thông tin và đăng ký các học bổng</value>
+  </data>
+  <data name="Shell_AccountFlyoutInfo.Text" xml:space="preserve">
+    <value>Thông tin chi tiết</value>
+  </data>
+  <data name="Shell_AccountFlyoutChangePassword.Text" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="Shell_AccountFlyoutLogout.Text" xml:space="preserve">
+    <value>Đăng xuất</value>
+  </data>
+  <data name="Settings_ThemeHeader" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Settings_ThemeDescription" xml:space="preserve">
+    <value>Chọn theme cho ứng dụng</value>
+  </data>
+  <data name="Settings_Header.Text" xml:space="preserve">
+    <value>Cài đặt</value>
+  </data>
+  <data name="Settings_GithubUrl" xml:space="preserve">
+    <value>https://github.com/nhan925/wp.portalProject</value>
+  </data>
+  <data name="Settings_GithubHeader" xml:space="preserve">
+    <value>Github repository</value>
+  </data>
+  <data name="Settings_SendFeedBack.Content" xml:space="preserve">
+    <value>Gửi Feedback</value>
+  </data>
+  <data name="Settings_AboutLicense" xml:space="preserve">
+    <value>© 2024. All rights reserved.</value>
   </data>
 </root>

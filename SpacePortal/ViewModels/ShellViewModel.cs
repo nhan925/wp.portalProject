@@ -3,12 +3,19 @@
 using Microsoft.UI.Xaml.Navigation;
 
 using SpacePortal.Contracts.Services;
+using SpacePortal.Core.Contracts;
+using SpacePortal.Models;
 using SpacePortal.Views;
 
 namespace SpacePortal.ViewModels;
 
 public partial class ShellViewModel : ObservableRecipient
 {
+    public InformationsForShellPage Informations
+    {
+        get;
+    }
+
     [ObservableProperty]
     private bool isBackEnabled;
 
@@ -30,6 +37,8 @@ public partial class ShellViewModel : ObservableRecipient
         NavigationService = navigationService;
         NavigationService.Navigated += OnNavigated;
         NavigationViewService = navigationViewService;
+
+        Informations = App.GetService<IDao<InformationsForShellPage>>().GetById(0);
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)
@@ -48,4 +57,7 @@ public partial class ShellViewModel : ObservableRecipient
             Selected = selectedItem;
         }
     }
+
+
+
 }
