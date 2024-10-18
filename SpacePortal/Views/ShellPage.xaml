@@ -9,6 +9,7 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     Loaded="OnLoaded">
 
+
     <Grid>
         <Grid x:Name="AppTitleBar"
               Canvas.ZIndex="1"
@@ -37,8 +38,62 @@
                 BorderThickness="1"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 IsTabStop="False">
-                <Image Source="/Assets/defaultAvt.png" Width="28" Height="28" 
+                <Image Source="{x:Bind ViewModel.Informations.AvatarUrl}" Width="28" Height="28" 
                        Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button.Flyout>
+
+                    <Flyout Placement="BottomEdgeAlignedRight">
+                        <StackPanel Spacing="4">
+                            <Grid ColumnSpacing="16" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{x:Bind ViewModel.Informations.AvatarUrl}" Width="48" Height="48" 
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Grid.Column="0"/>
+                                <StackPanel Orientation="Vertical" Spacing="4" Grid.Column="1">
+                                    <TextBlock Text="{x:Bind ViewModel.Informations.StudentName}" 
+                                               Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                               FontSize="16"/>
+                                    <TextBlock Text="{x:Bind ViewModel.Informations.StudentSchoolEmail}"
+                                               Style="{ThemeResource BodyTextBlockStyle}"
+                                               Opacity="0.8" />
+                                </StackPanel>
+                            </Grid>
+                            <MenuFlyoutSeparator/>
+                            <Button HorizontalAlignment="Stretch" Background="Transparent" 
+                                    VerticalAlignment="Center"
+                                    x:Name="DetailButton"
+                                    Click="DetailButton_Click"
+                                    BorderThickness="1" BorderBrush="Transparent"
+                                    HorizontalContentAlignment="Left">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="12" VerticalAlignment="Center">
+                                    <FontIcon Glyph="&#xEE57;"/>
+                                    <TextBlock x:Uid="Shell_AccountFlyoutInfo"/>
+                                </StackPanel>
+                            </Button>
+                            <Button HorizontalAlignment="Stretch" Background="Transparent" 
+                                    VerticalAlignment="Center"
+                                    BorderThickness="1" BorderBrush="Transparent"
+                                    HorizontalContentAlignment="Left">  
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="12" VerticalAlignment="Center">
+                                    <FontIcon Glyph="&#xE785;"/>
+                                    <TextBlock x:Uid="Shell_AccountFlyoutChangePassword"/>
+                                </StackPanel>
+                            </Button>
+                            <Button HorizontalAlignment="Stretch" Background="Transparent" 
+                                    VerticalAlignment="Center"
+                                    BorderThickness="1" BorderBrush="Transparent"
+                                    HorizontalContentAlignment="Left">  
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="12" VerticalAlignment="Center">
+                                    <FontIcon Glyph="&#xEA49;"/>
+                                    <TextBlock x:Uid="Shell_AccountFlyoutLogout"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Flyout>
+                </Button.Flyout>
             </Button>
         </Grid>
         <NavigationView
@@ -61,64 +116,64 @@
                 -->
                 <NavigationViewItem x:Uid="Shell_Dashboard" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.DashboardViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE80F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Information" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.InformationViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEE57;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Notification" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.NotificationViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA8F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Grades" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.GradesViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9D2;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Schedule" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.ScheduleViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE787;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_CoursesRegistration" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.CoursesRegistrationViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8D7;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_TuitionFee" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.TuitionFeeViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8C7;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_PaymentHistory" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.PaymentHistoryViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81C;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Scholarship" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.ScholarshipViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7BE;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_Request" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.RequestViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA58;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem x:Uid="Shell_AIChatbot" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.AIChatbotViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE99A;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 <NavigationViewItem x:Uid="Shell_AppFeedback" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.AppFeedbackViewModel">
                     <NavigationViewItem.Icon>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xe7c3;"/>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED15;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.FooterMenuItems>
