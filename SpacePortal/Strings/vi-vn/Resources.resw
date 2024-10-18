@@ -371,5 +371,70 @@
   </data>
   <data name="Settings_AboutLicense" xml:space="preserve">
     <value>© 2024. All rights reserved.</value>
+  <data name="GradesPage_ComboBoxYear.PlaceholderText" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_ComboBoxSemester.PlaceholderText" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="GradesPage_ButtonShowGradesPage.Content" xml:space="preserve">
+    <value>Xem bảng điểm</value>
+  </data>
+  <data name="GradesPage_ButtonRequest.Content" xml:space="preserve">
+    <value>Yêu cầu</value>
+  </data>
+  <data name="GradesPage_ScaleGrade4.Text" xml:space="preserve">
+    <value>Thang 4</value>
+  </data>
+  <data name="GradesPage_ScaleGrade10.Text" xml:space="preserve">
+    <value>Thang 10</value>
+  </data>
+  <data name="GradesPage_NumberOfCourses.Text" xml:space="preserve">
+    <value>Số học phần</value>
+  </data>
+  <data name="GradesPage_NumberOfCredits.Text" xml:space="preserve">
+    <value>Số tín chỉ</value>
+  </data>
+  <data name="GradesPage_Year.HeaderText" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_Semester.HeaderText" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="GradesPage_CourseId.HeaderText" xml:space="preserve">
+    <value>Mã môn học</value>
+  </data>
+  <data name="GradesPage_CourseName.HeaderText" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="GradesPage_CourseCredit.HeaderText" xml:space="preserve">
+    <value>Số TC</value>
+  </data>
+  <data name="GradesPage_ClassId.HeaderText" xml:space="preserve">
+    <value>Mã lớp</value>
+  </data>
+  <data name="GradesPage_GradeScaleTen.HeaderText" xml:space="preserve">
+    <value>Điểm thang 10</value>
+  </data>
+  <data name="GradesPage_GradeScaleFour.HeaderText" xml:space="preserve">
+    <value>Điểm thang 4</value>
+  </data>
+  <data name="GradesPage_Note.HeaderText" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="GradesPage_TextBlockGPA.Text" xml:space="preserve">
+    <value>GPA</value>
+  </data>
+  <data name="GradesPage_ComboBoxDefaultOption" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="GradesPage_RequestReview.Text" xml:space="preserve">
+    <value>Phúc khảo điểm</value>
+  </data>
+  <data name="GradesPage_RequestForTranscript.Text" xml:space="preserve">
+    <value>Xin bảng điểm</value>
+  </data>
+  <data name="GradesPage_RequestPrintTranscript.Text" xml:space="preserve">
+    <value>In bảng điểm</value>
   </data>
 </root>

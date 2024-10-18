@@ -7,6 +7,7 @@ using SpacePortal.Activation;
 using SpacePortal.Contracts.Services;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Contracts.Services;
+using SpacePortal.Core.DataAccess;
 using SpacePortal.Core.Models;
 using SpacePortal.Core.Services;
 using SpacePortal.DataAccess;
@@ -117,7 +118,7 @@ public partial class App : Application
             services.AddSingleton<IDao<InformationsForInformation>, InformationsForInformationDao>();
             services.AddSingleton<IDao<InformationsForDashboard>, InformationsForDashboardDao>();
             services.AddSingleton<IDao<InformationsForShellPage>, InformationsForShellPageDao>();
-
+            services.AddSingleton<IDao<InformationsForGradesPage_GradesRow>,InformationsForGradesPageDao>();
         }).
         Build();
          
