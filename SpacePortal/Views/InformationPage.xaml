@@ -42,7 +42,7 @@
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
             <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Height" Value="35 "/>
+            <Setter Property="Height" Value="32"/>
         </Style>
 
         <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
@@ -250,7 +250,8 @@
                             <TextBox Style="{StaticResource TextBoxStyle}" Text="{x:Bind ViewModel.EditPersonalEmail, Mode=TwoWay}" 
                                      Visibility="{x:Bind ViewModel.IsEditing, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}"
                                      MaxLength="100"
-                                     Width="300"/>
+                                     FontSize="14"
+                                     Width="355"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" >
@@ -262,7 +263,8 @@
                             <TextBox Style="{StaticResource TextBoxStyle}" Text="{x:Bind ViewModel.EditPhoneNumber, Mode=TwoWay}" 
                                      Visibility="{x:Bind ViewModel.IsEditing, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" 
                                      MaxLength="10"
-                                     Width="300"/>
+                                     FontSize="14"
+                                      Width="418"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
@@ -280,6 +282,8 @@
                                      Width="400"
                                      AcceptsReturn="True"
                                      Height="70"
+                                     FontSize="14"
+                                     
                                      TextWrapping="Wrap"/>
                         </StackPanel>
 
