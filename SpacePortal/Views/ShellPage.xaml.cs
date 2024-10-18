@@ -82,4 +82,11 @@ public sealed partial class ShellPage : Page
 
         args.Handled = result;
     }
+
+    private void DetailButton_Click(object sender, RoutedEventArgs e)
+    {
+        App.GetService<INavigationService>().NavigateTo(typeof(InformationViewModel).FullName 
+            ?? "SpacePortal.ViewModels.InformationViewModel");
+        AccountAvatarButton.Flyout.Hide();
+    }
 }
