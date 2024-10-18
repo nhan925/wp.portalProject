@@ -22,15 +22,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -46,16 +46,18 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
+            "Fody": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.8.2, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
-            },
-            "PropertyChanged.Fody": {
-              "target": "Package",
-              "version": "[4.1.0, )"
             }
           },
           "imports": [
@@ -74,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
@@ -96,15 +98,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0-windows10.0.19041.0"
+          "net8.0-windows10.0.19041.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0-windows10.0.19041": {
-            "targetAlias": "net7.0-windows10.0.19041.0",
+          "net8.0-windows10.0.19041": {
+            "targetAlias": "net8.0-windows10.0.19041.0",
             "projectReferences": {
               "E:\\ProJect-HK5\\WP-Project\\SpacePortal\\SpacePortal.csproj": {
                 "projectPath": "E:\\ProJect-HK5\\WP-Project\\SpacePortal\\SpacePortal.csproj"
@@ -124,9 +126,15 @@
         }
       },
       "frameworks": {
-        "net7.0-windows10.0.19041": {
-          "targetAlias": "net7.0-windows10.0.19041.0",
+        "net8.0-windows10.0.19041": {
+          "targetAlias": "net8.0-windows10.0.19041.0",
           "dependencies": {
+            "Fody": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.8.2, )"
+            },
             "MSTest.TestAdapter": {
               "target": "Package",
               "version": "[3.6.1, )"
@@ -157,6 +165,48 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-arm64",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x64",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Runtime.win-x86",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.Windows.SDK.NET.Ref",
+              "version": "[10.0.19041.38, 10.0.19041.38]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
+              "version": "[8.0.8, 8.0.8]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
+              "version": "[8.0.8, 8.0.8]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -165,32 +215,17 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
-        "win10-arm": {
+        "win-arm64": {
           "#import": []
         },
-        "win10-arm-aot": {
+        "win-x64": {
           "#import": []
         },
-        "win10-arm64": {
-          "#import": []
-        },
-        "win10-arm64-aot": {
-          "#import": []
-        },
-        "win10-x64": {
-          "#import": []
-        },
-        "win10-x64-aot": {
-          "#import": []
-        },
-        "win10-x86": {
-          "#import": []
-        },
-        "win10-x86-aot": {
+        "win-x86": {
           "#import": []
         }
       }
@@ -213,15 +248,15 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net7.0-windows10.0.19041.0"
+          "net8.0-windows10.0.19041.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0-windows10.0.19041": {
-            "targetAlias": "net7.0-windows10.0.19041.0",
+          "net8.0-windows10.0.19041": {
+            "targetAlias": "net8.0-windows10.0.19041.0",
             "projectReferences": {
               "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\SpacePortal.Core.csproj": {
                 "projectPath": "E:\\ProJect-HK5\\WP-Project\\SpacePortal.Core\\SpacePortal.Core.csproj"
@@ -241,12 +276,18 @@
         }
       },
       "frameworks": {
-        "net7.0-windows10.0.19041": {
-          "targetAlias": "net7.0-windows10.0.19041.0",
+        "net8.0-windows10.0.19041": {
+          "targetAlias": "net8.0-windows10.0.19041.0",
           "dependencies": {
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.3.2, )"
+            },
+            "Fody": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.8.2, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
@@ -259,6 +300,10 @@
             "Microsoft.Xaml.Behaviors.WinUI.Managed": {
               "target": "Package",
               "version": "[2.0.9, )"
+            },
+            "PropertyChanged.Fody": {
+              "target": "Package",
+              "version": "[4.1.0, )"
             },
             "WinUIEx": {
               "target": "Package",
@@ -279,27 +324,27 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -307,15 +352,15 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[7.0.20, 7.0.20]"
+              "version": "[8.0.8, 8.0.8]"
             }
           ],
           "frameworkReferences": {
@@ -326,17 +371,17 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
-        "win10-arm64": {
+        "win-arm64": {
           "#import": []
         },
-        "win10-x64": {
+        "win-x64": {
           "#import": []
         },
-        "win10-x86": {
+        "win-x86": {
           "#import": []
         }
       }

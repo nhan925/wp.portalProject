@@ -1,8 +1,8 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
-      "Fody/6.6.4": {
+    "net8.0": {
+      "Fody/6.8.2": {
         "type": "package",
         "build": {
           "build/Fody.targets": {}
@@ -20,39 +20,20 @@
             "related": ".xml"
           }
         }
-      },
-      "PropertyChanged.Fody/4.1.0": {
-        "type": "package",
-        "dependencies": {
-          "Fody": "6.6.4"
-        },
-        "compile": {
-          "lib/netstandard2.1/PropertyChanged.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/PropertyChanged.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "build/PropertyChanged.Fody.props": {}
-        }
       }
     }
   },
   "libraries": {
-    "Fody/6.6.4": {
-      "sha512": "vLZS+oa+ndUHYPlx/8n9bBTT3dHkCF0riml4paKq4D663+cZd47x1uagQo32D/gKFZ/sfmV1oqKaLmH0elxq4A==",
+    "Fody/6.8.2": {
+      "sha512": "sjGHrtGS1+kcrv99WXCvujOFBTQp4zCH3ZC9wo2LAtVaJkuLpHghQx3y4k1Q8ZKuDAbEw+HE6ZjPUJQK3ejepQ==",
       "type": "package",
-      "path": "fody/6.6.4",
+      "path": "fody/6.8.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "License.txt",
         "build/Fody.targets",
-        "fody.6.6.4.nupkg.sha512",
+        "fody.6.8.2.nupkg.sha512",
         "fody.nuspec",
         "netclassictask/Fody.dll",
         "netclassictask/FodyCommon.dll",
@@ -73,7 +54,8 @@
         "netstandardtask/Mono.Cecil.Rocks.dll",
         "netstandardtask/Mono.Cecil.Rocks.pdb",
         "netstandardtask/Mono.Cecil.dll",
-        "netstandardtask/Mono.Cecil.pdb"
+        "netstandardtask/Mono.Cecil.pdb",
+        "readme.md"
       ]
     },
     "Newtonsoft.Json/13.0.3": {
@@ -105,33 +87,12 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
-    },
-    "PropertyChanged.Fody/4.1.0": {
-      "sha512": "6v+f9cI8YjnZH2WBHuOqWEAo8DFFNGFIdU8xD3AsL6fhV6Y8oAmVWd7XKk49t8DpeUBwhR/X+97+6Epvek0Y3A==",
-      "type": "package",
-      "path": "propertychanged.fody/4.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "analyzers/dotnet/cs/PropertyChanged.Fody.Analyzer.dll",
-        "build/PropertyChanged.Fody.props",
-        "lib/net40/PropertyChanged.dll",
-        "lib/net40/PropertyChanged.xml",
-        "lib/netstandard2.0/PropertyChanged.dll",
-        "lib/netstandard2.0/PropertyChanged.xml",
-        "lib/netstandard2.1/PropertyChanged.dll",
-        "lib/netstandard2.1/PropertyChanged.xml",
-        "propertychanged.fody.4.1.0.nupkg.sha512",
-        "propertychanged.fody.nuspec",
-        "weaver/PropertyChanged.Fody.dll",
-        "weaver/PropertyChanged.Fody.xcf"
-      ]
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
-      "Newtonsoft.Json >= 13.0.3",
-      "PropertyChanged.Fody >= 4.1.0"
+    "net8.0": [
+      "Fody >= 6.8.2",
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
@@ -156,15 +117,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -180,16 +141,18 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
+          "Fody": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
+            "target": "Package",
+            "version": "[6.8.2, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
-          },
-          "PropertyChanged.Fody": {
-            "target": "Package",
-            "version": "[4.1.0, )"
           }
         },
         "imports": [
@@ -208,7 +171,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
