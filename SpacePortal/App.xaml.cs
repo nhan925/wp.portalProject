@@ -49,7 +49,7 @@ public partial class App : Application
         InitializeComponent();
 
         // TODO: Set the default language here
-        Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "en-US";
+        Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "vi-VN";
 
         Host = Microsoft.Extensions.Hosting.Host.
         CreateDefaultBuilder().
