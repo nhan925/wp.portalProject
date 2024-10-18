@@ -83,11 +83,6 @@ public sealed partial class ShellPage : Page
         args.Handled = result;
     }
 
-    private void AccountAvatarButton_Click(object sender, RoutedEventArgs e)
-    {
-        
-    }
-
     private void DetailButton_Click(object sender, RoutedEventArgs e)
     {
         App.GetService<INavigationService>().NavigateTo(typeof(InformationViewModel).FullName 
