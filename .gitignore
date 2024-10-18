@@ -1,0 +1,9 @@
+.env
+SpacePortal/.vs
+SpacePortal/bin
+SpacePortal/obj
+SpacePortal.Core/bin
+SpacePortal.Core/obj
+SpacePortal.Tests.MSTest/bin
+SpacePortal.Tests.MSTest/obj
+/SpacePortal.Tests.MSTest/DataAccess/GradesPageMockDao.cs

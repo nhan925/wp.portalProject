@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SpacePortal.Core.Models;
-public class GradesRow : INotifyPropertyChanged
+public class InformationsForGradesPage_GradesRow : INotifyPropertyChanged
 {
     public string Year
     {

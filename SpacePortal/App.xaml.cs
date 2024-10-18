@@ -6,6 +6,7 @@ using SpacePortal.Activation;
 using SpacePortal.Contracts.Services;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Contracts.Services;
+using SpacePortal.Core.DataAccess;
 using SpacePortal.Core.Models;
 using SpacePortal.Core.Services;
 using SpacePortal.Helpers;
@@ -105,6 +106,7 @@ public partial class App : Application
 
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
+            services.AddSingleton<IDao<InformationsForGradesPage_GradesRow>,InformationsForGradesPageDao>();
         }).
         Build();
 

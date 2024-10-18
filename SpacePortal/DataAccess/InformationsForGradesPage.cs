@@ -8,10 +8,10 @@ using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Models;
 
 namespace SpacePortal.Core.DataAccess;
-public class InformationsForGradesPageDao : IDao<GradesRow>
+public class InformationsForGradesPageDao : IDao<InformationsForGradesPage_GradesRow>
 {
- 
-    public void Add(GradesRow entity)
+
+    public void Add(InformationsForGradesPage_GradesRow entity)
     {
         throw new NotImplementedException();
     }
@@ -21,21 +21,21 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
         throw new NotImplementedException();
     }
 
-    public void Update(GradesRow entity)
+    public void Update(InformationsForGradesPage_GradesRow entity)
     {
         throw new NotImplementedException();
     }
 
-    public GradesRow GetById(int id)
+    public InformationsForGradesPage_GradesRow GetById(int id)
     {
         throw new NotImplementedException();
     }
 
-    public ObservableCollection<GradesRow> GetAll()
+    public ObservableCollection<InformationsForGradesPage_GradesRow> GetAll()
     {
-        var result = new ObservableCollection<GradesRow>
+        var result = new ObservableCollection<InformationsForGradesPage_GradesRow>
         {
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2021 - 2022",
                 Semester = "1",
@@ -47,7 +47,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 4,
                 Note = "Excellent"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2022 - 2023",
                 Semester = "1",
@@ -59,7 +59,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 3,
                 Note = "Good"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2021 - 2022",
                 Semester = "2",
@@ -71,7 +71,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 2,
                 Note = "Fair"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2022 - 2023",
                 Semester = "2",
@@ -83,7 +83,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 1,
                 Note = "Poor"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2023 - 2024",
                 Semester = "1",
@@ -95,7 +95,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 0,
                 Note = "Fail"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2023 - 2024",
                 Semester = "2",
@@ -107,7 +107,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 0,
                 Note = "Fail"
             },
-            new GradesRow {
+            new InformationsForGradesPage_GradesRow {
                 Year = "2023 - 2024",
                 Semester = "3",
                 CourseId = "COSC 4336",
@@ -118,7 +118,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 0,
                 Note = "Fail"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2023 - 2024",
                 Semester = "3",
@@ -130,7 +130,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 0,
                 Note = "Fail"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2024 - 2025",
                 Semester = "1",
@@ -142,7 +142,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 0,
                 Note = "Fail"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2024 - 2025",
                 Semester = "2",
@@ -154,7 +154,7 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
                 GradeScaleFour = 0,
                 Note = "Fail"
             },
-            new GradesRow
+            new InformationsForGradesPage_GradesRow
             {
                 Year = "2024 - 2025",
                 Semester = "3",
@@ -170,41 +170,4 @@ public class InformationsForGradesPageDao : IDao<GradesRow>
         return result;
     }
 
-    //HOTFIX: FIX hard code
-    public ObservableCollection<GradesRow> GetByYear(ObservableCollection<GradesRow> rows,string years)
-    {
-        if(years== "Tất cả")
-        {
-            return rows;
-        }
-        var result = new ObservableCollection<GradesRow>();
-        for(var i = 0 ; i < rows.Count ; i++)
-        {
-            if (rows[i].Year == years)
-            {
-                result.Add(rows[i]);
-            }
-        }
-        return result;
-    }
-
-    //HOTFIX: FIX hard code
-    public ObservableCollection<GradesRow> GetBySemester(ObservableCollection<GradesRow> rows, string semester)
-    {
-        if (semester == "Tất cả")
-        {
-            return rows;
-        }
-        var result = new ObservableCollection<GradesRow>();
-        for (var i = 0; i < rows.Count; i++)
-        {
-            if (rows[i].Semester == semester)
-            {
-                result.Add(rows[i]);
-            }
-        }
-        return result;
-    }
-
-    
 }

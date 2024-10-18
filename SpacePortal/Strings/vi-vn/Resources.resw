@@ -205,10 +205,10 @@
     <value>Thang 10</value>
   </data>
   <data name="GradesPage_NumberOfCourses.Text" xml:space="preserve">
-    <value>Số học phần:</value>
+    <value>Số học phần</value>
   </data>
   <data name="GradesPage_NumberOfCredits.Text" xml:space="preserve">
-    <value>Số tín chỉ tích lũy:</value>
+    <value>Số tín chỉ</value>
   </data>
   <data name="GradesPage_Year.HeaderText" xml:space="preserve">
     <value>Năm học</value>
@@ -251,8 +251,5 @@
   </data>
   <data name="GradesPage_RequestPrintTranscript.Text" xml:space="preserve">
     <value>In bảng điểm</value>
-  </data>
-  <data name="Gradespage_RequestMenuFlyout.Text" xml:space="preserve">
-    <value>Các yêu cầu</value>
   </data>
 </root>

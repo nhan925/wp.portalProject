@@ -13,7 +13,7 @@ namespace SpacePortal.Helpers
 {
     public class FullObservableCollection<T> : ObservableCollection<T> where T : INotifyPropertyChanged
     {
-        private ObservableCollection<GradesRow> gradesRows;
+        private ObservableCollection<InformationsForGradesPage_GradesRow> gradesRows;
 
         public FullObservableCollection()
             : base()

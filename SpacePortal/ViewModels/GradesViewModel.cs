@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.ApplicationModel.Resources;
@@ -6,52 +7,41 @@ using SpacePortal.Core.Contracts;
 using SpacePortal.Core.DataAccess;
 using SpacePortal.Core.Models;
 using SpacePortal.Helpers;
+using SpacePortal.Models;
+using SpacePortal.Models.SpacePortal.Models;
 
 namespace SpacePortal.ViewModels;
 
 public partial class GradesViewModel : ObservableRecipient
 {
     //------------DataGrid Grades Table--------------
-    private IDao<GradesRow> _dao;
-    public ObservableCollection<GradesRow> Grades {get; set;}
-    public ObservableCollection<GradesRow> SourceData {get; set;}
+    private IDao<InformationsForGradesPage_GradesRow> _dao;
+    public ObservableCollection<InformationsForGradesPage_GradesRow> Grades {get; set;}
+    public ObservableCollection<InformationsForGradesPage_GradesRow> SourceData {get; set;}
 
     //------------ComboBox Year and Semester--------------
     public ObservableCollection<string> Years { get; set; } = new ObservableCollection<string>();
     public ObservableCollection<string> Semesters { get; set; } = new ObservableCollection<string>();
 
+    private string DefaultOption {get;set;}
+
     //------------TextBlock General Information--------------
-    public double GpaScale_4 {get; set;}
-    public double GpaScale_10 {get; set;}
-    public int NumberOfCourses {get; set;}
-    public int NumberOfCredits { get; set; }
+    public InformationsForGradesPage_GeneralInformation GeneralInformations { get;set; } = new InformationsForGradesPage_GeneralInformation();
 
 
     public GradesViewModel()
     {
-        _dao = new InformationsForGradesPageDao();
-        Grades = new ObservableCollection<GradesRow>();
-        SourceData = new ObservableCollection<GradesRow>(_dao.GetAll());
+        _dao = App.GetService<IDao<InformationsForGradesPage_GradesRow>>();
+        SourceData = new ObservableCollection<InformationsForGradesPage_GradesRow>(_dao.GetAll());
+        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(SourceData);
+        DefaultOption = new ResourceLoader().GetString("GradesPage_ComboBoxDefaultOption");
+        AddYears(2022);
+        AddSemester();
     }
 
     public void Init()
     {
-        //-----------ComboBox Year and Semester---------------
-        AddYears(2022);
-        AddSemester();
-
-        //-----------TextBlock General Information------------
-        NumberOfCourses = SourceData.Count;
-        for (int i = 0; i < SourceData.Count; i++)
-        {
-            GpaScale_4 += SourceData[i].GradeScaleFour;
-            GpaScale_10 += SourceData[i].GradeScaleTen;
-            NumberOfCredits += SourceData[i].CourseCredit;
-        }
-        GpaScale_4 = Math.Round(GpaScale_4 / SourceData.Count , 2);
-        GpaScale_10 = Math.Round(GpaScale_10 / SourceData.Count, 2);
-
-        //-----------DataGrid Grades Table-------------
+        UpdateGeneralInformation(SourceData);
         if (Grades.Any()) { Grades.Clear();}
         foreach (var grade in SourceData)
         {
@@ -63,16 +53,12 @@ public partial class GradesViewModel : ObservableRecipient
     //----------------Generral Information
     public void AddYears(int startYear)
     {
-        var resourceLoader = new ResourceLoader();
-        var defaultOption = resourceLoader.GetString("GradesPage_ComboBoxDefaultOption");
-        Years.Add(defaultOption);
-
-        // Add a list of 5 academic years for university
-        for (int i = 0; i < 4; i++)
-        {
-            int endYear = startYear + 1;
-            Years.Add($"{startYear} - {endYear}");
-            startYear++;
+        Years.Add(DefaultOption);
+        for (int i=0;i<SourceData.Count;i++) {
+            if (!Years.Contains(SourceData[i].Year))
+            {
+                Years.Add(SourceData[i].Year);
+            }
         }
     }
 
@@ -86,11 +72,36 @@ public partial class GradesViewModel : ObservableRecipient
         Semesters.Add("3");
     }
 
+    public void UpdateGeneralInformation(ObservableCollection<InformationsForGradesPage_GradesRow> grades)
+    {
+        //-----------TextBlock General Information------------
+        if(grades.Count == 0)
+        {
+            GeneralInformations.GpaScale_4 = 0;
+            GeneralInformations.GpaScale_10 = 0;
+            GeneralInformations.NumberOfCourses = 0;
+            GeneralInformations.NumberOfCredits = 0;
+            return;
+        }
+        double gpaScale_4 = 0;
+        double gpaScale_10 = 0;
+        int numberOfCredits = 0;
+        for (int i = 0; i < grades.Count; i++)
+        {
+            gpaScale_4 += grades[i].GradeScaleFour;
+            gpaScale_10 += grades[i].GradeScaleTen;
+            numberOfCredits += grades[i].CourseCredit;
+        }
+        GeneralInformations.NumberOfCourses = grades.Count;
+        GeneralInformations.GpaScale_4 = Math.Round(gpaScale_4 / grades.Count, 2);
+        GeneralInformations.GpaScale_10 = Math.Round(gpaScale_10 / grades.Count, 2);
+        GeneralInformations.NumberOfCredits = numberOfCredits;
+    }
 
-    //-----------------Grades DataGrid
+    //-----------------Grades DataGrid------------------------
     public void ShowGradeByYear(string year)
     {
-        var gradesByYear = ((InformationsForGradesPageDao)_dao).GetByYear(SourceData, year);
+        var gradesByYear = GetByYear(SourceData, year);
         if (Grades.Any()) { Grades.Clear(); }
 
         if (gradesByYear.Any())
@@ -100,11 +111,12 @@ public partial class GradesViewModel : ObservableRecipient
                 Grades.Add(grade);
             }
         }
+        UpdateGeneralInformation(Grades);
     }
 
     public void ShowGradeBySemester(string semester)
     {
-        var gradesBySemester = ((InformationsForGradesPageDao)_dao).GetBySemester(SourceData, semester);
+        var gradesBySemester = GetBySemester(SourceData, semester);
         if (Grades.Any()) { Grades.Clear(); }
 
         if (gradesBySemester.Any())
@@ -114,12 +126,13 @@ public partial class GradesViewModel : ObservableRecipient
                 Grades.Add(grade);
             }
         }
+        UpdateGeneralInformation(Grades);
     }
 
     public void ShowGradeByYearAndSemester(string year, string semester)
     {
-        var gradesByYear = ((InformationsForGradesPageDao)_dao).GetByYear(SourceData, year);
-        var gradesBySemester = ((InformationsForGradesPageDao)_dao).GetBySemester(gradesByYear, semester);
+        var gradesByYear = GetByYear(SourceData, year);
+        var gradesBySemester = GetBySemester(gradesByYear, semester);
         if (Grades.Any()) { Grades.Clear(); }
 
         if (gradesBySemester.Any())
@@ -129,5 +142,43 @@ public partial class GradesViewModel : ObservableRecipient
                 Grades.Add(grade);
             }
         }
+        UpdateGeneralInformation(Grades);
     }
+
+    public ObservableCollection<InformationsForGradesPage_GradesRow> GetByYear(ObservableCollection<InformationsForGradesPage_GradesRow> rows, string years)
+    {
+        if (years == DefaultOption)
+        {
+            return rows;
+        }
+        var result = new ObservableCollection<InformationsForGradesPage_GradesRow>();
+        for (var i = 0; i < rows.Count; i++)
+        {
+            if (rows[i].Year == years)
+            {
+                result.Add(rows[i]);
+            }
+        }
+        return result;
+    }
+
+    //HOTFIX: FIX hard code
+    public ObservableCollection<InformationsForGradesPage_GradesRow> GetBySemester(ObservableCollection<InformationsForGradesPage_GradesRow> rows, string semester)
+    {
+        if (semester == DefaultOption)
+        {
+            return rows;
+        }
+        var result = new ObservableCollection<InformationsForGradesPage_GradesRow>();
+        for (var i = 0; i < rows.Count; i++)
+        {
+            if (rows[i].Semester == semester)
+            {
+                result.Add(rows[i]);
+            }
+        }
+        return result;
+    }
+
+
 }
