@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:SpacePortal"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -35,6 +36,14 @@
             <Setter Property="CornerRadius" Value="0"/>
            
         </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <local:InvertedBoolToVisibilityConverter x:Key="InvertedBoolToVisibilityConverter"/>
     </Page.Resources>
     
         
@@ -57,9 +66,9 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <TextBlock x:ConnectionId='19' Name="GeneralTitle" Style="{ThemeResource Title}" x:Uid="Information_General" Grid.Row="0"/>
+                <TextBlock x:ConnectionId='24' Name="GeneralTitle" Style="{ThemeResource Title}" x:Uid="Information_General" Grid.Row="0"/>
 
-                <Grid x:ConnectionId='20' x:Name="GeneralInformation" Style="{ThemeResource Card}" Grid.Row="1" Height="200" Width="auto" Padding="0,40,0,0">
+                <Grid x:ConnectionId='25' x:Name="GeneralInformation" Style="{ThemeResource Card}" Grid.Row="1" Height="200" Width="auto" Padding="0,40,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"  />
                         <RowDefinition Height="40" />
@@ -72,8 +81,8 @@
                         <ColumnDefinition Width="4*" />
                     </Grid.ColumnDefinitions>
 
-                    <Button x:ConnectionId='21' x:Name="Avatar" Style="{StaticResource ResetButton}" Grid.Column="0" Grid.Row="0"  Grid.RowSpan="3"                          CornerRadius="108"  Width="108" Height="108" Margin="50,0,0,0">
-                        <Image x:ConnectionId='28'                                                    Stretch="UniformToFill" />
+                    <Button x:ConnectionId='26' x:Name="Avatar" Style="{StaticResource ResetButton}" Grid.Column="0" Grid.Row="0"  Grid.RowSpan="3"                          CornerRadius="108"  Width="108" Height="108" Margin="50,0,0,0">
+                        <Image x:ConnectionId='33'                                                                 Stretch="UniformToFill" />
 
                         <Button.Flyout>
 
@@ -81,7 +90,7 @@
                                 <StackPanel Spacing="4">
                                     <TextBlock x:Uid="Information_EditAvatarTitle" Style="{ThemeResource BodyStrongTextBlockStyle}" FontSize="16" />
                                     
-                                    <Button x:ConnectionId='29' HorizontalAlignment="Stretch" Background="Transparent" 
+                                    <Button x:ConnectionId='34' HorizontalAlignment="Stretch" Background="Transparent" 
                                         VerticalAlignment="Center"
                                         BorderThickness="1" BorderBrush="Transparent"
                                         HorizontalContentAlignment="Left"
@@ -93,7 +102,7 @@
                                         </StackPanel>
                                     </Button>
 
-                                    <Button x:ConnectionId='30' HorizontalAlignment="Stretch" Background="Transparent" 
+                                    <Button x:ConnectionId='35' HorizontalAlignment="Stretch" Background="Transparent" 
                                         VerticalAlignment="Center"
                                         BorderThickness="1" BorderBrush="Transparent"
                                         HorizontalContentAlignment="Left"
@@ -113,37 +122,37 @@
                     <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Fullname" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='27'                                                 Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='32'                                                 Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_Major" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='26'                                              Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='31'                                              Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_AcademicProgram" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='25'                                                        Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='30'                                                        Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_StudentID" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='24'                                                  Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='29'                                                  Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_YearOfAdmission" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='23'                                                        Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='28'                                                        Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="2" Grid.Row="2" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Gender" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='22'                                               Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='27'                                               Style="{ThemeResource Content}"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -155,9 +164,9 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <TextBlock x:ConnectionId='12' Name="DetialTitle" Style="{ThemeResource Title}" x:Uid="Information_Details" Grid.Row="0"/>
+                <TextBlock x:ConnectionId='17' Name="DetialTitle" Style="{ThemeResource Title}" x:Uid="Information_Details" Grid.Row="0"/>
 
-                <Grid x:ConnectionId='13' x:Name="DetailInformation" Style="{ThemeResource Card}" Grid.Row="1" Height="250" Width="auto" Padding="40,30,0,0">
+                <Grid x:ConnectionId='18' x:Name="DetailInformation" Style="{ThemeResource Card}" Grid.Row="1" Height="250" Width="auto" Padding="40,30,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
@@ -170,32 +179,32 @@
                     <StackPanel Grid.Row="0" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_DateOfBirth" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='18'                                                    Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='23'                                                    Style="{ThemeResource Content}"/>
                     </StackPanel>
 
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_Nationality" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='17'                                                    Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='22'                                                    Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Ethnicity" Style="{ThemeResource Subtitle}" />
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='16'                                                  Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='21'                                                  Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="3" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Identification" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='15'                                                  Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='20'                                                  Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_StudentEmail" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='14'                                                    Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='19'                                                    Style="{ThemeResource Content}"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -222,37 +231,43 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Button x:ConnectionId='8' x:Name="SettingBtn" Grid.Row="0" Grid.Column="1" Style="{StaticResource ResetButton}" Width="28" Height="28" Margin="0,0,10,0">
+                    <Button x:ConnectionId='8' x:Name="SettingBtn" Grid.Row="0" Grid.Column="1" Style="{StaticResource ResetButton}" Width="28" Height="28"                            >
                         <Image Source="ms-appx:///Assets/edit.png" Stretch="UniformToFill" />
                     </Button>
-                    
+
                     <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_PersonalEmail" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='11'                                                      Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='15'                                                          Style="{ThemeResource Content}"                                                                                                                     />
+                        <TextBox x:ConnectionId='16' Style="{StaticResource TextBoxStyle}"                                                                                                                                                                       />
                     </StackPanel>
-
 
                     <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" >
                         <TextBlock x:Uid="Information_PhoneNumber" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='10'                                                    Style="{ThemeResource Content}"/>
+                        <TextBlock x:ConnectionId='13'                                                        Style="{ThemeResource Content}"                                                                                                                      />
+                        <TextBox x:ConnectionId='14' Style="{StaticResource TextBoxStyle}"                                                                                                                                                                     />
                     </StackPanel>
 
                     <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Address" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock x:ConnectionId='9'                                                Style="{ThemeResource Content}" />
+                        <TextBlock x:ConnectionId='11'                                                    Style="{ThemeResource Content}"                                                                                                                      />
+                        <TextBox x:ConnectionId='12' Style="{StaticResource TextBoxStyle}"                                                                                                                                                                 />
+                    </StackPanel>
 
+
+
+                    <StackPanel Grid.Row="3" Grid.Column="1" Spacing="10" Orientation="Horizontal"  Margin="0,0,20,0">
+                        <Button x:ConnectionId='9' Style="{StaticResource ResetButton}"                                                                                                                                         >
+                            <FontIcon Glyph="&#xE8FB;"/>
+                        </Button>
+                        <Button x:ConnectionId='10' Style="{StaticResource ResetButton}"                                                                                                                                         >
+                            <FontIcon Glyph="&#xE711;"/>
+                        </Button>
                     </StackPanel>
                 </Grid>
             </Grid>
-
-
-
-
-
-
         </Grid>
     </ScrollView>
 </Page>

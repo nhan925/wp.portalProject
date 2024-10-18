@@ -202,7 +202,7 @@
     <value>Details</value>
   </data>
   <data name="Information_AcademicProgram.Text" xml:space="preserve">
-    <value>AcademicProgram</value>
+    <value>Academic Program</value>
   </data>
   <data name="Information_StudentID.Text" xml:space="preserve">
     <value>Student ID</value>
@@ -251,5 +251,23 @@
   </data>
   <data name="Information_RemoveAvatar.Text" xml:space="preserve">
     <value>Remove your avatar</value>
+  </data>
+  <data name="App_Error.Text" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="App_Close.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="App_Yes.Text" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="App_No.Text" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Information_Error_PhoneNumber.Text" xml:space="preserve">
+    <value>The phone number must have exactly 10 digits and must not contain any letters.</value>
+  </data>
+  <data name="Information_Error_NotEmpty.Text" xml:space="preserve">
+    <value>The fields must not be left blank.</value>
   </data>
 </root>
