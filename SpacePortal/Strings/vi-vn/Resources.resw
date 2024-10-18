@@ -270,4 +270,7 @@
   <data name="Information_Error_PhoneNumber.Text" xml:space="preserve">
     <value>Số điện thoại phải có đúng 10 chữ số và không được chứa chữ cái.</value>
   </data>
+  <data name="Information_Error_Email.Text" xml:space="preserve">
+    <value>Mail không hợp lệ</value>
+  </data>
 </root>

@@ -1,4 +1,6 @@
-﻿using SpacePortal.Helpers;
+﻿using Microsoft.UI.Input;
+using Microsoft.UI.Xaml.Controls;
+using SpacePortal.Helpers;
 
 using Windows.UI.ViewManagement;
 

@@ -270,4 +270,7 @@
   <data name="Information_Error_NotEmpty.Text" xml:space="preserve">
     <value>The fields must not be left blank.</value>
   </data>
+  <data name="Information_Error_Email.Text" xml:space="preserve">
+    <value>Email is not valid</value>
+  </data>
 </root>
