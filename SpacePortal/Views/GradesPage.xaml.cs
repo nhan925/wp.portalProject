@@ -8,12 +8,22 @@ using SpacePortal.Core.Models;
 using SpacePortal.ViewModels;
 using Windows.ApplicationModel.VoiceCommands;
 using Windows.UI.WebUI;
+using Syncfusion.UI.Xaml.DataGrid.Export;
+using Microsoft.Extensions.Options;
+using Syncfusion.XlsIO;
+using System.IO;
+using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
+using Windows.Storage;
+using System.Xml.Serialization;
+
+
 
 namespace SpacePortal.Views;
 
 public sealed partial class GradesPage : Page
 {
-
+    public event EventHandler? SelectedIndexChanged;
     public GradesViewModel ViewModel
     {
         get;
@@ -60,8 +70,32 @@ public sealed partial class GradesPage : Page
         }
     }
 
+
     private void CalculatorButton_Click(object sender, RoutedEventArgs e)
     {
-       
+
     }
+
+    private void RequestReviewMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void RequestForTranscriptMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void RequestExportExcelMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    {
+        var options = new DataGridExcelExportOptions();
+        options.ExportMode = ExportMode.Text;
+        options.GridExportHandler = GradesViewModel.GridExportHandler;
+        var excelEngine = sfDataGrid.ExportToExcel(sfDataGrid.View, options);
+        var workBook = excelEngine.Excel.Workbooks[0];
+        MemoryStream stream = new MemoryStream();
+        workBook.SaveAs(stream);
+        ViewModel.Save(stream, "Grades.xlsx");
+    }
+
 }

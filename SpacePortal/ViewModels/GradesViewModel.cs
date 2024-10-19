@@ -9,6 +9,12 @@ using SpacePortal.Core.Models;
 using SpacePortal.Helpers;
 using SpacePortal.Models;
 using SpacePortal.Models.SpacePortal.Models;
+using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
+using Windows.Storage;
+using Syncfusion.UI.Xaml.DataGrid.Export;
+using Syncfusion.XlsIO;
+using System.Drawing;
 
 namespace SpacePortal.ViewModels;
 
@@ -16,12 +22,14 @@ public partial class GradesViewModel : ObservableRecipient
 {
     //------------DataGrid Grades Table--------------
     private IDao<InformationsForGradesPage_GradesRow> _dao;
+    private ObservableCollection<InformationsForGradesPage_GradesRow> SourceData {get;}
     public ObservableCollection<InformationsForGradesPage_GradesRow> Grades {get; set;}
-    public ObservableCollection<InformationsForGradesPage_GradesRow> SourceData {get; set;}
 
     //------------ComboBox Year and Semester--------------
     public ObservableCollection<string> Years { get; set; } = new ObservableCollection<string>();
     public ObservableCollection<string> Semesters { get; set; } = new ObservableCollection<string>();
+    public ObservableCollection<string> SemestersOfLatestYear { get; set; } = new ObservableCollection<string>();
+    public string LatestYear { get; set; }
     public string DefaultOption {get;set;}
 
     //------------TextBlock General Information--------------
@@ -49,7 +57,7 @@ public partial class GradesViewModel : ObservableRecipient
     }
 
 
-    //----------------Generral Information
+   
     public void AddYears(int startYear)
     {
         Years.Add(DefaultOption);
@@ -69,6 +77,10 @@ public partial class GradesViewModel : ObservableRecipient
         Semesters.Add("3");
     }
 
+    /// <summary>
+    /// Update the general information when the grades datagrid is updated
+    /// </summary>
+    /// <param name="grades"></param>
     public void UpdateGeneralInformation(ObservableCollection<InformationsForGradesPage_GradesRow> grades)
     {
         //-----------TextBlock General Information------------
@@ -96,6 +108,10 @@ public partial class GradesViewModel : ObservableRecipient
     }
 
     //-----------------Grades DataGrid------------------------
+    /// <summary>
+    /// Change the grades datagrid by year
+    /// </summary>
+    /// <param name="year"></param>
     public void ShowGradeByYear(string year)
     {
         var gradesByYear = GetByYear(SourceData, year);
@@ -111,6 +127,11 @@ public partial class GradesViewModel : ObservableRecipient
         UpdateGeneralInformation(Grades);
     }
 
+    /// <summary>
+    /// Change the grades datagrid by year and semester
+    /// </summary>
+    /// <param name="year"></param>
+    /// <param name="semester"></param>
     public void ShowGradeByYearAndSemester(string year, string semester)
     {
         var gradesByYear = GetByYear(SourceData, year);
@@ -127,6 +148,12 @@ public partial class GradesViewModel : ObservableRecipient
         UpdateGeneralInformation(Grades);
     }
 
+    /// <summary>
+    /// Get the grades by year
+    /// </summary>
+    /// <param name="rows"></param>
+    /// <param name="years"></param>
+    /// <returns></returns>
     public ObservableCollection<InformationsForGradesPage_GradesRow> GetByYear(ObservableCollection<InformationsForGradesPage_GradesRow> rows, string years)
     {
         if (years == DefaultOption)
@@ -144,6 +171,12 @@ public partial class GradesViewModel : ObservableRecipient
         return result;
     }
 
+    /// <summary>
+    /// Get the grades by semester
+    /// </summary>
+    /// <param name="rows"></param>
+    /// <param name="semester"></param>
+    /// <returns></returns>
     public ObservableCollection<InformationsForGradesPage_GradesRow> GetBySemester(ObservableCollection<InformationsForGradesPage_GradesRow> rows, string semester)
     {
         if (semester == DefaultOption)
@@ -161,5 +194,74 @@ public partial class GradesViewModel : ObservableRecipient
         return result;
     }
 
+
+    /// <summary>
+    /// Save the Excel file
+    /// </summary>
+    /// <param name="stream"></param>
+    /// <param name="filename"></param>
+    public async void Save(MemoryStream stream, string filename)
+    {
+        StorageFile stFile;
+
+        if (!(Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons")))
+        {
+            FileSavePicker savePicker = new FileSavePicker();
+            savePicker.DefaultFileExtension = ".xlsx";
+            savePicker.SuggestedFileName = filename;
+            savePicker.FileTypeChoices.Add("Excel Documents", new List<string>() { ".xlsx" });
+            var hwnd = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
+            WinRT.Interop.InitializeWithWindow.Initialize(savePicker, hwnd);
+            stFile = await savePicker.PickSaveFileAsync();
+        }
+        else
+        {
+            StorageFolder local = Windows.Storage.ApplicationData.Current.LocalFolder;
+            stFile = await local.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
+        }
+        if (stFile != null)
+        {
+            using (IRandomAccessStream zipStream = await stFile.OpenAsync(FileAccessMode.ReadWrite))
+            {
+                //Write the compressed data from the memory to the file
+                using (Stream outstream = zipStream.AsStreamForWrite())
+                {
+                    byte[] buffer = stream.ToArray();
+                    outstream.Write(buffer, 0, buffer.Length);
+                    outstream.Flush();
+                }
+            }
+            //Launch the saved Excel file.
+            await Windows.System.Launcher.LaunchFileAsync(stFile);
+        }
+    }
+
+    /// <summary>
+    /// Styling cells based on CellType in Excel
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public static void GridExportHandler(object sender, DataGridExcelExportStartOptions e)
+    {
+        if (e.CellType == ExportCellType.HeaderCell)
+        {
+            e.Style.ColorIndex = ExcelKnownColors.Grey_50_percent;
+            e.Style.Font.Color = ExcelKnownColors.Black;
+            e.Style.Font.Size = 12;
+            e.Style.Font.Bold = true;
+            e.Handled = true;
+        }
+        else if (e.CellType == ExportCellType.RecordCell)
+        {
+            e.Style.ColorIndex = ExcelKnownColors.Grey_25_percent;
+            e.Handled = true;
+        }
+
+        else if (e.CellType == ExportCellType.GroupCaptionCell)
+        {
+            e.Style.Color = Syncfusion.Drawing.Color.FromArgb(252, 159, 161);
+            e.Handled = true;
+        }
+    }
 
 }

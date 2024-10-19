@@ -243,8 +243,8 @@
   <data name="GradesPage_RequestForTranscript.Text" xml:space="preserve">
     <value>Xin bảng điểm</value>
   </data>
-  <data name="GradesPage_RequestPrintTranscript.Text" xml:space="preserve">
-    <value>In bảng điểm</value>
+  <data name="GradesPage_RequestExportExcel.Text" xml:space="preserve">
+    <value>Xuất file Excel</value>
   </data>
   <data name="GradesPage_TextBlockSemester.Text" xml:space="preserve">
     <value>Học kỳ</value>
