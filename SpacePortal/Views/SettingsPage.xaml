@@ -6,62 +6,59 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:helpers="using:SpacePortal.Helpers"
     xmlns:xaml="using:Microsoft.UI.Xaml"
+    xmlns:ui="using:CommunityToolkit.WinUI"
+    xmlns:controls="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
-    <Page.Resources>
-        <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
-    </Page.Resources>
-    <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
-        <StackPanel
-            x:Name="ContentArea">
-            <TextBlock x:Uid="Settings_Personalization" Style="{ThemeResource SubtitleTextBlockStyle}" />
-            <StackPanel Margin="{StaticResource SmallTopBottomMargin}">
-                <TextBlock x:Uid="Settings_Theme" />
 
-                <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                    <RadioButton
-                        x:Uid="Settings_Theme_Light"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Light, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Light</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton
-                        x:Uid="Settings_Theme_Dark"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Dark</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
-                    <RadioButton
-                        x:Uid="Settings_Theme_Default"
-                        Command="{x:Bind ViewModel.SwitchThemeCommand}"
-                        IsChecked="{x:Bind ViewModel.ElementTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Default, Mode=OneWay}"
-                        FontSize="15"
-                        GroupName="AppTheme">
-                        <RadioButton.CommandParameter>
-                            <xaml:ElementTheme>Default</xaml:ElementTheme>
-                        </RadioButton.CommandParameter>
-                    </RadioButton>
+    <ScrollView VerticalScrollBarVisibility="Auto">
+        <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
+            <StackPanel x:Name="ContentArea" >
+                <TextBlock Style="{ThemeResource TitleTextBlockStyle}" x:Uid="Settings_Header"/>
+                <StackPanel Margin="{StaticResource SmallTopBottomMargin}" Spacing="12" >
+                    <TextBlock x:Uid="Settings_Appearance" Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                    <controls:SettingsCard x:Name="ThemeSettingCard" HeaderIcon="{ui:FontIcon Glyph=&#xE790;}" 
+                                           Loaded="ThemeSettingCard_Loaded"
+                                           CornerRadius="10">
+                        <ComboBox x:Name="ThemeComboBox"
+                                  SelectionChanged="ThemeComboBox_SelectionChanged"
+                                  FontSize="15"
+                                  Loaded="ThemeComboBox_Loaded">
+                            <ComboBoxItem x:Uid="Settings_Theme_Light" 
+                                          x:Name="LightItem"/>
+                            <ComboBoxItem x:Uid="Settings_Theme_Dark" 
+                                          x:Name="DarkItem"/>
+                            <ComboBoxItem x:Uid="Settings_Theme_Default" 
+                                          x:Name="DefaultItem"/>
+                        </ComboBox>
+                    </controls:SettingsCard>
+                    <TextBlock x:Uid="Settings_About" Style="{ThemeResource BodyStrongTextBlockStyle}" />
+                    <controls:SettingsExpander x:Name="aboutSettingExpander" 
+                                               HeaderIcon="{ui:BitmapIcon Source=ms-appx:///Assets/WindowIcon.ico}"
+                                               CornerRadius="10"
+                                               Loaded="AboutSettingExpander_Loaded">
+                        <TextBlock IsTextSelectionEnabled="True"
+                                   Foreground="{ThemeResource TextFillColorSecondaryBrush}"
+                                   Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" />
+                        <controls:SettingsExpander.Items>
+                            <controls:SettingsCard ActionIcon="{ui:FontIcon Glyph=&#xE8A7;}"
+                                                   x:Name="GithubOpenButton"
+                                                   Click="GithubOpenButton_Click"
+                                                   IsClickEnabled="True"
+                                                   Loaded="GithubOpenButton_Loaded"/>
+                            <controls:SettingsCard HorizontalContentAlignment="Left"
+                                                   ContentAlignment="Left">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock x:Uid="Settings_AboutDescription"
+                                               Margin="0,4,0,4"
+                                               Style="{ThemeResource BodyTextBlockStyle}" />
+                                    <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
+                                    <HyperlinkButton x:Uid="Settings_SendFeedBack" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" Click="FeedbackButton_Click"/>
+                                </StackPanel>
+                            </controls:SettingsCard>
+                        </controls:SettingsExpander.Items>
+                    </controls:SettingsExpander>
                 </StackPanel>
             </StackPanel>
-
-            <TextBlock x:Uid="Settings_About" Style="{ThemeResource SubtitleTextBlockStyle}" />
-
-            <StackPanel Margin="{StaticResource XSmallTopMargin}">
-                <TextBlock Text="{x:Bind ViewModel.VersionDescription, Mode=OneWay}" Style="{ThemeResource BodyTextBlockStyle}" />
-
-                <TextBlock
-                    x:Uid="Settings_AboutDescription"
-                    Margin="{StaticResource XSmallTopMargin}"
-                    Style="{ThemeResource BodyTextBlockStyle}" />
-                <HyperlinkButton x:Uid="SettingsPage_PrivacyTermsLink" Margin="{StaticResource SettingsPageHyperlinkButtonMargin}" />
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollView>
 </Page>
