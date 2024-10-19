@@ -22,8 +22,7 @@ public partial class GradesViewModel : ObservableRecipient
     //------------ComboBox Year and Semester--------------
     public ObservableCollection<string> Years { get; set; } = new ObservableCollection<string>();
     public ObservableCollection<string> Semesters { get; set; } = new ObservableCollection<string>();
-
-    private string DefaultOption {get;set;}
+    public string DefaultOption {get;set;}
 
     //------------TextBlock General Information--------------
     public InformationsForGradesPage_GeneralInformation GeneralInformations { get;set; } = new InformationsForGradesPage_GeneralInformation();
@@ -64,9 +63,7 @@ public partial class GradesViewModel : ObservableRecipient
 
     public void AddSemester()
     {
-        var resourceLoader = new ResourceLoader();
-        var defaultOption = resourceLoader.GetString("GradesPage_ComboBoxDefaultOption");
-        Semesters.Add(defaultOption);
+        Semesters.Add(DefaultOption);
         Semesters.Add("1");
         Semesters.Add("2");
         Semesters.Add("3");
@@ -114,21 +111,6 @@ public partial class GradesViewModel : ObservableRecipient
         UpdateGeneralInformation(Grades);
     }
 
-    public void ShowGradeBySemester(string semester)
-    {
-        var gradesBySemester = GetBySemester(SourceData, semester);
-        if (Grades.Any()) { Grades.Clear(); }
-
-        if (gradesBySemester.Any())
-        {
-            foreach (var grade in gradesBySemester)
-            {
-                Grades.Add(grade);
-            }
-        }
-        UpdateGeneralInformation(Grades);
-    }
-
     public void ShowGradeByYearAndSemester(string year, string semester)
     {
         var gradesByYear = GetByYear(SourceData, year);
@@ -162,7 +144,6 @@ public partial class GradesViewModel : ObservableRecipient
         return result;
     }
 
-    //HOTFIX: FIX hard code
     public ObservableCollection<InformationsForGradesPage_GradesRow> GetBySemester(ObservableCollection<InformationsForGradesPage_GradesRow> rows, string semester)
     {
         if (semester == DefaultOption)

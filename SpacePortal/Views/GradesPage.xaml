@@ -27,7 +27,7 @@
         </Style>
         <Style TargetType="ComboBox">
             <Setter Property="Width" Value="128"/>
-            <Setter Property="Height" Value="32"/>
+            <Setter Property="Height" Value="40"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="Width" Value="128"/>
@@ -52,13 +52,24 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <!--ComboBoxes and Button-->
-            <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Spacing="40" Margin="36,0,0,0" >
-                <ComboBox x:Name="ComboBoxYear" x:Uid="GradesPage_ComboBoxYear" ItemsSource="{x:Bind ViewModel.Years}"/>
-                <ComboBox x:Name="ComboBoxSemester" x:Uid="GradesPage_ComboBoxSemester" ItemsSource="{x:Bind ViewModel.Semesters}"/>
-                <Button x:Uid="GradesPage_ButtonShowGradesPage" Style="{StaticResource AccentButtonStyle}" Click="ShowGradeButton_Click"/>
-            </StackPanel>
+            <Grid Grid.Column="0" Margin="36,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MinWidth="320"/>
+                    <ColumnDefinition Width="*" MinWidth="320"/>
+                    <ColumnDefinition Width="3*" MinWidth="320"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" x:Uid="GradesPage_TextBlockYear" Style="{ThemeResource BodyTextStyle}" TextAlignment="Left" VerticalAlignment="Bottom"/>
+                <ComboBox Grid.Row="1" Grid.Column="0" x:Name="ComboBoxYear" ItemsSource="{x:Bind ViewModel.Years}" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Uid="GradesPage_TextBlockSemester" Style="{ThemeResource BodyTextStyle}" TextAlignment="Left" VerticalAlignment="Bottom"/>
+                <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ComboBoxSemester" ItemsSource="{x:Bind ViewModel.Semesters}" HorizontalAlignment="Left"/>
+                <Button Grid.Row="1" Grid.Column="2" x:Uid="GradesPage_ButtonShowGradesPage" Style="{StaticResource AccentButtonStyle}" Click="ShowGradeButton_Click"/>
+            </Grid>
             <!--MenuFlyout-->
-            <StackPanel Grid.Column="1" Style="{StaticResource HorizontalStackPanel}" HorizontalAlignment="Right"  Margin="0,0,36,0" >
+            <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,0,36,12">
                 <Button x:Uid="GradesPage_ButtonRequest" Style="{StaticResource AccentButtonStyle}">
                     <Button.Flyout >
                         <MenuFlyout>
@@ -80,7 +91,7 @@
                         </MenuFlyout>
                     </Button.Flyout>
                 </Button>
-            </StackPanel>
+            </Grid>
         </Grid>
 
         <!--General Information-->
