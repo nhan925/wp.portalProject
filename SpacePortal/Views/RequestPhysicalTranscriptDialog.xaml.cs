@@ -33,7 +33,7 @@ public sealed partial class RequestPhysicalTranscriptDialog : Page
     public RequestPhysicalTranscriptDialog(ObservableCollection<InformationsForGradesPage_GradesRow> sourceData)
     {
         this.InitializeComponent();
-        ViewModel = new RequestPhysicalTranscriptDialogViewModel(sourceData);
+        ViewModel = new(sourceData);
     }
 
     private void NumberBox_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
@@ -43,4 +43,6 @@ public sealed partial class RequestPhysicalTranscriptDialog : Page
             sender.Value = 0;
         }
     }
+
+    public void PrimaryButton_Click() => ViewModel.SendRequestForTranscripts(); 
 }

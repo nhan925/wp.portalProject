@@ -28,6 +28,7 @@ public partial class GradesViewModel : ObservableRecipient
     //------------TextBlock General Information--------------
     public InformationsForGradesPage_GeneralInformation GeneralInformations { get;set; } = new InformationsForGradesPage_GeneralInformation();
 
+    public InformationsForEstimateAverageGradeDialog informationsForEstimateAverageGradeDialog { get; set; }
 
     public GradesViewModel()
     {
@@ -37,6 +38,7 @@ public partial class GradesViewModel : ObservableRecipient
         DefaultOption = new ResourceLoader().GetString("GradesPage_ComboBoxDefaultOption");
         AddYears(2022);
         AddSemester();
+        informationsForEstimateAverageGradeDialog = (_dao as InformationsForGradesPageDao).GetInformationsForEstimateAverageGradeDialog();
     }
 
     public void Init()

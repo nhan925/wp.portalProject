@@ -5,6 +5,7 @@ using Microsoft.Windows.ApplicationModel.Resources;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Core.DataAccess;
 using SpacePortal.Core.Models;
+using SpacePortal.Models;
 using SpacePortal.ViewModels;
 using Windows.ApplicationModel.VoiceCommands;
 
@@ -49,12 +50,22 @@ public sealed partial class GradesPage : Page
         }
     }
 
-    private void CalculatorButton_Click(object sender, RoutedEventArgs e)
+    private async void CalculatorButton_Click(object sender, RoutedEventArgs e)
     {
-       
+        var dialog = new ContentDialog();
+        dialog.XamlRoot = this.XamlRoot;
+        dialog.Title = resourceLoader.GetString("GradesPage_EstimateAverageGradeTitle");
+        dialog.Content = new EstimateAverageGradeDialog(ViewModel.SourceData,
+            ViewModel.informationsForEstimateAverageGradeDialog);
+        dialog.HorizontalAlignment = HorizontalAlignment.Left;
+        dialog.CloseButtonText = resourceLoader.GetString("Dialog_Cancel");
+        dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
+        dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
+
+        await dialog.ShowAsync();
     }
 
-    private async void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    private async void RequestForTranscript_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new ContentDialog();
         dialog.XamlRoot = this.XamlRoot;
@@ -67,10 +78,8 @@ public sealed partial class GradesPage : Page
         dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
         dialog.PrimaryButtonClick += (sender, e) =>
         {
-            // TODO: Send request for transcript
-            // string requestContent = information of student and transcripts (type, language, quantity)
+            (dialog.Content as RequestPhysicalTranscriptDialog).PrimaryButton_Click();
         };
-
 
         await dialog.ShowAsync();
     }

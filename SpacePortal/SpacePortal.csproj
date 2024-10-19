@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\edit.png" />
+    <None Remove="Views\EstimateAverageGradeDialog.xaml" />
     <None Remove="Views\RequestPhysicalTranscriptDialog.xaml" />
   </ItemGroup>
 
@@ -91,6 +92,9 @@
     <None Update="Assets\defaultAvt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\EstimateAverageGradeDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\RequestPhysicalTranscriptDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

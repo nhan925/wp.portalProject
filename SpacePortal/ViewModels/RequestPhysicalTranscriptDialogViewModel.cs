@@ -85,4 +85,9 @@ public class RequestPhysicalTranscriptDialogViewModel : INotifyPropertyChanged
         get; set;
     }
 
+    public void SendRequestForTranscripts()
+    {
+        // TODO: Summary information & send request for transcripts
+        // string requestContent = information of student and transcripts (type, language, quantity)
+    }
 }

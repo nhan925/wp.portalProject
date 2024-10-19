@@ -471,4 +471,25 @@
   <data name="GradesPage_RequestForTranscriptTotal.Text" xml:space="preserve">
     <value>Tổng số bảng điểm</value>
   </data>
+  <data name="GradesPage_EstimateAverageGradeTitle" xml:space="preserve">
+    <value>Ước lượng điểm</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeDegreeType.Text" xml:space="preserve">
+    <value>Loại bằng</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeRemainCredits.Text" xml:space="preserve">
+    <value>Số tín chỉ còn lại</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeEstimatedGrade.Text" xml:space="preserve">
+    <value>Điểm trung bình các học phần còn lại cần đạt</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeImpossible" xml:space="preserve">
+    <value>Bất khả thi</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeAbsolutely" xml:space="preserve">
+    <value>Luôn luôn đạt</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeComboBox.PlaceholderText" xml:space="preserve">
+    <value>Chọn loại bằng</value>
+  </data>
 </root>
