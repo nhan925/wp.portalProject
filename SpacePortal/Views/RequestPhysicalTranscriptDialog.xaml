@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="SpacePortal.Views.RequestPhysicalTranscriptDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SpacePortal.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Vertical" Spacing="20">
+        <Grid HorizontalAlignment="Stretch">
+            <Grid.Resources>
+                <Style x:Key="HeaderCellStyle" TargetType="Grid">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="12"/>
+                    <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
+                    <Setter Property="BorderBrush" Value="{ThemeResource DividerStrokeColorDefaultBrush}"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+                <Style x:Key="CellStyle" TargetType="Grid">
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="12"/>
+                    <Setter Property="BorderBrush" Value="{ThemeResource DividerStrokeColorDefaultBrush}"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                </Style>
+                <Style x:Key="NumberBoxStyle" TargetType="NumberBox">
+                    <Setter Property="Minimum" Value="0" />
+                    <Setter Property="Maximum" Value="5" />
+                    <Setter Property="SpinButtonPlacementMode" Value="Compact" />
+                    <Setter Property="SmallChange" Value="1" />
+                    <Setter Property="LargeChange" Value="1" />
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                </Style>
+
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition Width="92"/>
+                <ColumnDefinition Width="92"/>
+            </Grid.ColumnDefinitions>
+            <Grid  Grid.Row="0" Grid.Column="0" Style="{ThemeResource HeaderCellStyle}">
+                <TextBlock x:Uid="GradesPage_RequestForTranscriptType" 
+                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid  Grid.Row="0" Grid.Column="1" Style="{ThemeResource HeaderCellStyle}">
+                <TextBlock x:Uid="GradesPage_RequestForTranscriptInfo" 
+                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid  Grid.Row="0" Grid.Column="2" Style="{ThemeResource HeaderCellStyle}">
+                <TextBlock x:Uid="GradesPage_RequestForTranscriptVi" 
+                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+            <Grid  Grid.Row="0" Grid.Column="3" Style="{ThemeResource HeaderCellStyle}">
+                <TextBlock x:Uid="GradesPage_RequestForTranscriptEn" 
+                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           HorizontalAlignment="Center"/>
+            </Grid>
+
+            <Grid  Grid.Row="1" Grid.Column="0" Style="{ThemeResource CellStyle}">
+                <TextBlock x:Uid="GradesPage_RequestForTranscriptAll" 
+                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           VerticalAlignment="Center"/>
+            </Grid>
+            <Grid  Grid.Row="2" Grid.Column="0" Style="{ThemeResource CellStyle}">
+                <TextBlock x:Uid="GradesPage_RequestForTranscriptSemesterOfYear" 
+                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           VerticalAlignment="Center"/>
+            </Grid>
+            <Grid  Grid.Row="3" Grid.Column="0" Style="{ThemeResource CellStyle}">
+                <TextBlock x:Uid="GradesPage_RequestForTranscriptYear" 
+                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                           VerticalAlignment="Center"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="2" Style="{ThemeResource CellStyle}">
+                <NumberBox x:Name="NumberOfTranscriptOfAllVi" Style="{ThemeResource NumberBoxStyle}" 
+                           Value="{x:Bind ViewModel.NumberOfTranscriptOfAllVi, Mode=TwoWay}"
+                           ValueChanged="NumberBox_ValueChanged"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3" Style="{ThemeResource CellStyle}">
+                <NumberBox x:Name="NumberOfTranscriptOfAllEn" Style="{ThemeResource NumberBoxStyle}" 
+                           Value="{x:Bind ViewModel.NumberOfTranscriptOfAllEn, Mode=TwoWay}"
+                           ValueChanged="NumberBox_ValueChanged"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2" Style="{ThemeResource CellStyle}">
+                <NumberBox x:Name="NumberOfTranscriptOfSemesterVi" Style="{ThemeResource NumberBoxStyle}"
+                           Value="{x:Bind ViewModel.NumberOfSemeseterTranscriptsVi, Mode=TwoWay}"
+                           ValueChanged="NumberBox_ValueChanged"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="3" Style="{ThemeResource CellStyle}">
+                <NumberBox x:Name="NumberOfTranscriptOfSemesterEn" Style="{ThemeResource NumberBoxStyle}"
+                           Value="{x:Bind ViewModel.NumberOfSemeseterTranscriptsEn, Mode=TwoWay}"
+                           ValueChanged="NumberBox_ValueChanged"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="2" Style="{ThemeResource CellStyle}">
+                <NumberBox x:Name="NumberOfTranscriptOfYearVi" Style="{ThemeResource NumberBoxStyle}"
+                           Value="{x:Bind ViewModel.NumberOfYearTranscriptsVi, Mode=TwoWay}"
+                           ValueChanged="NumberBox_ValueChanged"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="3" Style="{ThemeResource CellStyle}">
+                <NumberBox x:Name="NumberOfTranscriptOfYearEn" Style="{ThemeResource NumberBoxStyle}"
+                           Value="{x:Bind ViewModel.NumberOfYearTranscriptsEn, Mode=TwoWay}"
+                           ValueChanged="NumberBox_ValueChanged"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1" Style="{ThemeResource CellStyle}"/>
+            <Grid Grid.Row="2" Grid.Column="1" Style="{ThemeResource CellStyle}">
+                <ComboBox x:Name="SemesterComboBox" ItemsSource="{x:Bind ViewModel.CombinedSemesterAndYear}" 
+                          SelectedIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="1" Style="{ThemeResource CellStyle}">
+                <ComboBox x:Name="YearComboBox" ItemsSource="{x:Bind ViewModel.Years}" 
+                          SelectedIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            </Grid>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Uid="GradesPage_RequestForTranscriptTotal" HorizontalTextAlignment="Left" 
+                       Grid.Column="0"
+                       Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+            <TextBlock HorizontalAlignment="Right" Text="{x:Bind ViewModel.TotalTranscripts, Mode=OneWay}" 
+                       Grid.Column="1"
+                       Style="{ThemeResource BodyTextBlockStyle}"/>
+        </Grid>
+    </StackPanel>
+</Page>

@@ -17,7 +17,7 @@ public partial class GradesViewModel : ObservableRecipient
     //------------DataGrid Grades Table--------------
     private IDao<InformationsForGradesPage_GradesRow> _dao;
     public ObservableCollection<InformationsForGradesPage_GradesRow> Grades {get; set;}
-    public ObservableCollection<InformationsForGradesPage_GradesRow> SourceData {get; set;}
+    public ObservableCollection<InformationsForGradesPage_GradesRow> SourceData {get;}
 
     //------------ComboBox Year and Semester--------------
     public ObservableCollection<string> Years { get; set; } = new ObservableCollection<string>();

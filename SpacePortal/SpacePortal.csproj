@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\edit.png" />
+    <None Remove="Views\RequestPhysicalTranscriptDialog.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,6 +91,9 @@
     <None Update="Assets\defaultAvt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\RequestPhysicalTranscriptDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
