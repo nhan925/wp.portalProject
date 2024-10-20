@@ -25,19 +25,14 @@
             <Setter Property="Width" Value="Auto"/>
             <Setter Property="Height" Value="Auto"/>
         </Style>
-        <Style TargetType="ComboBox">
-            <Setter Property="Width" Value="128"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
         <Style TargetType="Button">
             <Setter Property="Width" Value="128"/>
             <Setter Property="Height" Value="32"/>
         </Style>
         <Style x:Key="SubtitleStyle" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{ThemeResource SubtitleTextBlockFontSize}"/>
+            <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
     </Page.Resources>
 
@@ -53,16 +48,20 @@
             <Grid Grid.Column="0" Margin="36,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" x:Uid="GradesPage_TextBlockYear" Style="{ThemeResource BodyTextStyle}" VerticalAlignment="Center" Margin="0,0,12,0"/>
-                <ComboBox Grid.Column="1" x:Name="ComboBoxYear" ItemsSource="{x:Bind ViewModel.Years}" SelectionChanged="ComboBoxYear_SelectionChanged"/>
+                <ComboBox Grid.Column="1" x:Name="ComboBoxYear" ItemsSource="{x:Bind ViewModel.Years}" 
+                          VerticalAlignment="Center" Width="128"
+                          SelectionChanged="ComboBoxYear_SelectionChanged"/>
                 <TextBlock Grid.Column="2" x:Uid="GradesPage_TextBlockSemester" Style="{ThemeResource BodyTextStyle}" VerticalAlignment="Center" Margin="12,0,12,0"/>
-                <ComboBox Grid.Column="3" x:Name="ComboBoxSemester" ItemsSource="{x:Bind ViewModel.Semesters}"/>
+                <ComboBox Grid.Column="3" x:Name="ComboBoxSemester" 
+                          VerticalAlignment="Center" Width="128"
+                          ItemsSource="{x:Bind ViewModel.Semesters}"/>
                 <Button Grid.Column="4" x:Uid="GradesPage_ButtonShowGradesPage" Style="{StaticResource AccentButtonStyle}" Click="ShowGradeButton_Click" Margin="12,0,0,0"/>
                 <Button Grid.Column="5" x:Uid="GradesPage_ButtonRequest" Style="{StaticResource AccentButtonStyle}" Margin="0,0,36,0">
                     <Button.Flyout >
@@ -107,16 +106,16 @@
                         <ColumnDefinition Width="*" MinWidth="62.5" MaxWidth="250"/>
                         <ColumnDefinition Width="*" MinWidth="62.5" MaxWidth="250"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" FontSize="{ThemeResource BodyTextBlockFontSize}" Opacity="0.8" TextAlignment="Center">
+                    <TextBlock Grid.Column="0" Style="{ThemeResource SubtitleStyle}" Opacity="0.8" TextAlignment="Center">
                         <Run x:Uid="GradesPage_ScaleGrade4"/>: <Run/>
                     </TextBlock>
                     <TextBlock Grid.Column="1" Text="{x:Bind ViewModel.GeneralInformations.GpaScale_4, Mode=OneWay}" 
-                        FontSize="{ThemeResource BodyTextBlockFontSize}" Margin="8,0,0,0" TextAlignment="Left"/>
-                    <TextBlock Grid.Column="2" FontSize="{ThemeResource BodyTextBlockFontSize}" Opacity="0.8" TextAlignment="Right">
+                        Style="{ThemeResource SubtitleStyle}" Margin="12,0,0,0" TextAlignment="Left"/>
+                    <TextBlock Grid.Column="2" Style="{ThemeResource SubtitleStyle}" Opacity="0.8" TextAlignment="Right" Margin="20,0,0,0">
                         <Run x:Uid="GradesPage_ScaleGrade10"/>: <Run/>
                     </TextBlock>
                     <TextBlock Grid.Column="3" Text="{x:Bind ViewModel.GeneralInformations.GpaScale_10, Mode=OneWay}" 
-                    FontSize="{ThemeResource BodyTextBlockFontSize}" Margin="8,0,0,0" TextAlignment="Center"/>
+                    Style="{ThemeResource SubtitleStyle}" Margin="12,0,0,0" TextAlignment="Center"/>
                 </Grid>
 
             </StackPanel>
@@ -130,7 +129,7 @@
             </StackPanel>
 
             <StackPanel Grid.Column="2" Style="{StaticResource HorizontalStackPanel}">
-                <TextBlock Style="{StaticResource SubtitleStyle}" Opacity="0.8">
+                <TextBlock Style="{StaticResource SubtitleStyle}" Opacity="0.8" Margin="36,0,0,0">
                     <Run x:Uid="GradesPage_NumberOfCredits"/>: <Run/>
                 </TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.GeneralInformations.NumberOfCredits, Mode=OneWay}" 
@@ -138,10 +137,11 @@
             </StackPanel>
 
             <!--Button calculate grade-->
-            <Button Grid.Column="3" Width="80" Height="80"
+            <Button Grid.Column="3" Width="70" Height="70"
                     HorizontalAlignment="Stretch" Background="Transparent" 
                     VerticalAlignment="Center"
                     x:Name="Calculator"
+                    CornerRadius="4"
                     Click="CalculatorButton_Click"
                     BorderThickness="1" BorderBrush="Transparent"
                     Margin="12,12,12,12">

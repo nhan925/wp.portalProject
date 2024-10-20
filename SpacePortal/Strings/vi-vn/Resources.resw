@@ -446,6 +446,7 @@
   </data>
   <data name="GradesPage_RequestForTranscriptTitle" xml:space="preserve">
     <value>Xin bảng điểm</value>
+  </data>
   <data name="GradesPage_RequestForReviewYear.Text" xml:space="preserve">
     <value>Năm học</value>
   </data>
