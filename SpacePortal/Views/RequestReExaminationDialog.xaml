@@ -9,11 +9,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid ColumnSpacing="40" RowSpacing="10" Padding="10,10,10,10" Background="White">
+    <Grid ColumnSpacing="20" RowSpacing="10" Padding="10,10,10,10" Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="120"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -58,7 +58,7 @@
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Spacing="12">
             <TextBlock x:Uid="GradesPage_RequestForReviewSubject" Style="{ThemeResource BodyStrongTextBlockStyle}" />
 
-            <ComboBox x:Name="CurrentSubjectBox" SelectedIndex="0"
+            <ComboBox x:Name="CurrentSubjectBox"
                         x:Uid="GradesPage_RequestForReviewSubjectCombobox"
                       ItemsSource="{x:Bind ViewModel.Subjects, Mode=OneWay}"
                       SelectedItem="{x:Bind ViewModel.SelectedSubject,Mode=TwoWay}"

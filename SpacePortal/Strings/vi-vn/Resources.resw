@@ -454,13 +454,13 @@
     <value>Điểm hiện tại</value>
   </data>
   <data name="GradesPage_RequestForReviewCurrentScoreTextBox.PlaceholderText" xml:space="preserve">
-    <value>--/10</value>
+    <value>--</value>
   </data>
   <data name="GradesPage_RequestForReviewSubject.Text" xml:space="preserve">
     <value>Môn học</value>
   </data>
   <data name="GradesPage_RequestForReviewSubjectCombobox.PlaceholderText" xml:space="preserve">
-    <value>--</value>
+    <value>Môn học</value>
   </data>
   <data name="GradesPage_RequestForReviewClass.Text" xml:space="preserve">
     <value>Mã lớp</value>

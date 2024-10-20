@@ -37,9 +37,16 @@ public sealed partial class RequestReExaminationDialog : Page
         ViewModel = new RequestReExaminationDialogViewModel(sourceData);
     }
 
-    public void SendRequest()
+    public void SendRequest(ContentDialog sender, ContentDialogButtonClickEventArgs e)
     {
-        ViewModel.SendRequest();
+        if (ViewModel.SelectedYear == null || ViewModel.SelectedSemester == null || ViewModel.SelectedSubject == null)
+        {
+            e.Cancel = true;
+        }
+        else
+        {
+            ViewModel.SendRequest();
+        }
     }
 
     private void YearComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

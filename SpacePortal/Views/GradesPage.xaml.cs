@@ -76,7 +76,7 @@ public sealed partial class GradesPage : Page
         dialog.PrimaryButtonClick += (s, e) =>
         {
             var requestReExaminationDialog = dialog.Content as RequestReExaminationDialog;
-            requestReExaminationDialog.SendRequest();
+            requestReExaminationDialog.SendRequest(s, e);
         };
 
 
