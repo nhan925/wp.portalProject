@@ -435,7 +435,106 @@
   <data name="GradesPage_RequestForTranscript.Text" xml:space="preserve">
     <value>Xin bảng điểm</value>
   </data>
-  <data name="GradesPage_RequestPrintTranscript.Text" xml:space="preserve">
-    <value>In bảng điểm</value>
+  <data name="GradesPage_RequestExportExcel.Text" xml:space="preserve">
+    <value>Xuất file Excel</value>
+  </data>
+  <data name="GradesPage_TextBlockSemester.Text" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="GradesPage_TextBlockYear.Text" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptTitle" xml:space="preserve">
+    <value>Xin bảng điểm</value>
+  </data>
+  <data name="GradesPage_RequestForReviewYear.Text" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_RequestForReviewYearCombobox.PlaceholderText" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_RequestForReviewSemester.Text" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="GradesPage_RequestForReviewSemesterCombobox.PlaceholderText" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="GradesPage_RequestForReviewCurrentScore.Text" xml:space="preserve">
+    <value>Điểm hiện tại</value>
+  </data>
+  <data name="GradesPage_RequestForReviewCurrentScoreTextBox.PlaceholderText" xml:space="preserve">
+    <value>--</value>
+  </data>
+  <data name="GradesPage_RequestForReviewSubject.Text" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="GradesPage_RequestForReviewSubjectCombobox.PlaceholderText" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="GradesPage_RequestForReviewClass.Text" xml:space="preserve">
+    <value>Mã lớp</value>
+  </data>
+  <data name="GradesPage_RequestForReviewClassTextBox.PlaceholderText" xml:space="preserve">
+    <value>--</value>
+  </data>
+  <data name="GradesPage_RequestForReviewNote.Text" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="GradesPage_RequestForReviewNoteTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập nội dung</value>
+  </data>
+  <data name="GradesPage_RequestForReviewTitle" xml:space="preserve">
+    <value>Phúc khảo bảng điểm</value>
+  </data>
+  <data name="Dialog_Send" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="Dialog_Cancel" xml:space="preserve">
+    <value>Thoát</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptType.Text" xml:space="preserve">
+    <value>Loại</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptInfo.Text" xml:space="preserve">
+    <value>Thông tin</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptVi.Text" xml:space="preserve">
+    <value>Tiếng Việt</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptEn.Text" xml:space="preserve">
+    <value>Tiếng Anh</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptAll.Text" xml:space="preserve">
+    <value>Tổng kết</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptSemesterOfYear.Text" xml:space="preserve">
+    <value>NH/HK</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptYear.Text" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_RequestForTranscriptTotal.Text" xml:space="preserve">
+    <value>Tổng số bảng điểm</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeTitle" xml:space="preserve">
+    <value>Ước lượng điểm</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeDegreeType.Text" xml:space="preserve">
+    <value>Loại bằng</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeRemainCredits.Text" xml:space="preserve">
+    <value>Số tín chỉ còn lại</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeEstimatedGrade.Text" xml:space="preserve">
+    <value>Điểm trung bình các học phần còn lại cần đạt</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeImpossible" xml:space="preserve">
+    <value>Bất khả thi</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeAbsolutely" xml:space="preserve">
+    <value>Luôn luôn đạt</value>
+  </data>
+  <data name="GradesPage_EstimateAverageGradeComboBox.PlaceholderText" xml:space="preserve">
+    <value>Chọn loại bằng</value>
   </data>
 </root>

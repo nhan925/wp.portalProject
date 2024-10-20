@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Models;
+using SpacePortal.Models;
 
 namespace SpacePortal.Core.DataAccess;
 public class InformationsForGradesPageDao : IDao<InformationsForGradesPage_GradesRow>
@@ -157,7 +158,7 @@ public class InformationsForGradesPageDao : IDao<InformationsForGradesPage_Grade
             new InformationsForGradesPage_GradesRow
             {
                 Year = "2024 - 2025",
-                Semester = "3",
+                Semester = "2",
                 CourseId = "COSC 5337",
                 CourseName = "Machine Learning",
                 CourseCredit = 4,
@@ -170,4 +171,23 @@ public class InformationsForGradesPageDao : IDao<InformationsForGradesPage_Grade
         return result;
     }
 
+    public InformationsForEstimateAverageGradeDialog GetInformationsForEstimateAverageGradeDialog()
+    {
+        var result = new InformationsForEstimateAverageGradeDialog
+        {
+            TotalCredits = 138,
+
+            // No need to take the lowest, because you do not want to calculate
+            // the average grade for earning the worst degree !!!
+            DegreeTypesWithTheirGrade = new Dictionary<string, double>
+            {
+                { "Xuất sắc", 9.0 },
+                { "Giỏi", 8.0 },
+                { "Khá", 7.0 },
+                { "Trung bình", 5.0 },
+            }
+        };
+
+        return result;
+    }
 }
