@@ -78,7 +78,7 @@ public sealed partial class GradesPage : Page
         dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
         dialog.PrimaryButtonClick += (sender, e) =>
         {
-            (dialog.Content as RequestPhysicalTranscriptDialog).PrimaryButton_Click();
+            (dialog.Content as RequestPhysicalTranscriptDialog).PrimaryButton_Click(sender, e);
         };
 
         await dialog.ShowAsync();

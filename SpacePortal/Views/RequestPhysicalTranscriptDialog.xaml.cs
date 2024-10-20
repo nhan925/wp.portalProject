@@ -44,5 +44,15 @@ public sealed partial class RequestPhysicalTranscriptDialog : Page
         }
     }
 
-    public void PrimaryButton_Click() => ViewModel.SendRequestForTranscripts(); 
+    public void PrimaryButton_Click(ContentDialog sender, ContentDialogButtonClickEventArgs e)
+    {
+        if (ViewModel.TotalTranscripts == 0)
+        {
+            e.Cancel = true;
+        }
+        else
+        {
+            ViewModel.SendRequestForTranscripts();
+        }
+    }
 }
