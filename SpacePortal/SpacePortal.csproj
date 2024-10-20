@@ -3,6 +3,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+	  <WindowsSdkPackageVersion>10.0.26100.38</WindowsSdkPackageVersion>
     <RootNamespace>SpacePortal</RootNamespace>
     <ApplicationIcon>Assets/WindowIcon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -27,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\edit.png" />
+    <None Remove="Views\RequestReExaminationDialog.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,6 +92,9 @@
     <None Update="Assets\defaultAvt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\RequestReExaminationDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup Condition="'$(DisableMsixProjectCapabilityAddedByProject)'!='true' and '$(EnableMsixTooling)'=='true'">
