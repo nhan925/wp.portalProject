@@ -16,8 +16,6 @@ namespace SpacePortal.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        private ObservableCollection<InformationsForGradesPage_GradesRow> _sourceData;
-
         public class AcademicYear
         {
             public string Year
@@ -36,18 +34,14 @@ namespace SpacePortal.ViewModels
             }
         }
 
-        public ObservableCollection<AcademicYear> Years
-        {
-            get; set;
-        }
+        public ObservableCollection<AcademicYear> Years { get; set; } = new ObservableCollection<AcademicYear>();
         public ObservableCollection<string> Subjects { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<string> Semesters { get; set; } = new ObservableCollection<string>();
+        private ObservableCollection<InformationsForGradesPage_GradesRow> _sourceData;
 
         public RequestReExaminationDialogViewModel(ObservableCollection<InformationsForGradesPage_GradesRow> sourceData)
         {
             _sourceData = sourceData;
-            Years = new ObservableCollection<AcademicYear>();
-            Semesters = new ObservableCollection<string>();
-
             var sourceDataList = sourceData.ToList();
             var groupedData = sourceDataList.GroupBy(row => row.Year);
 
@@ -66,6 +60,7 @@ namespace SpacePortal.ViewModels
         }
 
         private AcademicYear _selectedYear;
+
 
         public AcademicYear SelectedYear
         {
@@ -109,8 +104,6 @@ namespace SpacePortal.ViewModels
                 }
             }
         }
-
-        public ObservableCollection<string> Semesters { get; set; } = new ObservableCollection<string>();
 
         private void UpdateSemesters()
         {
