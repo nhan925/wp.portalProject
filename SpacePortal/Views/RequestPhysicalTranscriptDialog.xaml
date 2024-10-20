@@ -127,12 +127,14 @@
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Uid="GradesPage_RequestForTranscriptTotal" HorizontalTextAlignment="Left" 
+            <TextBlock HorizontalTextAlignment="Right" 
                        Grid.Column="0"
-                       Style="{ThemeResource BodyStrongTextBlockStyle}"/>
+                       Style="{ThemeResource BodyStrongTextBlockStyle}">
+                <Run x:Uid="GradesPage_RequestForTranscriptTotal"/>:
+            </TextBlock>
             <TextBlock HorizontalAlignment="Right" Text="{x:Bind ViewModel.TotalTranscripts, Mode=OneWay}" 
                        Grid.Column="1"
                        Style="{ThemeResource BodyTextBlockStyle}"/>
