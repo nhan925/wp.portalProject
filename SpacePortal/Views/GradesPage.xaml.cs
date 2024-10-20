@@ -8,14 +8,22 @@ using SpacePortal.Core.Models;
 using SpacePortal.Models;
 using SpacePortal.ViewModels;
 using Windows.ApplicationModel.VoiceCommands;
-using Microsoft.Windows.ApplicationModel.Resources;
+using Windows.UI.WebUI;
+using Syncfusion.UI.Xaml.DataGrid.Export;
+using Microsoft.Extensions.Options;
+using Syncfusion.XlsIO;
+using System.IO;
+using Windows.Storage.Pickers;
+using Windows.Storage.Streams;
+using Windows.Storage;
+using System.Xml.Serialization;
+
+
 
 namespace SpacePortal.Views;
 
 public sealed partial class GradesPage : Page
 {
-    private readonly ResourceLoader resourceLoader = new();
-
     private readonly ResourceLoader resourceLoader = new();
 
     public GradesViewModel ViewModel
@@ -27,25 +35,36 @@ public sealed partial class GradesPage : Page
     {
         this.InitializeComponent();
         ViewModel = new GradesViewModel();
+        SetupDafaultComboBox();
         ViewModel.Init();
+    }
+
+    private void SetupDafaultComboBox()
+    {
+        ComboBoxYear.SelectedItem = ViewModel.DefaultOption;
+        ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
     }
 
     private void ShowGradeButton_Click(object sender, RoutedEventArgs e)
     {
         var cbYear = ComboBoxYear.SelectedItem?.ToString();
+
+        if (cbYear == ViewModel.DefaultOption)
+        {
+            ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
+            ViewModel.Init();
+            return;
+        }
         var cbSemester = ComboBoxSemester.SelectedItem?.ToString();
 
         if (cbYear != null && cbSemester != null)
         {
-            ViewModel.ShowGradeByYearAndSemester(cbYear,cbSemester);
+            ViewModel.ShowGradeByYearAndSemester(cbYear, cbSemester);
         }
+        //Just for precautions
         else if (cbYear != null)
         {
             ViewModel.ShowGradeByYear(cbYear);
-        }
-        else if (cbSemester != null)
-        {
-            ViewModel.ShowGradeBySemester(cbSemester);
         }
         else
         {
@@ -87,11 +106,6 @@ public sealed partial class GradesPage : Page
         await dialog.ShowAsync();
     }
 
-    private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
-    {
-
-    }
-
     private async void RequestReview_Click(object sender, RoutedEventArgs e)
     {
         var dialog = new ContentDialog();
@@ -113,5 +127,38 @@ public sealed partial class GradesPage : Page
 
 
         await dialog.ShowAsync();
+
+
+    }
+
+    private void RequestExportExcelMenuFlyoutItem_Click(object sender, RoutedEventArgs e)
+    {
+        var options = new DataGridExcelExportOptions();
+        options.ExportMode = ExportMode.Text;
+        options.GridExportHandler = GradesViewModel.GridExportHandler;
+        var excelEngine = sfDataGrid.ExportToExcel(sfDataGrid.View, options);
+        var workBook = excelEngine.Excel.Workbooks[0];
+        MemoryStream stream = new MemoryStream();
+        workBook.SaveAs(stream);
+        ViewModel.Save(stream, "Grades.xlsx");
+    }
+
+    private void ComboBoxYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if(ComboBoxYear.SelectedItem == ViewModel.LatestYear)
+        {
+            ViewModel.Semesters.Clear();
+            foreach (var semester in ViewModel.SemestersOfLatestYear)
+            {
+                ViewModel.Semesters.Add(semester);
+            }
+           
+        }
+        else
+        {
+            ViewModel.Semesters.Clear();
+            ViewModel.AddSemester();
+        }
+        ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
     }
 }

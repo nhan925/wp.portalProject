@@ -158,7 +158,7 @@ public class InformationsForGradesPageDao : IDao<InformationsForGradesPage_Grade
             new InformationsForGradesPage_GradesRow
             {
                 Year = "2024 - 2025",
-                Semester = "3",
+                Semester = "2",
                 CourseId = "COSC 5337",
                 CourseName = "Machine Learning",
                 CourseCredit = 4,

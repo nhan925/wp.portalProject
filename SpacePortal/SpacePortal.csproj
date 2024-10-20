@@ -48,6 +48,8 @@
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageReference Include="Syncfusion.Chart.WinUI" Version="27.1.53" />
     <PackageReference Include="Syncfusion.Grid.WinUI" Version="27.1.53" />
+    <PackageReference Include="Syncfusion.GridExport.WinUI" Version="27.1.53" />
+    <PackageReference Include="Syncfusion.XlsIO.NET" Version="27.1.53" />
     <PackageReference Include="WinUIEx" Version="2.4.2" />
   </ItemGroup>
 
