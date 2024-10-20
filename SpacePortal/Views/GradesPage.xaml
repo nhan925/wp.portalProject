@@ -62,7 +62,7 @@
                 <Button x:Uid="GradesPage_ButtonRequest" Style="{StaticResource AccentButtonStyle}">
                     <Button.Flyout >
                         <MenuFlyout>
-                            <MenuFlyoutItem x:Uid="GradesPage_RequestReview">
+                            <MenuFlyoutItem x:Uid="GradesPage_RequestReview" Click="RequestReview_Click">
                                 <MenuFlyoutItem.Icon>
                                     <FontIcon Glyph="&#xE8A1;" />
                                 </MenuFlyoutItem.Icon>

@@ -440,6 +440,44 @@
   </data>
   <data name="GradesPage_RequestForTranscriptTitle" xml:space="preserve">
     <value>Xin bảng điểm</value>
+  <data name="GradesPage_RequestForReviewYear.Text" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_RequestForReviewYearCombobox.PlaceholderText" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="GradesPage_RequestForReviewSemester.Text" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="GradesPage_RequestForReviewSemesterCombobox.PlaceholderText" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
+  <data name="GradesPage_RequestForReviewCurrentScore.Text" xml:space="preserve">
+    <value>Điểm hiện tại</value>
+  </data>
+  <data name="GradesPage_RequestForReviewCurrentScoreTextBox.PlaceholderText" xml:space="preserve">
+    <value>--</value>
+  </data>
+  <data name="GradesPage_RequestForReviewSubject.Text" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="GradesPage_RequestForReviewSubjectCombobox.PlaceholderText" xml:space="preserve">
+    <value>Môn học</value>
+  </data>
+  <data name="GradesPage_RequestForReviewClass.Text" xml:space="preserve">
+    <value>Mã lớp</value>
+  </data>
+  <data name="GradesPage_RequestForReviewClassTextBox.PlaceholderText" xml:space="preserve">
+    <value>--</value>
+  </data>
+  <data name="GradesPage_RequestForReviewNote.Text" xml:space="preserve">
+    <value>Ghi chú</value>
+  </data>
+  <data name="GradesPage_RequestForReviewNoteTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập nội dung</value>
+  </data>
+  <data name="GradesPage_RequestForReviewTitle" xml:space="preserve">
+    <value>Phúc khảo bảng điểm</value>
   </data>
   <data name="Dialog_Send" xml:space="preserve">
     <value>Gửi</value>
