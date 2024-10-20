@@ -98,4 +98,22 @@ public sealed partial class GradesPage : Page
         ViewModel.Save(stream, "Grades.xlsx");
     }
 
+    private void ComboBoxYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if(ComboBoxYear.SelectedItem == ViewModel.LatestYear)
+        {
+            ViewModel.Semesters.Clear();
+            foreach (var semester in ViewModel.SemestersOfLatestYear)
+            {
+                ViewModel.Semesters.Add(semester);
+            }
+           
+        }
+        else
+        {
+            ViewModel.Semesters.Clear();
+            ViewModel.AddSemester();
+        }
+        ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
+    }
 }

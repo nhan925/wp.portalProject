@@ -44,6 +44,9 @@ public partial class GradesViewModel : ObservableRecipient
         DefaultOption = new ResourceLoader().GetString("GradesPage_ComboBoxDefaultOption");
         AddYears(2022);
         AddSemester();
+        //For latest year
+        LatestYear = (new List<InformationsForGradesPage_GradesRow>(SourceData)).Max(x => x.Year);
+        AddSemesterOfLatestYear();
     }
 
     public void Init()
@@ -76,6 +79,20 @@ public partial class GradesViewModel : ObservableRecipient
         Semesters.Add("2");
         Semesters.Add("3");
     }
+
+    private void AddSemesterOfLatestYear()
+    {
+        SemestersOfLatestYear.Clear();
+        SemestersOfLatestYear.Add(DefaultOption);
+        for (int i = 0; i < SourceData.Count; i++)
+        {
+            if (SourceData[i].Year == LatestYear && !SemestersOfLatestYear.Contains(SourceData[i].Semester))
+            {
+                SemestersOfLatestYear.Add(SourceData[i].Semester);
+            }
+        }
+    }
+
 
     /// <summary>
     /// Update the general information when the grades datagrid is updated
