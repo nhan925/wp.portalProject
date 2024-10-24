@@ -55,8 +55,13 @@ public partial class App : Application
         // Load .env file
         var envFilePath = Path.Combine(AppContext.BaseDirectory, ".env");
         Env.Load(envFilePath);
+
+        // Syncfusion License
         var syncfusionLicenseKey = Env.GetString("SYNCFUSION");
         SyncfusionLicenseProvider.RegisterLicense(syncfusionLicenseKey);
+
+        // Get API information
+        var apiUrl = Env.GetString("API_URL");
 
         // TODO: Set the default language here
         Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "vi-VN";
@@ -75,6 +80,7 @@ public partial class App : Application
             services.AddSingleton<IThemeSelectorService, ThemeSelectorService>();
             services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
             services.AddTransient<INavigationViewService, NavigationViewService>();
+            services.AddSingleton<ApiService>(provider => new ApiService(apiUrl));
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
@@ -134,6 +140,12 @@ public partial class App : Application
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
+
+        // TODO: Modify here when implement the login function
+        // Hard code login
+       // var check = await App.GetService<ApiService>().LoginAsync("student1", "1234");
+
+       // var debug = await App.GetService<ApiService>().GetAsync<InformationsForDashboard>("/rpc/get_dashboard_info");
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }
