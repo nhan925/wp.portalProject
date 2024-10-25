@@ -14,6 +14,7 @@ using System.Net;
 using Microsoft.Windows.ApplicationModel.Resources;
 using System.Text.RegularExpressions;
 using SpacePortal.Core.Services;
+using SpacePortal.Views;
 namespace SpacePortal.ViewModels;
 
 public partial class InformationViewModel : ObservableRecipient
@@ -138,9 +139,9 @@ public partial class InformationViewModel : ObservableRecipient
 
         if (file != null)
         {
-
             informations.SetAvatarBitmap(file.Path);
-            UploadAvatarToDatabase(file.Path);
+            ((ShellPage)App.MainWindow.Content).ViewModel.Informations.SetAvatarBitmap(file.Path);
+            await UploadAvatarToDatabase(file.Path);
         }
         else
         {
@@ -150,7 +151,9 @@ public partial class InformationViewModel : ObservableRecipient
 
     public void RemoveAvatar()
     {
-        informations.SetAvatarBitmap("ms-appx:///Assets/defaultAvt.png");
+        var defaultAvtUrl = "ms-appx:///Assets/defaultAvt.png";
+        informations.SetAvatarBitmap(defaultAvtUrl);
+        ((ShellPage)App.MainWindow.Content).ViewModel.Informations.SetAvatarBitmap(defaultAvtUrl);
         string result = App.GetService<ApiService>().Post<string>("/rpc/update_avatar", new { image_url = "" });
     }
 

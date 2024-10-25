@@ -81,6 +81,7 @@ public sealed partial class InformationPage : Page
     private void RemoveAvatar_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         ViewModel.RemoveAvatar();
+        Avatar.Flyout.Hide();
     }
 
  
