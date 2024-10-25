@@ -163,7 +163,7 @@ namespace SpacePortal.ViewModels
             Debug.WriteLine(Note);
         }
 
-        public int Score
+        public double Score
         {
             get; set;
         }

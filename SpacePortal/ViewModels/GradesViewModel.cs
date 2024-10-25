@@ -14,6 +14,7 @@ using Windows.Storage;
 using Syncfusion.UI.Xaml.DataGrid.Export;
 using Syncfusion.XlsIO;
 using System.Drawing;
+using SpacePortal.Core.Services;
 
 namespace SpacePortal.ViewModels;
 
@@ -42,27 +43,23 @@ public partial class GradesViewModel : ObservableRecipient
         SourceData = new ObservableCollection<InformationsForGradesPage_GradesRow>(_dao.GetAll());
         Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(SourceData);
         DefaultOption = new ResourceLoader().GetString("GradesPage_ComboBoxDefaultOption");
-        AddYears(2022);
+        AddYears();
         AddSemester();
         informationsForEstimateAverageGradeDialog = (_dao as InformationsForGradesPageDao).GetInformationsForEstimateAverageGradeDialog();
         //For latest year
-        LatestYear = (new List<InformationsForGradesPage_GradesRow>(SourceData)).Max(x => x.Year);
+        LatestYear = SourceData[SourceData.Count - 1].Year;
         AddSemesterOfLatestYear();
     }
 
     public void Init()
     {
         UpdateGeneralInformation(SourceData);
-        if (Grades.Any()) { Grades.Clear();}
-        foreach (var grade in SourceData)
-        {
-            Grades.Add(grade);
-        }
+        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(SourceData);
     }
 
 
    
-    public void AddYears(int startYear)
+    public void AddYears()
     {
         Years.Add(DefaultOption);
         for (int i=0;i<SourceData.Count;i++) {
@@ -127,89 +124,20 @@ public partial class GradesViewModel : ObservableRecipient
 
     //-----------------Grades DataGrid------------------------
     /// <summary>
-    /// Change the grades datagrid by year
-    /// </summary>
-    /// <param name="year"></param>
-    public void ShowGradeByYear(string year)
-    {
-        var gradesByYear = GetByYear(SourceData, year);
-        if (Grades.Any()) { Grades.Clear(); }
-
-        if (gradesByYear.Any())
-        {
-            foreach (var grade in gradesByYear)
-            {
-                Grades.Add(grade);
-            }
-        }
-        UpdateGeneralInformation(Grades);
-    }
-
-    /// <summary>
     /// Change the grades datagrid by year and semester
     /// </summary>
     /// <param name="year"></param>
     /// <param name="semester"></param>
     public void ShowGradeByYearAndSemester(string year, string semester)
     {
-        var gradesByYear = GetByYear(SourceData, year);
-        var gradesBySemester = GetBySemester(gradesByYear, semester);
-        if (Grades.Any()) { Grades.Clear(); }
-
-        if (gradesBySemester.Any())
-        {
-            foreach (var grade in gradesBySemester)
-            {
-                Grades.Add(grade);
-            }
-        }
+        if (semester == DefaultOption){ 
+            semester = ""; }
+        if(year == DefaultOption){ 
+            year = ""; }
+        var parameters = new { p_year = year, p_semester_num = semester };
+        List<InformationsForGradesPage_GradesRow> list_object = App.GetService<ApiService>().Post<List<InformationsForGradesPage_GradesRow>>("/rpc/get_course_info_by_semester", parameters);
+        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(list_object);
         UpdateGeneralInformation(Grades);
-    }
-
-    /// <summary>
-    /// Get the grades by year
-    /// </summary>
-    /// <param name="rows"></param>
-    /// <param name="years"></param>
-    /// <returns></returns>
-    public ObservableCollection<InformationsForGradesPage_GradesRow> GetByYear(ObservableCollection<InformationsForGradesPage_GradesRow> rows, string years)
-    {
-        if (years == DefaultOption)
-        {
-            return rows;
-        }
-        var result = new ObservableCollection<InformationsForGradesPage_GradesRow>();
-        for (var i = 0; i < rows.Count; i++)
-        {
-            if (rows[i].Year == years)
-            {
-                result.Add(rows[i]);
-            }
-        }
-        return result;
-    }
-
-    /// <summary>
-    /// Get the grades by semester
-    /// </summary>
-    /// <param name="rows"></param>
-    /// <param name="semester"></param>
-    /// <returns></returns>
-    public ObservableCollection<InformationsForGradesPage_GradesRow> GetBySemester(ObservableCollection<InformationsForGradesPage_GradesRow> rows, string semester)
-    {
-        if (semester == DefaultOption)
-        {
-            return rows;
-        }
-        var result = new ObservableCollection<InformationsForGradesPage_GradesRow>();
-        for (var i = 0; i < rows.Count; i++)
-        {
-            if (rows[i].Semester == semester)
-            {
-                result.Add(rows[i]);
-            }
-        }
-        return result;
     }
 
 
