@@ -34,7 +34,7 @@ public sealed partial class GradesPage : Page
     public GradesPage()
     {
         this.InitializeComponent();
-        ViewModel = new GradesViewModel();
+        ViewModel = App.GetService<GradesViewModel>();
         SetupDafaultComboBox();
         ViewModel.Init();
     }

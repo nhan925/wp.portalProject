@@ -14,6 +14,7 @@ using Windows.Storage;
 using Syncfusion.UI.Xaml.DataGrid.Export;
 using Syncfusion.XlsIO;
 using System.Drawing;
+using SpacePortal.Core.Services;
 
 namespace SpacePortal.ViewModels;
 
@@ -132,17 +133,9 @@ public partial class GradesViewModel : ObservableRecipient
     /// <param name="year"></param>
     public void ShowGradeByYear(string year)
     {
-        var gradesByYear = GetByYear(SourceData, year);
-        if (Grades.Any()) { Grades.Clear(); }
-
-        if (gradesByYear.Any())
-        {
-            foreach (var grade in gradesByYear)
-            {
-                Grades.Add(grade);
-            }
-        }
-        UpdateGeneralInformation(Grades);
+        var parameters = new { p_year = year, p_semester_num = "" };
+        List<InformationsForGradesPage_GradesRow> list_object = App.GetService<ApiService>().Post<List<InformationsForGradesPage_GradesRow>>("/rpc/get_course_info_by_semester", parameters);
+        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(list_object);
     }
 
     /// <summary>
@@ -152,7 +145,7 @@ public partial class GradesViewModel : ObservableRecipient
     /// <param name="semester"></param>
     public void ShowGradeByYearAndSemester(string year, string semester)
     {
-        var gradesByYear = GetByYear(SourceData, year);
+        /*var gradesByYear = GetByYear(SourceData, year);
         var gradesBySemester = GetBySemester(gradesByYear, semester);
         if (Grades.Any()) { Grades.Clear(); }
 
@@ -163,7 +156,14 @@ public partial class GradesViewModel : ObservableRecipient
                 Grades.Add(grade);
             }
         }
-        UpdateGeneralInformation(Grades);
+        UpdateGeneralInformation(Grades);*/
+        if (semester == DefaultOption)
+        { semester = ""; }
+        if(year == DefaultOption) 
+        { year = ""; }
+        var parameters = new { p_year = year, p_semester_num = semester };
+        List<InformationsForGradesPage_GradesRow> list_object = App.GetService<ApiService>().Post<List<InformationsForGradesPage_GradesRow>>("/rpc/get_course_info_by_semester", parameters);
+        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(list_object);
     }
 
     /// <summary>

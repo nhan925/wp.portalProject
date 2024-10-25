@@ -157,7 +157,7 @@
                                    AutoGenerateColumns="True"
                                    AllowSorting="True"
                                    ScrollViewer.VerticalScrollBarVisibility="Visible"
-                                   ItemsSource="{x:Bind ViewModel.Grades}"
+                                   ItemsSource="{x:Bind ViewModel.Grades, Mode=OneWay}"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
                                    CornerRadius="100"

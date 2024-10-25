@@ -11,81 +11,27 @@ namespace SpacePortal.Models;
 
 public class InformationsForGradesPage_GeneralInformation : INotifyPropertyChanged
 {
-    private double gpaScale_4;
-    private double gpaScale_10;
-    private int numberOfCourses;
-    private int numberOfCredits;
-
     public double GpaScale_4
     {
-        get
-        {
-            return gpaScale_4;
-        }
-        set
-        {
-            if (gpaScale_4 != value)
-            {
-                gpaScale_4 = value;
-                OnPropertyChanged(nameof(GpaScale_4));
-            }
-        }
+        get;set;
     }
 
     public double GpaScale_10
     {
-        get
-        {
-            return gpaScale_10;
-        }
-        set
-        {
-            if (gpaScale_10 != value)
-            {
-                gpaScale_10 = value;
-                OnPropertyChanged(nameof(GpaScale_10));
-            }
-        }
+        get; set;
     }
 
     public int NumberOfCourses
     {
-        get
-        {
-            return numberOfCourses;
-        }
-        set
-        {
-            if (numberOfCourses != value)
-            {
-                numberOfCourses = value;
-                OnPropertyChanged(nameof(NumberOfCourses));
-            }
-        }
+        get; set;
     }
 
     public int NumberOfCredits
     {
-        get
-        {
-            return numberOfCredits;
-        }
-        set
-        {
-            if (numberOfCredits != value)
-            {
-                numberOfCredits = value;
-                OnPropertyChanged(nameof(NumberOfCredits));
-            }
-        }
+        get; set;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
-
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
 }
 
 

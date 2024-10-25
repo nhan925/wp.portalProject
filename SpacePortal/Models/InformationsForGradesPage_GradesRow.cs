@@ -38,12 +38,12 @@ public class InformationsForGradesPage_GradesRow : INotifyPropertyChanged
         get; set;
     }
 
-    public int GradeScaleTen
+    public double GradeScaleTen
     {
         get; set;
     }
 
-    public int GradeScaleFour
+    public double GradeScaleFour
     {
         get; set;
     }
