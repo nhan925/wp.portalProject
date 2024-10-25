@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpacePortal.Core.Models;
+using SpacePortal.Models;
 using Windows.Foundation.Collections;
 
 namespace SpacePortal.Helpers

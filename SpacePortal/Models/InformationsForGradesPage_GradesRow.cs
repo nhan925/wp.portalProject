@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpacePortal.Core.Models;
+namespace SpacePortal.Models;
 public class InformationsForGradesPage_GradesRow : INotifyPropertyChanged
 {
     public string Year
