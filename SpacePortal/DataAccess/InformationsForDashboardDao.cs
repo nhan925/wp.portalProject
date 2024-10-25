@@ -21,6 +21,7 @@ public class InformationsForDashboardDao : IDao<InformationsForDashboard>
 
     public InformationsForDashboard GetById(int id)
     {
+        // call api
         return App.GetService<ApiService>().Get<InformationsForDashboard>("/rpc/get_dashboard_info");
     }
 

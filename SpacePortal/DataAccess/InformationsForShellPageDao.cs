@@ -16,6 +16,7 @@ public class InformationsForShellPageDao : IDao<InformationsForShellPage>
     public ObservableCollection<InformationsForShellPage> GetAll() => throw new NotImplementedException();
     public InformationsForShellPage GetById(int id)
     {
+        // call api
         var data = App.GetService<ApiService>().Get<InformationsForShellPage>("/rpc/get_shellpage_info");
         return data;
     }

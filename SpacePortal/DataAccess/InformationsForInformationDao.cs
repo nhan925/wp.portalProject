@@ -31,6 +31,7 @@ public class InformationsForInformationDao : IDao<InformationsForInformation>
 
     public InformationsForInformation GetById(int id)
     {
+        // call api
         return App.GetService<ApiService>().Get<InformationsForInformation>("/rpc/get_informations_info");
     }
 
