@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpacePortal.Core.Models;
+using SpacePortal.Models;
 
 namespace SpacePortal.ViewModels;
 public class RequestPhysicalTranscriptDialogViewModel : INotifyPropertyChanged

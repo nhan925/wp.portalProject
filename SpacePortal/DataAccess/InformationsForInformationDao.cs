@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Media.Imaging;
 using SpacePortal.Core.Contracts;
+using SpacePortal.Core.Services;
 using SpacePortal.Models;
 
 
@@ -30,27 +31,8 @@ public class InformationsForInformationDao : IDao<InformationsForInformation>
 
     public InformationsForInformation GetById(int id)
     {
-        return new InformationsForInformation()
-        {
-            FullName = "Nguyễn Minh Nguyệt",
-            Major = "Công nghệ thông tin",
-            AcademicProgram = "Đại trà",
-            StudentID = "22120238",
-            YearOfAdmission = 2022,
-            Gender = "Nam",
-            DateOfBirth = new DateTime(2024, 10, 18),
-            IdentityCardNumber = "082204000661",
-            Nationality = "Việt Nam",
-            Ethnicity = "Kinh",
-            SchoolEmail = "22120238@student.hcmus.edu.vn",
-            PersonalEmail = "nguyenptn1104@gmail.com",
-            PhoneNumber = "0987654321",
-            Address = "123 Đường Nguyễn Trãi, Quận 1, TP.HCM",
-            AvatarUrl = new BitmapImage(new Uri("ms-appx:///Assets/defaultAvt.png"))
-
-        };
-
-        //throw new NotImplementedException();
+        // call api
+        return App.GetService<ApiService>().Get<InformationsForInformation>("/rpc/get_informations_info");
     }
 
 

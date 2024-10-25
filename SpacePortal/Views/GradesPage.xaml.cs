@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.Windows.ApplicationModel.Resources;
 using SpacePortal.Core.Contracts;
-using SpacePortal.Core.DataAccess;
+using SpacePortal.DataAccess;
 using SpacePortal.Core.Models;
 using SpacePortal.Models;
 using SpacePortal.ViewModels;
@@ -34,15 +34,15 @@ public sealed partial class GradesPage : Page
     public GradesPage()
     {
         this.InitializeComponent();
-        ViewModel = new GradesViewModel();
+        ViewModel = App.GetService<GradesViewModel>();
         SetupDafaultComboBox();
         ViewModel.Init();
     }
 
     private void SetupDafaultComboBox()
     {
-        ComboBoxYear.SelectedItem = ViewModel.DefaultOption;
-        ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
+        ComboBoxYear.SelectedIndex = 0;
+        ComboBoxSemester.SelectedIndex = 0;
     }
 
     private void ShowGradeButton_Click(object sender, RoutedEventArgs e)
@@ -60,15 +60,6 @@ public sealed partial class GradesPage : Page
         if (cbYear != null && cbSemester != null)
         {
             ViewModel.ShowGradeByYearAndSemester(cbYear, cbSemester);
-        }
-        //Just for precautions
-        else if (cbYear != null)
-        {
-            ViewModel.ShowGradeByYear(cbYear);
-        }
-        else
-        {
-            ViewModel.Init();
         }
     }
 
@@ -159,6 +150,6 @@ public sealed partial class GradesPage : Page
             ViewModel.Semesters.Clear();
             ViewModel.AddSemester();
         }
-        ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
+        ComboBoxSemester.SelectedIndex = 0;
     }
 }

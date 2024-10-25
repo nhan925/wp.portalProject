@@ -17,7 +17,7 @@ public class InformationsForDashboard : INotifyPropertyChanged
 
     public string StudentName => StudentFullName.Split(' ')[^1];
 
-    public ObservableCollection<KeyValuePair<string, double>> GPAs
+    public Dictionary<string, double> GPAs
     {
         get; set;
     }

@@ -2,8 +2,6 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 
 namespace SpacePortal.Core.Services;
 
@@ -13,19 +11,17 @@ public class ApiService
     private readonly string _baseUri;
     private string _jwtToken;
 
-    // Private constructor
     public ApiService(string baseUri)
     {
         _httpClient = new HttpClient();
         _baseUri = baseUri;
     }
 
-    // Login to retrive JWT token
-    // TODO: Modify when implement login feature
-    public async Task<bool> LoginAsync(string username, string password)
+    // Login to retrieve JWT token
+    public bool Login(string username, string password)
     {
         var loginData = new { username, password };
-        var response = await PostAsync<string>(@"/rpc/login", loginData);
+        var response = Post<string>("/rpc/login", loginData);
 
         if (response != null && !string.IsNullOrEmpty(response))
         {
@@ -37,15 +33,15 @@ public class ApiService
         return false; // Login failed
     }
 
-
-    // Generic GET method
-    public async Task<T> GetAsync<T>(string endpoint)
+    // Generic synchronous GET method
+    public T Get<T>(string endpoint)
     {
         var request = new HttpRequestMessage(HttpMethod.Get, $"{_baseUri}{endpoint}");
-        var response = await _httpClient.SendAsync(request);
+        var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
+
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
+            var content = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             return JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
         else
@@ -55,15 +51,16 @@ public class ApiService
         }
     }
 
-    // Generic POST method
-    public async Task<T> PostAsync<T>(string endpoint, object data)
+    // Generic synchronous POST method
+    public T Post<T>(string endpoint, object data)
     {
         var request = new HttpRequestMessage(HttpMethod.Post, $"{_baseUri}{endpoint}");
         request.Content = new StringContent(JsonSerializer.Serialize(data), System.Text.Encoding.UTF8, "application/json");
-        var response = await _httpClient.SendAsync(request);
+        var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
+
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
+            var content = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             return JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
         else
@@ -73,15 +70,16 @@ public class ApiService
         }
     }
 
-    // Generic PUT method
-    public async Task<T> PutAsync<T>(string endpoint, object data)
+    // Generic synchronous PUT method
+    public T Put<T>(string endpoint, object data)
     {
         var request = new HttpRequestMessage(HttpMethod.Put, $"{_baseUri}{endpoint}");
         request.Content = new StringContent(JsonSerializer.Serialize(data), System.Text.Encoding.UTF8, "application/json");
-        var response = await _httpClient.SendAsync(request);
+        var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
+
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
+            var content = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             return JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
         else
@@ -91,14 +89,15 @@ public class ApiService
         }
     }
 
-    // Generic DELETE method
-    public async Task<T> DeleteAsync<T>(string endpoint)
+    // Generic synchronous DELETE method
+    public T Delete<T>(string endpoint)
     {
         var request = new HttpRequestMessage(HttpMethod.Delete, $"{_baseUri}{endpoint}");
-        var response = await _httpClient.SendAsync(request);
+        var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
+
         if (response.IsSuccessStatusCode)
         {
-            var content = await response.Content.ReadAsStringAsync();
+            var content = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
             return JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
         else

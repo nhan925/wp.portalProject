@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpacePortal.Core.Models;
+namespace SpacePortal.Models;
 public class InformationsForGradesPage_GradesRow : INotifyPropertyChanged
 {
     public string Year
@@ -38,14 +38,30 @@ public class InformationsForGradesPage_GradesRow : INotifyPropertyChanged
         get; set;
     }
 
-    public int GradeScaleTen
+    public double GradeScaleTen
     {
         get; set;
     }
 
-    public int GradeScaleFour
+    public double GradeScaleFour
     {
-        get; set;
+        get
+        {
+            if (GradeScaleTen >= 9.0)
+                return 4.0;
+            else if (GradeScaleTen >= 8.0)
+                return 3.5;
+            else if (GradeScaleTen >= 7.0)
+                return 3.0;
+            else if (GradeScaleTen >= 6.0)
+                return 2.5;
+            else if (GradeScaleTen >= 5.0)
+                return 2.0;
+            else if (GradeScaleTen >= 4.0)
+                return 1.0;
+            else
+                return 0.0;
+        }
     }
 
     public string Note
@@ -54,4 +70,5 @@ public class InformationsForGradesPage_GradesRow : INotifyPropertyChanged
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
+
 }

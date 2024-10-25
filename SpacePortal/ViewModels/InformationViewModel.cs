@@ -13,6 +13,8 @@ using WinRT.Interop;
 using System.Net;
 using Microsoft.Windows.ApplicationModel.Resources;
 using System.Text.RegularExpressions;
+using SpacePortal.Core.Services;
+using SpacePortal.Views;
 namespace SpacePortal.ViewModels;
 
 public partial class InformationViewModel : ObservableRecipient
@@ -38,6 +40,16 @@ public partial class InformationViewModel : ObservableRecipient
     public InformationViewModel()
     {
         informations = App.GetService<IDao<InformationsForInformation>>().GetById(1);
+
+        if (string.IsNullOrEmpty(informations.AvatarUrl))
+        {
+            informations.SetAvatarBitmap("ms-appx:///Assets/defaultAvt.png");
+        }
+        else
+        {
+            informations.SetAvatarBitmap(informations.AvatarUrl);
+        }
+
 
         EditPersonalEmail = informations.PersonalEmail;
         EditPhoneNumber = informations.PhoneNumber;
@@ -75,7 +87,24 @@ public partial class InformationViewModel : ObservableRecipient
 
         return "Success";
     }
-        
+
+    public void Save()
+    {
+        var personal_email_update = EditPersonalEmail;
+        var phone_number_update = EditPhoneNumber;
+        var address_update = EditAddress;
+        var contactInfo = new
+        {
+            personal_email_update,
+            phone_number_update,
+            address_update
+        };
+
+        string result = App.GetService<ApiService>().Post<string>("/rpc/update_contact_information", contactInfo);
+
+
+    }
+
     public void CancelChanges()
     {
         EditPersonalEmail = informations.PersonalEmail;
@@ -110,10 +139,9 @@ public partial class InformationViewModel : ObservableRecipient
 
         if (file != null)
         {
-
-            BitmapImage avatarImage = new BitmapImage(new Uri(file.Path));
-            informations.AvatarUrl = avatarImage;
-            //Update database
+            informations.SetAvatarBitmap(file.Path);
+            ((ShellPage)App.MainWindow.Content).ViewModel.Informations.SetAvatarBitmap(file.Path);
+            await UploadAvatarToDatabase(file.Path);
         }
         else
         {
@@ -123,6 +151,24 @@ public partial class InformationViewModel : ObservableRecipient
 
     public void RemoveAvatar()
     {
-        informations.SetAvatarUrl("ms-appx:///Assets/defaultAvt.png");
+        var defaultAvtUrl = "ms-appx:///Assets/defaultAvt.png";
+        informations.SetAvatarBitmap(defaultAvtUrl);
+        ((ShellPage)App.MainWindow.Content).ViewModel.Informations.SetAvatarBitmap(defaultAvtUrl);
+        string result = App.GetService<ApiService>().Post<string>("/rpc/update_avatar", new { image_url = "" });
+    }
+
+    private async Task UploadAvatarToDatabase (string filePath)
+    {
+        var imgurService = App.GetService<ImgurService>();
+        string imageUrl = await imgurService.UploadImageAsync(filePath);
+
+        if (!string.IsNullOrEmpty(imageUrl))
+        {
+            string result = App.GetService<ApiService>().Post<string>("/rpc/update_avatar", new { image_url = imageUrl });
+        }
+        else
+        {
+            Console.WriteLine("Image upload failed.");
+        }
     }
 }

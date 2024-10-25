@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SpacePortal.Core.Contracts;
+using SpacePortal.Core.Services;
 using SpacePortal.Models;
 
 namespace SpacePortal.DataAccess;
@@ -15,12 +16,9 @@ public class InformationsForShellPageDao : IDao<InformationsForShellPage>
     public ObservableCollection<InformationsForShellPage> GetAll() => throw new NotImplementedException();
     public InformationsForShellPage GetById(int id)
     {
-        return new InformationsForShellPage()
-        {
-            AvatarUrl = "https://i.postimg.cc/Wb8YNSPh/default-Avt.png",
-            StudentName = "Nguyễn Trọng Nhân",
-            StudentSchoolEmail = "22120248@student.hcmus.edu.vn"
-        };
+        // call api
+        var data = App.GetService<ApiService>().Get<InformationsForShellPage>("/rpc/get_shellpage_info");
+        return data;
     }
     public void Update(InformationsForShellPage entity) => throw new NotImplementedException();
 }

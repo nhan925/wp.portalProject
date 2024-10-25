@@ -38,7 +38,7 @@
                 BorderThickness="1"
                 BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
                 IsTabStop="False">
-                <Image Source="{x:Bind ViewModel.Informations.AvatarUrl}" Width="28" Height="28" 
+                <Image Source="{x:Bind ViewModel.Informations.AvatarBitmap, Mode=OneWay}" Width="28" Height="28" 
                        Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Button.Flyout>
 
@@ -49,7 +49,7 @@
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="{x:Bind ViewModel.Informations.AvatarUrl}" Width="48" Height="48" 
+                                <Image Source="{x:Bind ViewModel.Informations.AvatarBitmap, Mode=OneWay}" Width="48" Height="48" 
                                        HorizontalAlignment="Center" VerticalAlignment="Center"
                                        Grid.Column="0"/>
                                 <StackPanel Orientation="Vertical" Spacing="4" Grid.Column="1">
