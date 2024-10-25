@@ -69,14 +69,19 @@ public class InformationsForInformation : INotifyPropertyChanged
     {
         get; set;
     }
-    public BitmapImage AvatarUrl
+    public string AvatarUrl
     {
         get; set;
     }
 
-    public void SetAvatarUrl(string filePath)
+    public BitmapImage AvatarBitmap
     {
-        AvatarUrl = new BitmapImage(new Uri(filePath));
+        get; set;
+    }
+
+    public void SetAvatarBitmap(string filePath)
+    {
+        AvatarBitmap = new BitmapImage(new Uri(filePath));
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

@@ -40,6 +40,16 @@ public partial class InformationViewModel : ObservableRecipient
     {
         informations = App.GetService<IDao<InformationsForInformation>>().GetById(1);
 
+        if (string.IsNullOrEmpty(informations.AvatarUrl))
+        {
+            informations.SetAvatarBitmap("ms-appx:///Assets/defaultAvt.png");
+        }
+        else
+        {
+            informations.SetAvatarBitmap(informations.AvatarUrl);
+        }
+
+
         EditPersonalEmail = informations.PersonalEmail;
         EditPhoneNumber = informations.PhoneNumber;
         EditAddress = informations.Address;
@@ -129,8 +139,8 @@ public partial class InformationViewModel : ObservableRecipient
         if (file != null)
         {
 
-            informations.SetAvatarUrl(file.Path);
-            //Update database
+            informations.SetAvatarBitmap(file.Path);
+            UploadAvatarToDatabase(file.Path);
         }
         else
         {
@@ -140,6 +150,22 @@ public partial class InformationViewModel : ObservableRecipient
 
     public void RemoveAvatar()
     {
-        informations.SetAvatarUrl("ms-appx:///Assets/defaultAvt.png");
+        informations.SetAvatarBitmap("ms-appx:///Assets/defaultAvt.png");
+        string result = App.GetService<ApiService>().Post<string>("/rpc/update_avatar", new { image_url = "" });
+    }
+
+    private async Task UploadAvatarToDatabase (string filePath)
+    {
+        var imgurService = App.GetService<ImgurService>();
+        string imageUrl = await imgurService.UploadImageAsync(filePath);
+
+        if (!string.IsNullOrEmpty(imageUrl))
+        {
+            string result = App.GetService<ApiService>().Post<string>("/rpc/update_avatar", new { image_url = imageUrl });
+        }
+        else
+        {
+            Console.WriteLine("Image upload failed.");
+        }
     }
 }
