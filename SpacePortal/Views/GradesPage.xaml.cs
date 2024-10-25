@@ -41,8 +41,8 @@ public sealed partial class GradesPage : Page
 
     private void SetupDafaultComboBox()
     {
-        ComboBoxYear.SelectedItem = ViewModel.DefaultOption;
-        ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
+        ComboBoxYear.SelectedIndex = 0;
+        ComboBoxSemester.SelectedIndex = 0;
     }
 
     private void ShowGradeButton_Click(object sender, RoutedEventArgs e)
@@ -60,15 +60,6 @@ public sealed partial class GradesPage : Page
         if (cbYear != null && cbSemester != null)
         {
             ViewModel.ShowGradeByYearAndSemester(cbYear, cbSemester);
-        }
-        //Just for precautions
-        else if (cbYear != null)
-        {
-            ViewModel.ShowGradeByYear(cbYear);
-        }
-        else
-        {
-            ViewModel.Init();
         }
     }
 
@@ -159,6 +150,6 @@ public sealed partial class GradesPage : Page
             ViewModel.Semesters.Clear();
             ViewModel.AddSemester();
         }
-        ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
+        ComboBoxSemester.SelectedIndex = 0;
     }
 }
