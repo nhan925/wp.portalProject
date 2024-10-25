@@ -62,6 +62,9 @@ public partial class App : Application
         // Get API information
         var apiUrl = Env.GetString("API_URL");
 
+        // Get Imgur client ID
+        var imgurClientId = Env.GetString("IMGUR_CLIENT_ID");
+
         // TODO: Set the default language here
         Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "vi-VN";
 
@@ -80,6 +83,7 @@ public partial class App : Application
             services.AddSingleton<ILocalSettingsService, LocalSettingsService>();
             services.AddTransient<INavigationViewService, NavigationViewService>();
             services.AddSingleton<ApiService>(provider => new ApiService(apiUrl));
+            services.AddSingleton<ImgurService>(provider => new ImgurService(imgurClientId));
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
