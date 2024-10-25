@@ -43,7 +43,7 @@ public sealed partial class InformationPage : Page
         {
             ViewModel.AcceptChanges();
 
-            //ViewModel.Save();
+            ViewModel.Save();
         }
         else
         {

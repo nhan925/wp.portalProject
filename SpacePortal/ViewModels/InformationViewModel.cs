@@ -13,6 +13,7 @@ using WinRT.Interop;
 using System.Net;
 using Microsoft.Windows.ApplicationModel.Resources;
 using System.Text.RegularExpressions;
+using SpacePortal.Core.Services;
 namespace SpacePortal.ViewModels;
 
 public partial class InformationViewModel : ObservableRecipient
@@ -75,7 +76,24 @@ public partial class InformationViewModel : ObservableRecipient
 
         return "Success";
     }
-        
+
+    public void Save()
+    {
+        var personal_email_update = EditPersonalEmail;
+        var phone_number_update = EditPhoneNumber;
+        var address_update = EditAddress;
+        var contactInfo = new
+        {
+            personal_email_update,
+            phone_number_update,
+            address_update
+        };
+
+        string result = App.GetService<ApiService>().Post<string>("/rpc/update_contact_information", contactInfo);
+
+
+    }
+
     public void CancelChanges()
     {
         EditPersonalEmail = informations.PersonalEmail;
@@ -111,8 +129,7 @@ public partial class InformationViewModel : ObservableRecipient
         if (file != null)
         {
 
-            BitmapImage avatarImage = new BitmapImage(new Uri(file.Path));
-            informations.AvatarUrl = avatarImage;
+            informations.SetAvatarUrl(file.Path);
             //Update database
         }
         else
