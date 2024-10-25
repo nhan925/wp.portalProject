@@ -8,7 +8,7 @@ using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Models;
 using SpacePortal.Models;
 
-namespace SpacePortal.Core.DataAccess;
+namespace SpacePortal.DataAccess;
 public class InformationsForGradesPageDao : IDao<InformationsForGradesPage_GradesRow>
 {
 

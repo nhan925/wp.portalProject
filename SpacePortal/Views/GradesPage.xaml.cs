@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.Windows.ApplicationModel.Resources;
 using SpacePortal.Core.Contracts;
-using SpacePortal.Core.DataAccess;
+using SpacePortal.DataAccess;
 using SpacePortal.Core.Models;
 using SpacePortal.Models;
 using SpacePortal.ViewModels;

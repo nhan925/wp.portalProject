@@ -7,7 +7,6 @@ using SpacePortal.Activation;
 using SpacePortal.Contracts.Services;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Contracts.Services;
-using SpacePortal.Core.DataAccess;
 using SpacePortal.Core.Models;
 using SpacePortal.Core.Services;
 using SpacePortal.DataAccess;
@@ -143,7 +142,7 @@ public partial class App : Application
 
         // TODO: Modify here when implement the login function
         // Hard code login
-       // var check = await App.GetService<ApiService>().LoginAsync("student1", "1234");
+        App.GetService<ApiService>().Login("student1", "1234");
 
        // var debug = await App.GetService<ApiService>().GetAsync<InformationsForDashboard>("/rpc/get_dashboard_info");
 
