@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-
 using Microsoft.UI.Xaml.Navigation;
 
 using SpacePortal.Contracts.Services;
@@ -39,6 +38,14 @@ public partial class ShellViewModel : ObservableRecipient
         NavigationViewService = navigationViewService;
 
         Informations = App.GetService<IDao<InformationsForShellPage>>().GetById(0);
+        if (String.IsNullOrEmpty(Informations.AvatarUrl))
+        {
+            Informations.SetAvatarBitmap("ms-appx:///Assets/defaultAvt.png");
+        }
+        else
+        {
+            Informations.SetAvatarBitmap(Informations.AvatarUrl);
+        }
     }
 
     private void OnNavigated(object sender, NavigationEventArgs e)
@@ -57,7 +64,4 @@ public partial class ShellViewModel : ObservableRecipient
             Selected = selectedItem;
         }
     }
-
-
-
 }

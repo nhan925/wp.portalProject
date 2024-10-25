@@ -17,10 +17,6 @@ public class InformationsForShellPageDao : IDao<InformationsForShellPage>
     public InformationsForShellPage GetById(int id)
     {
         var data = App.GetService<ApiService>().Get<InformationsForShellPage>("/rpc/get_shellpage_info");
-        if (String.IsNullOrEmpty(data.AvatarUrl))
-        {
-            data.AvatarUrl = "/Assets/defaultAvt.png";
-        }
         return data;
     }
     public void Update(InformationsForShellPage entity) => throw new NotImplementedException();
