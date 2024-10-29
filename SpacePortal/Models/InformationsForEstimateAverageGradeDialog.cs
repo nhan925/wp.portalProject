@@ -15,8 +15,16 @@ public class InformationsForEstimateAverageGradeDialog : INotifyPropertyChanged
         get; set;
     }
 
+    private Dictionary<string, double> _degreeTypesWithTheirGrade;
+
     public Dictionary<string, double> DegreeTypesWithTheirGrade
     {
-        get; set;
+        get
+        {
+            var sortedList = _degreeTypesWithTheirGrade
+                .OrderByDescending(kvp => kvp.Value);
+            return sortedList.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        }
+        set => _degreeTypesWithTheirGrade = value;
     }
 }
