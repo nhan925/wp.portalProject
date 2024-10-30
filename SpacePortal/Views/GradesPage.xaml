@@ -158,6 +158,7 @@
                                    VerticalAlignment="Stretch"
                                    GridLinesVisibility="Horizontal"
                                    CornerRadius="10"
+                                   BorderBrush="Transparent"
                                    QueryRowHeight="sfDataGrid_QueryRowHeight"
                                    ColumnWidthMode="AutoWithLastColumnFill">
 
