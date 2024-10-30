@@ -23,7 +23,7 @@
 
 
         <Style x:Key="Card" TargetType="Grid">
-            <Setter Property="Background" Value="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}"/>
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
             <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
             <Setter Property="BorderThickness" Value="1"/>
 
@@ -52,7 +52,7 @@
     
         
     <ScrollView>
-        <Grid x:Name="ContentArea" Margin="36, 36, 36, 36" RowSpacing="36" ColumnSpacing="16">
+        <Grid x:Name="ContentArea" Margin="36, 36, 36, 36" RowSpacing="16" ColumnSpacing="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -64,7 +64,7 @@
             </Grid.ColumnDefinitions>
 
 
-            <Grid x:Name="GeneralFrame" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" RowSpacing="36">
+            <Grid x:Name="GeneralFrame" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" RowSpacing="16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
@@ -162,7 +162,7 @@
             </Grid>
 
 
-            <Grid x:Name="DetailFrame" Grid.Column="0" Grid.Row="1" RowSpacing="36">
+            <Grid x:Name="DetailFrame" Grid.Column="0" Grid.Row="1" RowSpacing="16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
@@ -214,7 +214,7 @@
             </Grid>
 
 
-            <Grid x:Name="ContactFrame" Grid.Column="1" Grid.Row="1" RowSpacing="36">
+            <Grid x:Name="ContactFrame" Grid.Column="1" Grid.Row="1" RowSpacing="16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />

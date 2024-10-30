@@ -187,7 +187,7 @@
     <value>https://YourPrivacyUrlGoesHere/</value>
   </data>
   <data name="Information_General.Text" xml:space="preserve">
-    <value>Thông tin chung</value>
+    <value>THÔNG TIN CHUNG</value>
   </data>
   <data name="Information_Fullname.Text" xml:space="preserve">
     <value>Họ và tên</value>
@@ -208,7 +208,7 @@
     <value>Giới tính</value>
   </data>
   <data name="Information_Details.Text" xml:space="preserve">
-    <value>Chi tiết</value>
+    <value>CHI TIẾT</value>
   </data>
   <data name="Information_DateOfBirth.Text" xml:space="preserve">
     <value>Ngày sinh</value>
@@ -226,7 +226,7 @@
     <value>Email sinh viên</value>
   </data>
   <data name="Information_Contact.Text" xml:space="preserve">
-    <value>Liên lạc</value>
+    <value>LIÊN LẠC</value>
   </data>
   <data name="Information_PersonalEmail.Text" xml:space="preserve">
     <value>Email cá nhân</value>
@@ -415,10 +415,10 @@
     <value>Mã lớp</value>
   </data>
   <data name="GradesPage_GradeScaleTen.HeaderText" xml:space="preserve">
-    <value>Điểm thang 10</value>
+    <value>Điểm 10</value>
   </data>
   <data name="GradesPage_GradeScaleFour.HeaderText" xml:space="preserve">
-    <value>Điểm thang 4</value>
+    <value>Điểm 4</value>
   </data>
   <data name="GradesPage_Note.HeaderText" xml:space="preserve">
     <value>Ghi chú</value>
