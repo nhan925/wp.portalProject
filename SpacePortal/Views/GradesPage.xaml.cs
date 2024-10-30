@@ -17,6 +17,7 @@ using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
 using Windows.Storage;
 using System.Xml.Serialization;
+using Syncfusion.UI.Xaml.DataGrid;
 
 
 
@@ -151,5 +152,17 @@ public sealed partial class GradesPage : Page
             ViewModel.AddSemester();
         }
         ComboBoxSemester.SelectedIndex = 0;
+    }
+
+    // Change row's height based on its content
+    private void sfDataGrid_QueryRowHeight(object sender, Syncfusion.UI.Xaml.DataGrid.QueryRowHeightEventArgs e)
+    {
+        GridRowSizingOptions gridRowResizingOptions = new GridRowSizingOptions();
+        var autoHeight = double.NaN;
+        if (this.sfDataGrid.ColumnSizer.GetAutoRowHeight(e.RowIndex, gridRowResizingOptions, out autoHeight))
+        {
+            e.Height = Math.Max(autoHeight + 8, sfDataGrid.RowHeight + 8);
+            e.Handled = true;
+        }
     }
 }
