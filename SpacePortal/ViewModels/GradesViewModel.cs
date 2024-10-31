@@ -195,11 +195,21 @@ public partial class GradesViewModel : ObservableRecipient
             e.Style.Font.Color = ExcelKnownColors.Black;
             e.Style.Font.Size = 12;
             e.Style.Font.Bold = true;
+            e.Style.Borders[ExcelBordersIndex.EdgeBottom].LineStyle 
+               = e.Style.Borders[ExcelBordersIndex.EdgeTop].LineStyle
+               = e.Style.Borders[ExcelBordersIndex.EdgeLeft].LineStyle
+               = e.Style.Borders[ExcelBordersIndex.EdgeRight].LineStyle 
+               = ExcelLineStyle.Thin;
             e.Handled = true;
         }
         else if (e.CellType == ExportCellType.RecordCell)
         {
-            e.Style.ColorIndex = ExcelKnownColors.Grey_25_percent;
+            //e.Style.ColorIndex = ExcelKnownColors.Grey_25_percent;
+            e.Style.Borders[ExcelBordersIndex.EdgeBottom].LineStyle
+               = e.Style.Borders[ExcelBordersIndex.EdgeTop].LineStyle
+               = e.Style.Borders[ExcelBordersIndex.EdgeLeft].LineStyle
+               = e.Style.Borders[ExcelBordersIndex.EdgeRight].LineStyle
+               = ExcelLineStyle.Thin;
             e.Handled = true;
         }
 
