@@ -36,11 +36,11 @@ public sealed partial class GradesPage : Page
     {
         this.InitializeComponent();
         ViewModel = App.GetService<GradesViewModel>();
-        SetupDafaultComboBox();
+        SetupDefaultComboBox();
         ViewModel.Init();
     }
 
-    private void SetupDafaultComboBox()
+    private void SetupDefaultComboBox()
     {
         ComboBoxYear.SelectedIndex = 0;
         ComboBoxSemester.SelectedIndex = 0;
