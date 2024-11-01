@@ -12,26 +12,22 @@ using SpacePortal.Models;
 namespace SpacePortal.DataAccess;
 public class InformationsForGradesPageDao : IDao<InformationsForGradesPage_GradesRow>
 {
-
-    public void Add(InformationsForGradesPage_GradesRow entity) => throw new NotImplementedException();
-
-    public void Delete(int id) => throw new NotImplementedException();
-
-    public void Update(InformationsForGradesPage_GradesRow entity) => throw new NotImplementedException();
-
-    public InformationsForGradesPage_GradesRow GetById(int id) => throw new NotImplementedException();
-
-    public ObservableCollection<InformationsForGradesPage_GradesRow> GetAll()
+    public ObservableCollection<InformationsForGradesPage_GradesRow> GetAll(int? pageNumber = null, int? pageSize = null, List<string>? keywords = null)
     {
-        
-        var parameters = new { p_year = "", p_semester_num = "" };
-        List<InformationsForGradesPage_GradesRow> list_object = App.GetService<ApiService>().Post<List<InformationsForGradesPage_GradesRow>>("/rpc/get_course_info_by_semester",parameters);
-        ObservableCollection<InformationsForGradesPage_GradesRow> result = new ObservableCollection<InformationsForGradesPage_GradesRow>(list_object);
+         keywords ??= new List<string> { "", "" };
+        // keywords[0] is year, keywords[1] is semester
+        var parameters = new { p_year = keywords[0], p_semester_num = keywords[1] };
+        var list_object = App.GetService<ApiService>().Post<List<InformationsForGradesPage_GradesRow>>("/rpc/get_course_info_by_semester", parameters) ??
+            new List<InformationsForGradesPage_GradesRow>();
+        var result = new ObservableCollection<InformationsForGradesPage_GradesRow>(list_object);
         return result;
     }
+    public InformationsForGradesPage_GradesRow GetById(string id) => throw new NotImplementedException();
 
     public InformationsForEstimateAverageGradeDialog GetInformationsForEstimateAverageGradeDialog()
     {
-        return App.GetService<ApiService>().Get<InformationsForEstimateAverageGradeDialog>("/rpc/get_degree_type");
+        var result = App.GetService<ApiService>().Get<InformationsForEstimateAverageGradeDialog>("/rpc/get_degree_type") ??
+            new InformationsForEstimateAverageGradeDialog();
+        return result;
     }
 }

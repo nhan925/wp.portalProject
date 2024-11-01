@@ -13,17 +13,12 @@ namespace SpacePortal.DataAccess;
 
 public class InformationsForDashboardDao : IDao<InformationsForDashboard>
 {
-    public void Add(InformationsForDashboard entity) => throw new NotImplementedException();
-
-    public void Delete(int id) => throw new NotImplementedException();
-
-    public ObservableCollection<InformationsForDashboard> GetAll() => throw new NotImplementedException();
-
-    public InformationsForDashboard GetById(int id)
+   
+    public InformationsForDashboard GetById(string id)
     {
-        // call api
-        return App.GetService<ApiService>().Get<InformationsForDashboard>("/rpc/get_dashboard_info");
+        var result = App.GetService<ApiService>().Get<InformationsForDashboard>("/rpc/get_dashboard_info") ?? new InformationsForDashboard();
+        return result;
     }
 
-    public void Update(InformationsForDashboard entity) => throw new NotImplementedException();
+    ObservableCollection<InformationsForDashboard> IDao<InformationsForDashboard>.GetAll(int? pageNumber, int? pageSize, List<string> keywords) => throw new NotImplementedException();
 }

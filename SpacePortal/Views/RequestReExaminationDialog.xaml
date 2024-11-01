@@ -10,7 +10,7 @@
 
     <Grid ColumnSpacing="20" RowSpacing="10" Padding="10,10,10,10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="180"/>
             <ColumnDefinition Width="120"/>
             <ColumnDefinition Width="120"/>
         </Grid.ColumnDefinitions>
@@ -61,7 +61,14 @@
                         x:Uid="GradesPage_RequestForReviewSubjectCombobox"
                       ItemsSource="{x:Bind ViewModel.Subjects, Mode=OneWay}"
                       SelectedItem="{x:Bind ViewModel.SelectedSubject,Mode=TwoWay}"
-                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/> 
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" 
+                       TextWrapping="WrapWholeWords" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2" Spacing="12">

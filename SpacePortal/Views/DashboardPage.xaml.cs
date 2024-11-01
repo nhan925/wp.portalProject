@@ -1,5 +1,7 @@
-﻿using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Navigation;
 using SpacePortal.Contracts.Services;
 using SpacePortal.Services;
 using SpacePortal.ViewModels;
@@ -20,6 +22,18 @@ public sealed partial class DashboardPage : Page
         ViewModel = App.GetService<DashboardViewModel>();
         InitializeComponent();
 
+    }
+
+    protected async override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        base.OnNavigatedTo(e);
+        await Task.Delay(5);
+
+        LineChartLoadingOverlay.Visibility = Visibility.Collapsed;
+        PieChartLoadingOverlay.Visibility = Visibility.Collapsed;
+
+        LineChart.Visibility = Visibility.Visible;
+        PieChart.Visibility = Visibility.Visible;
     }
 
     private void NavigateTo(string ViewModelFullName)

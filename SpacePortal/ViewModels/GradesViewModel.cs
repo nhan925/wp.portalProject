@@ -22,7 +22,6 @@ public partial class GradesViewModel : ObservableRecipient
 {
     //------------DataGrid Grades Table--------------
     private IDao<InformationsForGradesPage_GradesRow> _dao;
-    public ObservableCollection<InformationsForGradesPage_GradesRow> SourceData {get;}
     public ObservableCollection<InformationsForGradesPage_GradesRow> Grades {get; set;}
 
     //------------ComboBox Year and Semester--------------
@@ -37,35 +36,32 @@ public partial class GradesViewModel : ObservableRecipient
 
     public InformationsForEstimateAverageGradeDialog informationsForEstimateAverageGradeDialog { get; set; }
 
+    public InformationsForGradesPageDao DaoForDialogs
+    {
+        get; set;
+    }
+
     public GradesViewModel()
     {
         _dao = App.GetService<IDao<InformationsForGradesPage_GradesRow>>();
-        SourceData = new ObservableCollection<InformationsForGradesPage_GradesRow>(_dao.GetAll());
-        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(SourceData);
+        Grades = _dao.GetAll();
+        UpdateGeneralInformation(Grades);
         DefaultOption = new ResourceLoader().GetString("GradesPage_ComboBoxDefaultOption");
         AddYears();
         AddSemester();
-        informationsForEstimateAverageGradeDialog = (_dao as InformationsForGradesPageDao).GetInformationsForEstimateAverageGradeDialog();
+        DaoForDialogs = (_dao as InformationsForGradesPageDao);
         //For latest year
-        LatestYear = SourceData[SourceData.Count - 1].Year;
+        LatestYear = Grades[Grades.Count - 1].Year;
         AddSemesterOfLatestYear();
     }
 
-    public void Init()
-    {
-        UpdateGeneralInformation(SourceData);
-        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(SourceData);
-    }
-
-
-   
     public void AddYears()
     {
         Years.Add(DefaultOption);
-        for (int i=0;i<SourceData.Count;i++) {
-            if (!Years.Contains(SourceData[i].Year))
+        foreach (var grade in Grades) {
+            if (!Years.Contains(grade.Year))
             {
-                Years.Add(SourceData[i].Year);
+                Years.Add(grade.Year);
             }
         }
     }
@@ -82,20 +78,15 @@ public partial class GradesViewModel : ObservableRecipient
     {
         SemestersOfLatestYear.Clear();
         SemestersOfLatestYear.Add(DefaultOption);
-        for (int i = 0; i < SourceData.Count; i++)
+        foreach (var grade in Grades)
         {
-            if (SourceData[i].Year == LatestYear && !SemestersOfLatestYear.Contains(SourceData[i].Semester))
+            if (grade.Year == LatestYear && !SemestersOfLatestYear.Contains(grade.Semester))
             {
-                SemestersOfLatestYear.Add(SourceData[i].Semester);
+                SemestersOfLatestYear.Add(grade.Semester);
             }
         }
     }
 
-
-    /// <summary>
-    /// Update the general information when the grades datagrid is updated
-    /// </summary>
-    /// <param name="grades"></param>
     public void UpdateGeneralInformation(ObservableCollection<InformationsForGradesPage_GradesRow> grades)
     {
         //-----------TextBlock General Information------------
@@ -109,12 +100,12 @@ public partial class GradesViewModel : ObservableRecipient
         }
         double gpaScale_4 = 0;
         double gpaScale_10 = 0;
-        int numberOfCredits = 0;
-        for (int i = 0; i < grades.Count; i++)
+        var numberOfCredits = 0;
+        foreach (var grade in grades)
         {
-            gpaScale_4 += grades[i].GradeScaleFour;
-            gpaScale_10 += grades[i].GradeScaleTen;
-            numberOfCredits += grades[i].CourseCredit;
+            gpaScale_4 += grade.GradeScaleFour;
+            gpaScale_10 += grade.GradeScaleTen;
+            numberOfCredits += grade.CourseCredit;
         }
         GeneralInformations.NumberOfCourses = grades.Count;
         GeneralInformations.GpaScale_4 = Math.Round(gpaScale_4 / grades.Count, 2);
@@ -122,30 +113,21 @@ public partial class GradesViewModel : ObservableRecipient
         GeneralInformations.NumberOfCredits = numberOfCredits;
     }
 
-    //-----------------Grades DataGrid------------------------
-    /// <summary>
-    /// Change the grades datagrid by year and semester
-    /// </summary>
-    /// <param name="year"></param>
-    /// <param name="semester"></param>
     public void ShowGradeByYearAndSemester(string year, string semester)
     {
-        if (semester == DefaultOption){ 
-            semester = ""; }
-        if(year == DefaultOption){ 
-            year = ""; }
-        var parameters = new { p_year = year, p_semester_num = semester };
-        List<InformationsForGradesPage_GradesRow> list_object = App.GetService<ApiService>().Post<List<InformationsForGradesPage_GradesRow>>("/rpc/get_course_info_by_semester", parameters);
-        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(list_object);
+        var keywords = new List<string> { year, semester };
+        if (semester == DefaultOption)
+        {
+            keywords[1] = "";
+        }
+        if(year == DefaultOption)
+        {
+            keywords[0] = "";
+        }
+        Grades = new ObservableCollection<InformationsForGradesPage_GradesRow>(_dao.GetAll(null, null, keywords));
         UpdateGeneralInformation(Grades);
     }
 
-
-    /// <summary>
-    /// Save the Excel file
-    /// </summary>
-    /// <param name="stream"></param>
-    /// <param name="filename"></param>
     public async void Save(MemoryStream stream, string filename)
     {
         StorageFile stFile;
@@ -182,11 +164,6 @@ public partial class GradesViewModel : ObservableRecipient
         }
     }
 
-    /// <summary>
-    /// Styling cells based on CellType in Excel
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
     public static void GridExportHandler(object sender, DataGridExcelExportStartOptions e)
     {
         if (e.CellType == ExportCellType.HeaderCell)

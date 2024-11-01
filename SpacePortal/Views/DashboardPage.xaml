@@ -69,7 +69,7 @@
             <TextBlock x:Uid="Dashboard_GradeResult" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"/>
             <TextBlock x:Uid="Dashboard_StudyProgress" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2"/>
             <Grid Grid.Row="2" Grid.ColumnSpan="4" Grid.Column="0" Padding="12,16,16,12" Style="{StaticResource cardStyle}">
-                <syncfusion:SfCartesianChart>
+                <syncfusion:SfCartesianChart x:Name="LineChart" Visibility="Collapsed">
                     <syncfusion:SfCartesianChart.Resources>
                         <BrushCollection x:Key="GPAChartBrush">
                             <LinearGradientBrush>
@@ -150,13 +150,16 @@
                                                  TooltipTemplate="{StaticResource tooltipTemplate}"/>     
                     </syncfusion:SfCartesianChart.Series>
                 </syncfusion:SfCartesianChart>
+                <Grid x:Name="LineChartLoadingOverlay">
+                    <ProgressRing IsActive="True" Width="32" Height="32"/>
+                </Grid>
             </Grid>
             <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="4" Padding="16,16,16,12" Style="{StaticResource cardStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <syncfusion:SfCircularChart Grid.Row="0">
+                <syncfusion:SfCircularChart Grid.Row="0" x:Name="PieChart" Visibility="Collapsed">
                     <syncfusion:SfCircularChart.Resources>
                         <BrushCollection x:Key="CreditChartBrush">
                             <LinearGradientBrush>
@@ -204,6 +207,9 @@
                 <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Grid.Row="1" HorizontalTextAlignment="Right">
                     <Run x:Uid="Dashboard_TotalCredits"/>: <Run Text="{x:Bind ViewModel.Informations.CurrentCredit}"/>/<Run Text="{x:Bind ViewModel.Informations.TotalCredit}"/>
                 </TextBlock>
+                <Grid x:Name="PieChartLoadingOverlay" Grid.Row="0">
+                    <ProgressRing IsActive="True" Width="32" Height="32"/>
+                </Grid>
             </Grid>
             <TextBlock x:Uid="Dashboard_MoreFeatures" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="3" Grid.ColumnSpan="6"/>
             <Button x:Name="InforButton" Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="0" Style="{StaticResource buttonStyle}" Click="InforButton_Click"> 
