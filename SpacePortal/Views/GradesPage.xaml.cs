@@ -18,6 +18,7 @@ using Windows.Storage.Streams;
 using Windows.Storage;
 using System.Xml.Serialization;
 using Syncfusion.UI.Xaml.DataGrid;
+using Microsoft.UI.Xaml.Navigation;
 
 
 
@@ -37,7 +38,6 @@ public sealed partial class GradesPage : Page
         this.InitializeComponent();
         ViewModel = App.GetService<GradesViewModel>();
         SetupDefaultComboBox();
-        ViewModel.Init();
     }
 
     private void SetupDefaultComboBox()
@@ -46,22 +46,28 @@ public sealed partial class GradesPage : Page
         ComboBoxSemester.SelectedIndex = 0;
     }
 
-    private void ShowGradeButton_Click(object sender, RoutedEventArgs e)
+    private async void ShowGradeButton_Click(object sender, RoutedEventArgs e)
     {
+        DataGridLoadingOverlay.Visibility = Visibility.Visible;
+        sfDataGrid.Opacity = 0.5;
+        await Task.Delay(1);
+
         var cbYear = ComboBoxYear.SelectedItem?.ToString();
 
         if (cbYear == ViewModel.DefaultOption)
         {
             ComboBoxSemester.SelectedItem = ViewModel.DefaultOption;
-            ViewModel.Init();
-            return;
         }
+
         var cbSemester = ComboBoxSemester.SelectedItem?.ToString();
 
         if (cbYear != null && cbSemester != null)
         {
             ViewModel.ShowGradeByYearAndSemester(cbYear, cbSemester);
         }
+
+        DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
+        sfDataGrid.Opacity = 1;
     }
 
     private async void CalculatorButton_Click(object sender, RoutedEventArgs e)
@@ -69,8 +75,8 @@ public sealed partial class GradesPage : Page
         var dialog = new ContentDialog();
         dialog.XamlRoot = this.XamlRoot;
         dialog.Title = resourceLoader.GetString("GradesPage_EstimateAverageGradeTitle");
-        dialog.Content = new EstimateAverageGradeDialog(ViewModel.SourceData,
-            ViewModel.informationsForEstimateAverageGradeDialog);
+        dialog.Content = new EstimateAverageGradeDialog(ViewModel.DaoForDialogs.GetAll(),
+            ViewModel.DaoForDialogs.GetInformationsForEstimateAverageGradeDialog());
         dialog.HorizontalAlignment = HorizontalAlignment.Left;
         dialog.CloseButtonText = resourceLoader.GetString("Dialog_Cancel");
         dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
@@ -84,7 +90,7 @@ public sealed partial class GradesPage : Page
         var dialog = new ContentDialog();
         dialog.XamlRoot = this.XamlRoot;
         dialog.Title = resourceLoader.GetString("GradesPage_RequestForTranscriptTitle");
-        dialog.Content = new RequestPhysicalTranscriptDialog(ViewModel.SourceData);
+        dialog.Content = new RequestPhysicalTranscriptDialog(ViewModel.DaoForDialogs.GetAll());
         dialog.HorizontalAlignment = HorizontalAlignment.Left;
         dialog.CloseButtonText = resourceLoader.GetString("Dialog_Cancel");
         dialog.PrimaryButtonText = resourceLoader.GetString("Dialog_Send");
@@ -103,10 +109,10 @@ public sealed partial class GradesPage : Page
         var dialog = new ContentDialog();
         dialog.XamlRoot = this.XamlRoot;
         dialog.Title = resourceLoader.GetString("GradesPage_RequestForReviewTitle");
-        dialog.Content = new RequestReExaminationDialog(ViewModel.SourceData);
+        dialog.Content = new RequestReExaminationDialog(ViewModel.DaoForDialogs.GetAll());
         dialog.HorizontalAlignment = HorizontalAlignment.Left;
-        
-        
+
+
         dialog.PrimaryButtonText = resourceLoader.GetString("Dialog_Send");
         dialog.CloseButtonText = resourceLoader.GetString("Dialog_Cancel");
         dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
@@ -137,14 +143,14 @@ public sealed partial class GradesPage : Page
 
     private void ComboBoxYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if(ComboBoxYear.SelectedItem == ViewModel.LatestYear)
+        if (ComboBoxYear.SelectedItem == ViewModel.LatestYear)
         {
             ViewModel.Semesters.Clear();
             foreach (var semester in ViewModel.SemestersOfLatestYear)
             {
                 ViewModel.Semesters.Add(semester);
             }
-           
+
         }
         else
         {
@@ -165,4 +171,14 @@ public sealed partial class GradesPage : Page
             e.Handled = true;
         }
     }
+
+    protected async override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        base.OnNavigatedTo(e);
+        await Task.Delay(5);
+
+        DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
+        sfDataGrid.Visibility = Visibility.Visible;
+    }
 }
+

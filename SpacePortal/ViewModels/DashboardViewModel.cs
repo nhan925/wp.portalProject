@@ -31,6 +31,6 @@ public partial class DashboardViewModel : ObservableRecipient
 
     public DashboardViewModel()
     {
-        Informations = App.GetService<IDao<InformationsForDashboard>>().GetById(0);
+        Informations = App.GetService<IDao<InformationsForDashboard>>().GetById(null);
     }
 }
