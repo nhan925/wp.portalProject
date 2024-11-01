@@ -202,7 +202,7 @@
                     <StackPanel Grid.Row="3" Orientation="Horizontal">
                         <TextBlock x:Uid="Information_Identification" Style="{ThemeResource Subtitle}"/>
                         <TextBlock x:Uid="Information_Separate" Style="{ThemeResource Subtitle}" Margin="0,0,10,0"/>
-                        <TextBlock Text="{x:Bind ViewModel.informations.StudentID}" Style="{ThemeResource Content}"/>
+                        <TextBlock Text="{x:Bind ViewModel.informations.IdentityCardNumber}" Style="{ThemeResource Content}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Column="0" Grid.Row="4" Orientation="Horizontal">
