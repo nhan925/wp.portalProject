@@ -11,14 +11,12 @@ using SpacePortal.Models;
 namespace SpacePortal.DataAccess;
 public class InformationsForShellPageDao : IDao<InformationsForShellPage>
 {
-    public void Add(InformationsForShellPage entity) => throw new NotImplementedException();
-    public void Delete(int id) => throw new NotImplementedException();
-    public ObservableCollection<InformationsForShellPage> GetAll() => throw new NotImplementedException();
-    public InformationsForShellPage GetById(int id)
+    public InformationsForShellPage GetById(string id)
     {
-        // call api
-        var data = App.GetService<ApiService>().Get<InformationsForShellPage>("/rpc/get_shellpage_info");
+        var data = App.GetService<ApiService>().Get<InformationsForShellPage>("/rpc/get_shellpage_info") ??
+            new InformationsForShellPage();
         return data;
     }
-    public void Update(InformationsForShellPage entity) => throw new NotImplementedException();
+
+    ObservableCollection<InformationsForShellPage> IDao<InformationsForShellPage>.GetAll(int? pageNumber, int? pageSize, List<string> keywords) => throw new NotImplementedException();
 }

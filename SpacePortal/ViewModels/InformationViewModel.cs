@@ -37,17 +37,21 @@ public partial class InformationViewModel : ObservableRecipient
     [ObservableProperty]
     private bool _isEditing;
 
+    private bool _isDefaultAvt;
+
     public InformationViewModel()
     {
-        informations = App.GetService<IDao<InformationsForInformation>>().GetById(1);
+        informations = App.GetService<IDao<InformationsForInformation>>().GetById(null);
 
         if (string.IsNullOrEmpty(informations.AvatarUrl))
         {
             informations.SetAvatarBitmap("ms-appx:///Assets/defaultAvt.png");
+            _isDefaultAvt = true;
         }
         else
         {
             informations.SetAvatarBitmap(informations.AvatarUrl);
+            _isDefaultAvt = false;
         }
 
 
@@ -101,8 +105,6 @@ public partial class InformationViewModel : ObservableRecipient
         };
 
         string result = App.GetService<ApiService>().Post<string>("/rpc/update_contact_information", contactInfo);
-
-
     }
 
     public void CancelChanges()
@@ -141,17 +143,24 @@ public partial class InformationViewModel : ObservableRecipient
         {
             informations.SetAvatarBitmap(file.Path);
             ((ShellPage)App.MainWindow.Content).ViewModel.Informations.SetAvatarBitmap(file.Path);
+            _isDefaultAvt = false;
             await UploadAvatarToDatabase(file.Path);
         }
         else
         {
-            //TODO
+            // User canceled the file picker
         }
     }
 
     public void RemoveAvatar()
     {
+        if (_isDefaultAvt)
+        {
+            return;
+        }
+
         var defaultAvtUrl = "ms-appx:///Assets/defaultAvt.png";
+        _isDefaultAvt = true;
         informations.SetAvatarBitmap(defaultAvtUrl);
         ((ShellPage)App.MainWindow.Content).ViewModel.Informations.SetAvatarBitmap(defaultAvtUrl);
         string result = App.GetService<ApiService>().Post<string>("/rpc/update_avatar", new { image_url = "" });

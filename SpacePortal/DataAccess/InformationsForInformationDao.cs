@@ -13,31 +13,12 @@ using SpacePortal.Models;
 namespace SpacePortal.DataAccess;
 public class InformationsForInformationDao : IDao<InformationsForInformation>
 {
-    public void Add(InformationsForInformation entity)
+    public InformationsForInformation GetById(string id)
     {
-
-        throw new NotImplementedException();
+        var result = App.GetService<ApiService>().Get<InformationsForInformation>("/rpc/get_informations_info") ??
+            new InformationsForInformation();
+        return result;
     }
 
-    public void Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public ObservableCollection<InformationsForInformation> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
-    public InformationsForInformation GetById(int id)
-    {
-        // call api
-        return App.GetService<ApiService>().Get<InformationsForInformation>("/rpc/get_informations_info");
-    }
-
-
-    public void Update(InformationsForInformation entity)
-    {
-        throw new NotImplementedException();
-    }
+    ObservableCollection<InformationsForInformation> IDao<InformationsForInformation>.GetAll(int? pageNumber, int? pageSize, List<string> keywords) => throw new NotImplementedException();
 }

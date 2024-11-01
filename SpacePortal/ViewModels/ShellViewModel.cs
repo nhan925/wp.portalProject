@@ -37,7 +37,7 @@ public partial class ShellViewModel : ObservableRecipient
         NavigationService.Navigated += OnNavigated;
         NavigationViewService = navigationViewService;
 
-        Informations = App.GetService<IDao<InformationsForShellPage>>().GetById(0);
+        Informations = App.GetService<IDao<InformationsForShellPage>>().GetById(null);
         if (String.IsNullOrEmpty(Informations.AvatarUrl))
         {
             Informations.SetAvatarBitmap("ms-appx:///Assets/defaultAvt.png");
