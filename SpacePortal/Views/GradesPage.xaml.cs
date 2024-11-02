@@ -51,7 +51,7 @@ public sealed partial class GradesPage : Page
     {
         DataGridLoadingOverlay.Visibility = Visibility.Visible;
         sfDataGrid.Opacity = 0.5;
-        await Task.Delay(1);
+        await Task.Delay(10);
 
         var cbYear = ComboBoxYear.SelectedItem?.ToString();
 
@@ -185,7 +185,7 @@ public sealed partial class GradesPage : Page
     protected async override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
-        await Task.Delay(5);
+        await Task.Delay(10);
 
         DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
         sfDataGrid.Visibility = Visibility.Visible;
