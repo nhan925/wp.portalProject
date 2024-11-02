@@ -122,6 +122,13 @@ public partial class App : Application
             services.AddTransient<ShellPage>();
             services.AddTransient<ShellViewModel>();
 
+            services.AddTransient<RequestPhysicalTranscriptDialog>();
+            services.AddTransient<RequestPhysicalTranscriptDialogViewModel>();
+            services.AddTransient<EstimateAverageGradeDialog>();
+            services.AddTransient<EstimateAverageGradeDialogViewModel>();
+            services.AddTransient<RequestReExaminationDialog>();
+            services.AddTransient<RequestReExaminationDialogViewModel>();
+
             // Configuration
             services.Configure<LocalSettingsOptions>(context.Configuration.GetSection(nameof(LocalSettingsOptions)));
             services.AddSingleton<IDao<InformationsForInformation>, InformationsForInformationDao>();
