@@ -19,6 +19,7 @@ using Windows.Storage;
 using System.Xml.Serialization;
 using Syncfusion.UI.Xaml.DataGrid;
 using Microsoft.UI.Xaml.Navigation;
+using SpacePortal.Contracts.Services;
 
 
 
@@ -50,7 +51,7 @@ public sealed partial class GradesPage : Page
     {
         DataGridLoadingOverlay.Visibility = Visibility.Visible;
         sfDataGrid.Opacity = 0.5;
-        await Task.Delay(1);
+        await Task.Delay(10);
 
         var cbYear = ComboBoxYear.SelectedItem?.ToString();
 
@@ -82,6 +83,9 @@ public sealed partial class GradesPage : Page
         dialog.PrimaryButtonStyle = Application.Current.Resources["AccentButtonStyle"] as Style;
         dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
 
+        // must set, otherwise the dialog's theme will be different from the app's theme
+        dialog.RequestedTheme = App.GetService<IThemeSelectorService>().Theme;
+
         await dialog.ShowAsync();
     }
 
@@ -100,6 +104,9 @@ public sealed partial class GradesPage : Page
         {
             (dialog.Content as RequestPhysicalTranscriptDialog).PrimaryButton_Click(sender, e);
         };
+
+        // must set, otherwise the dialog's theme will be different from the app's theme
+        dialog.RequestedTheme = App.GetService<IThemeSelectorService>().Theme;
 
         await dialog.ShowAsync();
     }
@@ -122,6 +129,9 @@ public sealed partial class GradesPage : Page
             var requestReExaminationDialog = dialog.Content as RequestReExaminationDialog;
             requestReExaminationDialog.SendRequest(s, e);
         };
+
+        // must set, otherwise the dialog's theme will be different from the app's theme
+        dialog.RequestedTheme = App.GetService<IThemeSelectorService>().Theme; 
 
 
         await dialog.ShowAsync();
@@ -175,7 +185,7 @@ public sealed partial class GradesPage : Page
     protected async override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
-        await Task.Delay(5);
+        await Task.Delay(10);
 
         DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
         sfDataGrid.Visibility = Visibility.Visible;
