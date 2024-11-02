@@ -134,21 +134,26 @@ namespace SpacePortal.ViewModels
             }
         }
 
+
         private void UpdateScoreAndClass()
         {
-            if (!string.IsNullOrEmpty(SelectedSubject))
+
+            Score = 0;
+            ClassID = string.Empty;
+
+            if (_selectedYear != null && !string.IsNullOrEmpty(_selectedSemester) && !string.IsNullOrEmpty(_selectedSubject))
             {
-                var selectedRow = _sourceData.FirstOrDefault(row => row.CourseName == SelectedSubject);
+
+                var selectedRow = _sourceData.FirstOrDefault(row =>
+                    row.Year == _selectedYear.Year &&
+                    row.Semester == _selectedSemester &&
+                    row.CourseName == _selectedSubject);
+
                 if (selectedRow != null)
                 {
                     Score = selectedRow.GradeScaleTen;
                     ClassID = selectedRow.ClassId;
                 }
-            }
-            else
-            {
-                Score = 0;
-                ClassID = string.Empty;
             }
         }
 
