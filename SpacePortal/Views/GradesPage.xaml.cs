@@ -153,7 +153,7 @@ public sealed partial class GradesPage : Page
 
     private void ComboBoxYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (ComboBoxYear.SelectedItem == ViewModel.LatestYear)
+        if (ComboBoxYear.SelectedItem.ToString() == ViewModel.LatestYear)
         {
             ViewModel.Semesters.Clear();
             foreach (var semester in ViewModel.SemestersOfLatestYear)
