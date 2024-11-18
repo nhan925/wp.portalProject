@@ -1,8 +1,10 @@
 ﻿using DotNetEnv;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.System;
+
 using SpacePortal.Activation;
 using SpacePortal.Contracts.Services;
 using SpacePortal.Core.Contracts;
@@ -15,6 +17,7 @@ using SpacePortal.Models;
 using SpacePortal.Services;
 using SpacePortal.ViewModels;
 using SpacePortal.Views;
+
 using Syncfusion.Licensing;
 
 namespace SpacePortal;
@@ -93,6 +96,8 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<ChooseCoursesViewModel>();
+            services.AddTransient<ChooseCoursesPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<AppFeedbackViewModel>();

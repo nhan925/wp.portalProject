@@ -25,6 +25,7 @@
     <Content Remove="Assets\dashboard_scholarship.png" />
     <Content Remove="Assets\dashboard_student.png" />
     <Content Remove="Assets\defaultAvt.png" />
+    <Content Remove="Assets\refresh.png" />
     <Content Remove="Assets\WindowIcon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +99,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\defaultAvt.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\refresh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\WindowIcon.ico">

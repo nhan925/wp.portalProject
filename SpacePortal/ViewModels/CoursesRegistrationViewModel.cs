@@ -9,10 +9,15 @@ public partial class CoursesRegistrationViewModel : ObservableRecipient
 {
     public ObservableCollection<CoursesRegistrationPeriodInformation> Information
     {
-        get;
+        get; set;
     }
 
     public CoursesRegistrationViewModel()
+    {
+        Init();
+    }
+
+    public void Init()
     {
         Information = App.GetService<IDao<CoursesRegistrationPeriodInformation>>().GetAll();
     }
