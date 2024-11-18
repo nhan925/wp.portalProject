@@ -16,7 +16,6 @@ using SpacePortal.Services;
 using SpacePortal.ViewModels;
 using SpacePortal.Views;
 using Syncfusion.Licensing;
-
 namespace SpacePortal;
 
 // To learn more about WinUI 3, see https://docs.microsoft.com/windows/apps/winui/winui3/.
@@ -151,12 +150,15 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
+        var loginWindow = new LoginWindow();
+        loginWindow.Activate();
+
         // TODO: Modify here when implement the login function
         // Hard code login
-        App.GetService<ApiService>().Login("student1", "1234");
+        //App.GetService<ApiService>().Login("student1", "1234");
 
-       // var debug = await App.GetService<ApiService>().GetAsync<InformationsForDashboard>("/rpc/get_dashboard_info");
+        // var debug = await App.GetService<ApiService>().GetAsync<InformationsForDashboard>("/rpc/get_dashboard_info");
 
-        await App.GetService<IActivationService>().ActivateAsync(args);
+        //await App.GetService<IActivationService>().ActivateAsync(args);
     }
 }
