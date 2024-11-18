@@ -4,9 +4,92 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:SpacePortal.Models"
+    xmlns:helpers="using:SpacePortal.Helpers"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Padding="36">
-        <TextBlock Text="Coming soon..."/>
+    <Page.Resources>
+        <helpers:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
+    </Page.Resources>
+
+    <Grid x:Name="ContentArea" Padding="36" RowSpacing="32">
+        <Grid.Resources>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="VerticalAlignment" Value="Stretch"/>
+                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+            <DataTemplate x:Key="ItemTemplate" x:DataType="models:CoursesRegistrationPeriodInformation">
+                <Button Style="{ThemeResource buttonStyle}" IsEnabled="{x:Bind CanRegister, Mode=OneWay}">
+                    <Grid RowSpacing="8" Padding="12" HorizontalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Style="{ThemeResource BodyStrongTextBlockStyle}" Text="{x:Bind Title}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{x:Bind StatusWithItsColor.Key}" 
+                                   Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                   HorizontalAlignment="Right"
+                                   Opacity="0.8"
+                                   Foreground="{x:Bind StatusWithItsColor.Value}" TextAlignment="Right"/>
+
+                        <Grid Grid.Row="1" Grid.ColumnSpan="2" RowSpacing="8" ColumnSpacing="24">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Opacity="0.8">
+                                 <Run x:Uid="CoursesRegistration_PeriodOpenDate"/>:
+                            </TextBlock>
+                            <TextBlock Text="{x:Bind OpenDate, Converter={StaticResource DateTimeToStringConverter}}" 
+                                Opacity="0.8" Grid.Row="0" Grid.Column="1"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Opacity="0.8">
+                                <Run x:Uid="CoursesRegistration_PeriodCloseDate"/>:
+                            </TextBlock>
+                            <TextBlock Text="{x:Bind CloseDate, Converter={StaticResource DateTimeToStringConverter}}" 
+                                Opacity="0.8" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                    </Grid>
+                </Button>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}" x:Uid="CoursesRegistration_PeriodTitle" Grid.Row="0"/>
+        <ListView Grid.Row="1" ItemsSource="{x:Bind ViewModel.Information}"
+                  x:Name="PeriodsListView"
+                  SelectionMode="None"
+                  Visibility="Collapsed"
+                  ItemClick="PeriodsListView_ItemClick"
+                  ItemTemplate="{StaticResource ItemTemplate}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" Spacing="20"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        <Grid x:Name="ListViewLoadingOverlay" Grid.Row="1">
+            <ProgressRing IsActive="True" Width="64" Height="64"/>
+        </Grid>
     </Grid>
 </Page>

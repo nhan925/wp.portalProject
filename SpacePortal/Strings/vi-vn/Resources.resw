@@ -537,4 +537,22 @@
   <data name="GradesPage_EstimateAverageGradeComboBox.PlaceholderText" xml:space="preserve">
     <value>Chọn loại bằng</value>
   </data>
+  <data name="CoursesRegistration_PeriodTitle.Text" xml:space="preserve">
+    <value>CÁC ĐỢT ĐĂNG KÝ</value>
+  </data>
+  <data name="CoursesRegistration_PeriodOpenDate.Text" xml:space="preserve">
+    <value>Ngày mở</value>
+  </data>
+  <data name="CoursesRegistration_PeriodCloseDate.Text" xml:space="preserve">
+    <value>Ngày kết thúc</value>
+  </data>
+  <data name="CoursesRegistration_PeriodStatusOpening" xml:space="preserve">
+    <value>Đang mở</value>
+  </data>
+  <data name="CoursesRegistration_PeriodStatusClosed" xml:space="preserve">
+    <value>Đã kết thúc</value>
+  </data>
+  <data name="CoursesRegistration_PeriodStatusNotOpened" xml:space="preserve">
+    <value>Chưa đến ngày đăng ký</value>
+  </data>
 </root>

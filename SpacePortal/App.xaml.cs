@@ -135,6 +135,7 @@ public partial class App : Application
             services.AddSingleton<IDao<InformationsForDashboard>, InformationsForDashboardDao>();
             services.AddSingleton<IDao<InformationsForShellPage>, InformationsForShellPageDao>();
             services.AddSingleton<IDao<InformationsForGradesPage_GradesRow>,InformationsForGradesPageDao>();
+            services.AddSingleton<IDao<CoursesRegistrationPeriodInformation>, CoursesRegistrationPeriodInformationDao>();
         }).
         Build();
          
