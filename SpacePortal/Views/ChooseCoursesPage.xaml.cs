@@ -21,7 +21,7 @@ public sealed partial class ChooseCoursesPage : Page
     {
         base.OnNavigatedTo(e);
         var periodInfo = e.Parameter as KeyValuePair<int, string>?;
-        ContentBlock.Text = periodInfo?.Key.ToString();
+        ViewModel.LoadInformations(periodInfo.Value.Key, periodInfo.Value.Value);
         await Task.Delay(10);
     }
 }

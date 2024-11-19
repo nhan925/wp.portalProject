@@ -555,4 +555,25 @@
   <data name="CoursesRegistration_PeriodStatusNotOpened" xml:space="preserve">
     <value>Chưa đến ngày đăng ký</value>
   </data>
+  <data name="ChooseCourses_MaxCredits.Text" xml:space="preserve">
+    <value>Số tín chỉ tối đa</value>
+  </data>
+  <data name="ChooseCourses_Major.Text" xml:space="preserve">
+    <value>Ngành học</value>
+  </data>
+  <data name="ChooseCourses_RegisteredCredits.Text" xml:space="preserve">
+    <value>Số tín chỉ đã đăng ký</value>
+  </data>
+  <data name="ChooseCourses_RegisteredCourses.Text" xml:space="preserve">
+    <value>Số môn học đã đăng ký</value>
+  </data>
+  <data name="ChooseCourses_SearchBox.PlaceholderText" xml:space="preserve">
+    <value>Tìm môn học</value>
+  </data>
+  <data name="ChooseCourses_RegisteredCoursesList.Text" xml:space="preserve">
+    <value>CÁC MÔN HỌC ĐÃ ĐĂNG KÝ</value>
+  </data>
+  <data name="ChooseCourses_StudiedCourses.Text" xml:space="preserve">
+    <value>HỌC CẢI THIỆN &amp; HỌC LẠI</value>
+  </data>
 </root>

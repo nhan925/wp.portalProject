@@ -141,6 +141,7 @@ public partial class App : Application
             services.AddSingleton<IDao<InformationsForShellPage>, InformationsForShellPageDao>();
             services.AddSingleton<IDao<InformationsForGradesPage_GradesRow>,InformationsForGradesPageDao>();
             services.AddSingleton<IDao<CoursesRegistrationPeriodInformation>, CoursesRegistrationPeriodInformationDao>();
+            services.AddSingleton<IDao<ChooseCoursesInformations>, ChooseCoursesInformationsDao>();
         }).
         Build();
          
