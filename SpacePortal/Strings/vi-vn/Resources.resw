@@ -537,4 +537,70 @@
   <data name="GradesPage_EstimateAverageGradeComboBox.PlaceholderText" xml:space="preserve">
     <value>Chọn loại bằng</value>
   </data>
+  <data name="Login_Welcome.Text" xml:space="preserve">
+    <value>Chào mừng đến</value>
+  </data>
+  <data name="Login_AppName.Text" xml:space="preserve">
+    <value>SPACE PORTAL</value>
+  </data>
+  <data name="Login_Username.Text" xml:space="preserve">
+    <value>Tên đăng nhập</value>
+  </data>
+  <data name="Login_UsernameTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập tên đăng nhập</value>
+  </data>
+  <data name="Login_Password.Text" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="Login_PasswordTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập mật khẩu</value>
+  </data>
+  <data name="Login_RememberMeCheckBox.Content" xml:space="preserve">
+    <value>Lưu trạng thái</value>
+  </data>
+  <data name="Login_ForgotPasswordButton.Content" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+  </data>
+  <data name="Login_LoginButton.Content" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="Login_LoginWithOutlookButton.Text" xml:space="preserve">
+    <value>Đăng nhập với Outlook</value>
+  </data>
+  <data name="LoginForgotPassword_Title.Text" xml:space="preserve">
+    <value>Quên mật khẩu</value>
+  </data>
+  <data name="LoginForgotPassword_Caption01.Text" xml:space="preserve">
+    <value>Vui lòng nhập tên đăng nhập của tài khoản</value>
+  </data>
+  <data name="LoginForgotPassword_ContinueButton.Content" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="LoginForgotPassword_Caption02.Text" xml:space="preserve">
+    <value>Vui lòng kiểm tra và nhập vào bên dưới</value>
+  </data>
+  <data name="LoginForgotPassword_OTP.Text" xml:space="preserve">
+    <value>Mã OTP</value>
+  </data>
+  <data name="LoginForgotPassword_OTPTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập mã OTP</value>
+  </data>
+  <data name="LoginForgotPassword_RequestOTPButton.Content" xml:space="preserve">
+    <value>Gửi lại mã OTP</value>
+  </data>
+  <data name="LoginForgotPassword_NewPassword.Text" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="LoginForgotPassword_NewPasswordTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
+  </data>
+  <data name="LoginForgotPassword_ConfirmNewPassword.Text" xml:space="preserve">
+    <value>Xác nhận lại mật khẩu</value>
+  </data>
+  <data name="LoginForgotPassword_ConfirmNewPasswordTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
+  </data>
+  <data name="LoginForgotPassword_Caption03.Text" xml:space="preserve">
+    <value>Vui lòng nhập mật khẩu mới</value>
+  </data>
 </root>

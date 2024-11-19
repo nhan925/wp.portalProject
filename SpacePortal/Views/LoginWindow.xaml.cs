@@ -26,6 +26,27 @@ public sealed partial class LoginWindow : Window
     {
         this.InitializeComponent();
 
-        LoginFrame.Navigate(typeof(LoginForgotPasswordPage01));
+        LoginFrame.Navigate(typeof(LoginWelcomePage), this);
+    }
+
+
+    public void NavigateToConfirmUserNamePage()
+    {
+        LoginFrame.Navigate(typeof(LoginForgotPasswordPage01), this);
+    }
+
+    public void NavigateToConfirmOTPPage()    
+    {
+        LoginFrame.Navigate(typeof(LoginForgotPasswordPage02), this);
+    }
+
+    public void NavigateToCreateNewPasswordPage()
+    {
+        LoginFrame.Navigate(typeof(LoginForgotPasswordPage03), this);
+    }
+
+    public void NavigateToWelcomePage()
+    {
+        LoginFrame.Navigate(typeof(LoginWelcomePage), this);
     }
 }

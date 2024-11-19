@@ -22,8 +22,37 @@ namespace SpacePortal.Views;
 /// </summary>
 public sealed partial class LoginForgotPasswordPage01 : Page
 {
+    private LoginWindow ParentWindow;
+
     public LoginForgotPasswordPage01()
     {
         this.InitializeComponent();
+    }
+
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        base.OnNavigatedTo(e);
+
+        if (e.Parameter is LoginWindow parentWindow)
+        {
+            ParentWindow = parentWindow;
+        }
+    }
+
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void ContinueButton_Click(object sender, RoutedEventArgs e)
+    {
+
+
+        ParentWindow.NavigateToConfirmOTPPage();
+    }
+
+    private void BackButton_Click(object sender, RoutedEventArgs e)
+    {
+        ParentWindow.NavigateToWelcomePage();
     }
 }

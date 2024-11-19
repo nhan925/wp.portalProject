@@ -35,6 +35,8 @@
     <None Remove="BlankWindow1.xaml" />
     <None Remove="Views\EstimateAverageGradeDialog.xaml" />
     <None Remove="Views\LoginForgotPasswordPage01.xaml" />
+    <None Remove="Views\LoginForgotPasswordPage02.xaml" />
+    <None Remove="Views\LoginForgotPasswordPage03.xaml" />
     <None Remove="Views\LoginWelcomePage.xaml" />
     <None Remove="Views\LoginWindow.xaml" />
     <None Remove="Views\RequestPhysicalTranscriptDialog.xaml" />
@@ -119,6 +121,12 @@
     <None Update="Assets\WindowIcon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\LoginForgotPasswordPage03.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\LoginForgotPasswordPage02.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\LoginForgotPasswordPage01.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
