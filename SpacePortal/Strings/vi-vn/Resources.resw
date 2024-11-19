@@ -537,4 +537,22 @@
   <data name="GradesPage_EstimateAverageGradeComboBox.PlaceholderText" xml:space="preserve">
     <value>Chọn loại bằng</value>
   </data>
+  <data name="AppFeedback_FeedbackTitle.Text" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="AppFeedback_FeedbackType.Text" xml:space="preserve">
+    <value>Góp ý</value>
+  </data>
+  <data name="AppFeedback_ErrorType.Text" xml:space="preserve">
+    <value>Báo lỗi</value>
+  </data>
+  <data name="AppFeedback_Classification.Text" xml:space="preserve">
+    <value>Phân loại</value>
+  </data>
+  <data name="AppFeedback_InputInstruction.Text" xml:space="preserve">
+    <value>Nhập nội dung tại đây</value>
+  </data>
+  <data name="AppFeedback_SendButton.Text" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
 </root>
