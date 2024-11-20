@@ -549,10 +549,25 @@
   <data name="AppFeedback_Classification.Text" xml:space="preserve">
     <value>Phân loại</value>
   </data>
-  <data name="AppFeedback_InputInstruction.Text" xml:space="preserve">
+  <data name="AppFeedback_InputInstruction.PlaceholderText" xml:space="preserve">
     <value>Nhập nội dung tại đây</value>
   </data>
   <data name="AppFeedback_SendButton.Text" xml:space="preserve">
     <value>Gửi</value>
+  </data>
+  <data name="AppFeedback_EmptyFeedback.Text" xml:space="preserve">
+    <value>Phản hồi không thể để trống. Vui lòng nhập phản hồi của bạn.</value>
+  </data>
+  <data name="AppFeedback_FeedbackTooShort.Text" xml:space="preserve">
+    <value>Phản hồi phải có ít nhất 10 ký tự. Vui lòng cung cấp thêm chi tiết.</value>
+  </data>
+  <data name="AppFeedback_FeedbackTooLong.Text" xml:space="preserve">
+    <value>Phản hồi không được vượt quá 500 ký tự. Vui lòng rút gọn nội dung.</value>
+  </data>
+  <data name="AppFeedback_SuccessTitleDialog.Text" xml:space="preserve">
+    <value>Cảm Ơn Bạn!</value>
+  </data>
+  <data name="AppFeedback_SuccessMessageDialog.Text" xml:space="preserve">
+    <value>Phản hồi của bạn đã được ghi nhận.</value>
   </data>
 </root>

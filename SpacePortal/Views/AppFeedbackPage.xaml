@@ -32,7 +32,7 @@
               Margin="36, 36, 36, 36" Padding="36" RowSpacing="16" ColumnSpacing="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*" MinHeight="30"/>
+                <RowDefinition Height="*" MinHeight="35"/>
                 <RowDefinition Height="12*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -49,12 +49,15 @@
                        HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Run x:Uid="AppFeedback_Classification"/>: <Run/>
             </TextBlock>
-            <ComboBox Name="FeedbackClassificationComboBox" Grid.Column="1" Grid.Row="1" Width="112" FontSize="20" 
-                      HorizontalAlignment="Center" VerticalAlignment="Center"
+            <ComboBox Name="FeedbackClassificationComboBox" Grid.Column="1" Grid.Row="1" Width="112" FontSize="16"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                      ItemsSource="{x:Bind ViewModel.TypeItemComboBox}"
                       SelectionChanged="FeedbackClassificationComboBox_SelectionChanged" />
 
             <TextBox Name="FeedbackTextBox" Grid.Row="2" Grid.ColumnSpan="2"
                      Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                     Text="{x:Bind ViewModel.EditContent, Mode = Twoway}"
+                     x:Uid="AppFeedback_InputInstruction"
                      Margin="16,0,16,0"
                      FontSize="14"
                      CornerRadius="4"
