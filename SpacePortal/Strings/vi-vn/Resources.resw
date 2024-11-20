@@ -576,4 +576,16 @@
   <data name="ChooseCourses_StudiedCourses.Text" xml:space="preserve">
     <value>HỌC CẢI THIỆN &amp; HỌC LẠI</value>
   </data>
+  <data name="ChooseCourses_CoursesIdHeader.HeaderText" xml:space="preserve">
+    <value>Mã môn</value>
+  </data>
+  <data name="ChooseCourses_CoursesNameHeader.HeaderText" xml:space="preserve">
+    <value>Tên môn</value>
+  </data>
+  <data name="ChooseCourses_CreditsHeader.HeaderText" xml:space="preserve">
+    <value>Số TC</value>
+  </data>
+  <data name="ChooseCourses_ClassHeader.HeaderText" xml:space="preserve">
+    <value>Lớp</value>
+  </data>
 </root>

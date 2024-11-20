@@ -158,6 +158,7 @@
                                    VerticalAlignment="Stretch"
                                    GridLinesVisibility="Horizontal"
                                    CornerRadius="10"
+                                   NavigationMode="Row"
                                    BorderBrush="Transparent"
                                    QueryRowHeight="sfDataGrid_QueryRowHeight"
                                    Visibility="Collapsed"

@@ -5,6 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:models="using:SpacePortal.Models"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.DataGrid" 
+    xmlns:syncfusion1="using:Syncfusion.UI.Xaml.Grids"
     mc:Ignorable="d">
 
     <ScrollView VerticalScrollBarVisibility="Auto">
@@ -21,16 +24,16 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="380" />
+                <RowDefinition Height="350" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="380" />
+                <RowDefinition Height="350" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="4*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Style="{ThemeResource SubtitleTextBlockStyle}" Text="{x:Bind ViewModel.Informations.Title, Mode=OneWay}"/>
+            <TextBlock Grid.Row="0" Grid.Column="0" Style="{ThemeResource SubtitleTextBlockStyle}" Text="{x:Bind ViewModel.Informations.Title, Mode=OneWay}" VerticalAlignment="Center"/>
 
             <Grid Grid.Row="1" Grid.ColumnSpan="2" Style="{ThemeResource cardStyle}" ColumnSpacing="24" RowSpacing="12" Padding="20">
                 <Grid.RowDefinitions>
@@ -66,6 +69,7 @@
             </Grid>
 
             <AutoSuggestBox x:Uid="ChooseCourses_SearchBox"
+                            TextChanged="AutoSuggestBox_TextChanged"
                             Margin="0,12,150,0"
                             Grid.Row="2"
                             Grid.Column="0"
@@ -73,20 +77,121 @@
 
             <TextBlock x:Uid="ChooseCourses_RegisteredCoursesList" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="2" Grid.Column="1" Margin="0,12,0,0" VerticalAlignment="Center"/>
 
-            <labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="0" CornerRadius="10"/>
-            <Grid Grid.Row="3" Grid.Column="0" Style="{ThemeResource cardStyle}" Visibility="Collapsed">
-                
+            <labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="0" CornerRadius="10" x:Name="UnregisteredCoursesListLoading"/>
+            <Grid Grid.Row="3" Grid.Column="0" Style="{ThemeResource cardStyle}" Visibility="Collapsed" x:Name="UnregisteredCoursesList">
+                <syncfusion:SfDataGrid
+                        CellDoubleTapped="UnregisteredCoursesList_CellDoubleTapped"                        
+                        SelectionUnit="Row"
+                        NavigationMode="Row"
+                        AutoGenerateColumns="False"
+                        AllowSorting="True"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        ItemsSource="{x:Bind ViewModel.UnregisteresCoursesSearch, Mode=OneWay}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        GridLinesVisibility="Horizontal"
+                        CornerRadius="10"
+                        BorderBrush="Transparent"
+                        QueryRowHeight="sfDataGrid_QueryRowHeight"
+                        ColumnWidthMode="AutoWithLastColumnFill">
+
+                    <syncfusion:SfDataGrid.Resources>
+                        <Style TargetType="syncfusion:GridHeaderCellControl">
+                            <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
+                            <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                            <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
+                        </Style>
+                        <Style TargetType="syncfusion:DataGridRowControl">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
+                        </Style>
+                    </syncfusion:SfDataGrid.Resources>
+
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CoursesIdHeader" MappingName="Id" Width="100" TextAlignment="Center"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CoursesNameHeader" MappingName="Name" MinimumWidth="100" />
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CreditsHeader" MappingName="Credits" Width="90" TextAlignment="Center"/>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
             </Grid>
 
-            <labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="1" CornerRadius="10"/>
-            <Grid Grid.Row="3" Grid.Column="1" Style="{ThemeResource cardStyle}" Visibility="Collapsed">
+            <labs:Shimmer Visibility="Visible" Grid.Column="1" Grid.RowSpan="3" Grid.Row="3" CornerRadius="10" x:Name="RegisteredCoursesListLoading"/>
+            <Grid Grid.Column="1" Grid.RowSpan="3" Grid.Row="3" Style="{ThemeResource cardStyle}" Visibility="Collapsed"  x:Name="RegisteredCoursesList">
+                <syncfusion:SfDataGrid
+                       SelectionUnit="Row"
+                       NavigationMode="Row"
+                       CellDoubleTapped="RegisteredCoursesList_CellDoubleTapped"
+                       AutoGenerateColumns="True"
+                       AllowSorting="True"
+                       ScrollViewer.VerticalScrollBarVisibility="Auto"
+                       ItemsSource="{x:Bind ViewModel.Informations.RegisteredCourses, Mode=OneWay}"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Stretch"
+                       GridLinesVisibility="Horizontal"
+                       CornerRadius="10"
+                       BorderBrush="Transparent"
+                       QueryRowHeight="sfDataGrid_QueryRowHeight"
+                       ColumnWidthMode="AutoWithLastColumnFill">
 
+                    <syncfusion:SfDataGrid.Resources>
+                        <Style TargetType="syncfusion:GridHeaderCellControl">
+                            <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
+                            <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                            <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
+                        </Style>
+                        <Style TargetType="syncfusion:DataGridRowControl">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
+                        </Style>
+                    </syncfusion:SfDataGrid.Resources>
+
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CoursesIdHeader" MappingName="Id" Width="100" TextAlignment="Center"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CoursesNameHeader" MappingName="Name" MinimumWidth="100" />
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CreditsHeader" MappingName="Credits" Width="90" TextAlignment="Center"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_ClassHeader" MappingName="ClassName" Width="150"/>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
             </Grid>
 
-            <TextBlock x:Uid="ChooseCourses_StudiedCourses" Grid.Row="4" Grid.ColumnSpan="2" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,12,0,0" />
-            <labs:Shimmer Visibility="Visible" Grid.Row="5" Grid.ColumnSpan="2" CornerRadius="10"/>
-            <Grid Grid.Row="5" Grid.ColumnSpan="2" Style="{ThemeResource cardStyle}" Visibility="Collapsed">
+            <TextBlock x:Uid="ChooseCourses_StudiedCourses" Grid.Row="4" Grid.ColumnSpan="2" Style="{ThemeResource SubtitleTextBlockStyle}" />
+            <labs:Shimmer Visibility="Visible" Grid.Row="5" Grid.Column="0" CornerRadius="10" x:Name="StudiedCoursesListLoading"/>
+            
+            <Grid Grid.Row="5" Grid.Column="0" Style="{ThemeResource cardStyle}" Visibility="Collapsed" x:Name="StudiedCoursesList">
+                <syncfusion:SfDataGrid
+                        SelectionUnit="Row"
+                        NavigationMode="Row"
+                        CellDoubleTapped="StudiedCoursesList_CellDoubleTapped"
+                        AutoGenerateColumns="False"
+                        AllowSorting="True"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        ItemsSource="{x:Bind ViewModel.Informations.StudiedCourses, Mode=OneWay}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        GridLinesVisibility="Horizontal"
+                        CornerRadius="10"
+                        BorderBrush="Transparent"
+                        QueryRowHeight="sfDataGrid_QueryRowHeight"
+                        ColumnWidthMode="AutoWithLastColumnFill">
 
+                    <syncfusion:SfDataGrid.Resources>
+                        <Style TargetType="syncfusion:GridHeaderCellControl">
+                            <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
+                            <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                            <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
+                        </Style>
+                        <Style TargetType="syncfusion:DataGridRowControl">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
+                        </Style>
+                    </syncfusion:SfDataGrid.Resources>
+
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CoursesIdHeader" MappingName="Id" Width="100" TextAlignment="Center"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CoursesNameHeader" MappingName="Name" MinimumWidth="100" />
+                        <syncfusion:GridTextColumn x:Uid="ChooseCourses_CreditsHeader" MappingName="Credits" Width="90" TextAlignment="Center"/>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
             </Grid>
         </Grid>
     </ScrollView>
