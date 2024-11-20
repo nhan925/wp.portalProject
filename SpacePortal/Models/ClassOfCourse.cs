@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpacePortal.Models;
 
-public class Course: INotifyPropertyChanged
+public class ClassOfCourse: INotifyPropertyChanged
 {
     public string Id
     {
@@ -16,15 +16,30 @@ public class Course: INotifyPropertyChanged
 
     public string Name
     {
-        get; set;
+        get; set; 
     }
 
-    public int Credits
+    public string Day
     {
         get; set;
     }
 
-    public string ClassName
+    public string Time
+    {
+        get; set;
+    }
+
+    public string Room
+    {
+        get; set;
+    }
+
+    public int MaxSlot 
+    { 
+        get; set; 
+    }
+
+    public int RegisteredSlot
     {
         get; set;
     }

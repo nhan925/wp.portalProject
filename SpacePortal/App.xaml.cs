@@ -96,6 +96,8 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<ChooseClassesViewModel>();
+            services.AddTransient<ChooseClassesPage>();
             services.AddTransient<ChooseCoursesViewModel>();
             services.AddTransient<ChooseCoursesPage>();
             services.AddTransient<SettingsViewModel>();
@@ -142,6 +144,7 @@ public partial class App : Application
             services.AddSingleton<IDao<InformationsForGradesPage_GradesRow>,InformationsForGradesPageDao>();
             services.AddSingleton<IDao<CoursesRegistrationPeriodInformation>, CoursesRegistrationPeriodInformationDao>();
             services.AddSingleton<IDao<ChooseCoursesInformations>, ChooseCoursesInformationsDao>();
+            services.AddSingleton<IDao<ChooseClassesInformations>, ChooseClassesInformationsDao>();
         }).
         Build();
          

@@ -79,7 +79,7 @@
 
             <labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="0" CornerRadius="10" x:Name="UnregisteredCoursesListLoading"/>
             <Grid Grid.Row="3" Grid.Column="0" Style="{ThemeResource cardStyle}" Visibility="Collapsed" x:Name="UnregisteredCoursesList">
-                <syncfusion:SfDataGrid
+                <syncfusion:SfDataGrid x:Name="UnregisteredCoursesDataGrid"
                         CellDoubleTapped="UnregisteredCoursesList_CellDoubleTapped"                        
                         SelectionUnit="Row"
                         NavigationMode="Row"
@@ -105,6 +105,7 @@
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
                         </Style>
+                        <SolidColorBrush x:Key="SyncfusionDataGridRowSelectedBackground" Color="Transparent"/>
                     </syncfusion:SfDataGrid.Resources>
 
                     <syncfusion:SfDataGrid.Columns>
@@ -143,6 +144,7 @@
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
                         </Style>
+                        <SolidColorBrush x:Key="SyncfusionDataGridRowSelectedBackground" Color="Transparent"/>
                     </syncfusion:SfDataGrid.Resources>
 
                     <syncfusion:SfDataGrid.Columns>
@@ -158,7 +160,7 @@
             <labs:Shimmer Visibility="Visible" Grid.Row="5" Grid.Column="0" CornerRadius="10" x:Name="StudiedCoursesListLoading"/>
             
             <Grid Grid.Row="5" Grid.Column="0" Style="{ThemeResource cardStyle}" Visibility="Collapsed" x:Name="StudiedCoursesList">
-                <syncfusion:SfDataGrid
+                <syncfusion:SfDataGrid x:Name="StudiedCoursesDataGrid"
                         SelectionUnit="Row"
                         NavigationMode="Row"
                         CellDoubleTapped="StudiedCoursesList_CellDoubleTapped"
@@ -184,6 +186,7 @@
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
                         </Style>
+                        <SolidColorBrush x:Key="SyncfusionDataGridRowSelectedBackground" Color="Transparent"/>
                     </syncfusion:SfDataGrid.Resources>
 
                     <syncfusion:SfDataGrid.Columns>

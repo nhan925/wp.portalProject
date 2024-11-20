@@ -1,8 +1,11 @@
 ﻿using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Services;
+using SpacePortal.Helpers;
 using SpacePortal.Models;
+using Sprache;
 
 namespace SpacePortal.ViewModels;
 
@@ -15,22 +18,29 @@ public partial class ChooseCoursesViewModel : ObservableRecipient
 
     public ObservableCollection<Course> UnregisteresCoursesSearch { get; set; }
 
-    private string _periodId;
+    public string PeriodId
+    {
+        get; set;
+    }
 
     public void LoadInformations(int periodId, string title)
     {
-        _periodId = periodId.ToString();
-        Informations = App.GetService<IDao<ChooseCoursesInformations>>().GetById(_periodId);
+        PeriodId = periodId.ToString();
+        Informations = App.GetService<IDao<ChooseCoursesInformations>>().GetById(PeriodId);
         Informations.Title = title.ToUpper();
         UnregisteresCoursesSearch = new ObservableCollection<Course>(Informations.UnregisteredCourses);
     }
 
+    // Full-text search
     public void SearchUnregisteredCourses(string search)
     {
         if (!string.IsNullOrWhiteSpace(search))
         {
-            UnregisteresCoursesSearch = new ObservableCollection<Course>(Informations.UnregisteredCourses
-                .Where(c => c.Name.ToLower().Contains(search.ToLower()) || c.Id.ToLower().Contains(search.ToLower())));
+            var normalizedSearch = Regex.Replace(search.Trim(), @"\s+", " ").NormalizeSearch();
+            UnregisteresCoursesSearch = new ObservableCollection<Course>(
+                Informations.UnregisteredCourses.Where(c =>
+                    c.Name.NormalizeSearch().Contains(normalizedSearch) ||
+                    c.Id.NormalizeSearch().Contains(normalizedSearch)));
         }
         else
         {

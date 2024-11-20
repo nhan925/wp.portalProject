@@ -1,15 +1,19 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using Microsoft.Windows.ApplicationModel.Resources;
 using SpacePortal.Contracts.Services;
 using SpacePortal.Models;
 using SpacePortal.ViewModels;
 using Syncfusion.UI.Xaml.DataGrid;
+using Windows.Graphics.Printing.PrintSupport;
 
 namespace SpacePortal.Views;
 
 public sealed partial class ChooseCoursesPage : Page
 {
+    private readonly ResourceLoader resourceLoader = new();
+
     public ChooseCoursesViewModel ViewModel
     {
         get;
@@ -36,6 +40,14 @@ public sealed partial class ChooseCoursesPage : Page
 
         StudiedCoursesList.Visibility = Visibility.Visible;
         StudiedCoursesListLoading.Visibility = Visibility.Collapsed;
+
+        if (ViewModel.Informations.RegisteredCredits >= ViewModel.Informations.MaxCredits)
+        {
+            UnregisteredCoursesDataGrid.IsEnabled = false;
+            UnregisteredCoursesList.Opacity = 0.5;
+            StudiedCoursesDataGrid.IsEnabled = false;
+            StudiedCoursesList.Opacity = 0.5;
+        }
     }
 
     private void sfDataGrid_QueryRowHeight(object sender, Syncfusion.UI.Xaml.DataGrid.QueryRowHeightEventArgs e)
@@ -55,19 +67,61 @@ public sealed partial class ChooseCoursesPage : Page
         ViewModel.SearchUnregisteredCourses(sender.Text);
     }
 
+    private void NavigateToChooseClassesPage(Course course, string status)
+    {
+        var info = new Tuple<string, string, string, string>(ViewModel.PeriodId, course.Id, course.Name, status);
+        
+        var navigationService = App.GetService<INavigationService>();
+        var pageKey = typeof(ChooseClassesViewModel).FullName ?? "SpacePortal.ViewModels.ChooseClassesViewModel";
+        if (pageKey != null)
+        {
+            navigationService.NavigateTo(pageKey, info);
+        }
+    }
+
+    private async void showAlertDialog()
+    {
+        var dialog = new ContentDialog
+        {
+            XamlRoot = this.XamlRoot,
+            Title = resourceLoader.GetString("ChooseCourses_AlertDialogTitle"),
+            Content = resourceLoader.GetString("ChooseCourses_AlertDialogMessage"),
+            CloseButtonText = resourceLoader.GetString("App_Close/Text"),
+            RequestedTheme = App.GetService<IThemeSelectorService>().Theme
+        };
+        await dialog.ShowAsync();
+    }
+
     private void UnregisteredCoursesList_CellDoubleTapped(object sender, GridCellDoubleTappedEventArgs e)
     {
         var record = e.Record as Course;
-        
+        if (ViewModel.Informations.RegisteredCredits + record.Credits > ViewModel.Informations.MaxCredits)
+        {
+            showAlertDialog();
+            return;
+        }
+
+        var status = resourceLoader.GetString("ChooseCourses_UnregisteredStatus");
+        NavigateToChooseClassesPage(record, status);
     }
 
     private void RegisteredCoursesList_CellDoubleTapped(object sender, GridCellDoubleTappedEventArgs e)
     {
         var record = e.Record as Course;
+        var status = resourceLoader.GetString("ChooseCourses_RegisteredStatus");
+        NavigateToChooseClassesPage(record, status);
     }
 
     private void StudiedCoursesList_CellDoubleTapped(object sender, GridCellDoubleTappedEventArgs e)
     {
         var record = e.Record as Course;
+        if (ViewModel.Informations.RegisteredCredits + record.Credits > ViewModel.Informations.MaxCredits)
+        {
+            showAlertDialog();
+            return;
+        }
+
+        var status = resourceLoader.GetString("ChooseCourses_StudiedStatus");
+        NavigateToChooseClassesPage(record, status);
     }
 }

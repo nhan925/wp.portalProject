@@ -276,4 +276,7 @@
   <data name="Shell_ChooseCourses.Content" xml:space="preserve">
     <value>ChooseCourses</value>
   </data>
+  <data name="Shell_ChooseClasses.Content" xml:space="preserve">
+    <value>ChooseClasses</value>
+  </data>
 </root>
