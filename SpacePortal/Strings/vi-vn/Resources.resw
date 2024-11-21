@@ -648,4 +648,25 @@
   <data name="ChooseCourses_AlertDialogMessage" xml:space="preserve">
     <value>Không thể đăng ký do số tín chỉ còn lại không đủ !</value>
   </data>
+  <data name="ChooseClasses_ConfirmTitle" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="ChooseClasses_DeleteOldResultAlert" xml:space="preserve">
+    <value>Khi thực hiện đăng ký, kết quả cũ sẽ bị xóa và không thể khôi phục !</value>
+  </data>
+  <data name="ChooseClasses_ContinueDialogButton" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="ChooseClasses_CancelCourseConfirmMessage" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn hủy đăng ký môn học này không ?</value>
+  </data>
+  <data name="ChooseClasses_CancelCourseTitleToast" xml:space="preserve">
+    <value>Hủy đăng ký</value>
+  </data>
+  <data name="ChooseClasses_CancelCourseMessageToast" xml:space="preserve">
+    <value>Môn học đã được hủy thành công.</value>
+  </data>
+  <data name="ChooseClasses_CancelCourseFailMessageToast" xml:space="preserve">
+    <value>Hủy thất bại !</value>
+  </data>
 </root>

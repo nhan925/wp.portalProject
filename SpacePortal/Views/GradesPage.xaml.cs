@@ -187,7 +187,7 @@ public sealed partial class GradesPage : Page
         base.OnNavigatedTo(e);
         await Task.Delay(10);
 
-        DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
+        DataGridLoadingShimmer.Visibility = Visibility.Collapsed;
         sfDataGrid.Visibility = Visibility.Visible;
     }
 }

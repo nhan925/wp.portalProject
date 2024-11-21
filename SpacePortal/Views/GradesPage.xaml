@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="using:Syncfusion.UI.Xaml.DataGrid" 
     xmlns:syncfusion1="using:Syncfusion.UI.Xaml.Grids"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -188,9 +189,10 @@
                     <syncfusion:GridTextColumn x:Uid="GradesPage_Note" MappingName="Note" TextAlignment="Center" Width="180"/>
                 </syncfusion:SfDataGrid.Columns>
             </syncfusion:SfDataGrid>
-            <Grid x:Name="DataGridLoadingOverlay">
+            <Grid x:Name="DataGridLoadingOverlay" Visibility="Collapsed">
                 <ProgressRing IsActive="True" Width="64" Height="64"/>
             </Grid>
+            <labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="0" CornerRadius="10" x:Name="DataGridLoadingShimmer"/>
         </Grid>
     </Grid>
 </Page>

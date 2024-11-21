@@ -74,6 +74,7 @@
             </Button>
         </Grid>
 
+        <ProgressRing Grid.Row="3" IsActive="True" Visibility="Collapsed" x:Name="ClassesListLoadingRing" Width="64" Height="64"/>
         <labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="0" CornerRadius="10" x:Name="ClassesListLoading"/>
         <Grid Grid.Row="3" Style="{ThemeResource cardStyle}" Visibility="Collapsed" x:Name="ClassesList">
             <syncfusion:SfDataGrid x:Name="ClassDataGrid"
@@ -126,9 +127,11 @@
                     Width="110"
                     Grid.Column="1" Click="Register_Button_Click" x:Uid="ChooseClasses_RegisterButton"/>
             <Button x:Name="Cancel_Button" Grid.Column="0" Click="Cancel_Button_Click" 
+                    Visibility="Collapsed"
                     Height="40"
                     Width="110"
                     x:Uid="ChooseClasses_CancelRegisterButton" />
         </Grid>
     </Grid>
+
 </Page>

@@ -37,4 +37,9 @@ public class ChooseClassesInformations : INotifyPropertyChanged
     {
         get; set;
     }
+
+    public string PeriodId 
+    {
+        get; set; 
+    }
 }
