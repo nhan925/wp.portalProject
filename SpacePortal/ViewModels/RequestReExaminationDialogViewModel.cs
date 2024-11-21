@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging.Abstractions;
 using SpacePortal.Models;
+using Microsoft.Windows.ApplicationModel.Resources;
+using SpacePortal.Core.Services;
+using System.Reflection.Metadata;
 
 
 namespace SpacePortal.ViewModels
@@ -159,13 +162,19 @@ namespace SpacePortal.ViewModels
 
         public void SendRequest()
         {
-            //TODO: Send request for re-examination
-            Debug.WriteLine(SelectedYear?.Year);
-            Debug.WriteLine(SelectedSemester);
-            Debug.WriteLine(SelectedSubject);
-            Debug.WriteLine(Score);
-            Debug.WriteLine(ClassID);
-            Debug.WriteLine(Note);
+            ResourceLoader resourceLoader = new ResourceLoader();
+            StringBuilder requestContent = new StringBuilder();
+            var status = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
+
+            requestContent.AppendLine(resourceLoader.GetString("GradesPage_RequestForReviewTitle"));
+            requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForReviewYear/Text")}: {SelectedYear?.Year}");
+            requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForReviewSemester/Text")}: {SelectedSemester}");
+            requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForReviewSubject/Text")}: {SelectedSubject}");
+            requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForReviewCurrentScore/Text")}: {Score}");
+            requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForReviewClass/Text")}: {ClassID}");
+            requestContent.Append($"{resourceLoader.GetString("GradesPage_RequestForReviewNote/Text")}: {Note}");
+
+            string result = App.GetService<ApiService>().Post<string>("/rpc/add_request", new { content = requestContent.ToString(), status });
         }
 
         public double Score

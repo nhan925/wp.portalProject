@@ -4,9 +4,66 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.DataGrid" 
+    xmlns:syncfusion1="using:Syncfusion.UI.Xaml.Grids"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Padding="36">
-        <TextBlock Text="Coming soon..."/>
+    <Page.Resources>
+        <Style x:Key="Title" TargetType="TextBlock" BasedOn="{StaticResource SubtitleTextBlockStyle}">
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+        </Style>
+
+        <Style x:Key="Card" TargetType="Grid">
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="36, 36, 36, 36">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Name="ListRequest" Style="{ThemeResource Title}" x:Uid="RequestPage_ListRequestTitle"  Grid.Row="0" TextAlignment="Left" />
+        <Grid Grid.Row="1" Style="{StaticResource Card}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,16,0,0">
+            <syncfusion:SfDataGrid x:Name="sfDataGrid"
+                    AutoGenerateColumns="False"
+                    AllowSorting="True"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    ItemsSource="{x:Bind ViewModel.Requests, Mode=OneWay}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    GridLinesVisibility="Horizontal"
+                    CornerRadius="10"
+                    BorderBrush="Transparent"
+                    QueryRowHeight="sfDataGrid_QueryRowHeight"
+                    Visibility="Collapsed"
+                    ColumnWidthMode="Star">
+
+                <syncfusion:SfDataGrid.Resources>
+                    <Style TargetType="syncfusion:GridHeaderCellControl">
+                        <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
+                        <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
+                    </Style>
+                    <Style TargetType="syncfusion:DataGridRowControl">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
+                    </Style>
+                </syncfusion:SfDataGrid.Resources>
+
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestNumber" MappingName="RequestId" TextAlignment="Center" Width="100"/>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestTitle" MappingName="RequestName" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestDate" MappingName="SubmittedAt" TextAlignment="Center" Width="200"/>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestStatus" MappingName="Status" TextAlignment="Center" Width="200"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+            <Grid x:Name="DataGridLoadingOverlay">
+                <ProgressRing IsActive="True" Width="64" Height="64"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

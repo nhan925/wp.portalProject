@@ -46,13 +46,15 @@ public sealed partial class RequestPhysicalTranscriptDialog : Page
 
     public void PrimaryButton_Click(ContentDialog sender, ContentDialogButtonClickEventArgs e)
     {
+        string selectedSemester = SemesterComboBox.SelectedItem?.ToString() ?? string.Empty;
+        string selectedYear = YearComboBox.SelectedItem?.ToString() ?? string.Empty;
         if (ViewModel.TotalTranscripts == 0)
         {
             e.Cancel = true;
         }
         else
         {
-            ViewModel.SendRequestForTranscripts();
+            ViewModel.SendRequestForTranscripts(selectedSemester,selectedYear);
         }
     }
 }

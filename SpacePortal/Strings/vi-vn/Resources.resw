@@ -570,4 +570,25 @@
   <data name="AppFeedback_SuccessMessageDialog.Text" xml:space="preserve">
     <value>Phản hồi của bạn đã được ghi nhận.</value>
   </data>
+  <data name="RequestPage_ListRequestTitle.Text" xml:space="preserve">
+    <value>DANH SÁCH YÊU CẦU</value>
+  </data>
+  <data name="RequestPage_ProcessingStatus.Text" xml:space="preserve">
+    <value>Đang xử lý</value>
+  </data>
+  <data name="RequestPage_CompletedStatus.Text" xml:space="preserve">
+    <value>Đã xử lý</value>
+  </data>
+  <data name="RequestPage_RequestNumber.HeaderText" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="RequestPage_RequestTitle.HeaderText" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="RequestPage_RequestDate.HeaderText" xml:space="preserve">
+    <value>Ngày gửi</value>
+  </data>
+  <data name="RequestPage_RequestStatus.HeaderText" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
 </root>
