@@ -60,6 +60,10 @@
                     <syncfusion:GridTextColumn x:Uid="RequestPage_RequestDate" MappingName="SubmittedAt" TextAlignment="Center" Width="200"/>
                     <syncfusion:GridTextColumn x:Uid="RequestPage_RequestStatus" MappingName="Status" TextAlignment="Center" Width="200"/>
                 </syncfusion:SfDataGrid.Columns>
+
+                <syncfusion:SfDataGrid.SortColumnDescriptions>
+                    <syncfusion1:SortColumnDescription ColumnName="SubmittedAt" SortDirection="Descending"/>
+                </syncfusion:SfDataGrid.SortColumnDescriptions>
             </syncfusion:SfDataGrid>
             <Grid x:Name="DataGridLoadingOverlay">
                 <ProgressRing IsActive="True" Width="64" Height="64"/>
