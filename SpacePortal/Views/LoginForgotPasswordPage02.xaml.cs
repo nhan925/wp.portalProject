@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using SpacePortal.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -23,11 +24,16 @@ namespace SpacePortal.Views
     /// </summary>
     public sealed partial class LoginForgotPasswordPage02 : Page
     {
+        public LoginWindowsViewModel ViewModel
+        {
+            get; set;
+        }
         private LoginWindow ParentWindow;
 
         public LoginForgotPasswordPage02()
         {
             this.InitializeComponent();
+            ViewModel = LoginWindowsViewModel.Instance;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -47,13 +53,26 @@ namespace SpacePortal.Views
 
         private void RequestOTPButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ViewModel.SendOTPMail();
         }
 
-        private void ContinueButton_Click(object sender, RoutedEventArgs e)
+        private void ConfirmOTPButton_Click(object sender, RoutedEventArgs e)
         {
+            if (ViewModel.ValidateOTP())
+            {
+                ParentWindow.NavigateToCreateNewPasswordPage();
+            }
+            else
+            {
+                ContentDialog dialog = new ContentDialog
+                {
+                    Title = "Xác thực thất bại",
+                    Content = "Mã OTP không chính xác",
+                    CloseButtonText = "OK"
+                };
+                _ = dialog.ShowAsync();
 
-            ParentWindow.NavigateToCreateNewPasswordPage();
+            }
         }
     }
 }

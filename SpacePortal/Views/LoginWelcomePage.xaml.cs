@@ -31,8 +31,8 @@ public sealed partial class LoginWelcomePage : Page
     public LoginWelcomePage()
     {
         this.InitializeComponent(); 
-        ViewModel = new LoginWindowsViewModel();
-        
+        ViewModel = LoginWindowsViewModel.Instance;
+
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -51,7 +51,7 @@ public sealed partial class LoginWelcomePage : Page
         
         if (ViewModel.CheckLoginWithRawInformation())
         {
-            //Open Main Window
+            //Navigate To SpacePortal
         }
         else
         {

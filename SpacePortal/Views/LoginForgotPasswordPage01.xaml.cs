@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using SpacePortal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -22,11 +23,16 @@ namespace SpacePortal.Views;
 /// </summary>
 public sealed partial class LoginForgotPasswordPage01 : Page
 {
+    public LoginWindowsViewModel ViewModel
+    {
+        get; set;
+    }
     private LoginWindow ParentWindow;
 
     public LoginForgotPasswordPage01()
     {
         this.InitializeComponent();
+        ViewModel = LoginWindowsViewModel.Instance;
     }
 
     protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -39,20 +45,28 @@ public sealed partial class LoginForgotPasswordPage01 : Page
         }
     }
 
-    private void Button_Click(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-    private void ContinueButton_Click(object sender, RoutedEventArgs e)
-    {
-
-
-        ParentWindow.NavigateToConfirmOTPPage();
-    }
 
     private void BackButton_Click(object sender, RoutedEventArgs e)
     {
         ParentWindow.NavigateToWelcomePage();
+    }
+
+    private void ConfirmUserNameButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (ViewModel.CheckUserNameAndSendOTP())
+        {
+            ParentWindow.NavigateToConfirmOTPPage();
+        }
+        else
+        {
+            ContentDialog dialog = new ContentDialog
+            {
+                Title = "Lỗi",
+                Content = "Tên đăng nhập không chính xác",
+                CloseButtonText = "Đóng",
+                XamlRoot = this.XamlRoot
+            };
+            _ = dialog.ShowAsync();
+        }
     }
 }
