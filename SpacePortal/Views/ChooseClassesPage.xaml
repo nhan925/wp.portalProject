@@ -10,128 +10,130 @@
     xmlns:syncfusion1="using:Syncfusion.UI.Xaml.Grids"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Padding="36" RowSpacing="16" ColumnSpacing="24">
-        <Grid.Resources>
-            <Style x:Key="cardStyle" TargetType="Grid">
-                <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
-                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="CornerRadius" Value="10"/>
-            </Style>
-        </Grid.Resources>
+    <Grid>
+        <ProgressRing IsActive="True" Visibility="Collapsed" x:Name="PageLoadingOverlay" Width="64" Height="64"/>
+        <Grid x:Name="ContentArea" Padding="36" RowSpacing="16" ColumnSpacing="24">
+            <Grid.Resources>
+                <Style x:Key="cardStyle" TargetType="Grid">
+                    <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                    <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Grid.Resources>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="0" Style="{ThemeResource SubtitleTextBlockStyle}" x:Uid="ChooseClasses_CoursesInfo" VerticalAlignment="Center"/>
-
-        <Grid Grid.Row="1" Style="{ThemeResource cardStyle}" ColumnSpacing="60" RowSpacing="12" Padding="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
 
-            <TextBlock Opacity="0.8" Grid.Column="0" Grid.Row="0" Style="{ThemeResource BodyStrongTextBlockStyle}">
-                <Run x:Uid="ChooseClasses_CourseId"/>:
-            </TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="0" Text="{x:Bind ViewModel.Informations.CourseId, Mode=OneWay}" HorizontalTextAlignment="Right"/>
+            <TextBlock Grid.Row="0" Style="{ThemeResource SubtitleTextBlockStyle}" x:Uid="ChooseClasses_CoursesInfo" VerticalAlignment="Center"/>
 
-            <TextBlock Opacity="0.8" Grid.Column="0" Grid.Row="1" Style="{ThemeResource BodyStrongTextBlockStyle}">
-                <Run x:Uid="ChooseClasses_NumberOfClasses"/>:
-            </TextBlock>
-            <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind ViewModel.Informations.NumberOfClasses, Mode=OneWay}" HorizontalTextAlignment="Right"/>
+            <Grid Grid.Row="1" Style="{ThemeResource cardStyle}" ColumnSpacing="60" RowSpacing="12" Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <TextBlock Opacity="0.8" Grid.Column="2" Grid.Row="0" Margin="140, 0, 0, 0" Style="{ThemeResource BodyStrongTextBlockStyle}">
-                <Run x:Uid="ChooseClasses_CourseName"/>:
-            </TextBlock>
-            <TextBlock Grid.Column="3" Grid.Row="0" Text="{x:Bind ViewModel.Informations.CourseName, Mode=OneWay}" HorizontalTextAlignment="Right"/>
+                <TextBlock Opacity="0.8" Grid.Column="0" Grid.Row="0" Style="{ThemeResource BodyStrongTextBlockStyle}">
+                    <Run x:Uid="ChooseClasses_CourseId"/>:
+                </TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{x:Bind ViewModel.Informations.CourseId, Mode=OneWay}" HorizontalTextAlignment="Right"/>
 
-            <TextBlock Opacity="0.8" Grid.Column="2" Grid.Row="1" Margin="140, 0, 0, 0" Style="{ThemeResource BodyStrongTextBlockStyle}">
-                <Run x:Uid="ChooseClasses_Status"/>:
-            </TextBlock>
-            <TextBlock Grid.Column="3" Grid.Row="1" Text="{x:Bind ViewModel.Informations.Status, Mode=OneWay}" HorizontalTextAlignment="Right"/>
-        </Grid>
+                <TextBlock Opacity="0.8" Grid.Column="0" Grid.Row="1" Style="{ThemeResource BodyStrongTextBlockStyle}">
+                    <Run x:Uid="ChooseClasses_NumberOfClasses"/>:
+                </TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="{x:Bind ViewModel.Informations.NumberOfClasses, Mode=OneWay}" HorizontalTextAlignment="Right"/>
 
-        <Grid Grid.Row="2" Margin="0,8,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Style="{ThemeResource SubtitleTextBlockStyle}" x:Uid="ChooseClasses_ClassesList" VerticalAlignment="Center"/>
-            <Button Grid.Column="1" Height="40" Width="40" VerticalAlignment="Center" Click="Refresh_Click" HorizontalAlignment="Right">
-                <Image Source="/Assets/refresh.png"/>
-            </Button>
-        </Grid>
+                <TextBlock Opacity="0.8" Grid.Column="2" Grid.Row="0" Margin="140, 0, 0, 0" Style="{ThemeResource BodyStrongTextBlockStyle}">
+                    <Run x:Uid="ChooseClasses_CourseName"/>:
+                </TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="0" Text="{x:Bind ViewModel.Informations.CourseName, Mode=OneWay}" HorizontalTextAlignment="Right"/>
 
-        <ProgressRing Grid.Row="3" IsActive="True" Visibility="Collapsed" x:Name="ClassesListLoadingRing" Width="64" Height="64"/>
-        <labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="0" CornerRadius="10" x:Name="ClassesListLoading"/>
-        <Grid Grid.Row="3" Style="{ThemeResource cardStyle}" Visibility="Collapsed" x:Name="ClassesList">
-            <syncfusion:SfDataGrid x:Name="ClassDataGrid"
-                    CellDoubleTapped="ClassesList_CellDoubleTapped"                        
-                    SelectionUnit="Row"
-                    NavigationMode="Row"
-                    AutoGenerateColumns="False"
-                    AllowSorting="True"
-                    ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    ItemsSource="{x:Bind ViewModel.Informations.Classes, Mode=OneWay}"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    GridLinesVisibility="Horizontal"
-                    CornerRadius="10"
-                    BorderBrush="Transparent"
-                    QueryRowHeight="sfDataGrid_QueryRowHeight"
-                    ColumnWidthMode="AutoWithLastColumnFill">
+                <TextBlock Opacity="0.8" Grid.Column="2" Grid.Row="1" Margin="140, 0, 0, 0" Style="{ThemeResource BodyStrongTextBlockStyle}">
+                    <Run x:Uid="ChooseClasses_Status"/>:
+                </TextBlock>
+                <TextBlock Grid.Column="3" Grid.Row="1" Text="{x:Bind ViewModel.Informations.Status, Mode=OneWay}" HorizontalTextAlignment="Right"/>
+            </Grid>
 
-                <syncfusion:SfDataGrid.Resources>
-                    <Style TargetType="syncfusion:GridHeaderCellControl">
-                        <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
-                        <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                        <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
-                    </Style>
-                    <Style TargetType="syncfusion:DataGridRowControl">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
-                    </Style>
-                    <SolidColorBrush x:Key="SyncfusionDataGridRowSelectedBackground" Color="LimeGreen"/>
-                </syncfusion:SfDataGrid.Resources>
+            <Grid Grid.Row="2" Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Style="{ThemeResource SubtitleTextBlockStyle}" x:Uid="ChooseClasses_ClassesList" VerticalAlignment="Center"/>
+                <Button Grid.Column="1" Height="40" Width="40" VerticalAlignment="Center" Click="Refresh_Click" HorizontalAlignment="Right">
+                    <Image Source="/Assets/refresh.png"/>
+                </Button>
+            </Grid>
 
-                <syncfusion:SfDataGrid.Columns>
-                    <syncfusion:GridTextColumn x:Uid="ChooseClasses_ClassId" MappingName="Id" TextAlignment="Center" Width="140"/>
-                    <syncfusion:GridTextColumn x:Uid="ChooseClasses_ClassName" MappingName="Name" TextAlignment="Center" MinimumWidth="140"/>
-                    <syncfusion:GridTextColumn x:Uid="ChooseClasses_Day" MappingName="Day" TextAlignment="Center" Width="140"/>
-                    <syncfusion:GridTextColumn x:Uid="ChooseClasses_Time" MappingName="Time" TextAlignment="Center" Width="140"/>
-                    <syncfusion:GridTextColumn x:Uid="ChooseClasses_Room" MappingName="Room" TextAlignment="Center" Width="140"/>
-                    <syncfusion:GridTextColumn x:Uid="ChooseClasses_MaxSlot" MappingName="MaxSlot" TextAlignment="Center" Width="140"/>
-                    <syncfusion:GridTextColumn x:Uid="ChooseClasses_RegisteredSlot" MappingName="RegisteredSlot" TextAlignment="Center" Width="140"/>
-                </syncfusion:SfDataGrid.Columns>
-            </syncfusion:SfDataGrid>
-        </Grid>
-        <Grid Grid.Row="4" Margin="0,8,0,0" HorizontalAlignment="Right" ColumnSpacing="16">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <Button x:Name="Register_Button" Style="{ThemeResource AccentButtonStyle}" 
-                    Height="40"
-                    Width="110"
-                    Grid.Column="1" Click="Register_Button_Click" x:Uid="ChooseClasses_RegisterButton"/>
-            <Button x:Name="Cancel_Button" Grid.Column="0" Click="Cancel_Button_Click" 
-                    Visibility="Collapsed"
-                    Height="40"
-                    Width="110"
-                    x:Uid="ChooseClasses_CancelRegisterButton" />
+            <ProgressRing Grid.Row="3" IsActive="True" Visibility="Collapsed" x:Name="ClassesListLoadingRing" Width="64" Height="64"/>
+            <labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="0" CornerRadius="10" x:Name="ClassesListLoading"/>
+            <Grid Grid.Row="3" Style="{ThemeResource cardStyle}" Visibility="Collapsed" x:Name="ClassesList">
+                <syncfusion:SfDataGrid x:Name="ClassDataGrid"
+                        CellDoubleTapped="ClassesList_CellDoubleTapped"                        
+                        SelectionUnit="Row"
+                        NavigationMode="Row"
+                        AutoGenerateColumns="False"
+                        AllowSorting="True"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        ItemsSource="{x:Bind ViewModel.Informations.Classes, Mode=OneWay}"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch"
+                        GridLinesVisibility="Horizontal"
+                        CornerRadius="10"
+                        BorderBrush="Transparent"
+                        QueryRowHeight="sfDataGrid_QueryRowHeight"
+                        ColumnWidthMode="AutoWithLastColumnFill">
+
+                    <syncfusion:SfDataGrid.Resources>
+                        <Style TargetType="syncfusion:GridHeaderCellControl">
+                            <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
+                            <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                            <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
+                        </Style>
+                        <Style TargetType="syncfusion:DataGridRowControl">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
+                        </Style>
+                        <SolidColorBrush x:Key="SyncfusionDataGridRowSelectedBackground" Color="LimeGreen"/>
+                    </syncfusion:SfDataGrid.Resources>
+
+                    <syncfusion:SfDataGrid.Columns>
+                        <syncfusion:GridTextColumn x:Uid="ChooseClasses_ClassId" MappingName="Id" TextAlignment="Center" Width="140"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseClasses_ClassName" MappingName="Name" TextAlignment="Center" MinimumWidth="140"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseClasses_Day" MappingName="Day" TextAlignment="Center" Width="140"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseClasses_Time" MappingName="Time" TextAlignment="Center" Width="140"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseClasses_Room" MappingName="Room" TextAlignment="Center" Width="140"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseClasses_MaxSlot" MappingName="MaxSlot" TextAlignment="Center" Width="140"/>
+                        <syncfusion:GridTextColumn x:Uid="ChooseClasses_RegisteredSlot" MappingName="RegisteredSlot" TextAlignment="Center" Width="140"/>
+                    </syncfusion:SfDataGrid.Columns>
+                </syncfusion:SfDataGrid>
+            </Grid>
+            <Grid Grid.Row="4" Margin="0,8,0,0" HorizontalAlignment="Right" ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Register_Button" Style="{ThemeResource AccentButtonStyle}" 
+                        Height="40"
+                        Width="110"
+                        Grid.Column="1" Click="Register_Button_Click" x:Uid="ChooseClasses_RegisterButton"/>
+                <Button x:Name="Cancel_Button" Grid.Column="0" Click="Cancel_Button_Click" 
+                        Visibility="Collapsed"
+                        Height="40"
+                        Width="110"
+                        x:Uid="ChooseClasses_CancelRegisterButton" />
+            </Grid>
         </Grid>
     </Grid>
-
 </Page>

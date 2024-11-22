@@ -669,4 +669,19 @@
   <data name="ChooseClasses_CancelCourseFailMessageToast" xml:space="preserve">
     <value>Hủy thất bại !</value>
   </data>
+  <data name="ChooseClasses_RegisterNotificationTitle" xml:space="preserve">
+    <value>Đăng ký lớp</value>
+  </data>
+  <data name="ChooseClasses_RegisterClassSuccessMessageDialog" xml:space="preserve">
+    <value>Đăng ký thành công !</value>
+  </data>
+  <data name="ChooseClasses_RegisterClassTimeDuplicateMessageDialog" xml:space="preserve">
+    <value>Đăng ký thất bại do lớp đã chọn có lịch học trùng với một lớp học đã đăng ký !</value>
+  </data>
+  <data name="ChooseClasses_RegisterClassNoSlotMessageDialog" xml:space="preserve">
+    <value>Đăng ký không thành công vì lớp đã hết số lượng đăng ký !</value>
+  </data>
+  <data name="ChooseClasses_RegisterClassFailMessageDialog" xml:space="preserve">
+    <value>Đã có lỗi xảy ra trong quá trình đăng ký !</value>
+  </data>
 </root>

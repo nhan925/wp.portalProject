@@ -7,6 +7,7 @@ using Microsoft.Windows.AppNotifications;
 using SpacePortal.Contracts.Services;
 using SpacePortal.ViewModels;
 using Syncfusion.UI.Xaml.DataGrid;
+using SpacePortal.Models;
 
 namespace SpacePortal.Views;
 
@@ -140,8 +141,12 @@ public sealed partial class ChooseClassesPage : Page
         AppNotificationManager.Default.Show(toast);
     }
 
-    private void cancelCourse()
+    private async void cancelCourse()
     {
+        ContentArea.Opacity = 0.5;
+        PageLoadingOverlay.Visibility = Visibility.Visible;
+        await Task.Delay(10);
+
         if (ViewModel.CancelCourse(ViewModel.Informations.RegisteredClassId) == "OK")
         {
             showNotifications(resourceLoader.GetString("ChooseClasses_CancelCourseTitleToast"),
@@ -152,21 +157,65 @@ public sealed partial class ChooseClassesPage : Page
         }
         else
         {
+            ContentArea.Opacity = 1;
+            PageLoadingOverlay.Visibility = Visibility.Collapsed;
             showNotifications(resourceLoader.GetString("ChooseClasses_CancelCourseTitleToast"),
                         resourceLoader.GetString("ChooseClasses_CancelCourseFailMessageToast"));
         }
-
     }
 
-    private void registerClass()
+    private async void registerClass()
     {
-        //TODO: Continue here
-        // handle fail case
+        ContentArea.Opacity = 0.5;
+        PageLoadingOverlay.Visibility = Visibility.Visible;
+        await Task.Delay(10);
 
+        var code = ViewModel.RegisterClass(ViewModel.Informations.Classes[ClassDataGrid.SelectedIndex].Id, ViewModel.Informations.RegisteredClassId);
+        var dialog = new ContentDialog
+        {
+            XamlRoot = this.XamlRoot,
+            Title = resourceLoader.GetString("ChooseClasses_RegisterNotificationTitle"),
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            CloseButtonText = resourceLoader.GetString("App_Close/Text"),
+            RequestedTheme = App.GetService<IThemeSelectorService>().Theme
+        };
+        
+        ContentArea.Opacity = 1;
+        PageLoadingOverlay.Visibility = Visibility.Collapsed;
 
-        ViewModel.RegisterClass(ViewModel.Informations.Classes[ClassDataGrid.SelectedIndex].Id, ViewModel.Informations.RegisteredClassId);
-        reloadInformations(ViewModel.Informations.PeriodId, ViewModel.Informations.CourseId,
-            ViewModel.Informations.CourseName, resourceLoader.GetString("ChooseClasses_RegisteredSlot/HeaderText"));
+        var displayDialog = async (string message, string status) =>
+        {
+            showNotifications(resourceLoader.GetString("ChooseClasses_RegisterNotificationTitle"), message);
+
+            dialog.Content = message;
+            dialog.CloseButtonClick += (s, e) =>
+            {
+                reloadInformations(ViewModel.Informations.PeriodId, ViewModel.Informations.CourseId,
+                    ViewModel.Informations.CourseName, status);
+            };
+            await dialog.ShowAsync();
+        };
+
+        if (code == "OK")
+        {
+            await displayDialog(resourceLoader.GetString("ChooseClasses_RegisterClassSuccessMessageDialog"),
+                resourceLoader.GetString("ChooseClasses_RegisteredSlot/HeaderText"));
+        }
+        else if (code == "DUP")
+        {
+            await displayDialog(resourceLoader.GetString("ChooseClasses_RegisterClassTimeDuplicateMessageDialog"),
+                ViewModel.Informations.Status);
+        }
+        else if (code == "NOSLOT")
+        {
+            await displayDialog(resourceLoader.GetString("ChooseClasses_RegisterClassNoSlotMessageDialog"),
+                ViewModel.Informations.Status);
+        }
+        else
+        {
+            await displayDialog(resourceLoader.GetString("ChooseClasses_RegisterClassFailMessageDialog"),
+                ViewModel.Informations.Status);
+        }
     }
 }
 
