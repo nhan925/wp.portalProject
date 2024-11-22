@@ -124,4 +124,10 @@ public sealed partial class ChooseCoursesPage : Page
         var status = resourceLoader.GetString("ChooseCourses_StudiedStatus");
         NavigateToChooseClassesPage(record, status);
     }
+
+    private void GoBackButton_Click(object sender, RoutedEventArgs e)
+    {
+        var navigationService = App.GetService<INavigationService>();
+        navigationService.GoBack();
+    }
 }

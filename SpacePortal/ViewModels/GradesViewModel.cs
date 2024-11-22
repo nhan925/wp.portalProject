@@ -98,18 +98,18 @@ public partial class GradesViewModel : ObservableRecipient
             GeneralInformations.NumberOfCredits = 0;
             return;
         }
-        double gpaScale_4 = 0;
-        double gpaScale_10 = 0;
+        double gpaScale_4_sumProduct = 0;
+        double gpaScale_10_sumProduct = 0;
         var numberOfCredits = 0;
         foreach (var grade in grades)
         {
-            gpaScale_4 += grade.GradeScaleFour;
-            gpaScale_10 += grade.GradeScaleTen;
+            gpaScale_4_sumProduct += grade.GradeScaleFour * grade.CourseCredit;
+            gpaScale_10_sumProduct += grade.GradeScaleTen * grade.CourseCredit;
             numberOfCredits += grade.CourseCredit;
         }
         GeneralInformations.NumberOfCourses = grades.Count;
-        GeneralInformations.GpaScale_4 = Math.Round(gpaScale_4 / grades.Count, 2);
-        GeneralInformations.GpaScale_10 = Math.Round(gpaScale_10 / grades.Count, 2);
+        GeneralInformations.GpaScale_4 = Math.Round(gpaScale_4_sumProduct / numberOfCredits, 2);
+        GeneralInformations.GpaScale_10 = Math.Round(gpaScale_10_sumProduct / numberOfCredits, 2);
         GeneralInformations.NumberOfCredits = numberOfCredits;
     }
 

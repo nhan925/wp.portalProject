@@ -217,6 +217,12 @@ public sealed partial class ChooseClassesPage : Page
                 ViewModel.Informations.Status);
         }
     }
+
+    private void GoBackButton_Click(object sender, RoutedEventArgs e)
+    {
+        var navigationService = App.GetService<INavigationService>();
+        navigationService.GoBack();
+    }
 }
 
 
