@@ -591,4 +591,7 @@
   <data name="RequestPage_RequestStatus.HeaderText" xml:space="preserve">
     <value>Trạng thái</value>
   </data>
+  <data name="RequestPage_PageNumber.Text" xml:space="preserve">
+    <value>Trang</value>
+  </data>
 </root>

@@ -25,13 +25,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock Name="ListRequest" Style="{ThemeResource Title}" x:Uid="RequestPage_ListRequestTitle"  Grid.Row="0" TextAlignment="Left" />
         <Grid Grid.Row="1" Style="{StaticResource Card}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,16,0,0">
             <syncfusion:SfDataGrid x:Name="sfDataGrid"
                     AutoGenerateColumns="False"
                     AllowSorting="True"
-                    ScrollViewer.VerticalScrollBarVisibility="Auto"
                     ItemsSource="{x:Bind ViewModel.Requests, Mode=OneWay}"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
@@ -66,6 +67,30 @@
             <Grid x:Name="DataGridLoadingOverlay">
                 <ProgressRing IsActive="True" Width="64" Height="64"/>
             </Grid>
+        </Grid>
+        <Grid Padding="20" Grid.Row="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Margin="5" Width="44" Height="40" Click="OnFirstPageClick">
+                    <FontIcon Glyph="&#xE892;" FontSize="20"/>
+                </Button>
+                <Button Margin="5" Width="40" Height="40" Click="OnPreviousPageClick">
+                    <FontIcon Glyph="&#xE76B;" FontSize="20"/>
+                </Button>
+
+                <Button Name="NumberPage1" Content="1" Margin="5" Width="40" Height="40" Click="OnPageClick"/>
+                <Button Name="NumberPage2" Content="2" Margin="5" Width="40" Height="40" Click="OnPageClick"/>
+                <TextBlock Text="..." Margin="5" VerticalAlignment="Center"/>
+
+                <Button Margin="5" Width="40" Height="40" Click="OnNextPageClick">
+                    <FontIcon Glyph="&#xE76C;" FontSize="20"/>
+                </Button>
+                <Button Margin="5" Width="44" Height="40" Click="OnLastPageClick">
+                    <FontIcon Glyph="&#xE893;" FontSize="20"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3">
+            <TextBlock TextAlignment="Center" Text="{x:Bind ViewModel.PageNumber, Mode=TwoWay}"/>
         </Grid>
     </Grid>
 </Page>

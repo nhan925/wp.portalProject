@@ -40,4 +40,48 @@ public sealed partial class RequestPage : Page
         DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
         sfDataGrid.Visibility = Visibility.Visible;
     }
+
+    // Handle first page button click
+    private void OnFirstPageClick(object sender, RoutedEventArgs e)
+    {
+        ViewModel.Load(1);
+        ViewModel.setPageNumber();
+    }
+
+    // Handle previous page button click
+    private void OnPreviousPageClick(object sender, RoutedEventArgs e)
+    {
+        var pageNumber = Convert.ToInt32(NumberPage1.Content);
+        if (pageNumber > 1)
+        {
+            NumberPage2.Content = pageNumber;
+            NumberPage1.Content = pageNumber - 1;
+        }
+    }
+
+    // Handle page number button click
+    private void OnPageClick(object sender, RoutedEventArgs e)
+    {
+        var pageNumber = Convert.ToInt32((sender as Button).Content);
+        ViewModel.Load(pageNumber);
+        ViewModel.setPageNumber();
+    }
+
+    // Handle next page button click
+    private void OnNextPageClick(object sender, RoutedEventArgs e)
+    {
+       var pageNumber = Convert.ToInt32(NumberPage2.Content);
+        if (pageNumber < ViewModel.TotalPages)
+        {
+            NumberPage1.Content = pageNumber;
+            NumberPage2.Content = pageNumber + 1;
+        }
+    }
+
+    // Handle last page button click
+    private void OnLastPageClick(object sender, RoutedEventArgs e)
+    {
+        ViewModel.Load(ViewModel.TotalPages);
+        ViewModel.setPageNumber();
+    }
 }

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.UI.Xaml.Controls;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Core.Services;
 using SpacePortal.Models;
@@ -13,7 +14,12 @@ public class InformationsForRequestPageDao : IDao<InformationsForRequest_Request
 {
     public ObservableCollection<InformationsForRequest_RequestRow> GetAll(int? pageNumber = null, int? pageSize = null, List<string> keywords = null)
     {
-        var list_object = App.GetService<ApiService>().Get<List<InformationsForRequest_RequestRow>>("/rpc/get_all_request_data") ??
+        pageNumber = pageNumber ?? 1;
+        pageSize = pageSize ?? 10;
+        var skip = (pageNumber - 1) * pageSize;
+        var take = pageSize;
+        var parameters = new { skip, take };
+        var list_object = App.GetService<ApiService>().Post<List<InformationsForRequest_RequestRow>>("/rpc/get_all_request_data",parameters) ??
             new List<InformationsForRequest_RequestRow>();
         var result = new ObservableCollection<InformationsForRequest_RequestRow>(list_object);
         return result;

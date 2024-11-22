@@ -10,10 +10,13 @@ using Microsoft.Windows.ApplicationModel.Resources;
 namespace SpacePortal.Models;
 public class InformationsForRequest_RequestRow : INotifyPropertyChanged
 {
+    public int TotalRequests
+    {
+        get; set;
+    }
     public int SequenceNumber
     {
-        get; 
-        set;
+        get; set;
     }
     public int RequestId
     {
