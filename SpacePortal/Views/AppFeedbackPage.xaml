@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="FeedbackArea" Style="{ThemeResource Card}" Grid.Column="0" 
-              Margin="36, 36, 36, 36" Padding="36" RowSpacing="16" ColumnSpacing="16">
+              Margin="36, 36, 36, 36" Padding="24" RowSpacing="16" ColumnSpacing="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*" MinHeight="35"/>
@@ -59,7 +59,7 @@
                      Text="{x:Bind ViewModel.EditContent, Mode = Twoway}"
                      x:Uid="AppFeedback_InputInstruction"
                      Margin="16,0,16,0"
-                     FontSize="14"
+                     FontSize="18"
                      CornerRadius="4"
                      TextWrapping="Wrap"
                      TextAlignment="Justify"

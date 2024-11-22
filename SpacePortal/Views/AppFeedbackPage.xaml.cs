@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.ApplicationModel.Resources;
-
+using SpacePortal.Contracts.Services;
 using SpacePortal.ViewModels;
 
 namespace SpacePortal.Views;
@@ -58,7 +58,8 @@ public sealed partial class AppFeedbackPage : Page
             Title = title,
             Content = message,
             CloseButtonText = new ResourceLoader().GetString("App_Close/Text"),
-            XamlRoot = this.Content.XamlRoot
+            XamlRoot = this.Content.XamlRoot,
+            RequestedTheme = App.GetService<IThemeSelectorService>().Theme
         };
 
         await errorDialog.ShowAsync();

@@ -18,8 +18,6 @@ public sealed partial class RequestPage : Page
     {
         ViewModel = App.GetService<RequestViewModel>();
         InitializeComponent();
-
-        this.sfDataGrid.SortColumnsChanging += SfDataGrid_SortColumnsChanging;
     }
 
     //Change row's height based on its content
@@ -41,11 +39,5 @@ public sealed partial class RequestPage : Page
 
         DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
         sfDataGrid.Visibility = Visibility.Visible;
-    }
-
-    private void SfDataGrid_SortColumnsChanging(object? sender, GridSortColumnsChangingEventArgs e)
-    {
-        if (e.AddedItems[0].ColumnName == "SubmittedAt")
-            e.Cancel = true;
     }
 }

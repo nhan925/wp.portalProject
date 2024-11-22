@@ -11,11 +11,23 @@ namespace SpacePortal.ViewModels;
 
 public partial class RequestViewModel : ObservableRecipient
 {
-    public ObservableCollection<InformationsForRequest_RequestRow> Requests { get; set; }
- 
+    public ObservableCollection<InformationsForRequest_RequestRow> Requests
+    {
+        get; set;
+    }
+
 
     public RequestViewModel()
     {
         Requests = App.GetService<IDao<InformationsForRequest_RequestRow>>().GetAll();
+        addSequenceNumber();
+    }
+
+    private void addSequenceNumber()
+    {
+        for (int i = 0; i < Requests.Count; i++)
+        {
+            Requests[i].SequenceNumber = i + 1;
+        }
     }
 }

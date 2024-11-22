@@ -36,6 +36,8 @@
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     GridLinesVisibility="Horizontal"
+                    SelectionUnit="Row"
+                    NavigationMode="Row"
                     CornerRadius="10"
                     BorderBrush="Transparent"
                     QueryRowHeight="sfDataGrid_QueryRowHeight"
@@ -55,15 +57,11 @@
                 </syncfusion:SfDataGrid.Resources>
 
                 <syncfusion:SfDataGrid.Columns>
-                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestNumber" MappingName="RequestId" TextAlignment="Center" Width="100"/>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestNumber" MappingName="SequenceNumber" TextAlignment="Center" Width="100"/>
                     <syncfusion:GridTextColumn x:Uid="RequestPage_RequestTitle" MappingName="RequestName" TextAlignment="Center"/>
                     <syncfusion:GridTextColumn x:Uid="RequestPage_RequestDate" MappingName="SubmittedAt" TextAlignment="Center" Width="200"/>
                     <syncfusion:GridTextColumn x:Uid="RequestPage_RequestStatus" MappingName="Status" TextAlignment="Center" Width="200"/>
                 </syncfusion:SfDataGrid.Columns>
-
-                <syncfusion:SfDataGrid.SortColumnDescriptions>
-                    <syncfusion1:SortColumnDescription ColumnName="SubmittedAt" SortDirection="Descending"/>
-                </syncfusion:SfDataGrid.SortColumnDescriptions>
             </syncfusion:SfDataGrid>
             <Grid x:Name="DataGridLoadingOverlay">
                 <ProgressRing IsActive="True" Width="64" Height="64"/>
