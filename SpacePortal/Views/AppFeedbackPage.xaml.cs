@@ -2,13 +2,14 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.ApplicationModel.Resources;
-
+using SpacePortal.Contracts.Services;
 using SpacePortal.ViewModels;
 
 namespace SpacePortal.Views;
 
 public sealed partial class AppFeedbackPage : Page
 {
+    private readonly ResourceLoader resourceLoader = new();
     public AppFeedbackViewModel ViewModel
     {
         get;
@@ -33,10 +34,9 @@ public sealed partial class AppFeedbackPage : Page
 
     private void SendButton_Click(object sender, RoutedEventArgs e)
     {
-        ResourceLoader resourceLoader = new ResourceLoader();
-        string message = ViewModel.checkFeedback();
-        string successMessage = resourceLoader.GetString("AppFeedback_SuccessMessageDialog/Text");
-        string title = "";
+        var message = ViewModel.checkFeedback();
+        var successMessage = resourceLoader.GetString("AppFeedback_SuccessMessageDialog/Text");
+        var title = "";
 
         if (message == successMessage)
         {
@@ -57,10 +57,18 @@ public sealed partial class AppFeedbackPage : Page
         {
             Title = title,
             Content = message,
-            CloseButtonText = new ResourceLoader().GetString("App_Close/Text"),
-            XamlRoot = this.Content.XamlRoot
+            CloseButtonText = resourceLoader.GetString("App_Close/Text"),
+            XamlRoot = this.Content.XamlRoot,
+            RequestedTheme = App.GetService<IThemeSelectorService>().Theme
         };
 
         await errorDialog.ShowAsync();
     }
+
+    private void FeedbackTextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var charCount = FeedbackTextBox.Text.Length;
+        CharacterCountText.Text = $"{resourceLoader.GetString("AppFeedback_CharacterCount/Text")}: {charCount}";
+    }
+
 }

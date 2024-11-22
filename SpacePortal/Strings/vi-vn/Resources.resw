@@ -570,4 +570,7 @@
   <data name="AppFeedback_SuccessMessageDialog.Text" xml:space="preserve">
     <value>Phản hồi của bạn đã được ghi nhận.</value>
   </data>
+  <data name="AppFeedback_CharacterCount.Text" xml:space="preserve">
+    <value>Số ký tự</value>
+  </data>
 </root>
