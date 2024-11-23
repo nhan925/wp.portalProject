@@ -684,4 +684,7 @@
   <data name="ChooseClasses_RegisterClassFailMessageDialog" xml:space="preserve">
     <value>Đã có lỗi xảy ra trong quá trình đăng ký !</value>
   </data>
+  <data name="App_CrashMessage" xml:space="preserve">
+    <value>Đã có lỗi xảy ra !</value>
+  </data>
 </root>
