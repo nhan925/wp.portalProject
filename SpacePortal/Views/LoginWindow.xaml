@@ -19,7 +19,7 @@
             <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
 
-        <Frame x:Name="LoginFrame" Grid.Column="1" Margin="0,50,30,50" CornerRadius="20">
+        <Frame x:Name="LoginFrame" Grid.Column="1" Margin="0,50,30,50" CornerRadius="20" Background="White" BorderBrush="Black" >
            
         </Frame>
     </Grid>

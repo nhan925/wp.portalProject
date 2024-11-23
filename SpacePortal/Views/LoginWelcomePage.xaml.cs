@@ -68,7 +68,7 @@ public sealed partial class LoginWelcomePage : Page
 
     private void LoginWithOulookButton_Click(object sender, RoutedEventArgs e)
     {
-
+        ViewModel.LoginWithOutlook();
     }
 
     private void ForgotPasswordButton_Click(object sender, RoutedEventArgs e)

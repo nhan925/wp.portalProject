@@ -7,8 +7,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="White"
-    BorderBrush="Black"
     BorderThickness="4">
 
     <Page.Resources>
@@ -25,7 +23,7 @@
         </Style>
 
         <Style x:Key="Subtitle" TargetType="TextBlock" BasedOn="{StaticResource BodyStrongTextBlockStyle}" >
-            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+            <Setter Property="Foreground" Value="Black" />
             <Setter Property="Opacity" Value="0.8"/>
         </Style>
         
@@ -35,7 +33,14 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="0"/>
             <Setter Property="CornerRadius" Value="0"/>
+        </Style>
 
+        <Style x:Key="TextBox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10" />
         </Style>
     </Page.Resources>
     
@@ -48,9 +53,9 @@
         </Grid.RowDefinitions>
 
         
-        <TextBlock Grid.Row="0" x:Uid="Login_Welcome" Style="{ThemeResource WelcomeTitle}" Margin="30,30,0,0"/>
+        <TextBlock Grid.Row="0" x:Uid="Login_Welcome" Style="{StaticResource WelcomeTitle}" Margin="30,30,0,0"/>
         <StackPanel  Grid.Row="1" Orientation="Horizontal">
-            <TextBlock x:Uid="Login_AppName" Style="{ThemeResource AppNameTitle}" Margin="30,0,0,0"/>
+            <TextBlock x:Uid="Login_AppName" Style="{StaticResource AppNameTitle}" Margin="30,0,0,0"/>
             <Image Source="/Assets/WelcomeIcon.png" Width="40"  Height="40" Stretch="UniformToFill" VerticalAlignment="Top" Margin="-15,0,0,0"/>
         </StackPanel>
 
@@ -71,22 +76,22 @@
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0"  x:Uid="Login_UserName"  Style="{ThemeResource TopHeaderInput}" Margin="0,0,0,12"/>
-            <TextBox  Grid.Row="1" Grid.ColumnSpan="2" x:Uid="Login_UserNameTextBox" Margin="0,0,0,16" Text="{x:Bind ViewModel.UserName, Mode=TwoWay}" />
+            <TextBlock Grid.Row="0"  x:Uid="Login_UserName"  Style="{StaticResource TopHeaderInput}" Margin="0,0,0,12"/>
+            <TextBox  Grid.Row="1" Style="{StaticResource TextBox}"  Grid.ColumnSpan="2" x:Uid="Login_UserNameTextBox" Margin="0,0,0,16" Text="{x:Bind ViewModel.UserName, Mode=TwoWay}" />
 
-            <TextBlock Grid.Row="2"    x:Uid="Login_Password" Style="{ThemeResource TopHeaderInput}" Margin="0,0,0,12"/>
-            <TextBox Grid.Row="3" Grid.ColumnSpan="2"  x:Uid="Login_PasswordTextBox" Margin="0,0,0,16" Text="{x:Bind ViewModel.Password, Mode=TwoWay}" />
+            <TextBlock Grid.Row="2"    x:Uid="Login_Password" Style="{StaticResource TopHeaderInput}" Margin="0,0,0,12"/>
+            <TextBox Grid.Row="3" Style="{StaticResource TextBox}" Grid.ColumnSpan="2"  x:Uid="Login_PasswordTextBox" Margin="0,0,0,16" Text="{x:Bind ViewModel.Password, Mode=TwoWay}" />
 
 
-            <CheckBox Grid.Row="4" Grid.Column="0"  x:Uid="Login_RememberMeCheckBox" HorizontalAlignment="Left" Click="RememberMeCheckBox_Click" />
-            <Button Grid.Row="4" Grid.Column="1"  Style="{ThemeResource ResetButton}" x:Uid="Login_ForgotPasswordButton" HorizontalAlignment="Right" Foreground="#001A68" FontWeight="SemiBold" Click="ForgotPasswordButton_Click"/>
+            <CheckBox Grid.Row="4" Foreground="Black" Grid.Column="0"  x:Uid="Login_RememberMeCheckBox" HorizontalAlignment="Left" Click="RememberMeCheckBox_Click" />
+            <Button Grid.Row="4" Grid.Column="1"  Style="{StaticResource ResetButton}" x:Uid="Login_ForgotPasswordButton" HorizontalAlignment="Right" Foreground="#001A68" FontWeight="SemiBold" Click="ForgotPasswordButton_Click"/>
 
-            <Button Grid.Row="5" Grid.ColumnSpan="2" Style="{ThemeResource AccentButtonStyle}" x:Uid="Login_LoginButton" HorizontalAlignment="Stretch" Margin="0,16,0,0" Click="LoginWithRawButton_Click"/>
+            <Button Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource AccentButtonStyle}" x:Uid="Login_LoginButton" HorizontalAlignment="Stretch" Margin="0,16,0,0" Click="LoginWithRawButton_Click"/>
 
-            <Button Grid.Row="6" Grid.ColumnSpan="2" Style="{ThemeResource DefaultButtonStyle}" HorizontalAlignment="Stretch" Margin="0,16,0,0" Click="LoginWithOulookButton_Click">
+            <Button Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource DefaultButtonStyle}" HorizontalAlignment="Stretch" Margin="0,16,0,0" Click="LoginWithOulookButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Assets/outlook_logo.png" Height="20" Width="20" Margin="0,0,10,0"/>
-                    <TextBlock x:Uid="Login_LoginWithOutlookButton" Style="{ThemeResource Subtitle}" />
+                    <TextBlock x:Uid="Login_LoginWithOutlookButton" Style="{StaticResource Subtitle}" />
                 </StackPanel>
             </Button>
         </Grid>

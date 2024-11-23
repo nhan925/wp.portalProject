@@ -16,6 +16,9 @@ using Newtonsoft.Json.Linq;
 using DotNetEnv;
 using Mailjet.Client.TransactionalEmails;
 using Newtonsoft.Json;
+using System.Windows.Input;
+using Windows.Devices.PointOfService;
+using Microsoft.Identity.Client;
 
 namespace SpacePortal.ViewModels;
 public partial class LoginWindowsViewModel : ObservableRecipient
@@ -126,5 +129,56 @@ public partial class LoginWindowsViewModel : ObservableRecipient
         return App.GetService<ApiService>().Post<Boolean>("/rpc/update_new_password", info);
     }
 
+    ///Login with outlook
+    private string _userOutlookEmail = string.Empty;
+    public string UserOutlookEmail
+    {
+        get => _userOutlookEmail;
+        set => SetProperty(ref _userOutlookEmail, value);
+    }
+
+    public async Task LoginWithOutlook()
+    {
+        try
+        {
+            var clientID = Env.GetString("AZURE_CLIENT_ID");
+            var tenantID = Env.GetString("AZURE_TENANT_ID");
+            string[] scpopes = { "User.Read" };
+            
+            var app = PublicClientApplicationBuilder.Create(clientID)
+                .WithTenantId(tenantID)
+                .WithRedirectUri("http://localhost")
+                .Build();
+
+
+            var accounts = await app.GetAccountsAsync();
+            var authResult = await app.AcquireTokenInteractive(scpopes).ExecuteAsync();
+
+            UserOutlookEmail = authResult.Account.Username;
+
+            var info = new
+            {
+                v_user_name = UserName,
+                v_outlook_email = UserOutlookEmail
+            };
+            Debug.WriteLine($"Login with outlook email: {UserOutlookEmail}");
+            var isValidate = false;
+            //bool isValidate = App.GetService<ApiService>().Post<Boolean>("/rpc/validate_outlook_email", info);
+            if (isValidate)
+            {
+                //Login thành công
+            }
+            else
+            {
+                //Login thất bại
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+    }
+
+    
 }
 
