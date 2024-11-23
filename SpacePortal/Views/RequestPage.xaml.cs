@@ -4,6 +4,8 @@ using SpacePortal.ViewModels;
 using Syncfusion.UI.Xaml.DataGrid;
 using Microsoft.UI.Xaml.Navigation;
 using Syncfusion.UI.Xaml.Grids;
+using SpacePortal.Models;
+using SpacePortal.Contracts.Services;
 
 namespace SpacePortal.Views;
 
@@ -83,5 +85,17 @@ public sealed partial class RequestPage : Page
     {
         ViewModel.Load(ViewModel.TotalPages);
         ViewModel.setPageNumber();
+    }
+
+    private void sfDataGrid_CellDoubleTapped(object sender, GridCellDoubleTappedEventArgs e)
+    {
+        var record = e.Record as InformationsForRequest_RequestRow;
+        var navigationService = App.GetService<INavigationService>();
+        var pageKey = typeof(RequestDetailViewModel).FullName ?? 
+            "SpacePortal.ViewModels.RequestDetailViewModel";
+        if (pageKey != null)
+        {
+            navigationService.NavigateTo(pageKey, record);
+        }
     }
 }

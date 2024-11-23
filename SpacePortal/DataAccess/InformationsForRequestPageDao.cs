@@ -16,9 +16,9 @@ public class InformationsForRequestPageDao : IDao<InformationsForRequest_Request
     {
         pageNumber = pageNumber ?? 1;
         pageSize = pageSize ?? 10;
-        var skip = (pageNumber - 1) * pageSize;
-        var take = pageSize;
-        var parameters = new { skip, take };
+        var pskip = (pageNumber - 1) * pageSize;
+        var ptake = pageSize;
+        var parameters = new { skip = pskip, take = ptake };
         var list_object = App.GetService<ApiService>().Post<List<InformationsForRequest_RequestRow>>("/rpc/get_all_request_data",parameters) ??
             new List<InformationsForRequest_RequestRow>();
         var result = new ObservableCollection<InformationsForRequest_RequestRow>(list_object);

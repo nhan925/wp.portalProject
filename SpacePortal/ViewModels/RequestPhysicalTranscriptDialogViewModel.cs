@@ -93,7 +93,7 @@ public class RequestPhysicalTranscriptDialogViewModel : INotifyPropertyChanged
         StringBuilder requestContent = new StringBuilder();
         var language_en = resourceLoader.GetString("GradesPage_RequestForTranscriptEn/Text");
         var language_vi = resourceLoader.GetString("GradesPage_RequestForTranscriptVi/Text");
-        var status = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
+        var processingStatus = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
 
         requestContent.AppendLine(resourceLoader.GetString("GradesPage_RequestForTranscriptTitle"));
         if (NumberOfTranscriptOfAllVi > 0 || NumberOfTranscriptOfAllEn > 0)
@@ -111,6 +111,6 @@ public class RequestPhysicalTranscriptDialogViewModel : INotifyPropertyChanged
         requestContent.Append($"{resourceLoader.GetString("GradesPage_RequestForTranscriptTotal/Text")}: {TotalTranscripts}");
         
         // Send request
-        string result = App.GetService<ApiService>().Post<string>("/rpc/add_request", new { content = requestContent.ToString(), status });
+        var result = App.GetService<ApiService>().Post<string>("/rpc/add_request", new { content = requestContent.ToString(), status = processingStatus });
     }
 }

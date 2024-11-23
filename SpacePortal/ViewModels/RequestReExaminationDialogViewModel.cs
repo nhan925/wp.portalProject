@@ -164,7 +164,7 @@ namespace SpacePortal.ViewModels
         {
             ResourceLoader resourceLoader = new ResourceLoader();
             StringBuilder requestContent = new StringBuilder();
-            var status = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
+            var processingStatus = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
 
             requestContent.AppendLine(resourceLoader.GetString("GradesPage_RequestForReviewTitle"));
             requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForReviewYear/Text")}: {SelectedYear?.Year}");
@@ -174,7 +174,7 @@ namespace SpacePortal.ViewModels
             requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForReviewClass/Text")}: {ClassID}");
             requestContent.Append($"{resourceLoader.GetString("GradesPage_RequestForReviewNote/Text")}: {Note}");
 
-            string result = App.GetService<ApiService>().Post<string>("/rpc/add_request", new { content = requestContent.ToString(), status });
+            var result = App.GetService<ApiService>().Post<string>("/rpc/add_request", new { content = requestContent.ToString(), status = processingStatus });
         }
 
         public double Score

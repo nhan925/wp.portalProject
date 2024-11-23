@@ -594,4 +594,34 @@
   <data name="RequestPage_PageNumber.Text" xml:space="preserve">
     <value>Trang</value>
   </data>
+  <data name="RequestDetailPage_RequestDetailTitle.Text" xml:space="preserve">
+    <value>THÔNG TIN YÊU CẦU</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestButton.Content" xml:space="preserve">
+    <value>Hủy yêu cầu</value>
+  </data>
+  <data name="RequestDetailPage_ResendRequestButton.Content" xml:space="preserve">
+    <value>Gửi lại</value>
+  </data>
+  <data name="RequestDetailPage_AnswerRequestTitle.Text" xml:space="preserve">
+    <value>Phản hồi</value>
+  </data>
+  <data name="RequestDetailPage_Student.Text" xml:space="preserve">
+    <value>Sinh viên</value>
+  </data>
+  <data name="RequestDetailPage_ResendRequestSuccess.Text" xml:space="preserve">
+    <value>Yêu cầu của bạn đã được ghi nhận.</value>
+  </data>
+  <data name="RequestDetailPage_ResendProcessingRequest.Text" xml:space="preserve">
+    <value>Yêu cầu này đang trong quá trình xử lý.</value>
+  </data>
+  <data name="App_Success.Text" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestSuccess.Text" xml:space="preserve">
+    <value>Yêu cầu của bạn đã được hủy.</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestFail.Text" xml:space="preserve">
+    <value>Thao tác hủy không thể thực hiện.</value>
+  </data>
 </root>
