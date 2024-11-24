@@ -591,9 +591,6 @@
   <data name="RequestPage_RequestStatus.HeaderText" xml:space="preserve">
     <value>Trạng thái</value>
   </data>
-  <data name="RequestPage_PageNumber.Text" xml:space="preserve">
-    <value>Trang</value>
-  </data>
   <data name="RequestDetailPage_RequestDetailTitle.Text" xml:space="preserve">
     <value>THÔNG TIN YÊU CẦU</value>
   </data>
@@ -623,5 +620,17 @@
   </data>
   <data name="RequestDetailPage_CancelledRequestFail.Text" xml:space="preserve">
     <value>Thao tác hủy không thể thực hiện.</value>
+  </data>
+  <data name="RequestPage_AllStatus.Text" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="RequestPage_Show.Content" xml:space="preserve">
+    <value>Xem</value>
+  </data>
+  <data name="RequestDetailPage_ByLabel.Text" xml:space="preserve">
+    <value>Bởi</value>
+  </data>
+  <data name="RequestDetailPage_Anonymous.Text" xml:space="preserve">
+    <value>Anonymous</value>
   </data>
 </root>

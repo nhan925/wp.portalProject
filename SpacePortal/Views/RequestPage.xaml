@@ -17,7 +17,6 @@
             <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
             <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
             <Setter Property="BorderThickness" Value="1"/>
-
             <Setter Property="CornerRadius" Value="10"/>
         </Style>
     </Page.Resources>
@@ -26,9 +25,15 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock Name="ListRequest" Style="{ThemeResource Title}" x:Uid="RequestPage_ListRequestTitle"  Grid.Row="0" TextAlignment="Left" />
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Name="ListRequest" Style="{ThemeResource Title}" x:Uid="RequestPage_ListRequestTitle" TextAlignment="Left"/>
+            <SplitButton Grid.Column="1" x:Name="StatusButton" Click="StatusButton_Click" x:Uid="RequestPage_Show" HorizontalAlignment="Right"/>
+        </Grid>
         <Grid Grid.Row="1" Style="{StaticResource Card}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,16,0,0">
             <syncfusion:SfDataGrid x:Name="sfDataGrid"
                     AutoGenerateColumns="False"
@@ -44,8 +49,10 @@
                     CornerRadius="10"
                     BorderBrush="Transparent"
                     QueryRowHeight="sfDataGrid_QueryRowHeight"
+                    ScrollViewer.IsScrollInertiaEnabled="True"
                     Visibility="Collapsed"
-                    ColumnWidthMode="Star">
+                    ColumnWidthMode="Star"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto">
 
                 <syncfusion:SfDataGrid.Resources>
                     <Style TargetType="syncfusion:GridHeaderCellControl">
@@ -70,29 +77,39 @@
                 <ProgressRing IsActive="True" Width="64" Height="64"/>
             </Grid>
         </Grid>
-        <Grid Padding="20" Grid.Row="2">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button Margin="5" Width="44" Height="40" Click="OnFirstPageClick">
+        <Grid Grid.Row="2" ColumnSpacing="6" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Width="44" Height="40" Click="OnFirstPageClick">
                     <FontIcon Glyph="&#xE892;" FontSize="20"/>
-                </Button>
-                <Button Margin="5" Width="40" Height="40" Click="OnPreviousPageClick">
-                    <FontIcon Glyph="&#xE76B;" FontSize="20"/>
-                </Button>
+            </Button>
+            <Button Grid.Column="1" Width="40" Height="40" Click="OnPreviousPageClick">
+                <FontIcon Glyph="&#xE76B;" FontSize="20"/>
+            </Button>
 
-                <Button Name="NumberPage1" Content="1" Margin="5" Width="40" Height="40" Click="OnPageClick"/>
-                <Button Name="NumberPage2" Content="2" Margin="5" Width="40" Height="40" Click="OnPageClick"/>
-                <TextBlock Text="..." Margin="5" VerticalAlignment="Center"/>
+            <Grid Grid.Column="2" Style="{ThemeResource Card}" Padding="6" ColumnSpacing="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Name="PageNumber" KeyDown="CatchEnter_KeyDown" Width="40" Height="40" TextAlignment="Center" FontSize="18" LostFocus="TextBox_LostFocus"
+                         HorizontalTextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="1"/>
+                <TextBlock Grid.Column="1" Text="/" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="4,0,4,0"/>
+                <TextBlock Grid.Column="2" Name="TotalPages" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Text="{x:Bind ViewModel.TotalPages, Mode=TwoWay}"/>
+            </Grid>
 
-                <Button Margin="5" Width="40" Height="40" Click="OnNextPageClick">
-                    <FontIcon Glyph="&#xE76C;" FontSize="20"/>
-                </Button>
-                <Button Margin="5" Width="44" Height="40" Click="OnLastPageClick">
-                    <FontIcon Glyph="&#xE893;" FontSize="20"/>
-                </Button>
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Row="3">
-            <TextBlock TextAlignment="Center" Text="{x:Bind ViewModel.PageNumber, Mode=TwoWay}"/>
+            <Button Grid.Column="3" Width="40" Height="40" Click="OnNextPageClick">
+                <FontIcon Glyph="&#xE76C;" FontSize="20"/>
+            </Button>
+            <Button Grid.Column="4" Width="44" Height="40" Click="OnLastPageClick">
+                <FontIcon Glyph="&#xE893;" FontSize="20"/>
+            </Button>
         </Grid>
     </Grid>
 </Page>

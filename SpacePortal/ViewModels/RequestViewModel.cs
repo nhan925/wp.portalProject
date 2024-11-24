@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Windows.ApplicationModel.Resources;
 using SpacePortal.Core.Contracts;
+using SpacePortal.Core.Services;
 using SpacePortal.DataAccess;
 using SpacePortal.Helpers;
 using SpacePortal.Models;
@@ -13,16 +15,20 @@ namespace SpacePortal.ViewModels;
 
 public partial class RequestViewModel : ObservableRecipient
 {
+    private IDao<InformationsForRequest_RequestRow> _dao;
+    public string Keyword { get; set; } = "";
+
     public int CurrentPage { get; set; } = 1;
 
     public int RowsPerPage { get; set; } = 20;
 
-    public int TotalPages { get; set; } = 0;
+    [ObservableProperty]
+    private int _totalPages = 0;
 
     public int TotalItems { get; set; } = 0;
 
     [ObservableProperty]
-    private string _pageNumber;
+    private List<string> _statusList = new();
 
     public ObservableCollection<InformationsForRequest_RequestRow> Requests
     {
@@ -32,13 +38,13 @@ public partial class RequestViewModel : ObservableRecipient
     public RequestViewModel()
     {
         GetAllRequests();
-        setPageNumber();
     }
 
     public void GetAllRequests()
     {
-        Requests = App.GetService<IDao<InformationsForRequest_RequestRow>>().GetAll(
-        CurrentPage, RowsPerPage);
+        _dao = App.GetService<IDao<InformationsForRequest_RequestRow>>();
+        Requests = _dao.GetAll(
+        CurrentPage, RowsPerPage, new List<string> { Keyword });
         var startSequence = (CurrentPage - 1) * RowsPerPage;
         for (int i = 0; i < Requests.Count; i++)
         {
@@ -52,16 +58,12 @@ public partial class RequestViewModel : ObservableRecipient
                 + ((TotalItems % RowsPerPage == 0)
                         ? 0 : 1);
         }
+        StatusList = (_dao as InformationsForRequestPageDao).GetAllStatusOfRequest();
     }
 
     public void Load(int page)
     {
         CurrentPage = page;
         GetAllRequests();
-    }
-
-    public void setPageNumber()
-    {
-        PageNumber = $"{new ResourceLoader().GetString("RequestPage_PageNumber/Text")} {CurrentPage} / {TotalPages}";
     }
 }

@@ -27,8 +27,19 @@ public sealed partial class RequestDetailPage : Page
         base.OnNavigatedTo(e);
         ViewModel.Request = e.Parameter as InformationsForRequest_RequestRow;
         await Task.Delay(10);
+        ViewModel.getAnswer();
 
         ViewModel.formatRequestContent();
+
+        var processingRequest = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
+        if (ViewModel.Request.Status == processingRequest)
+        {
+            ResendRequestButton.Visibility = Visibility.Collapsed;
+        }
+        else
+        {
+            CancelledRequestButton.Visibility = Visibility.Collapsed;
+        }
     }
 
     private void GoBackButton_Click(object sender, RoutedEventArgs e)
@@ -57,7 +68,7 @@ public sealed partial class RequestDetailPage : Page
 
     private async void ShowResendMessage(string message,string title)
     {
-        ContentDialog errorDialog = new ContentDialog
+        ContentDialog Dialog = new ContentDialog
         {
             Title = title,
             Content = message,
@@ -65,8 +76,13 @@ public sealed partial class RequestDetailPage : Page
             XamlRoot = this.Content.XamlRoot,
             RequestedTheme = App.GetService<IThemeSelectorService>().Theme
         };
+        Dialog.CloseButtonClick += (s, e) => {
+            var navigationService = App.GetService<INavigationService>();
+            navigationService.GoBack();
+        };
 
-        await errorDialog.ShowAsync();
+        await Dialog.ShowAsync();
+
     }
 
 }
