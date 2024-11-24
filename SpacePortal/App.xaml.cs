@@ -32,7 +32,6 @@ using Microsoft.UI.Xaml.Documents;
 using Windows.UI;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Media.Imaging;
-
 namespace SpacePortal;
 
 // To learn more about WinUI 3, see https://docs.microsoft.com/windows/apps/winui/winui3/.
@@ -104,6 +103,7 @@ public partial class App : Application
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
             services.AddSingleton<INavigationService, NavigationService>();
+            services.AddSingleton<ILocalSettingsService,  LocalSettingsService>();
 
             // Core Services
             services.AddSingleton<IFileService, FileService>();
@@ -212,12 +212,15 @@ public partial class App : Application
     {
         base.OnLaunched(args);
 
+        var loginWindow = new LoginWindow();
+        loginWindow.Activate();
+
         // TODO: Modify here when implement the login function
         // Hard code login
-        App.GetService<ApiService>().Login("student1", "1234");
+        //App.GetService<ApiService>().Login("student1", "1234");
 
         // var debug = await App.GetService<ApiService>().GetAsync<InformationsForDashboard>("/rpc/get_dashboard_info");
 
-        await App.GetService<IActivationService>().ActivateAsync(args);
+        //await App.GetService<IActivationService>().ActivateAsync(args);
     }
 }

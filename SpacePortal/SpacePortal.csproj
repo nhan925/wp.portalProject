@@ -25,12 +25,21 @@
     <Content Remove="Assets\dashboard_scholarship.png" />
     <Content Remove="Assets\dashboard_student.png" />
     <Content Remove="Assets\defaultAvt.png" />
+    <Content Remove="Assets\Outlook-Logo.png" />
     <Content Remove="Assets\refresh.png" />
     <Content Remove="Assets\WindowIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\edit.png" />
+    <None Remove="Assets\LoginBackground.png" />
+    <None Remove="Assets\WelcomeIcon.png" />
+    <None Remove="BlankWindow1.xaml" />
     <None Remove="Views\EstimateAverageGradeDialog.xaml" />
+    <None Remove="Views\LoginForgotPasswordPage01.xaml" />
+    <None Remove="Views\LoginForgotPasswordPage02.xaml" />
+    <None Remove="Views\LoginForgotPasswordPage03.xaml" />
+    <None Remove="Views\LoginWelcomePage.xaml" />
+    <None Remove="Views\LoginWindow.xaml" />
     <None Remove="Views\RequestPhysicalTranscriptDialog.xaml" />
     <None Remove="Views\RequestReExaminationDialog.xaml" />
   </ItemGroup>
@@ -46,6 +55,8 @@
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.1.240916" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.1.240916" />
     <PackageReference Include="CommunityToolkit.WinUI.Helpers" Version="8.1.240916" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.66.2" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240923002" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
@@ -66,6 +77,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Assets\LockScreenLogo.scale-200.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\LoginBackground.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\outlook_logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\WelcomeIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -109,6 +129,24 @@
     <None Update="Assets\WindowIcon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\LoginForgotPasswordPage03.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\LoginForgotPasswordPage02.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\LoginForgotPasswordPage01.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\LoginWelcomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Views\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="BlankWindow1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\EstimateAverageGradeDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
