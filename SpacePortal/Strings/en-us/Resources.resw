@@ -273,6 +273,7 @@
   <data name="Information_Error_Email.Text" xml:space="preserve">
     <value>Email is not valid</value>
   </data>
+
   <data name="LoginForgotPassword_CompleteButton.Content" xml:space="preserve">
     <value>Hoàn thành</value>
   </data>
@@ -301,3 +302,12 @@
     <value>Thay đổi mật khẩu thành công!</value>
   </data>
 </root>
+
+  <data name="Shell_ChooseCourses.Content" xml:space="preserve">
+    <value>ChooseCourses</value>
+  </data>
+  <data name="Shell_ChooseClasses.Content" xml:space="preserve">
+    <value>ChooseClasses</value>
+  </data>
+</root>
+
