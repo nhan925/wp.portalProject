@@ -15,7 +15,7 @@ public class InformationsForEstimateAverageGradeDialog : INotifyPropertyChanged
         get; set;
     }
 
-    private Dictionary<string, double> _degreeTypesWithTheirGrade;
+    private Dictionary<string, double> _degreeTypesWithTheirGrade = new();
 
     public Dictionary<string, double> DegreeTypesWithTheirGrade
     {

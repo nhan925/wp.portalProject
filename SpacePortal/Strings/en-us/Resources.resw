@@ -273,4 +273,10 @@
   <data name="Information_Error_Email.Text" xml:space="preserve">
     <value>Email is not valid</value>
   </data>
+  <data name="Shell_ChooseCourses.Content" xml:space="preserve">
+    <value>ChooseCourses</value>
+  </data>
+  <data name="Shell_ChooseClasses.Content" xml:space="preserve">
+    <value>ChooseClasses</value>
+  </data>
 </root>

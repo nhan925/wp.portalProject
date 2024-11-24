@@ -1,8 +1,12 @@
 ﻿using DotNetEnv;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using Microsoft.Windows.AppNotifications.Builder;
+using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.System;
+
 using SpacePortal.Activation;
 using SpacePortal.Contracts.Services;
 using SpacePortal.Core.Contracts;
@@ -15,7 +19,19 @@ using SpacePortal.Models;
 using SpacePortal.Services;
 using SpacePortal.ViewModels;
 using SpacePortal.Views;
+
 using Syncfusion.Licensing;
+using WinUIEx.Messaging;
+using Windows.UI.Popups;
+using Microsoft.UI.Xaml.Controls;
+using System.Diagnostics;
+using WinUIEx;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.Windows.ApplicationModel.Resources;
+using Microsoft.UI.Xaml.Documents;
+using Windows.UI;
+using Microsoft.UI;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace SpacePortal;
 
@@ -93,6 +109,10 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<ChooseClassesViewModel>();
+            services.AddTransient<ChooseClassesPage>();
+            services.AddTransient<ChooseCoursesViewModel>();
+            services.AddTransient<ChooseCoursesPage>();
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();
             services.AddTransient<AppFeedbackViewModel>();
@@ -135,6 +155,9 @@ public partial class App : Application
             services.AddSingleton<IDao<InformationsForDashboard>, InformationsForDashboardDao>();
             services.AddSingleton<IDao<InformationsForShellPage>, InformationsForShellPageDao>();
             services.AddSingleton<IDao<InformationsForGradesPage_GradesRow>,InformationsForGradesPageDao>();
+            services.AddSingleton<IDao<CoursesRegistrationPeriodInformation>, CoursesRegistrationPeriodInformationDao>();
+            services.AddSingleton<IDao<ChooseCoursesInformations>, ChooseCoursesInformationsDao>();
+            services.AddSingleton<IDao<ChooseClassesInformations>, ChooseClassesInformationsDao>();
         }).
         Build();
          
@@ -143,8 +166,46 @@ public partial class App : Application
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
-        // TODO: Log and handle exceptions as appropriate.
-        // https://docs.microsoft.com/windows/windows-app-sdk/api/winrt/microsoft.ui.xaml.application.unhandledexception.
+        e.Handled = true;
+
+        var messageTextBlock = new TextBlock
+        {
+            Text = $"{(new ResourceLoader()).GetString("App_CrashMessage")}\n{e.Exception.Message}",
+            TextWrapping = TextWrapping.WrapWholeWords,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            FontSize = 14,
+        };
+
+        var container = new StackPanel() { Orientation = Orientation.Horizontal, Spacing=24, 
+            HorizontalAlignment=HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center };
+        container.Children.Add(new FontIcon() { Glyph = "\uEB90", Foreground = new SolidColorBrush(Colors.Red), FontSize = 28 });
+        container.Children.Add(messageTextBlock);
+
+        container.Measure(new Windows.Foundation.Size(double.PositiveInfinity, double.PositiveInfinity));
+
+        var width = container.DesiredSize.Width + 64;
+        var height = container.DesiredSize.Height + 96;
+
+        var errorWindow = new WindowEx
+        {
+            Title = "Crashed",
+            IsAlwaysOnTop = true,
+            IsMaximizable = false,
+            IsMinimizable = false,
+            IsResizable = false,
+            Content = container,
+            Width = width,
+            Height = height,
+            SystemBackdrop = new MicaBackdrop(),
+        };
+        errorWindow.CenterOnScreen();
+        errorWindow.Closed += (s, e) => { App.Current.Exit(); };
+        errorWindow.Activate();
+
+        if (MainWindow != null)
+        {
+            MainWindow.Close();
+        }
     }
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
@@ -155,7 +216,7 @@ public partial class App : Application
         // Hard code login
         App.GetService<ApiService>().Login("student1", "1234");
 
-       // var debug = await App.GetService<ApiService>().GetAsync<InformationsForDashboard>("/rpc/get_dashboard_info");
+        // var debug = await App.GetService<ApiService>().GetAsync<InformationsForDashboard>("/rpc/get_dashboard_info");
 
         await App.GetService<IActivationService>().ActivateAsync(args);
     }

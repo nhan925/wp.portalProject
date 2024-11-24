@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="using:Syncfusion.UI.Xaml.Charts"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d">
 
     <ScrollView VerticalScrollBarVisibility="Auto">
@@ -150,9 +151,7 @@
                                                  TooltipTemplate="{StaticResource tooltipTemplate}"/>     
                     </syncfusion:SfCartesianChart.Series>
                 </syncfusion:SfCartesianChart>
-                <Grid x:Name="LineChartLoadingOverlay">
-                    <ProgressRing IsActive="True" Width="32" Height="32"/>
-                </Grid>
+                <labs:Shimmer Visibility="Visible" CornerRadius="10" x:Name="LineChartLoadingOverlay"/>
             </Grid>
             <Grid Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="4" Padding="16,16,16,12" Style="{StaticResource cardStyle}">
                 <Grid.RowDefinitions>
@@ -207,9 +206,7 @@
                 <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Grid.Row="1" HorizontalTextAlignment="Right">
                     <Run x:Uid="Dashboard_TotalCredits"/>: <Run Text="{x:Bind ViewModel.Informations.CurrentCredit}"/>/<Run Text="{x:Bind ViewModel.Informations.TotalCredit}"/>
                 </TextBlock>
-                <Grid x:Name="PieChartLoadingOverlay" Grid.Row="0">
-                    <ProgressRing IsActive="True" Width="32" Height="32"/>
-                </Grid>
+                <labs:Shimmer Visibility="Visible" CornerRadius="10" x:Name="PieChartLoadingOverlay"/>
             </Grid>
             <TextBlock x:Uid="Dashboard_MoreFeatures" Style="{ThemeResource SubtitleTextBlockStyle}" Grid.Row="3" Grid.ColumnSpan="6"/>
             <Button x:Name="InforButton" Grid.Row="4" Grid.ColumnSpan="3" Grid.Column="0" Style="{StaticResource buttonStyle}" Click="InforButton_Click"> 
