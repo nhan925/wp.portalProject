@@ -16,10 +16,14 @@
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*" />
-            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="5*" />
         </Grid.ColumnDefinitions>
 
-        <Frame x:Name="LoginFrame" Grid.Column="1" Margin="0,50,30,50" CornerRadius="20" Background="White" BorderBrush="Black" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Frame x:Name="LoginFrame" Grid.Row="0" Grid.Column="1" Margin="0,50,30,50" CornerRadius="20" Background="White" BorderBrush="Black" >
            
         </Frame>
     </Grid>

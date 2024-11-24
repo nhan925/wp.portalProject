@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Navigation;
 using SpacePortal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-
+using Microsoft.Windows.ApplicationModel.Resources;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -23,15 +23,14 @@ namespace SpacePortal.Views;
 /// </summary>
 public sealed partial class LoginForgotPasswordPage01 : Page
 {
-    public LoginWindowsViewModel ViewModel
-    {
-        get; set;
-    }
+    ResourceLoader resourceLoader = new ResourceLoader();
+    public LoginWindowsViewModel ViewModel { get; set; }
     private LoginWindow ParentWindow;
 
     public LoginForgotPasswordPage01()
     {
         this.InitializeComponent();
+        this.RequestedTheme = ElementTheme.Light;
         ViewModel = LoginWindowsViewModel.Instance;
     }
 
@@ -56,14 +55,15 @@ public sealed partial class LoginForgotPasswordPage01 : Page
         if (ViewModel.CheckUserNameAndSendOTP())
         {
             ParentWindow.NavigateToConfirmOTPPage();
+            ViewModel.SetEmailNotificationCaption();
         }
         else
         {
             ContentDialog dialog = new ContentDialog
             {
-                Title = "Lỗi",
-                Content = "Tên đăng nhập không chính xác",
-                CloseButtonText = "Đóng",
+                Title = resourceLoader.GetString("App_Error/Text"),
+                Content = resourceLoader.GetString("Login_Error_ConfirmUserName/Text"),
+                CloseButtonText = resourceLoader.GetString("App_Close/Text"),
                 XamlRoot = this.XamlRoot
             };
             _ = dialog.ShowAsync();

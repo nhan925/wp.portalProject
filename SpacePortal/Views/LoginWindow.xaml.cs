@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Microsoft.Identity.Client;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -25,7 +26,12 @@ public sealed partial class LoginWindow : Window
     public LoginWindow()
     {
         this.InitializeComponent();
-
+        this.ExtendsContentIntoTitleBar = true;
+        this.SetTitleBar(null);
+        this.SetWindowSize(1000, 600);
+        this.SetIsResizable(false);
+        this.CenterOnScreen();
+        this.SetIsMaximizable(false);
         LoginFrame.Navigate(typeof(LoginWelcomePage), this);
     }
 

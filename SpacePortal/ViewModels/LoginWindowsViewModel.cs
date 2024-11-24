@@ -19,21 +19,37 @@ using Newtonsoft.Json;
 using System.Windows.Input;
 using Windows.Devices.PointOfService;
 using Microsoft.Identity.Client;
-
+using System.Reflection.Metadata.Ecma335;
+using Microsoft.UI.Dispatching;
+using Microsoft.UI.Xaml;
+using System;
+using System.IO;
+using System.Security.Cryptography;
+using SpacePortal.Contracts.Services;
+using Syncfusion.XlsIO.Implementation.Security;
+using Microsoft.Windows.ApplicationModel.Resources;
+using System.Text.RegularExpressions;
+using Sprache;
+using Windows.Storage;
 namespace SpacePortal.ViewModels;
 public partial class LoginWindowsViewModel : ObservableRecipient
 {
-
+    ResourceLoader resourceLoader = new ResourceLoader();
     private static LoginWindowsViewModel _instance;
     public static LoginWindowsViewModel Instance => _instance ??= new LoginWindowsViewModel();
+    LoginWindowsViewModel()
+    {
 
-    LoginWindowsViewModel() { }
+    }
 
     [ObservableProperty]
     private string _userName = string.Empty;
 
     [ObservableProperty]
     private string _password = string.Empty;
+
+    [ObservableProperty]
+    private bool _isRememberMe = false;
 
     [ObservableProperty]
     private string _confirmUserName = string.Empty;
@@ -47,76 +63,88 @@ public partial class LoginWindowsViewModel : ObservableRecipient
     [ObservableProperty]
     private string _confirmNewPassword = string.Empty;
 
-    public class InformationForResetPassword()
-    {
-        public string email
-        {
-            get; set;
-        }
-        public string otp
-        {
-            get; set;
-        }
-    }
+    [ObservableProperty]
+    private string _emailNotificationCaption = string.Empty;
 
-    private InformationForResetPassword info = new();
+    [ObservableProperty]
+    private string _countDownNotificationCaption = string.Empty;
+
+    private string ResetPasswordToken = string.Empty;
+
+    public int CountDownTime = 60;
+
+    public void ResetInstance()
+    {
+        _instance = new LoginWindowsViewModel();
+    }
 
     public bool CheckLoginWithRawInformation()
     {
-        return App.GetService<ApiService>().Login(UserName, Password);
+        //var result = App.GetService<ApiService>().Login(UserName, Password);
+        var result = true;
+        if (result)
+        {
+            if (IsRememberMe == true)
+            {
+               SaveLoginInfoToLocal(UserName, Password);
+            }
+        }
+        Debug.WriteLine($"UserName: {UserName}");
+        Debug.WriteLine($"Password: {Password}");
+        Debug.WriteLine($"IsRememberMe: {IsRememberMe}");
+        return result;
     }
-
 
     public bool CheckUserNameAndSendOTP()
     {
-        
-        info =  App.GetService<ApiService>().Post<InformationForResetPassword>("/rpc/check_username_and_generate_email_otp", new {v_use_rname = ConfirmUserName});
-
-        if (info.email == "" || info.otp == "")
+        var info = new
         {
-            return false;
-        }
-        else
-        {
-            SendOTPMail();
-            return true;
-        }
-
+            v_user_name = ConfirmUserName
+        };
+        var result = App.GetService<ApiService>().Post<Boolean>("/rpc/check_username_and_send_otp", info);
+        return result;
     }
-
-    public async void SendOTPMail()
-    {
-        Debug.WriteLine($"Sending OTP email to {info.email} with OTP: {info.otp}");
-
-        //TODO
-    }
-
 
     public bool ValidateOTP()
     {
         var info = new
         {
-            v_user_name = ConfirmNewPassword,
+            v_user_name = ConfirmUserName,
             v_otp = ConfirmOTP
         };
-        return App.GetService<ApiService>().Post<Boolean>("/rpc/validate_email_otp", info);
+        ResetPasswordToken = App.GetService<ApiService>().Post<string>("/rpc/validate_otp", info);
+        Debug.WriteLine($"ResetPasswordToken: {ResetPasswordToken}");
+        Debug.WriteLine("Confirm UserName: " + ConfirmUserName);
+        Debug.WriteLine("OTP: " + ConfirmOTP);
+        if (ResetPasswordToken == "")
+        {
+            return false;
+        }
+        return true;
     }
 
     public string CheckPasswordAndConfirmNewPassword()
     {
+        var message = "success";
         if (NewPassword != ConfirmNewPassword)
         {
-            return "Password and Confirm Password are not the same";
+            message = resourceLoader.GetString("Login_Error_ResetPassword01/Text");
+            return message;
         }
 
-        if (NewPassword.Length < 6)
+        if (NewPassword.Length == 0)
         {
-            return "Password must be at least 6 characters";
+            message = resourceLoader.GetString("Login_Error_ResetPassword02/Text");
+            return message;
         }
 
-        //TODO: Check password strength
-
-        return "success";
+        Regex regex = new Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+        if (!regex.IsMatch(NewPassword))
+        {
+            message = resourceLoader.GetString("Login_Error_ResetPassword03/Text");
+            return message;
+        }
+        return message;
     }
 
     public bool UpdateNewPassword()
@@ -124,61 +152,115 @@ public partial class LoginWindowsViewModel : ObservableRecipient
         var info = new
         {
             v_user_name = ConfirmUserName,
+            v_reset_password_token = ResetPasswordToken,
             v_new_password = NewPassword,
         };
-        return App.GetService<ApiService>().Post<Boolean>("/rpc/update_new_password", info);
+        var result = App.GetService<ApiService>().Post<Boolean>("/rpc/update_new_password", info);
+        return result;
     }
 
-    ///Login with outlook
-    private string _userOutlookEmail = string.Empty;
-    public string UserOutlookEmail
+    public void SetEmailNotificationCaption()
     {
-        get => _userOutlookEmail;
-        set => SetProperty(ref _userOutlookEmail, value);
+        var UserEmail = App.GetService<ApiService>().Post<string>("/rpc/get_user_email", new { v_user_name = ConfirmUserName });
+        Debug.WriteLine(UserEmail);
+        var caption = resourceLoader.GetString("Login_Caption_OTP/Text") + UserEmail;
+        EmailNotificationCaption = caption;
     }
 
-    public async Task LoginWithOutlook()
+
+
+    public async Task<bool> LoginWithOutlook()
     {
+        var clientID = Env.GetString("AZURE_CLIENT_ID");
+        var tenantID = Env.GetString("AZURE_TENANT_ID");
+        string[] scpopes = { Env.GetString("AZURE_SCOPE") };
+
+        var app = PublicClientApplicationBuilder.Create(clientID)
+            .WithTenantId(tenantID)
+            .WithRedirectUri("http://localhost")
+            .Build();
+
+
+        var accounts = await app.GetAccountsAsync();
+        var authResult = await app.AcquireTokenInteractive(scpopes).ExecuteAsync();
+
+        var accessToken = authResult.AccessToken;
+        var result = App.GetService<ApiService>().LoginWithOutlook(accessToken);
+
+        return result;
+    }
+
+    private void encodingPassword(string passwordRaw)
+    {
+        var passwordInBytes = Encoding.UTF8.GetBytes(passwordRaw);
+        var entropyInBytes = new byte[20];
+        using (var rng = RandomNumberGenerator.Create())
+        {
+            rng.GetBytes(entropyInBytes);
+        }
+
+        var encryptedPasswordInBytes = ProtectedData.Protect(
+            passwordInBytes,
+            entropyInBytes,
+            DataProtectionScope.CurrentUser
+        );
+
+        var encryptedPasswordBase64 = Convert.ToBase64String(encryptedPasswordInBytes);
+        var entropyInBase64 = Convert.ToBase64String(entropyInBytes);
+
+        var localSettings = ApplicationData.Current.LocalSettings;
+        localSettings.Values["PasswordInBase64"] = encryptedPasswordBase64;
+        localSettings.Values["EntropyInBase64"] = entropyInBase64;
+    }
+
+    private string decodingPassword()
+    {
+        var localSettings = ApplicationData.Current.LocalSettings;
+        var encryptedPasswordBase64 = (string)localSettings.Values["PasswordInBase64"];
+        var entropyInBase64 = (string)localSettings.Values["EntropyInBase64"];
+       
         try
         {
-            var clientID = Env.GetString("AZURE_CLIENT_ID");
-            var tenantID = Env.GetString("AZURE_TENANT_ID");
-            string[] scpopes = { "User.Read" };
-            
-            var app = PublicClientApplicationBuilder.Create(clientID)
-                .WithTenantId(tenantID)
-                .WithRedirectUri("http://localhost")
-                .Build();
+            var encryptedPasswordInBytes = Convert.FromBase64String(encryptedPasswordBase64);
+            var entropyInBytes = Convert.FromBase64String(entropyInBase64);
 
+            var passwordInBytes = ProtectedData.Unprotect(
+                encryptedPasswordInBytes,
+                entropyInBytes,
+                DataProtectionScope.CurrentUser
+            );
 
-            var accounts = await app.GetAccountsAsync();
-            var authResult = await app.AcquireTokenInteractive(scpopes).ExecuteAsync();
-
-            UserOutlookEmail = authResult.Account.Username;
-
-            var info = new
-            {
-                v_user_name = UserName,
-                v_outlook_email = UserOutlookEmail
-            };
-            Debug.WriteLine($"Login with outlook email: {UserOutlookEmail}");
-            var isValidate = false;
-            //bool isValidate = App.GetService<ApiService>().Post<Boolean>("/rpc/validate_outlook_email", info);
-            if (isValidate)
-            {
-                //Login thành công
-            }
-            else
-            {
-                //Login thất bại
-            }
+            return Encoding.UTF8.GetString(passwordInBytes);
         }
-        catch (Exception ex)
+        catch (FormatException)
         {
-            Debug.WriteLine(ex.Message);
+            // Handle the exception or log it
+            return "";
         }
     }
 
-    
+
+    private void SaveLoginInfoToLocal(string userName, string passwordRaw)
+    {
+        var localSettings = ApplicationData.Current.LocalSettings;
+        localSettings.Values["UserName"] = userName;
+        encodingPassword(passwordRaw);
+    }
+
+    public bool LoadLoginInfoFromLocal()
+    {
+        var localSettings = ApplicationData.Current.LocalSettings;
+        if (localSettings.Values.ContainsKey("UserName") && localSettings.Values.ContainsKey("PasswordInBase64"))
+        {
+            var storedUserName = (string)localSettings.Values["UserName"];
+            var storedPassword = decodingPassword();
+            //Gọi hàm login với thông tin đã lưu
+            //var result = App.GetService<ApiService>().Login(storedUserName, storedPassword);
+            //return result
+            return true;
+        }
+        return false;
+
+    }
 }
 

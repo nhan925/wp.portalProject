@@ -35,13 +35,6 @@
             <Setter Property="CornerRadius" Value="0"/>
         </Style>
 
-        <Style x:Key="TextBox" TargetType="TextBox">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="BorderBrush" Value="Gray" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Background" Value="White"/>
-            <Setter Property="CornerRadius" Value="10" />
-        </Style>
     </Page.Resources>
     
     <Grid>
@@ -53,13 +46,13 @@
         </Grid.RowDefinitions>
 
         
-        <TextBlock Grid.Row="0" x:Uid="Login_Welcome" Style="{StaticResource WelcomeTitle}" Margin="30,30,0,0"/>
+        <TextBlock Grid.Row="0" x:Uid="Login_Welcome" Style="{StaticResource WelcomeTitle}" Margin="20,15,0,0"/>
         <StackPanel  Grid.Row="1" Orientation="Horizontal">
-            <TextBlock x:Uid="Login_AppName" Style="{StaticResource AppNameTitle}" Margin="30,0,0,0"/>
+            <TextBlock x:Uid="Login_AppName" Style="{StaticResource AppNameTitle}" Margin="20,0,0,0"/>
             <Image Source="/Assets/WelcomeIcon.png" Width="40"  Height="40" Stretch="UniformToFill" VerticalAlignment="Top" Margin="-15,0,0,0"/>
         </StackPanel>
 
-        <Grid Grid.Row="2" Margin="120,88,120,0">
+        <Grid Grid.Row="2" Margin="70,40,70,0">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -77,13 +70,13 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0"  x:Uid="Login_UserName"  Style="{StaticResource TopHeaderInput}" Margin="0,0,0,12"/>
-            <TextBox  Grid.Row="1" Style="{StaticResource TextBox}"  Grid.ColumnSpan="2" x:Uid="Login_UserNameTextBox" Margin="0,0,0,16" Text="{x:Bind ViewModel.UserName, Mode=TwoWay}" />
+            <TextBox  Grid.Row="1"  Grid.ColumnSpan="2" x:Uid="Login_UserNameTextBox" Margin="0,0,0,16" Text="{x:Bind ViewModel.UserName, Mode=TwoWay}" />
 
             <TextBlock Grid.Row="2"    x:Uid="Login_Password" Style="{StaticResource TopHeaderInput}" Margin="0,0,0,12"/>
-            <TextBox Grid.Row="3" Style="{StaticResource TextBox}" Grid.ColumnSpan="2"  x:Uid="Login_PasswordTextBox" Margin="0,0,0,16" Text="{x:Bind ViewModel.Password, Mode=TwoWay}" />
+            <PasswordBox Grid.Row="3"  Grid.ColumnSpan="2"  x:Uid="Login_PasswordTextBox" Margin="0,0,0,16" Password="{x:Bind ViewModel.Password, Mode=TwoWay}" />
 
 
-            <CheckBox Grid.Row="4" Foreground="Black" Grid.Column="0"  x:Uid="Login_RememberMeCheckBox" HorizontalAlignment="Left" Click="RememberMeCheckBox_Click" />
+            <CheckBox Grid.Row="4" Foreground="Black" Grid.Column="0"  x:Uid="Login_RememberMeCheckBox" HorizontalAlignment="Left" IsChecked="{x:Bind ViewModel.IsRememberMe, Mode=TwoWay}"/>
             <Button Grid.Row="4" Grid.Column="1"  Style="{StaticResource ResetButton}" x:Uid="Login_ForgotPasswordButton" HorizontalAlignment="Right" Foreground="#001A68" FontWeight="SemiBold" Click="ForgotPasswordButton_Click"/>
 
             <Button Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource AccentButtonStyle}" x:Uid="Login_LoginButton" HorizontalAlignment="Stretch" Margin="0,16,0,0" Click="LoginWithRawButton_Click"/>

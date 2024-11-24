@@ -13,7 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using SpacePortal.ViewModels;
-
+using Microsoft.Windows.ApplicationModel.Resources;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -24,15 +24,14 @@ namespace SpacePortal.Views
     /// </summary>
     public sealed partial class LoginForgotPasswordPage03 : Page
     {
-        public LoginWindowsViewModel ViewModel
-        {
-            get; set;
-        }
+        ResourceLoader resourceLoader = new ResourceLoader();
+        public LoginWindowsViewModel ViewModel {get; set;}
         private LoginWindow ParentWindow;
 
         public LoginForgotPasswordPage03()
         {
             this.InitializeComponent();
+            this.RequestedTheme = ElementTheme.Light;
             ViewModel = LoginWindowsViewModel.Instance;
         }
 
@@ -51,16 +50,32 @@ namespace SpacePortal.Views
             var message = ViewModel.CheckPasswordAndConfirmNewPassword();
             if(message == "success")
             {
-                ViewModel.UpdateNewPassword();
-                //Navigate to SpacePortal
+                if (ViewModel.UpdateNewPassword())
+                {
+                    ContentDialog dialog = new ContentDialog
+                    {
+                        Title = resourceLoader.GetString("App_Title_Successful/Text"),
+                        Content = resourceLoader.GetString("Login_ResetPassword_Complete/Text"),
+                        CloseButtonText = resourceLoader.GetString("App_Close/Text"),
+                        XamlRoot = this.XamlRoot
+                    };
+                    _ = dialog.ShowAsync();
+
+                    dialog.CloseButtonClick += (s, e) =>
+                    {
+                        ParentWindow.NavigateToWelcomePage();
+                    };
+                }
+             
             }
             else
             {
                 ContentDialog dialog = new ContentDialog
                 {
-                    Title = "Đổi mật khẩu thất bại",
+                    Title = resourceLoader.GetString("App_Error/Text"),
                     Content = message,
-                    CloseButtonText = "OK"
+                    CloseButtonText = resourceLoader.GetString("App_Close/Text"),
+                    XamlRoot = this.XamlRoot
                 };
                 _ = dialog.ShowAsync();
             }
