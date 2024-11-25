@@ -6,7 +6,83 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Padding="36">
-        <TextBlock Text="Coming soon..."/>
+    <Page.Resources>
+        <Style x:Key="Title" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+        </Style>
+        <Style x:Key="Subtitle" TargetType="TextBlock" BasedOn="{StaticResource BodyStrongTextBlockStyle}" >
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+            <Setter Property="Opacity" Value="0.8"/>
+        </Style>
+        <Style x:Key="Card" TargetType="Grid">
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorSecondaryBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid x:Name="ContentArea" Margin="36, 36, 36, 36" RowSpacing="16" ColumnSpacing="16">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="FeedbackArea" Style="{ThemeResource Card}" Grid.Column="0" 
+              Margin="36, 36, 36, 36" Padding="24" RowSpacing="16" ColumnSpacing="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" MinHeight="35"/>
+                <RowDefinition Height="12*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Name="FeedbackTitle" Style="{ThemeResource Title}" x:Uid="AppFeedback_FeedbackTitle" 
+                       Grid.Row="0" Grid.ColumnSpan="2" 
+                       TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            
+            <TextBlock Name="FeedbackClassificaiton" Style="{ThemeResource Subtitle}" 
+                       Grid.Column="0" Grid.Row="1" FontSize="20" TextAlignment="Center"
+                       HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Run x:Uid="AppFeedback_Classification"/>: <Run/>
+            </TextBlock>
+            <ComboBox Name="FeedbackClassificationComboBox" Grid.Column="1" Grid.Row="1" Width="112" FontSize="16"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                      ItemsSource="{x:Bind ViewModel.TypeItemComboBox}"
+                      SelectionChanged="FeedbackClassificationComboBox_SelectionChanged" />
+            
+            <TextBox Name="FeedbackTextBox" Grid.Row="2" Grid.ColumnSpan="2"
+                         Foreground="{ThemeResource TextFillColorPrimaryBrush}"
+                         Text="{x:Bind ViewModel.EditContent, Mode = Twoway}"
+                         x:Uid="AppFeedback_InputInstruction"
+                         Margin="16,0,16,0"
+                         FontSize="18"
+                         CornerRadius="4"
+                         TextWrapping="Wrap"
+                         TextAlignment="Justify"
+                         HorizontalAlignment="Stretch" 
+                         VerticalAlignment="Stretch"
+                         TextChanged="FeedbackTextBox_TextChanged"/>
+
+            <TextBlock x:Name="CharacterCountText" Grid.Row="3" Margin="16,0,16,0">
+                <Run x:Uid="AppFeedback_CharacterCount"/>: <Run Text="0"/>
+            </TextBlock>
+            
+            <Button Name="SendButton" Style="{StaticResource AccentButtonStyle}" Width="100" Height="44" 
+                    Grid.Row="4" Grid.ColumnSpan="2" Click="SendButton_Click" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <SymbolIcon Symbol="Send"/>
+                    <TextBlock x:Uid="AppFeedback_SendButton" Margin="12,0,0,0" FontSize="20"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Image Source="/Assets/feedback_image.png" Grid.Column="1"  
+               Stretch="Uniform"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"/>
     </Grid>
 </Page>
