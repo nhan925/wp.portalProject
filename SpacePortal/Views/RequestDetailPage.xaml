@@ -15,15 +15,18 @@
             <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
         </Style>
 
-		<Style x:Key="Content" TargetType="TextBlock" BasedOn="{StaticResource BodyStrongTextBlockStyle}" >
+		<Style x:Key="Content" TargetType="TextBlock" BasedOn="{StaticResource BodyTextBlockStyle}" >
 			<Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
-		</Style>
+            <Setter Property="Opacity" Value="0.8"/>
+            <Setter Property="Margin" Value="0,4,0,0"/>
+            <Setter Property="FontSize" Value="12" />
+        </Style>
 
 		<Style x:Key="Card" TargetType="Grid">
 			<Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
 			<Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
 			<Setter Property="BorderThickness" Value="1"/>
-			<Setter Property="CornerRadius" Value="20"/>
+			<Setter Property="CornerRadius" Value="10"/>
 			<Setter Property="Padding" Value="16"/>
 		</Style>
 
@@ -34,9 +37,8 @@
 		</Style>
 
         <Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource AccentButtonStyle}">
-            <Setter Property="Width" Value="200"/>
+            <Setter Property="Width" Value="140"/>
             <Setter Property="Height" Value="40"/>
-            <Setter Property="FontSize" Value="16"/>
         </Style>
 	</Page.Resources>
 	<Grid Margin="36,36,36,36">
@@ -53,8 +55,8 @@
 			<Button Grid.Column="0" Background="Transparent" BorderThickness="0" Click="GoBackButton_Click" VerticalAlignment="Center">
 				<FontIcon Glyph="&#xE96F;" VerticalAlignment="Center" Margin="0,4,4,4"/>
 			</Button>
-			<TextBlock Grid.Column="1" Style="{ThemeResource Title}" x:Uid="RequestDetailPage_RequestDetailTitle" HorizontalAlignment="Center"
-					   VerticalAlignment="Center"/>
+			<TextBlock Grid.Column="1" Style="{ThemeResource Title}" x:Uid="RequestDetailPage_RequestDetailTitle" HorizontalAlignment="Left"
+					   VerticalAlignment="Center" Margin="8,0,0,4"/>
 		</Grid>
 		<Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="28" ColumnSpacing="28">
 			<Grid.ColumnDefinitions>
@@ -69,10 +71,10 @@
                     <RowDefinition Height="*" MinHeight="100"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Style="{ThemeResource Subtitle}" Text="{x:Bind ViewModel.Request.RequestName}" TextAlignment="Left"/>
-                <TextBlock Grid.Row="1" Style="{ThemeResource Content}" Text="{x:Bind ViewModel.Request.SubmittedAt}" TextAlignment="Left"/>
-                <Line Grid.Row="2" X1="0" Y1="20" X2="{Binding ActualWidth, ElementName=RequestDetailArea}" Y2="20" 
-					  Stroke="{ThemeResource CardStrokeColorDefaultBrush}" StrokeThickness="1"/>
-                <TextBox Grid.Row="3" Text="{x:Bind ViewModel.FormattedRequestContent, Mode=OneWay}" TextAlignment="Left" Margin="0,24,0,0"
+                <TextBlock Grid.Row="1" Style="{ThemeResource Content}" Text="{x:Bind ViewModel.Request.SubmittedAt}" TextAlignment="Left" />
+                <Line Grid.Row="2" X1="0" Y1="8" X2="{Binding ActualWidth, ElementName=RequestDetailArea}" Y2="8" 
+					  Stroke="{ThemeResource DividerStrokeColorDefaultBrush}" StrokeThickness="1"/>
+                <TextBox Grid.Row="3" Text="{x:Bind ViewModel.FormattedRequestContent, Mode=OneWay}" TextAlignment="Left" Margin="0,8,0,0"
                           AcceptsReturn="True" FocusVisualPrimaryThickness="0" IsReadOnly="True"/>
             </Grid>
             <Grid Name="AnswerArea" Style="{ThemeResource Card}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="16">
@@ -86,9 +88,9 @@
                 <TextBlock Grid.Row="1" Style="{ThemeResource Content}" TextAlignment="Left">
                     <Run x:Uid="RequestDetailPage_ByLabel"/>: <Run Text="{x:Bind ViewModel.Answer.AdminName, Mode=OneWay}"/> - <Run Text="{x:Bind ViewModel.Answer.SubmittedAt, Mode=OneWay}"/>
                 </TextBlock>
-                <Line Grid.Row="2" X1="0" Y1="20" X2="{Binding ActualWidth, ElementName=AnswerArea}" Y2="20" 
-				  Stroke="{ThemeResource CardStrokeColorDefaultBrush}" StrokeThickness="1"/>
-                <TextBox Grid.Row="3" Text="{x:Bind ViewModel.Answer.AnswerContent, Mode=OneWay}" TextAlignment="Left" Margin="0,24,0,0"
+                <Line Grid.Row="2" X1="0" Y1="8" X2="{Binding ActualWidth, ElementName=AnswerArea}" Y2="8" 
+				  Stroke="{ThemeResource DividerStrokeColorDefaultBrush}" StrokeThickness="1"/>
+                <TextBox Grid.Row="3" Text="{x:Bind ViewModel.Answer.AnswerContent, Mode=OneWay}" TextAlignment="Left" Margin="0,8,0,0"
 						AcceptsReturn="True" FocusVisualPrimaryThickness="0" IsReadOnly="True"/>
             </Grid>
 		</Grid>

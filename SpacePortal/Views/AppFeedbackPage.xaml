@@ -45,13 +45,13 @@
                        Grid.Row="0" Grid.ColumnSpan="2" 
                        TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             
-            <TextBlock Name="FeedbackClassificaiton" Style="{ThemeResource Subtitle}" 
-                       Grid.Column="0" Grid.Row="1" FontSize="20" TextAlignment="Center"
-                       HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Name="FeedbackClassificaiton" Style="{ThemeResource Subtitle}" Opacity="0.8" Margin="16,0,0,0"
+                       Grid.Column="0" Grid.Row="1" FontSize="16" TextAlignment="Center"
+                       HorizontalAlignment="Left" VerticalAlignment="Center">
                 <Run x:Uid="AppFeedback_Classification"/>: <Run/>
             </TextBlock>
-            <ComboBox Name="FeedbackClassificationComboBox" Grid.Column="1" Grid.Row="1" Width="112" FontSize="16"
-                      HorizontalAlignment="Stretch" VerticalAlignment="Center"
+            <ComboBox Name="FeedbackClassificationComboBox" Grid.Column="1" Grid.Row="1" Width="112" FontSize="16" Margin="0,0,16,0"
+                      HorizontalAlignment="Right" VerticalAlignment="Center"
                       ItemsSource="{x:Bind ViewModel.TypeItemComboBox}"
                       SelectionChanged="FeedbackClassificationComboBox_SelectionChanged" />
             
@@ -60,23 +60,24 @@
                          Text="{x:Bind ViewModel.EditContent, Mode = Twoway}"
                          x:Uid="AppFeedback_InputInstruction"
                          Margin="16,0,16,0"
-                         FontSize="18"
+                         FontSize="16"
+                         AcceptsReturn="True"
                          CornerRadius="4"
                          TextWrapping="Wrap"
-                         TextAlignment="Justify"
+                         TextAlignment="Left"
                          HorizontalAlignment="Stretch" 
                          VerticalAlignment="Stretch"
                          TextChanged="FeedbackTextBox_TextChanged"/>
 
-            <TextBlock x:Name="CharacterCountText" Grid.Row="3" Margin="16,0,16,0">
+            <TextBlock x:Name="CharacterCountText" Grid.Row="3" Margin="16,0,16,0" Opacity="0.8">
                 <Run x:Uid="AppFeedback_CharacterCount"/>: <Run Text="0"/>
             </TextBlock>
             
             <Button Name="SendButton" Style="{StaticResource AccentButtonStyle}" Width="100" Height="44" 
                     Grid.Row="4" Grid.ColumnSpan="2" Click="SendButton_Click" HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <SymbolIcon Symbol="Send"/>
-                    <TextBlock x:Uid="AppFeedback_SendButton" Margin="12,0,0,0" FontSize="20"/>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" >
+                    <SymbolIcon Symbol="Send" />
+                    <TextBlock x:Uid="AppFeedback_SendButton" Margin="12,0,0,2" FontSize="18"/>
                 </StackPanel>
             </Button>
         </Grid>

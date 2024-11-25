@@ -632,8 +632,10 @@
   </data>
   <data name="RequestDetailPage_Anonymous.Text" xml:space="preserve">
     <value>Anonymous</value>
+  </data>
   <data name="AppFeedback_CharacterCount.Text" xml:space="preserve">
     <value>Số ký tự</value>
+  </data>
   <data name="Login_Welcome.Text" xml:space="preserve">
     <value>Chào mừng đến</value>
   </data>
