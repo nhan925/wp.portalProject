@@ -11,47 +11,44 @@ using Windows.Foundation.Collections;
 
 namespace SpacePortal.Helpers
 {
-    public class FullObservableCollection<T> : ObservableCollection<T> where T : INotifyPropertyChanged
+    public sealed class FullObservableCollection<T> : ObservableCollection<T>
+    where T : INotifyPropertyChanged
     {
-        private ObservableCollection<InformationsForGradesPage_GradesRow> gradesRows;
-
         public FullObservableCollection()
-            : base()
         {
-            CollectionChanged += new NotifyCollectionChangedEventHandler(FullObservableCollection_CollectionChanged);
-        }
-        public FullObservableCollection(ObservableCollection<T> list)
-            : base(list)
-        {
-            foreach (var item in list)
-            {
-                item.PropertyChanged += new PropertyChangedEventHandler(item_PropertyChanged);
-            }
-            CollectionChanged += new NotifyCollectionChangedEventHandler(FullObservableCollection_CollectionChanged);
+            CollectionChanged += FullObservableCollectionCollectionChanged;
         }
 
-        void FullObservableCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        public FullObservableCollection(IEnumerable<T> pItems) : this()
+        {
+            foreach (var item in pItems)
+            {
+                this.Add(item);
+            }
+        }
+
+        private void FullObservableCollectionCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.NewItems != null)
             {
                 foreach (Object item in e.NewItems)
                 {
-                    (item as INotifyPropertyChanged).PropertyChanged += new PropertyChangedEventHandler(item_PropertyChanged);
+                    ((INotifyPropertyChanged)item).PropertyChanged += ItemPropertyChanged;
                 }
             }
             if (e.OldItems != null)
             {
                 foreach (Object item in e.OldItems)
                 {
-                    (item as INotifyPropertyChanged).PropertyChanged -= new PropertyChangedEventHandler(item_PropertyChanged);
+                    ((INotifyPropertyChanged)item).PropertyChanged -= ItemPropertyChanged;
                 }
             }
         }
 
-        void item_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void ItemPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            NotifyCollectionChangedEventArgs a = new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset);
-            OnCollectionChanged(a);
+            NotifyCollectionChangedEventArgs args = new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Replace, sender, sender, IndexOf((T)sender));
+            OnCollectionChanged(args);
         }
     }
 }

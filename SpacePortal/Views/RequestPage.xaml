@@ -4,9 +4,112 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.DataGrid" 
+    xmlns:syncfusion1="using:Syncfusion.UI.Xaml.Grids"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Padding="36">
-        <TextBlock Text="Coming soon..."/>
+    <Page.Resources>
+        <Style x:Key="Title" TargetType="TextBlock" BasedOn="{StaticResource SubtitleTextBlockStyle}">
+            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}" />
+        </Style>
+
+        <Style x:Key="Card" TargetType="Grid">
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+    </Page.Resources>
+    <Grid Margin="36, 36, 36, 36">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Name="ListRequest" Style="{ThemeResource Title}" x:Uid="RequestPage_ListRequestTitle" TextAlignment="Left"/>
+            <SplitButton Grid.Column="1" x:Name="StatusButton" Click="StatusButton_Click" x:Uid="RequestPage_Show" HorizontalAlignment="Right"/>
+        </Grid>
+        <Grid Grid.Row="1" Style="{StaticResource Card}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,16,0,0">
+            <syncfusion:SfDataGrid x:Name="sfDataGrid"
+                    AutoGenerateColumns="False"
+                    AllowSorting="False"
+                    ItemsSource="{x:Bind ViewModel.Requests, Mode=OneWay}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    GridLinesVisibility="Horizontal"
+                    SelectionUnit="Row"
+                    NavigationMode="Row"
+                    SelectionMode="Single"
+                    CellDoubleTapped="sfDataGrid_CellDoubleTapped"
+                    CornerRadius="10"
+                    BorderBrush="Transparent"
+                    QueryRowHeight="sfDataGrid_QueryRowHeight"
+                    ScrollViewer.IsScrollInertiaEnabled="True"
+                    Visibility="Collapsed"
+                    ColumnWidthMode="Star"
+                    ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+                <syncfusion:SfDataGrid.Resources>
+                    <Style TargetType="syncfusion:GridHeaderCellControl">
+                        <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
+                        <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
+                    </Style>
+                    <Style TargetType="syncfusion:DataGridRowControl">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
+                    </Style>
+                </syncfusion:SfDataGrid.Resources>
+
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestNumber" MappingName="SequenceNumber" TextAlignment="Center" Width="100"/>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestTitle" MappingName="RequestName" TextAlignment="Center"/>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestDate" MappingName="SubmittedAt" TextAlignment="Center" Width="200"/>
+                    <syncfusion:GridTextColumn x:Uid="RequestPage_RequestStatus" MappingName="Status" TextAlignment="Center" Width="200"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+            <Grid x:Name="DataGridLoadingOverlay">
+                <ProgressRing IsActive="True" Width="64" Height="64"/>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" ColumnSpacing="6" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Width="44" Height="40" Click="OnFirstPageClick">
+                    <FontIcon Glyph="&#xE892;" FontSize="20"/>
+            </Button>
+            <Button Grid.Column="1" Width="40" Height="40" Click="OnPreviousPageClick">
+                <FontIcon Glyph="&#xE76B;" FontSize="20"/>
+            </Button>
+
+            <Grid Grid.Column="2" Style="{ThemeResource Card}" Padding="6" ColumnSpacing="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Name="PageNumber" KeyDown="CatchEnter_KeyDown" Width="40" Height="40" TextAlignment="Center" FontSize="18" LostFocus="TextBox_LostFocus"
+                         HorizontalTextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="/" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="4,0,4,0"/>
+                <TextBlock Grid.Column="2" Name="TotalPages" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Text="{x:Bind ViewModel.TotalPages, Mode=TwoWay}"/>
+            </Grid>
+
+            <Button Grid.Column="3" Width="40" Height="40" Click="OnNextPageClick">
+                <FontIcon Glyph="&#xE76C;" FontSize="20"/>
+            </Button>
+            <Button Grid.Column="4" Width="44" Height="40" Click="OnLastPageClick">
+                <FontIcon Glyph="&#xE893;" FontSize="20"/>
+            </Button>
+        </Grid>
     </Grid>
 </Page>

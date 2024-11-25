@@ -570,6 +570,68 @@
   <data name="AppFeedback_SuccessMessageDialog.Text" xml:space="preserve">
     <value>Phản hồi của bạn đã được ghi nhận.</value>
   </data>
+  <data name="RequestPage_ListRequestTitle.Text" xml:space="preserve">
+    <value>DANH SÁCH YÊU CẦU</value>
+  </data>
+  <data name="RequestPage_ProcessingStatus.Text" xml:space="preserve">
+    <value>Đang xử lý</value>
+  </data>
+  <data name="RequestPage_CompletedStatus.Text" xml:space="preserve">
+    <value>Đã xử lý</value>
+  </data>
+  <data name="RequestPage_RequestNumber.HeaderText" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="RequestPage_RequestTitle.HeaderText" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="RequestPage_RequestDate.HeaderText" xml:space="preserve">
+    <value>Ngày gửi</value>
+  </data>
+  <data name="RequestPage_RequestStatus.HeaderText" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="RequestDetailPage_RequestDetailTitle.Text" xml:space="preserve">
+    <value>THÔNG TIN YÊU CẦU</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestButton.Content" xml:space="preserve">
+    <value>Hủy yêu cầu</value>
+  </data>
+  <data name="RequestDetailPage_ResendRequestButton.Content" xml:space="preserve">
+    <value>Gửi lại</value>
+  </data>
+  <data name="RequestDetailPage_AnswerRequestTitle.Text" xml:space="preserve">
+    <value>Phản hồi</value>
+  </data>
+  <data name="RequestDetailPage_Student.Text" xml:space="preserve">
+    <value>Sinh viên</value>
+  </data>
+  <data name="RequestDetailPage_ResendRequestSuccess.Text" xml:space="preserve">
+    <value>Yêu cầu của bạn đã được ghi nhận.</value>
+  </data>
+  <data name="RequestDetailPage_ResendProcessingRequest.Text" xml:space="preserve">
+    <value>Yêu cầu này đang trong quá trình xử lý.</value>
+  </data>
+  <data name="App_Success.Text" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestSuccess.Text" xml:space="preserve">
+    <value>Yêu cầu của bạn đã được hủy.</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestFail.Text" xml:space="preserve">
+    <value>Thao tác hủy không thể thực hiện.</value>
+  </data>
+  <data name="RequestPage_AllStatus.Text" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="RequestPage_Show.Content" xml:space="preserve">
+    <value>Xem</value>
+  </data>
+  <data name="RequestDetailPage_ByLabel.Text" xml:space="preserve">
+    <value>Bởi</value>
+  </data>
+  <data name="RequestDetailPage_Anonymous.Text" xml:space="preserve">
+    <value>Anonymous</value>
   <data name="AppFeedback_CharacterCount.Text" xml:space="preserve">
     <value>Số ký tự</value>
   <data name="Login_Welcome.Text" xml:space="preserve">

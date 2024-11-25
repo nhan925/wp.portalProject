@@ -273,6 +273,12 @@
   <data name="Information_Error_Email.Text" xml:space="preserve">
     <value>Email is not valid</value>
   </data>
+  <data name="RequestPage_CancelledStatus.Text" xml:space="preserve">
+    <value>Đã hủy</value>
+  </data>
+  <data name="Shell_RequestDetail.Content" xml:space="preserve">
+    <value>RequestDetail</value>
+  </data>
   <data name="Login_Caption_OTP.Text" xml:space="preserve">
     <value>Your OTP code was sent to</value>
   </data>

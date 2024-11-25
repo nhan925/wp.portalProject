@@ -19,7 +19,6 @@ using SpacePortal.Models;
 using SpacePortal.Services;
 using SpacePortal.ViewModels;
 using SpacePortal.Views;
-
 using Syncfusion.Licensing;
 using WinUIEx.Messaging;
 using Windows.UI.Popups;
@@ -111,6 +110,8 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<RequestDetailViewModel>();
+            services.AddTransient<RequestDetailPage>();
             services.AddTransient<ChooseClassesViewModel>();
             services.AddTransient<ChooseClassesPage>();
             services.AddTransient<ChooseCoursesViewModel>();
@@ -157,6 +158,8 @@ public partial class App : Application
             services.AddSingleton<IDao<InformationsForDashboard>, InformationsForDashboardDao>();
             services.AddSingleton<IDao<InformationsForShellPage>, InformationsForShellPageDao>();
             services.AddSingleton<IDao<InformationsForGradesPage_GradesRow>,InformationsForGradesPageDao>();
+            services.AddSingleton<IDao<InformationsForRequest_RequestRow>, InformationsForRequestPageDao>();
+            services.AddSingleton<IDao<InformationsForRequestDetailPage_Answer>, InformationsForRequestDetailPageDao>();
             services.AddSingleton<IDao<CoursesRegistrationPeriodInformation>, CoursesRegistrationPeriodInformationDao>();
             services.AddSingleton<IDao<ChooseCoursesInformations>, ChooseCoursesInformationsDao>();
             services.AddSingleton<IDao<ChooseClassesInformations>, ChooseClassesInformationsDao>();

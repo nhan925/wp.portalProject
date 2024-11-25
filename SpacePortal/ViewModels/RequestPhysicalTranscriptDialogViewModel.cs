@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SpacePortal.Models;
+using Microsoft.Windows.ApplicationModel.Resources;
+using SpacePortal.Core.Services;
 
 namespace SpacePortal.ViewModels;
 public class RequestPhysicalTranscriptDialogViewModel : INotifyPropertyChanged
@@ -85,9 +87,30 @@ public class RequestPhysicalTranscriptDialogViewModel : INotifyPropertyChanged
         get; set;
     }
 
-    public void SendRequestForTranscripts()
+    public void SendRequestForTranscripts(string selectedSemester = "", string selectedYear = "")
     {
-        // TODO: Summary information & send request for transcripts
-        // string requestContent = information of student and transcripts (type, language, quantity)
+        ResourceLoader resourceLoader = new ResourceLoader();
+        StringBuilder requestContent = new StringBuilder();
+        var language_en = resourceLoader.GetString("GradesPage_RequestForTranscriptEn/Text");
+        var language_vi = resourceLoader.GetString("GradesPage_RequestForTranscriptVi/Text");
+        var processingStatus = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
+
+        requestContent.AppendLine(resourceLoader.GetString("GradesPage_RequestForTranscriptTitle"));
+        if (NumberOfTranscriptOfAllVi > 0 || NumberOfTranscriptOfAllEn > 0)
+        {
+            requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForTranscriptAll/Text")},{language_vi}: {NumberOfTranscriptOfAllVi},{language_en}: {NumberOfTranscriptOfAllEn} ");
+        }
+        if (NumberOfSemeseterTranscriptsVi > 0 || NumberOfSemeseterTranscriptsEn > 0)
+        {
+            requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForTranscriptSemesterOfYear/Text")}: {selectedSemester},{language_vi}: {NumberOfSemeseterTranscriptsVi},{language_en}: {NumberOfSemeseterTranscriptsEn}");
+        }
+        if (NumberOfYearTranscriptsVi > 0 || NumberOfYearTranscriptsEn > 0)
+        {
+            requestContent.AppendLine($"{resourceLoader.GetString("GradesPage_RequestForTranscriptYear/Text")}: {selectedYear},{language_vi}: {NumberOfYearTranscriptsVi},{language_en}: {NumberOfYearTranscriptsEn}");
+        }
+        requestContent.Append($"{resourceLoader.GetString("GradesPage_RequestForTranscriptTotal/Text")}: {TotalTranscripts}");
+        
+        // Send request
+        var result = App.GetService<ApiService>().Post<string>("/rpc/add_request", new { content = requestContent.ToString(), status = processingStatus });
     }
 }
