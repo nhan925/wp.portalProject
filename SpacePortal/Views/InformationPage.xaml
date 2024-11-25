@@ -303,7 +303,7 @@
                                      Grid.Column="1"
                                      CornerRadius="4"
                                      TextWrapping="Wrap"
-                                     TextAlignment="Justify"
+                                     TextAlignment="Left"
                                      Height="100"
                                      HorizontalAlignment="Stretch"/>
                         </Grid>
