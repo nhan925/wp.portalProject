@@ -27,6 +27,8 @@ public class PageService : IPageService
         Configure<AIChatbotViewModel, AIChatbotPage>();
         Configure<AppFeedbackViewModel, AppFeedbackPage>();
         Configure<SettingsViewModel, SettingsPage>();
+        Configure<ChooseCoursesViewModel, ChooseCoursesPage>();
+        Configure<ChooseClassesViewModel, ChooseClassesPage>();
     }
 
     public Type GetPageType(string key)

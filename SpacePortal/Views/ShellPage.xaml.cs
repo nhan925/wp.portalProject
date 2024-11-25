@@ -89,4 +89,12 @@ public sealed partial class ShellPage : Page
             ?? "SpacePortal.ViewModels.InformationViewModel");
         AccountAvatarButton.Flyout.Hide();
     }
+
+    private void LogoutButton_Click(object sender, RoutedEventArgs e)
+    {
+        LoginWindowsViewModel.Instance.ClearLoginInfo();
+        App.LoginWindow = new LoginWindow(LoginWindowsViewModel.Instance.LaunchArgs);
+        App.LoginWindow.Activate();
+        App.MainWindow.Close();
+    }
 }
