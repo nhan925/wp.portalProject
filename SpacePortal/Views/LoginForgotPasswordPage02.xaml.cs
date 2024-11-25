@@ -15,6 +15,7 @@ using Microsoft.UI.Xaml.Navigation;
 using SpacePortal.ViewModels;
 using Windows.Media.Core;
 using Microsoft.Windows.ApplicationModel.Resources;
+using SpacePortal.Contracts.Services;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -36,8 +37,6 @@ namespace SpacePortal.Views
             this.InitializeComponent();
             this.RequestedTheme = ElementTheme.Light;
             ViewModel = LoginWindowsViewModel.Instance;
-
-
         }
 
         private void Timer_Tick(object? sender, object? e)
@@ -45,11 +44,11 @@ namespace SpacePortal.Views
             if (ViewModel.CountDownTime > 0)
             {
                 ViewModel.CountDownTime--;
-                ViewModel.CountDownNotificationCaption = $"Mã OTP sẽ hết hạn sau {ViewModel.CountDownTime} giây";
+                ViewModel.CountDownNotificationCaption = $"{resourceLoader.GetString("Login_OTPExpiredAfterText")} {ViewModel.CountDownTime} {resourceLoader.GetString("Login_Second")}";
             }
             else
             {
-                ViewModel.CountDownNotificationCaption = "Mã OTP đã hết hạn";
+                ViewModel.CountDownNotificationCaption = resourceLoader.GetString("Login_OTPExpiredNoti");
                 timer.Stop();
             }
         }
@@ -65,7 +64,7 @@ namespace SpacePortal.Views
 
             ViewModel.ConfirmOTP = "";
             ViewModel.CountDownTime = 60;
-            ViewModel.CountDownNotificationCaption = $"Mã OTP sẽ hết hạn sau {ViewModel.CountDownTime} giây";
+            ViewModel.CountDownNotificationCaption = $"{resourceLoader.GetString("Login_OTPExpiredAfterText")} {ViewModel.CountDownTime} {resourceLoader.GetString("Login_Second")}";
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
             timer.Start();
@@ -91,7 +90,7 @@ namespace SpacePortal.Views
                 timer.Stop();
                 ViewModel.ConfirmOTP = "";
                 ViewModel.CountDownTime = 60;
-                ViewModel.CountDownNotificationCaption = $"Mã OTP sẽ hết hạn sau {ViewModel.CountDownTime} giây";
+                ViewModel.CountDownNotificationCaption = $"{resourceLoader.GetString("Login_OTPExpiredAfterText")} {ViewModel.CountDownTime} {resourceLoader.GetString("Login_Second")}";
                 timer.Start();
             }
             else
@@ -101,7 +100,8 @@ namespace SpacePortal.Views
                     Title = resourceLoader.GetString("App_Error/Text"),
                     Content = resourceLoader.GetString("Login_Error_RequestOTP/Text"),   
                     CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                    XamlRoot = this.XamlRoot
+                    XamlRoot = this.XamlRoot,
+                    RequestedTheme = App.GetService<IThemeSelectorService>().Theme
                 };
                 _ = dialog.ShowAsync();
             }
@@ -120,7 +120,8 @@ namespace SpacePortal.Views
                     Title = resourceLoader.GetString("App_Error/Text"),
                     Content = resourceLoader.GetString("Login_Error_OTPCode/Text"),
                     CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                    XamlRoot = this.XamlRoot
+                    XamlRoot = this.XamlRoot,
+                    RequestedTheme = App.GetService<IThemeSelectorService>().Theme
                 };
                 _ = dialog.ShowAsync();
             }

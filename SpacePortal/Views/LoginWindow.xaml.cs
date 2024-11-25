@@ -11,6 +11,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using SpacePortal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -35,6 +36,18 @@ public sealed partial class LoginWindow : Window
         LoginFrame.Navigate(typeof(LoginWelcomePage), this);
     }
 
+    public LoginWindow(LaunchActivatedEventArgs args)
+    {
+        this.InitializeComponent();
+        this.ExtendsContentIntoTitleBar = true;
+        this.SetTitleBar(null);
+        this.SetWindowSize(1000, 600);
+        this.SetIsResizable(false);
+        this.CenterOnScreen();
+        this.SetIsMaximizable(false);
+        LoginFrame.Navigate(typeof(LoginWelcomePage), this);
+        LoginWindowsViewModel.Instance.LaunchArgs = args;
+    }
 
     public void NavigateToConfirmUserNamePage()
     {

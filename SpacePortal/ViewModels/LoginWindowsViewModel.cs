@@ -10,11 +10,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using SpacePortal.Core.Services;
 using SpacePortal.Models;
 using Syncfusion.XlsIO;
-using Mailjet.Client;
-using Mailjet.Client.Resources;
 using Newtonsoft.Json.Linq;
 using DotNetEnv;
-using Mailjet.Client.TransactionalEmails;
 using Newtonsoft.Json;
 using System.Windows.Input;
 using Windows.Devices.PointOfService;
@@ -31,16 +28,13 @@ using Microsoft.Windows.ApplicationModel.Resources;
 using System.Text.RegularExpressions;
 using Sprache;
 using Windows.Storage;
+using WinRT.SpacePortalVtableClasses;
 namespace SpacePortal.ViewModels;
 public partial class LoginWindowsViewModel : ObservableRecipient
 {
-    ResourceLoader resourceLoader = new ResourceLoader();
+    ResourceLoader resourceLoader = new();
     private static LoginWindowsViewModel _instance;
     public static LoginWindowsViewModel Instance => _instance ??= new LoginWindowsViewModel();
-    LoginWindowsViewModel()
-    {
-
-    }
 
     [ObservableProperty]
     private string _userName = string.Empty;
@@ -73,25 +67,30 @@ public partial class LoginWindowsViewModel : ObservableRecipient
 
     public int CountDownTime = 60;
 
+    public bool FirstTime { get; set; } = true;
+
+    public LaunchActivatedEventArgs LaunchArgs { get; set; }
+
+    private LoginWindowsViewModel() { }
+
     public void ResetInstance()
     {
-        _instance = new LoginWindowsViewModel();
+        var newViewModel = new LoginWindowsViewModel();
+        newViewModel.FirstTime = FirstTime;
+        newViewModel.LaunchArgs = LaunchArgs;
+        _instance = newViewModel;     
     }
 
     public bool CheckLoginWithRawInformation()
     {
-        //var result = App.GetService<ApiService>().Login(UserName, Password);
-        var result = true;
+        var result = App.GetService<ApiService>().Login(UserName, Password);
         if (result)
         {
             if (IsRememberMe == true)
             {
-               SaveLoginInfoToLocal(UserName, Password);
+               SaveLoginInfoToLocal();
             }
         }
-        Debug.WriteLine($"UserName: {UserName}");
-        Debug.WriteLine($"Password: {Password}");
-        Debug.WriteLine($"IsRememberMe: {IsRememberMe}");
         return result;
     }
 
@@ -240,27 +239,32 @@ public partial class LoginWindowsViewModel : ObservableRecipient
     }
 
 
-    private void SaveLoginInfoToLocal(string userName, string passwordRaw)
+    private void SaveLoginInfoToLocal()
     {
         var localSettings = ApplicationData.Current.LocalSettings;
-        localSettings.Values["UserName"] = userName;
-        encodingPassword(passwordRaw);
+        localSettings.Values["UserName"] = UserName;
+        encodingPassword(Password);
     }
 
-    public bool LoadLoginInfoFromLocal()
+    public void LoadLoginInfoFromLocal()
     {
         var localSettings = ApplicationData.Current.LocalSettings;
-        if (localSettings.Values.ContainsKey("UserName") && localSettings.Values.ContainsKey("PasswordInBase64"))
+        if (localSettings.Values.ContainsKey("UserName") && localSettings.Values.ContainsKey("PasswordInBase64") && localSettings.Values.ContainsKey("EntropyInBase64")
+            && !String.IsNullOrEmpty(localSettings.Values["UserName"] as string) 
+                && !String.IsNullOrEmpty(localSettings.Values["PasswordInBase64"] as string) 
+                && !String.IsNullOrEmpty(localSettings.Values["EntropyInBase64"] as string))
         {
-            var storedUserName = (string)localSettings.Values["UserName"];
-            var storedPassword = decodingPassword();
-            //Gọi hàm login với thông tin đã lưu
-            //var result = App.GetService<ApiService>().Login(storedUserName, storedPassword);
-            //return result
-            return true;
+            UserName = (string)localSettings.Values["UserName"];
+            Password = decodingPassword();
         }
-        return false;
+    }
 
+    public void ClearLoginInfo()
+    {
+        var localSettings = ApplicationData.Current.LocalSettings;
+        localSettings.Values["UserName"] = String.Empty;
+        localSettings.Values["PasswordInBase64"] = String.Empty;
+        localSettings.Values["EntropyInBase64"] = String.Empty;
     }
 }
 

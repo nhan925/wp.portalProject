@@ -616,7 +616,7 @@
     <value>Mã OTP không chính xác!</value>
   </data>
   <data name="Login_Error_RequestOTP.Text" xml:space="preserve">
-    <value> Không thể gửi OTP!</value>
+    <value>Không thể gửi OTP!</value>
   </data>
   <data name="Login_Error_ResetPassword01.Text" xml:space="preserve">
     <value>Mật khẩu và xác nhận mật khẩu không giống nhau!</value>
@@ -635,6 +635,7 @@
   </data>
   <data name="LoginForgotPassword_CompleteButton.Content" xml:space="preserve">
     <value>Hoàn thành</value>
+  </data>
   <data name="CoursesRegistration_PeriodTitle.Text" xml:space="preserve">
     <value>CÁC ĐỢT ĐĂNG KÝ</value>
   </data>
@@ -784,5 +785,14 @@
   </data>
   <data name="App_CrashMessage" xml:space="preserve">
     <value>Đã có lỗi xảy ra !</value>
+  </data>
+  <data name="Login_OTPExpiredAfterText" xml:space="preserve">
+    <value>Mã OTP sẽ hết hạn sau</value>
+  </data>
+  <data name="Login_Second" xml:space="preserve">
+    <value>giây</value>
+  </data>
+  <data name="Login_OTPExpiredNoti" xml:space="preserve">
+    <value>Mã OTP đã hết hạn</value>
   </data>
 </root>

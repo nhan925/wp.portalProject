@@ -58,7 +58,9 @@ public partial class App : Application
         return service;
     }
 
-    public static WindowEx MainWindow { get; } = new MainWindow();
+    public static WindowEx MainWindow { get; set; } = new MainWindow();
+
+    public static Window LoginWindow { get; set; } = new LoginWindow();
 
     public static UIElement? AppTitlebar { get; set; }
 
@@ -166,8 +168,6 @@ public partial class App : Application
 
     private void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
     {
-        e.Handled = true;
-
         var messageTextBlock = new TextBlock
         {
             Text = $"{(new ResourceLoader()).GetString("App_CrashMessage")}\n{e.Exception.Message}",
@@ -202,24 +202,18 @@ public partial class App : Application
         errorWindow.Closed += (s, e) => { App.Current.Exit(); };
         errorWindow.Activate();
 
-        if (MainWindow != null)
-        {
-            MainWindow.Close();
-        }
+        MainWindow.Close();
+        LoginWindow.Close();
+
+        e.Handled = true;
     }
 
     protected async override void OnLaunched(LaunchActivatedEventArgs args)
     {
         base.OnLaunched(args);
 
-        var loginWindow = new LoginWindow();
-        loginWindow.Activate();
-
-        // TODO: Modify here when implement the login function
-        // Hard code login
-        //App.GetService<ApiService>().Login("student1", "1234");
-
-        // var debug = await App.GetService<ApiService>().GetAsync<InformationsForDashboard>("/rpc/get_dashboard_info");
+        LoginWindow = new LoginWindow(args);
+        LoginWindow.Activate();
 
         //await App.GetService<IActivationService>().ActivateAsync(args);
     }

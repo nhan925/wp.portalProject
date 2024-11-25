@@ -14,6 +14,7 @@ using SpacePortal.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Microsoft.Windows.ApplicationModel.Resources;
+using SpacePortal.Contracts.Services;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -64,7 +65,8 @@ public sealed partial class LoginForgotPasswordPage01 : Page
                 Title = resourceLoader.GetString("App_Error/Text"),
                 Content = resourceLoader.GetString("Login_Error_ConfirmUserName/Text"),
                 CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                XamlRoot = this.XamlRoot
+                XamlRoot = this.XamlRoot,
+                RequestedTheme = App.GetService<IThemeSelectorService>().Theme
             };
             _ = dialog.ShowAsync();
         }

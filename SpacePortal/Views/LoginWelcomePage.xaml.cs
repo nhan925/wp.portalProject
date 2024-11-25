@@ -15,6 +15,7 @@ using Windows.Foundation.Collections;
 using SpacePortal.ViewModels;
 using System.Diagnostics;
 using Microsoft.Windows.ApplicationModel.Resources;
+using SpacePortal.Contracts.Services;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -34,8 +35,11 @@ public sealed partial class LoginWelcomePage : Page
         this.InitializeComponent(); 
         this.RequestedTheme = ElementTheme.Light;
         ViewModel = LoginWindowsViewModel.Instance;
-        ViewModel.LoadLoginInfoFromLocal();
-
+        if (ViewModel.FirstTime)
+        {
+            ViewModel.LoadLoginInfoFromLocal();
+            ViewModel.FirstTime = false;
+        }
     }
 
 
@@ -51,13 +55,13 @@ public sealed partial class LoginWelcomePage : Page
         ViewModel.ResetInstance();
     }
 
-
-    private void LoginWithRawButton_Click(object sender, RoutedEventArgs e)
+    private async void LoginWithRawButton_Click(object sender, RoutedEventArgs e)
     {
         if (ViewModel.CheckLoginWithRawInformation())
         {
-            //Navigate To SpacePortal
-            Debug.WriteLine("Navigate To SpacePortal From Raw");
+            App.MainWindow = new MainWindow();
+            await App.GetService<IActivationService>().ActivateAsync(LoginWindowsViewModel.Instance.LaunchArgs);
+            ParentWindow.Close();
         }
         else
         {
@@ -66,9 +70,10 @@ public sealed partial class LoginWelcomePage : Page
                 Title = resourceLoader.GetString("App_Error/Text"),
                 Content = resourceLoader.GetString("Login_Error_UserNameAndPasword/Text"),
                 CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                XamlRoot = this.XamlRoot
+                XamlRoot = this.XamlRoot,
+                RequestedTheme = App.GetService<IThemeSelectorService>().Theme
             };
-            _ = dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
     }
 
@@ -78,8 +83,9 @@ public sealed partial class LoginWelcomePage : Page
 
         if (result)
         {
-            //Navigate To SpacePortal
-            Debug.WriteLine("Navigate To SpacePortal From Outlook");
+            App.MainWindow = new MainWindow();
+            await App.GetService<IActivationService>().ActivateAsync(LoginWindowsViewModel.Instance.LaunchArgs);
+            ParentWindow.Close();
         }
         else
         {
@@ -88,7 +94,8 @@ public sealed partial class LoginWelcomePage : Page
                 Title = resourceLoader.GetString("App_Error/Text"),
                 Content = resourceLoader.GetString("Login_Error_UserNameAndPasword/Text"),
                 CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                XamlRoot = this.XamlRoot
+                XamlRoot = this.XamlRoot,
+                RequestedTheme = App.GetService<IThemeSelectorService>().Theme
             };
             _ = dialog.ShowAsync();
         }
@@ -97,5 +104,10 @@ public sealed partial class LoginWelcomePage : Page
     private void ForgotPasswordButton_Click(object sender, RoutedEventArgs e)
     {
         ParentWindow.NavigateToConfirmUserNamePage();
+    }
+
+    private void Page_Loaded(object sender, RoutedEventArgs e)
+    {
+        usernameTextBox.Select(ViewModel.UserName.Length, 0);
     }
 }

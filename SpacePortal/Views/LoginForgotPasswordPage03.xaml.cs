@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using SpacePortal.ViewModels;
 using Microsoft.Windows.ApplicationModel.Resources;
+using SpacePortal.Contracts.Services;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -57,7 +58,8 @@ namespace SpacePortal.Views
                         Title = resourceLoader.GetString("App_Title_Successful/Text"),
                         Content = resourceLoader.GetString("Login_ResetPassword_Complete/Text"),
                         CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                        XamlRoot = this.XamlRoot
+                        XamlRoot = this.XamlRoot,
+                        RequestedTheme = App.GetService<IThemeSelectorService>().Theme
                     };
                     _ = dialog.ShowAsync();
 
@@ -75,7 +77,8 @@ namespace SpacePortal.Views
                     Title = resourceLoader.GetString("App_Error/Text"),
                     Content = message,
                     CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                    XamlRoot = this.XamlRoot
+                    XamlRoot = this.XamlRoot,
+                    RequestedTheme = App.GetService<IThemeSelectorService>().Theme
                 };
                 _ = dialog.ShowAsync();
             }
