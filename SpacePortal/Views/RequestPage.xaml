@@ -99,7 +99,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0" Name="PageNumber" KeyDown="CatchEnter_KeyDown" Width="40" Height="40" TextAlignment="Center" FontSize="18" LostFocus="TextBox_LostFocus"
-                         HorizontalTextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="1"/>
+                         HorizontalTextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <TextBlock Grid.Column="1" Text="/" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="4,0,4,0"/>
                 <TextBlock Grid.Column="2" Name="TotalPages" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Text="{x:Bind ViewModel.TotalPages, Mode=TwoWay}"/>
             </Grid>

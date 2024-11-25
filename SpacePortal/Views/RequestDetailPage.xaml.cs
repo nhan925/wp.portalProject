@@ -11,6 +11,7 @@ namespace SpacePortal.Views;
 public sealed partial class RequestDetailPage : Page
 {
     private readonly ResourceLoader resourceLoader = new();
+
     public RequestDetailViewModel ViewModel
     {
         get;
@@ -27,9 +28,9 @@ public sealed partial class RequestDetailPage : Page
         base.OnNavigatedTo(e);
         ViewModel.Request = e.Parameter as InformationsForRequest_RequestRow;
         await Task.Delay(10);
-        ViewModel.getAnswer();
 
-        ViewModel.formatRequestContent();
+        ViewModel.GetAnswer();
+        ViewModel.FormatRequestContent();
 
         var processingRequest = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
         if (ViewModel.Request.Status == processingRequest)
@@ -50,23 +51,23 @@ public sealed partial class RequestDetailPage : Page
 
     private void ResendRequestButton_Click(object sender, RoutedEventArgs e)
     {
-        var message = ViewModel.resendRequest();
+        var message = ViewModel.ResendRequest();
         var title = (message == resourceLoader.GetString("RequestDetailPage_ResendRequestSuccess/Text"))
                     ? resourceLoader.GetString("App_Success/Text")
                     : resourceLoader.GetString("App_Error/Text");
-        ShowResendMessage(message,title);
+        ShowMessage(message,title);
     }
 
     private void CancelledRequestButton_Click(object sender, RoutedEventArgs e)
     {
-        var message = ViewModel.cancelledRequest();
+        var message = ViewModel.CancelledRequest();
         var title = (message == resourceLoader.GetString("RequestDetailPage_CancelledRequestSuccess/Text"))
                     ? resourceLoader.GetString("App_Success/Text")
                     : resourceLoader.GetString("App_Error/Text");
-        ShowResendMessage(message, title);
+        ShowMessage(message, title);
     }
 
-    private async void ShowResendMessage(string message,string title)
+    private async void ShowMessage(string message,string title)
     {
         ContentDialog Dialog = new ContentDialog
         {

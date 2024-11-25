@@ -28,6 +28,7 @@ public sealed partial class RequestPage : Page
         ViewModel = App.GetService<RequestViewModel>();
         InitializeComponent();
         InitializeStausButton();
+        PageNumber.Text = ViewModel.CurrentPage.ToString();
     }
 
     private void InitializeStausButton()
@@ -74,43 +75,47 @@ public sealed partial class RequestPage : Page
         sfDataGrid.Visibility = Visibility.Visible;
     }
 
-
     // Handle first page button click
     private void OnFirstPageClick(object sender, RoutedEventArgs e)
     {
-        ViewModel.Load(1);
-        PageNumber.Text = "1";
-
+        if (ViewModel.Requests.Count > 0)
+        {
+            LoadPage(1);
+        }
     }
 
     // Handle previous page button click
     private void OnPreviousPageClick(object sender, RoutedEventArgs e)
     {
-        var pageNumber = Convert.ToInt32(PageNumber.Text);
-        if(pageNumber > 1)
+        if (ViewModel.Requests.Count > 0)
         {
-            ViewModel.Load(--pageNumber);
-            PageNumber.Text = pageNumber.ToString();
+            var pageNumber = Convert.ToInt32(PageNumber.Text);
+            if (pageNumber > 1)
+            {
+                LoadPage(--pageNumber);
+            }
         }
     }
 
     // Handle next page button click
     private void OnNextPageClick(object sender, RoutedEventArgs e)
     {
-        var pageNumber = Convert.ToInt32(PageNumber.Text);
-        if (pageNumber < ViewModel.TotalPages)
+        if (ViewModel.Requests.Count > 0)
         {
-            ViewModel.Load(++pageNumber);
-            PageNumber.Text = pageNumber.ToString();
+            var pageNumber = Convert.ToInt32(PageNumber.Text);
+            if (pageNumber < ViewModel.TotalPages)
+            {
+                LoadPage(++pageNumber);
+            }
         }
-        
     }
 
     // Handle last page button click
     private void OnLastPageClick(object sender, RoutedEventArgs e)
     {
-        ViewModel.Load(ViewModel.TotalPages);
-        PageNumber.Text = ViewModel.TotalPages.ToString();
+        if (ViewModel.Requests.Count > 0) { 
+            LoadPage(ViewModel.TotalPages);
+        }
     }
 
     private void sfDataGrid_CellDoubleTapped(object sender, GridCellDoubleTappedEventArgs e)
@@ -133,8 +138,7 @@ public sealed partial class RequestPage : Page
             _selectedStatus = "";
         }
         ViewModel.Keyword = _selectedStatus;
-        ViewModel.Load(1);
-        PageNumber.Text = "1";
+        LoadPage(1);
     }
 
     private void CatchEnter_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -144,7 +148,7 @@ public sealed partial class RequestPage : Page
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
                 var pageNumber = getPageNumberValid(sender as TextBox);
-                ViewModel.Load(pageNumber);
+                LoadPage(pageNumber);
             }
         }
     }
@@ -167,13 +171,17 @@ public sealed partial class RequestPage : Page
         {
             pageNumber = ViewModel.CurrentPage;
         }
-        PageNumber.Text = pageNumber.ToString();
         return pageNumber;
     }
 
     private void TextBox_LostFocus(object sender, RoutedEventArgs e)
     {
-        ViewModel.Load(ViewModel.CurrentPage);
+        LoadPage(ViewModel.CurrentPage);
+    }
+
+    private void LoadPage(int pageNumber)
+    {
+        ViewModel.Load(pageNumber);
         PageNumber.Text = ViewModel.CurrentPage.ToString();
     }
 }

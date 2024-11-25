@@ -25,6 +25,7 @@ public class InformationsForRequestPageDao : IDao<InformationsForRequest_Request
         var result = new ObservableCollection<InformationsForRequest_RequestRow>(list_object);
         return result;
     }
+
     public InformationsForRequest_RequestRow GetById(string id) => throw new NotImplementedException();
 
     public List<string> GetAllStatusOfRequest()

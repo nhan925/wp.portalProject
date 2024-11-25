@@ -12,6 +12,7 @@ namespace SpacePortal.DataAccess;
 public class InformationsForRequestDetailPageDao : IDao<InformationsForRequestDetailPage_Answer>
 {
     public ObservableCollection<InformationsForRequestDetailPage_Answer> GetAll(int? pageNumber = null, int? pageSize = null, List<string> keywords = null) => throw new NotImplementedException();
+
     public InformationsForRequestDetailPage_Answer GetById(string id)
     {
         var parameters = new { req_id = Convert.ToInt32(id) };

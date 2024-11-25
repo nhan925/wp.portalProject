@@ -16,6 +16,7 @@ namespace SpacePortal.ViewModels;
 public partial class RequestViewModel : ObservableRecipient
 {
     private IDao<InformationsForRequest_RequestRow> _dao;
+
     public string Keyword { get; set; } = "";
 
     public int CurrentPage { get; set; } = 1;
@@ -58,6 +59,10 @@ public partial class RequestViewModel : ObservableRecipient
                 + ((TotalItems % RowsPerPage == 0)
                         ? 0 : 1);
         }
+        else {
+            CurrentPage = 0;
+        }
+
         StatusList = (_dao as InformationsForRequestPageDao).GetAllStatusOfRequest();
     }
 

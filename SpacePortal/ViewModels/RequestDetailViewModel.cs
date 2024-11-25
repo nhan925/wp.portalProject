@@ -11,26 +11,23 @@ namespace SpacePortal.ViewModels;
 public partial class RequestDetailViewModel : ObservableRecipient
 {
     IDao<InformationsForRequestDetailPage_Answer> _dao;
+
     ResourceLoader resourceLoader = new ResourceLoader();
 
     [ObservableProperty]
     private string _formattedRequestContent = string.Empty;
-    public InformationsForRequest_RequestRow Request
-    {
-        set;  get;
-    }
 
-    public InformationsForRequestDetailPage_Answer Answer
-    {
-        set; get;
-    }
+    public InformationsForRequest_RequestRow Request { set;  get; }
+
+    public InformationsForRequestDetailPage_Answer Answer { set; get; }
+
     public RequestDetailViewModel()
     {
         _dao = App.GetService<IDao<InformationsForRequestDetailPage_Answer>>();
         Answer = new InformationsForRequestDetailPage_Answer();
     }
 
-    public void formatRequestContent()
+    public void FormatRequestContent()
     {
         var requestReExamiantion = resourceLoader.GetString("GradesPage_RequestForReviewTitle");
         var requestPhysicalTranscript = resourceLoader.GetString("GradesPage_RequestForTranscriptTitle");
@@ -56,7 +53,7 @@ public partial class RequestDetailViewModel : ObservableRecipient
         FormattedRequestContent = requestContent.ToString();
     }
 
-    public string resendRequest()
+    public string ResendRequest()
     {
         var processingRequest = resourceLoader.GetString("RequestPage_ProcessingStatus/Text");
         var parameters = new { content = Request.Content, status = processingRequest };
@@ -64,7 +61,7 @@ public partial class RequestDetailViewModel : ObservableRecipient
         return resourceLoader.GetString("RequestDetailPage_ResendRequestSuccess/Text");
     }
 
-    public string cancelledRequest()
+    public string CancelledRequest()
     {
         var cancelledRequest = resourceLoader.GetString("RequestPage_CancelledStatus/Text");
         var parameters = new { request_id_update = Request.RequestId, status_update = cancelledRequest };
@@ -72,7 +69,7 @@ public partial class RequestDetailViewModel : ObservableRecipient
         return resourceLoader.GetString("RequestDetailPage_CancelledRequestSuccess/Text");
     }
 
-    public void getAnswer()
+    public void GetAnswer()
     {
         if(Request != null)
         {
