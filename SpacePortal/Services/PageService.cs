@@ -28,6 +28,8 @@ public class PageService : IPageService
         Configure<AppFeedbackViewModel, AppFeedbackPage>();
         Configure<SettingsViewModel, SettingsPage>();
         Configure<RequestDetailViewModel, RequestDetailPage>();
+        Configure<ChooseCoursesViewModel, ChooseCoursesPage>();
+        Configure<ChooseClassesViewModel, ChooseClassesPage>();
     }
 
     public Type GetPageType(string key)

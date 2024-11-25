@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
+using Newtonsoft.Json.Linq;
 
 namespace SpacePortal.Core.Services;
 
@@ -105,5 +106,19 @@ public class ApiService
             // Handle error
             return default;
         }
+    }
+
+    public bool LoginWithOutlook(string acessToken)
+    {
+        var loginData = new { v_token= acessToken };
+        var response = Post<string>("/rpc/login_with_outlook", loginData);
+
+        if (response != "")
+        {
+            _jwtToken = response; // Store the JWT token
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _jwtToken);
+            return true; // Login successful
+        }
+        return false; // Login failed
     }
 }

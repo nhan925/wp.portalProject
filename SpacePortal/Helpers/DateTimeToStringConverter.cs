@@ -15,7 +15,7 @@ public class DateTimeToStringConverter : IValueConverter
 
         CultureInfo culture = new CultureInfo(currentLangue);
 
-        string result = ((DateTime)value).ToString("d", culture);
+        var result = ((DateTime)value).ToString("d", culture);
         return result;
     }
     public object ConvertBack(object value, Type targetType, object parameter, string language) => throw new NotImplementedException();

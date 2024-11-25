@@ -17,9 +17,20 @@ public class InformationsForDashboard : INotifyPropertyChanged
 
     public string StudentName => StudentFullName.Split(' ')[^1];
 
+    private Dictionary<string, double> _degreeTypesWithTheirGrade = new();
     public Dictionary<string, double> GPAs
     {
-        get; set;
+        get
+        {
+            var sortedList = _degreeTypesWithTheirGrade
+                .OrderBy(kvp =>
+                {
+                    var tokens = kvp.Key.Split('/');
+                    return $"{tokens[1]}/{tokens[0]}";
+                });
+            return sortedList.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        }
+        set => _degreeTypesWithTheirGrade = value;
     }
 
     public double CGPA
