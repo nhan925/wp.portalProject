@@ -49,7 +49,7 @@ namespace SpacePortal.Views
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             var message = ViewModel.CheckPasswordAndConfirmNewPassword();
-            if(message == "success")
+            if (message == "success")
             {
                 if (ViewModel.UpdateNewPassword())
                 {
@@ -68,7 +68,19 @@ namespace SpacePortal.Views
                         ParentWindow.NavigateToWelcomePage();
                     };
                 }
-             
+                else
+                {
+                    ContentDialog dialog = new ContentDialog
+                    {
+                        Title = resourceLoader.GetString("App_Error/Text"),
+                        Content = resourceLoader.GetString("Login_DuplicateWithOld/Text"),
+                        CloseButtonText = resourceLoader.GetString("App_Close/Text"),
+                        XamlRoot = this.XamlRoot,
+                        RequestedTheme = App.GetService<IThemeSelectorService>().Theme
+                    };
+                    _ = dialog.ShowAsync();
+
+                }
             }
             else
             {

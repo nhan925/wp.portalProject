@@ -90,7 +90,12 @@ public partial class LoginWindowsViewModel : ObservableRecipient
             {
                SaveLoginInfoToLocal();
             }
+            else
+            {
+                ClearLoginInfo();
+            }
         }
+        
         return result;
     }
 
@@ -189,7 +194,7 @@ public partial class LoginWindowsViewModel : ObservableRecipient
         return result;
     }
 
-    private void encodingPassword(string passwordRaw)
+    public void encodingPassword(string passwordRaw)
     {
         var passwordInBytes = Encoding.UTF8.GetBytes(passwordRaw);
         var entropyInBytes = new byte[20];
@@ -256,6 +261,7 @@ public partial class LoginWindowsViewModel : ObservableRecipient
         {
             UserName = (string)localSettings.Values["UserName"];
             Password = decodingPassword();
+            IsRememberMe = true;
         }
     }
 

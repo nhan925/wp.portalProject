@@ -894,4 +894,43 @@
   <data name="Login_OTPExpiredNoti" xml:space="preserve">
     <value>Mã OTP đã hết hạn</value>
   </data>
+  <data name="Login_DuplicateWithOld.Text" xml:space="preserve">
+    <value>Mật khẩu mới không được trùng mới mật khẩu hiện tại !</value>
+  </data>
+  <data name="ChangePasswordDialog_Title" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="ChangePasswordDialog_ConfirmButton" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="ChangePasswordDialog_CurrentPassword" xml:space="preserve">
+    <value>Mật khẩu hiện tại</value>
+  </data>
+  <data name="ChangePasswordDialog_NewPassword" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="ChangePasswordDialog_ConfirmNewPassword" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
+  </data>
+  <data name="ChangePasswordDialog_EmptyField" xml:space="preserve">
+    <value>Các ô không được để trống !</value>
+  </data>
+  <data name="ChangePasswordDialog_PasswordNotMatch" xml:space="preserve">
+    <value>Mật khẩu mới và nhập lại không khớp !</value>
+  </data>
+  <data name="ChangePasswordDialog_PasswordNotValid" xml:space="preserve">
+    <value>Mật khẩu phải có độ dài tối thiểu là 8 kí tự, ít nhất 1 chữ số, 1 kí tự thường, 1 kí tự in hoa và 1 kí tự đặc biệt!</value>
+  </data>
+  <data name="ChangePasswordDialog_WrongPassword" xml:space="preserve">
+    <value>Mật khẩu hiện tại không chính xác !</value>
+  </data>
+  <data name="ChangePasswordDialog_DuplicatePassword" xml:space="preserve">
+    <value>Mật khẩu mới không được trùng với mật khẩu hiện tại !</value>
+  </data>
+  <data name="ChangePasswordDialog_Error" xml:space="preserve">
+    <value>Đã có lỗi xảy ra, vui lòng thử lại !</value>
+  </data>
+  <data name="ChangePasswordDialog_Success" xml:space="preserve">
+    <value>Đổi mật khẩu thành công !</value>
+  </data>
 </root>

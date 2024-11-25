@@ -75,6 +75,7 @@
                             </Button>
                             <Button HorizontalAlignment="Stretch" Background="Transparent" 
                                     VerticalAlignment="Center"
+                                    Click="ChangePasswordButton_Click"
                                     BorderThickness="1" BorderBrush="Transparent"
                                     HorizontalContentAlignment="Left">  
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Spacing="12" VerticalAlignment="Center">
