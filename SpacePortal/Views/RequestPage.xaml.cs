@@ -27,11 +27,11 @@ public sealed partial class RequestPage : Page
     {
         ViewModel = App.GetService<RequestViewModel>();
         InitializeComponent();
-        InitializeStausButton();
+        InitializeStatusButton();
         PageNumber.Text = ViewModel.CurrentPage.ToString();
     }
 
-    private void InitializeStausButton()
+    private void InitializeStatusButton()
     {
         var menuFlyout = new MenuFlyout();
         var defaultItem = new MenuFlyoutItem { Text = resourceLoader.GetString("RequestPage_AllStatus/Text") };
@@ -71,12 +71,12 @@ public sealed partial class RequestPage : Page
         base.OnNavigatedTo(e);
         await Task.Delay(10);
 
-        DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
-        sfDataGrid.Visibility = Visibility.Visible;
+        LoadingShimmer.Visibility = Visibility.Collapsed;
+        DataGridArea.Visibility = Visibility.Visible;
     }
 
     // Handle first page button click
-    private void OnFirstPageClick(object sender, RoutedEventArgs e)
+    private async void OnFirstPageClick(object sender, RoutedEventArgs e)
     {
         if (ViewModel.Requests.Count > 0)
         {
@@ -176,12 +176,20 @@ public sealed partial class RequestPage : Page
 
     private void TextBox_LostFocus(object sender, RoutedEventArgs e)
     {
-        LoadPage(ViewModel.CurrentPage);
+        PageNumber.Text = ViewModel.CurrentPage.ToString();
+        //LoadPage(ViewModel.CurrentPage);
     }
 
-    private void LoadPage(int pageNumber)
+    private async void LoadPage(int pageNumber)
     {
+        sfDataGrid.Opacity = 0.5;
+        DataGridLoadingOverlay.Visibility = Visibility.Visible;
+        await Task.Delay(10);
+
         ViewModel.Load(pageNumber);
         PageNumber.Text = ViewModel.CurrentPage.ToString();
+
+        sfDataGrid.Opacity = 1;
+        DataGridLoadingOverlay.Visibility = Visibility.Collapsed;
     }
 }

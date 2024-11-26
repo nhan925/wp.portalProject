@@ -18,82 +18,88 @@ using SpacePortal.Contracts.Services;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace SpacePortal.Views
+namespace SpacePortal.Views;
+
+/// <summary>
+/// An empty page that can be used on its own or navigated to within a Frame.
+/// </summary>
+public sealed partial class LoginForgotPasswordPage03 : Page
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class LoginForgotPasswordPage03 : Page
+    ResourceLoader resourceLoader = new ResourceLoader();
+    public LoginWindowsViewModel ViewModel {get; set;}
+    private LoginWindow ParentWindow;
+
+    public LoginForgotPasswordPage03()
     {
-        ResourceLoader resourceLoader = new ResourceLoader();
-        public LoginWindowsViewModel ViewModel {get; set;}
-        private LoginWindow ParentWindow;
+        this.InitializeComponent();
+        this.RequestedTheme = ElementTheme.Light;
+        ViewModel = LoginWindowsViewModel.Instance;
+    }
 
-        public LoginForgotPasswordPage03()
+    protected override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        base.OnNavigatedTo(e);
+
+        if (e.Parameter is LoginWindow parentWindow)
         {
-            this.InitializeComponent();
-            this.RequestedTheme = ElementTheme.Light;
-            ViewModel = LoginWindowsViewModel.Instance;
+            ParentWindow = parentWindow;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        (App.LoginWindow as LoginWindow)?.HideLoadingOverlay();
+    }
+
+    private async void LoginButton_Click(object sender, RoutedEventArgs e)
+    {
+        (App.LoginWindow as LoginWindow)?.ShowLoadingOverlay();
+        await Task.Delay(10);
+
+        var message = ViewModel.CheckPasswordAndConfirmNewPassword();
+        if (message == "success")
         {
-            base.OnNavigatedTo(e);
-
-            if (e.Parameter is LoginWindow parentWindow)
+            if (ViewModel.UpdateNewPassword())
             {
-                ParentWindow = parentWindow;
-            }
-        }
-
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            var message = ViewModel.CheckPasswordAndConfirmNewPassword();
-            if (message == "success")
-            {
-                if (ViewModel.UpdateNewPassword())
+                ContentDialog dialog = new ContentDialog
                 {
-                    ContentDialog dialog = new ContentDialog
-                    {
-                        Title = resourceLoader.GetString("App_Title_Successful/Text"),
-                        Content = resourceLoader.GetString("Login_ResetPassword_Complete/Text"),
-                        CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                        XamlRoot = this.XamlRoot,
-                        RequestedTheme = App.GetService<IThemeSelectorService>().Theme
-                    };
-                    _ = dialog.ShowAsync();
+                    Title = resourceLoader.GetString("App_Title_Successful/Text"),
+                    Content = resourceLoader.GetString("Login_ResetPassword_Complete/Text"),
+                    CloseButtonText = resourceLoader.GetString("App_Close/Text"),
+                    XamlRoot = this.XamlRoot,
+                    RequestedTheme = App.GetService<IThemeSelectorService>().Theme
+                };
+                _ = dialog.ShowAsync();
 
-                    dialog.CloseButtonClick += (s, e) =>
-                    {
-                        ParentWindow.NavigateToWelcomePage();
-                    };
-                }
-                else
+                dialog.CloseButtonClick += (s, e) =>
                 {
-                    ContentDialog dialog = new ContentDialog
-                    {
-                        Title = resourceLoader.GetString("App_Error/Text"),
-                        Content = resourceLoader.GetString("Login_DuplicateWithOld/Text"),
-                        CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-                        XamlRoot = this.XamlRoot,
-                        RequestedTheme = App.GetService<IThemeSelectorService>().Theme
-                    };
-                    _ = dialog.ShowAsync();
-
-                }
+                    ParentWindow.NavigateToWelcomePage();
+                };
             }
             else
             {
                 ContentDialog dialog = new ContentDialog
                 {
                     Title = resourceLoader.GetString("App_Error/Text"),
-                    Content = message,
+                    Content = resourceLoader.GetString("Login_DuplicateWithOld/Text"),
                     CloseButtonText = resourceLoader.GetString("App_Close/Text"),
                     XamlRoot = this.XamlRoot,
                     RequestedTheme = App.GetService<IThemeSelectorService>().Theme
                 };
+                dialog.CloseButtonClick += (s, e) => (App.LoginWindow as LoginWindow)?.HideLoadingOverlay();
                 _ = dialog.ShowAsync();
+
             }
+        }
+        else
+        {
+            ContentDialog dialog = new ContentDialog
+            {
+                Title = resourceLoader.GetString("App_Error/Text"),
+                Content = message,
+                CloseButtonText = resourceLoader.GetString("App_Close/Text"),
+                XamlRoot = this.XamlRoot,
+                RequestedTheme = App.GetService<IThemeSelectorService>().Theme
+            };
+            dialog.CloseButtonClick += (s, e) => (App.LoginWindow as LoginWindow)?.HideLoadingOverlay();
+            _ = dialog.ShowAsync();
         }
     }
 }

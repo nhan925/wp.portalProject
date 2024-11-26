@@ -29,6 +29,7 @@ using System.Text.RegularExpressions;
 using Sprache;
 using Windows.Storage;
 using WinRT.SpacePortalVtableClasses;
+using System.Net;
 namespace SpacePortal.ViewModels;
 public partial class LoginWindowsViewModel : ObservableRecipient
 {
@@ -69,16 +70,21 @@ public partial class LoginWindowsViewModel : ObservableRecipient
 
     public bool FirstTime { get; set; } = true;
 
-    public LaunchActivatedEventArgs LaunchArgs { get; set; }
+    public LaunchActivatedEventArgs LaunchArgs
+    {
+        get; set;
+    }
 
-    private LoginWindowsViewModel() { }
+    private LoginWindowsViewModel()
+    {
+    }
 
     public void ResetInstance()
     {
         var newViewModel = new LoginWindowsViewModel();
         newViewModel.FirstTime = FirstTime;
         newViewModel.LaunchArgs = LaunchArgs;
-        _instance = newViewModel;     
+        _instance = newViewModel;
     }
 
     public bool CheckLoginWithRawInformation()
@@ -88,14 +94,14 @@ public partial class LoginWindowsViewModel : ObservableRecipient
         {
             if (IsRememberMe == true)
             {
-               SaveLoginInfoToLocal();
+                SaveLoginInfoToLocal();
             }
             else
             {
                 ClearLoginInfo();
             }
         }
-        
+
         return result;
     }
 
@@ -177,16 +183,16 @@ public partial class LoginWindowsViewModel : ObservableRecipient
     {
         var clientID = Env.GetString("AZURE_CLIENT_ID");
         var tenantID = Env.GetString("AZURE_TENANT_ID");
-        string[] scpopes = { Env.GetString("AZURE_SCOPE") };
+        string[] scopes = { Env.GetString("AZURE_SCOPE") };
 
         var app = PublicClientApplicationBuilder.Create(clientID)
             .WithTenantId(tenantID)
-            .WithRedirectUri("http://localhost")
+            .WithRedirectUri("http://localhost/")
             .Build();
 
 
         var accounts = await app.GetAccountsAsync();
-        var authResult = await app.AcquireTokenInteractive(scpopes).ExecuteAsync();
+        var authResult = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 
         var accessToken = authResult.AccessToken;
         var result = App.GetService<ApiService>().LoginWithOutlook(accessToken);
@@ -222,7 +228,7 @@ public partial class LoginWindowsViewModel : ObservableRecipient
         var localSettings = ApplicationData.Current.LocalSettings;
         var encryptedPasswordBase64 = (string)localSettings.Values["PasswordInBase64"];
         var entropyInBase64 = (string)localSettings.Values["EntropyInBase64"];
-       
+
         try
         {
             var encryptedPasswordInBytes = Convert.FromBase64String(encryptedPasswordBase64);
@@ -255,8 +261,8 @@ public partial class LoginWindowsViewModel : ObservableRecipient
     {
         var localSettings = ApplicationData.Current.LocalSettings;
         if (localSettings.Values.ContainsKey("UserName") && localSettings.Values.ContainsKey("PasswordInBase64") && localSettings.Values.ContainsKey("EntropyInBase64")
-            && !String.IsNullOrEmpty(localSettings.Values["UserName"] as string) 
-                && !String.IsNullOrEmpty(localSettings.Values["PasswordInBase64"] as string) 
+            && !String.IsNullOrEmpty(localSettings.Values["UserName"] as string)
+                && !String.IsNullOrEmpty(localSettings.Values["PasswordInBase64"] as string)
                 && !String.IsNullOrEmpty(localSettings.Values["EntropyInBase64"] as string))
         {
             UserName = (string)localSettings.Values["UserName"];

@@ -51,13 +51,18 @@ public sealed partial class LoginWelcomePage : Page
         {
             ParentWindow = parentWindow;
         }
-
+        
+        (App.LoginWindow as LoginWindow)?.HideLoadingOverlay();
         ViewModel.ResetInstance();
     }
 
     private async void LoginWithRawButton_Click(object sender, RoutedEventArgs e)
     {
-        if (ViewModel.CheckLoginWithRawInformation())
+        (App.LoginWindow as LoginWindow)?.ShowLoadingOverlay();
+        await Task.Delay(10);
+        var result = ViewModel.CheckLoginWithRawInformation();
+
+        if (result)
         {
             App.MainWindow = new MainWindow();
             await App.GetService<IActivationService>().ActivateAsync(LoginWindowsViewModel.Instance.LaunchArgs);
@@ -73,12 +78,16 @@ public sealed partial class LoginWelcomePage : Page
                 XamlRoot = this.XamlRoot,
                 RequestedTheme = App.GetService<IThemeSelectorService>().Theme
             };
+            dialog.CloseButtonClick += (s, e) => (App.LoginWindow as LoginWindow)?.HideLoadingOverlay();
             await dialog.ShowAsync();
         }
+
     }
 
     private async void LoginWithOulookButton_Click(object sender, RoutedEventArgs e)
     {
+        (App.LoginWindow as LoginWindow)?.ShowLoadingOverlay();
+        await Task.Delay(10);
         var result = await ViewModel.LoginWithOutlook();
 
         if (result)
@@ -97,6 +106,7 @@ public sealed partial class LoginWelcomePage : Page
                 XamlRoot = this.XamlRoot,
                 RequestedTheme = App.GetService<IThemeSelectorService>().Theme
             };
+            dialog.CloseButtonClick += (s, e) => (App.LoginWindow as LoginWindow)?.HideLoadingOverlay();
             _ = dialog.ShowAsync();
         }
     }

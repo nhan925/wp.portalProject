@@ -43,6 +43,8 @@ public sealed partial class LoginForgotPasswordPage01 : Page
         {
             ParentWindow = parentWindow;
         }
+
+        (App.LoginWindow as LoginWindow)?.HideLoadingOverlay();
     }
 
 
@@ -51,8 +53,11 @@ public sealed partial class LoginForgotPasswordPage01 : Page
         ParentWindow.NavigateToWelcomePage();
     }
 
-    private void ConfirmUserNameButton_Click(object sender, RoutedEventArgs e)
+    private async void ConfirmUserNameButton_Click(object sender, RoutedEventArgs e)
     {
+        (App.LoginWindow as LoginWindow)?.ShowLoadingOverlay();
+        await Task.Delay(10);
+
         if (ViewModel.CheckUserNameAndSendOTP())
         {
             ParentWindow.NavigateToConfirmOTPPage();
@@ -68,6 +73,7 @@ public sealed partial class LoginForgotPasswordPage01 : Page
                 XamlRoot = this.XamlRoot,
                 RequestedTheme = App.GetService<IThemeSelectorService>().Theme
             };
+            dialog.CloseButtonClick += (s, e) => (App.LoginWindow as LoginWindow)?.HideLoadingOverlay();
             _ = dialog.ShowAsync();
         }
     }

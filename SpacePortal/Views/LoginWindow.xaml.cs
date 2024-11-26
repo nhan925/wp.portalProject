@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
+using CommunityToolkit.WinUI;
 using Microsoft.Identity.Client;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -34,6 +36,9 @@ public sealed partial class LoginWindow : Window
         this.CenterOnScreen();
         this.SetIsMaximizable(false);
         LoginFrame.Navigate(typeof(LoginWelcomePage), this);
+
+        AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/WindowIcon.ico"));
+        Title = "AppDisplayName".GetLocalized();
     }
 
     public LoginWindow(LaunchActivatedEventArgs args)
@@ -47,6 +52,9 @@ public sealed partial class LoginWindow : Window
         this.SetIsMaximizable(false);
         LoginFrame.Navigate(typeof(LoginWelcomePage), this);
         LoginWindowsViewModel.Instance.LaunchArgs = args;
+
+        AppWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/WindowIcon.ico"));
+        Title = "AppDisplayName".GetLocalized();
     }
 
     public void NavigateToConfirmUserNamePage()
@@ -67,5 +75,17 @@ public sealed partial class LoginWindow : Window
     public void NavigateToWelcomePage()
     {
         LoginFrame.Navigate(typeof(LoginWelcomePage), this);
+    }
+
+    public void ShowLoadingOverlay()
+    {
+        LoadingOverlay.Visibility = Visibility.Visible;
+        LoadingOverlayGrid.Visibility = Visibility.Visible;
+    }
+
+    public void HideLoadingOverlay()
+    {
+        LoadingOverlay.Visibility = Visibility.Collapsed;
+        LoadingOverlayGrid.Visibility = Visibility.Collapsed;
     }
 }

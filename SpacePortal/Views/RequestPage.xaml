@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="using:Syncfusion.UI.Xaml.DataGrid" 
     xmlns:syncfusion1="using:Syncfusion.UI.Xaml.Grids"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -34,7 +35,11 @@
             <TextBlock Grid.Column="0" Name="ListRequest" Style="{ThemeResource Title}" x:Uid="RequestPage_ListRequestTitle" TextAlignment="Left"/>
             <SplitButton Grid.Column="1" x:Name="StatusButton" Click="StatusButton_Click" x:Uid="RequestPage_Show" HorizontalAlignment="Right"/>
         </Grid>
-        <Grid Grid.Row="1" Style="{StaticResource Card}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,16,0,0">
+
+        <labs:Shimmer Grid.Row="1" Visibility="Visible" x:Name="LoadingShimmer"/>
+        
+        <Grid Grid.Row="1" Style="{StaticResource Card}" HorizontalAlignment="Stretch" Visibility="Collapsed"
+              VerticalAlignment="Stretch" Margin="0,16,0,0" x:Name="DataGridArea">
             <syncfusion:SfDataGrid x:Name="sfDataGrid"
                     AutoGenerateColumns="False"
                     AllowSorting="False"
@@ -50,7 +55,6 @@
                     BorderBrush="Transparent"
                     QueryRowHeight="sfDataGrid_QueryRowHeight"
                     ScrollViewer.IsScrollInertiaEnabled="True"
-                    Visibility="Collapsed"
                     ColumnWidthMode="Star"
                     ScrollViewer.VerticalScrollBarVisibility="Auto">
 
@@ -73,7 +77,7 @@
                     <syncfusion:GridTextColumn x:Uid="RequestPage_RequestStatus" MappingName="Status" TextAlignment="Center" Width="200"/>
                 </syncfusion:SfDataGrid.Columns>
             </syncfusion:SfDataGrid>
-            <Grid x:Name="DataGridLoadingOverlay">
+            <Grid x:Name="DataGridLoadingOverlay" Visibility="Collapsed">
                 <ProgressRing IsActive="True" Width="64" Height="64"/>
             </Grid>
         </Grid>
@@ -99,7 +103,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0" Name="PageNumber" KeyDown="CatchEnter_KeyDown" TextAlignment="Center" FontSize="16" LostFocus="TextBox_LostFocus"
-                         HorizontalTextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                         HorizontalTextAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="40"/>
                 <TextBlock Grid.Column="1" Text="/" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" Margin="4,0,4,5"/>
                 <TextBlock Grid.Column="2" Name="TotalPages" HorizontalAlignment="Center" Margin="0,0,0,5" VerticalAlignment="Center" FontSize="16" Text="{x:Bind ViewModel.TotalPages, Mode=TwoWay}"/>
             </Grid>

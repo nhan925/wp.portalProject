@@ -10,23 +10,25 @@
     Title="LoginWindow">
 
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Assets/LoginBackground.png" Stretch="UniformToFill"></ImageBrush>
-        </Grid.Background>
+        <Grid x:Name="ContentArea">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Assets/LoginBackground.png" Stretch="UniformToFill"></ImageBrush>
+            </Grid.Background>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="6*" />
-            <ColumnDefinition Width="5*" />
-        </Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <Frame x:Name="LoginFrame" Grid.Row="0" Grid.Column="1" Margin="0,50,30,50" CornerRadius="20" Background="White" BorderBrush="Black" >
-           
-        </Frame>
+            <Frame x:Name="LoginFrame" Grid.Row="0" Grid.Column="1" Margin="0,50,30,50" CornerRadius="20" Background="White" BorderBrush="Black" >
+
+            </Frame>
+        </Grid>
+        <Grid x:Name="LoadingOverlayGrid" Background="#99000000" Visibility="Collapsed"/>
+        <ProgressRing x:Name="LoadingOverlay" Width="64" Height="64" Visibility="Collapsed" IsActive="True"/>
     </Grid>
-    
-    
 </Window>
