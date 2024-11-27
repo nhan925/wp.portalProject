@@ -90,6 +90,11 @@ public sealed partial class ChooseClassesPage : Page
             return;
         }
 
+        if ((ClassDataGrid.SelectedItem as ClassOfCourse)?.Id == ViewModel.Informations.RegisteredClassId)
+        {
+            return;
+        }
+
         if (ViewModel.Informations.Status == resourceLoader.GetString("ChooseCourses_StudiedStatus"))
         {
             var dialog = new ContentDialog
