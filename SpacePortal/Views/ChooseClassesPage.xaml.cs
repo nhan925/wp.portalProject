@@ -67,7 +67,10 @@ public sealed partial class ChooseClassesPage : Page
 
     private void ClassesList_CellDoubleTapped(object sender, Syncfusion.UI.Xaml.DataGrid.GridCellDoubleTappedEventArgs e)
     {
-        registerClass();
+        if ((e.Record as ClassOfCourse)?.Id != ViewModel.Informations.RegisteredClassId)
+        {
+            registerClass();
+        }
     }
 
     private async void Refresh_Click(object sender, RoutedEventArgs e)
