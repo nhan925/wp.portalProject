@@ -537,4 +537,400 @@
   <data name="GradesPage_EstimateAverageGradeComboBox.PlaceholderText" xml:space="preserve">
     <value>Chọn loại bằng</value>
   </data>
+  <data name="AppFeedback_FeedbackTitle.Text" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="AppFeedback_FeedbackType.Text" xml:space="preserve">
+    <value>Góp ý</value>
+  </data>
+  <data name="AppFeedback_ErrorType.Text" xml:space="preserve">
+    <value>Báo lỗi</value>
+  </data>
+  <data name="AppFeedback_Classification.Text" xml:space="preserve">
+    <value>Phân loại</value>
+  </data>
+  <data name="AppFeedback_InputInstruction.PlaceholderText" xml:space="preserve">
+    <value>Nhập nội dung tại đây</value>
+  </data>
+  <data name="AppFeedback_SendButton.Text" xml:space="preserve">
+    <value>Gửi</value>
+  </data>
+  <data name="AppFeedback_EmptyFeedback.Text" xml:space="preserve">
+    <value>Phản hồi không thể để trống. Vui lòng nhập phản hồi của bạn.</value>
+  </data>
+  <data name="AppFeedback_FeedbackTooShort.Text" xml:space="preserve">
+    <value>Phản hồi phải có ít nhất 10 ký tự. Vui lòng cung cấp thêm chi tiết.</value>
+  </data>
+  <data name="AppFeedback_FeedbackTooLong.Text" xml:space="preserve">
+    <value>Phản hồi không được vượt quá 500 ký tự. Vui lòng rút gọn nội dung.</value>
+  </data>
+  <data name="AppFeedback_SuccessTitleDialog.Text" xml:space="preserve">
+    <value>Cảm Ơn Bạn!</value>
+  </data>
+  <data name="AppFeedback_SuccessMessageDialog.Text" xml:space="preserve">
+    <value>Phản hồi của bạn đã được ghi nhận.</value>
+  </data>
+  <data name="RequestPage_ListRequestTitle.Text" xml:space="preserve">
+    <value>DANH SÁCH YÊU CẦU</value>
+  </data>
+  <data name="RequestPage_ProcessingStatus.Text" xml:space="preserve">
+    <value>Đang xử lý</value>
+  </data>
+  <data name="RequestPage_CompletedStatus.Text" xml:space="preserve">
+    <value>Đã xử lý</value>
+  </data>
+  <data name="RequestPage_RequestNumber.HeaderText" xml:space="preserve">
+    <value>STT</value>
+  </data>
+  <data name="RequestPage_RequestTitle.HeaderText" xml:space="preserve">
+    <value>Tiêu đề</value>
+  </data>
+  <data name="RequestPage_RequestDate.HeaderText" xml:space="preserve">
+    <value>Ngày gửi</value>
+  </data>
+  <data name="RequestPage_RequestStatus.HeaderText" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="RequestDetailPage_RequestDetailTitle.Text" xml:space="preserve">
+    <value>THÔNG TIN YÊU CẦU</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestButton.Content" xml:space="preserve">
+    <value>Hủy yêu cầu</value>
+  </data>
+  <data name="RequestDetailPage_ResendRequestButton.Content" xml:space="preserve">
+    <value>Gửi lại</value>
+  </data>
+  <data name="RequestDetailPage_AnswerRequestTitle.Text" xml:space="preserve">
+    <value>Phản hồi</value>
+  </data>
+  <data name="RequestDetailPage_Student.Text" xml:space="preserve">
+    <value>Sinh viên</value>
+  </data>
+  <data name="RequestDetailPage_ResendRequestSuccess.Text" xml:space="preserve">
+    <value>Yêu cầu của bạn đã được ghi nhận.</value>
+  </data>
+  <data name="RequestDetailPage_ResendProcessingRequest.Text" xml:space="preserve">
+    <value>Yêu cầu này đang trong quá trình xử lý.</value>
+  </data>
+  <data name="App_Success.Text" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestSuccess.Text" xml:space="preserve">
+    <value>Yêu cầu của bạn đã được hủy.</value>
+  </data>
+  <data name="RequestDetailPage_CancelledRequestFail.Text" xml:space="preserve">
+    <value>Thao tác hủy không thể thực hiện.</value>
+  </data>
+  <data name="RequestPage_AllStatus.Text" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="RequestPage_Show.Content" xml:space="preserve">
+    <value>Xem</value>
+  </data>
+  <data name="RequestDetailPage_ByLabel.Text" xml:space="preserve">
+    <value>Bởi</value>
+  </data>
+  <data name="RequestDetailPage_Anonymous.Text" xml:space="preserve">
+    <value>Anonymous</value>
+  </data>
+  <data name="AppFeedback_CharacterCount.Text" xml:space="preserve">
+    <value>Số ký tự</value>
+  </data>
+  <data name="Login_Welcome.Text" xml:space="preserve">
+    <value>Chào mừng đến</value>
+  </data>
+  <data name="Login_AppName.Text" xml:space="preserve">
+    <value>SPACE PORTAL</value>
+  </data>
+  <data name="Login_Username.Text" xml:space="preserve">
+    <value>Tên đăng nhập</value>
+  </data>
+  <data name="Login_UsernameTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập tên đăng nhập</value>
+  </data>
+  <data name="Login_Password.Text" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="Login_PasswordTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập mật khẩu</value>
+  </data>
+  <data name="Login_RememberMeCheckBox.Content" xml:space="preserve">
+    <value>Lưu trạng thái</value>
+  </data>
+  <data name="Login_ForgotPasswordButton.Content" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+  </data>
+  <data name="Login_LoginButton.Content" xml:space="preserve">
+    <value>Đăng nhập</value>
+  </data>
+  <data name="Login_LoginWithOutlookButton.Text" xml:space="preserve">
+    <value>Đăng nhập với Outlook</value>
+  </data>
+  <data name="LoginForgotPassword_Title.Text" xml:space="preserve">
+    <value>Quên mật khẩu</value>
+  </data>
+  <data name="LoginForgotPassword_Caption01.Text" xml:space="preserve">
+    <value>Vui lòng nhập tên đăng nhập của tài khoản</value>
+  </data>
+  <data name="LoginForgotPassword_ContinueButton.Content" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="LoginForgotPassword_Caption02.Text" xml:space="preserve">
+    <value>Vui lòng kiểm tra và nhập vào bên dưới</value>
+  </data>
+  <data name="LoginForgotPassword_OTP.Text" xml:space="preserve">
+    <value>Mã OTP</value>
+  </data>
+  <data name="LoginForgotPassword_OTPTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập mã OTP</value>
+  </data>
+  <data name="LoginForgotPassword_RequestOTPButton.Content" xml:space="preserve">
+    <value>Gửi lại mã OTP</value>
+  </data>
+  <data name="LoginForgotPassword_NewPassword.Text" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="LoginForgotPassword_NewPasswordTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
+  </data>
+  <data name="LoginForgotPassword_ConfirmNewPassword.Text" xml:space="preserve">
+    <value>Xác nhận lại mật khẩu</value>
+  </data>
+  <data name="LoginForgotPassword_ConfirmNewPasswordTextBox.PlaceholderText" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
+  </data>
+  <data name="LoginForgotPassword_Caption03.Text" xml:space="preserve">
+    <value>Vui lòng nhập mật khẩu mới</value>
+  </data>
+  <data name="Login_Error_UserNameAndPasword.Text" xml:space="preserve">
+    <value>Tài khoản và mật khẩu không chính xác!</value>
+  </data>
+  <data name="Login_Error_ResetPassword02.Text" xml:space="preserve">
+    <value>Các trường không được để trống!</value>
+  </data>
+  <data name="Login_Error_ConfirmUserName.Text" xml:space="preserve">
+    <value>Tên đăng nhập không chính xác!</value>
+  </data>
+  <data name="Login_Error_OTPCode.Text" xml:space="preserve">
+    <value>Mã OTP không chính xác!</value>
+  </data>
+  <data name="Login_Error_RequestOTP.Text" xml:space="preserve">
+    <value>Không thể gửi OTP!</value>
+  </data>
+  <data name="Login_Error_ResetPassword01.Text" xml:space="preserve">
+    <value>Mật khẩu và xác nhận mật khẩu không giống nhau!</value>
+  </data>
+  <data name="Login_Caption_OTP.Text" xml:space="preserve">
+    <value>Mã OTP đã được gửi qua địa chỉ </value>
+  </data>
+  <data name="Login_Error_ResetPassword03.Text" xml:space="preserve">
+    <value>Mật khẩu phải có độ dài tối thiểu là 8 kí tự, ít nhất 1 chữ số, 1 kí tự thường, 1 kí tự in hoa và 1 kí tự đặc biệt!</value>
+  </data>
+  <data name="Login_ResetPassword_Complete.Text" xml:space="preserve">
+    <value>Thay đổi mật khẩu thành công!</value>
+  </data>
+  <data name="App_Title_Successful.Text" xml:space="preserve">
+    <value>Thành công!</value>
+  </data>
+  <data name="LoginForgotPassword_CompleteButton.Content" xml:space="preserve">
+    <value>Hoàn thành</value>
+  </data>
+  <data name="CoursesRegistration_PeriodTitle.Text" xml:space="preserve">
+    <value>CÁC ĐỢT ĐĂNG KÝ</value>
+  </data>
+  <data name="CoursesRegistration_PeriodOpenDate.Text" xml:space="preserve">
+    <value>Ngày mở</value>
+  </data>
+  <data name="CoursesRegistration_PeriodCloseDate.Text" xml:space="preserve">
+    <value>Ngày kết thúc</value>
+  </data>
+  <data name="CoursesRegistration_PeriodStatusOpening" xml:space="preserve">
+    <value>Đang mở</value>
+  </data>
+  <data name="CoursesRegistration_PeriodStatusClosed" xml:space="preserve">
+    <value>Đã kết thúc</value>
+  </data>
+  <data name="CoursesRegistration_PeriodStatusNotOpened" xml:space="preserve">
+    <value>Chưa đến ngày đăng ký</value>
+  </data>
+  <data name="ChooseCourses_MaxCredits.Text" xml:space="preserve">
+    <value>Số tín chỉ tối đa</value>
+  </data>
+  <data name="ChooseCourses_Major.Text" xml:space="preserve">
+    <value>Ngành học</value>
+  </data>
+  <data name="ChooseCourses_RegisteredCredits.Text" xml:space="preserve">
+    <value>Số tín chỉ đã đăng ký</value>
+  </data>
+  <data name="ChooseCourses_RegisteredCourses.Text" xml:space="preserve">
+    <value>Số môn học đã đăng ký</value>
+  </data>
+  <data name="ChooseCourses_SearchBox.PlaceholderText" xml:space="preserve">
+    <value>Tìm môn học</value>
+  </data>
+  <data name="ChooseCourses_RegisteredCoursesList.Text" xml:space="preserve">
+    <value>CÁC MÔN HỌC ĐÃ ĐĂNG KÝ</value>
+  </data>
+  <data name="ChooseCourses_StudiedCourses.Text" xml:space="preserve">
+    <value>HỌC CẢI THIỆN &amp; HỌC LẠI</value>
+  </data>
+  <data name="ChooseCourses_CoursesIdHeader.HeaderText" xml:space="preserve">
+    <value>Mã môn</value>
+  </data>
+  <data name="ChooseCourses_CoursesNameHeader.HeaderText" xml:space="preserve">
+    <value>Tên môn</value>
+  </data>
+  <data name="ChooseCourses_CreditsHeader.HeaderText" xml:space="preserve">
+    <value>Số TC</value>
+  </data>
+  <data name="ChooseCourses_ClassHeader.HeaderText" xml:space="preserve">
+    <value>Lớp</value>
+  </data>
+  <data name="ChooseCourses_RegisteredStatus" xml:space="preserve">
+    <value>Đã đăng ký</value>
+  </data>
+  <data name="ChooseCourses_UnregisteredStatus" xml:space="preserve">
+    <value>Chưa đăng ký</value>
+  </data>
+  <data name="ChooseCourses_StudiedStatus" xml:space="preserve">
+    <value>Đã học</value>
+  </data>
+  <data name="ChooseClasses_CoursesInfo.Text" xml:space="preserve">
+    <value>MÔN HỌC</value>
+  </data>
+  <data name="ChooseClasses_CourseId.Text" xml:space="preserve">
+    <value>Mã môn</value>
+  </data>
+  <data name="ChooseClasses_CourseName.Text" xml:space="preserve">
+    <value>Tên môn</value>
+  </data>
+  <data name="ChooseClasses_NumberOfClasses.Text" xml:space="preserve">
+    <value>Số lớp học</value>
+  </data>
+  <data name="ChooseClasses_Status.Text" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="ChooseClasses_ClassesList.Text" xml:space="preserve">
+    <value>Danh sách lớp</value>
+  </data>
+  <data name="ChooseClasses_ClassId.HeaderText" xml:space="preserve">
+    <value>Mã lớp</value>
+  </data>
+  <data name="ChooseClasses_Day.HeaderText" xml:space="preserve">
+    <value>Ngày học</value>
+  </data>
+  <data name="ChooseClasses_Time.HeaderText" xml:space="preserve">
+    <value>Giờ học</value>
+  </data>
+  <data name="ChooseClasses_Room.HeaderText" xml:space="preserve">
+    <value>Phòng học</value>
+  </data>
+  <data name="ChooseClasses_MaxSlot.HeaderText" xml:space="preserve">
+    <value>Số Slot</value>
+  </data>
+  <data name="ChooseClasses_RegisteredSlot.HeaderText" xml:space="preserve">
+    <value>Đã đăng ký</value>
+  </data>
+  <data name="ChooseClasses_RegisterButton.Content" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="ChooseClasses_CancelRegisterButton.Content" xml:space="preserve">
+    <value>Hủy đăng ký</value>
+  </data>
+  <data name="ChooseClasses_ClassName.HeaderText" xml:space="preserve">
+    <value>Tên lớp</value>
+  </data>
+  <data name="ChooseCourses_AlertDialogTitle" xml:space="preserve">
+    <value>Không thể đăng ký</value>
+  </data>
+  <data name="ChooseCourses_AlertDialogMessage" xml:space="preserve">
+    <value>Không thể đăng ký do số tín chỉ còn lại không đủ !</value>
+  </data>
+  <data name="ChooseClasses_ConfirmTitle" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="ChooseClasses_DeleteOldResultAlert" xml:space="preserve">
+    <value>Khi thực hiện đăng ký, kết quả cũ sẽ bị xóa và không thể khôi phục !</value>
+  </data>
+  <data name="ChooseClasses_ContinueDialogButton" xml:space="preserve">
+    <value>Tiếp tục</value>
+  </data>
+  <data name="ChooseClasses_CancelCourseConfirmMessage" xml:space="preserve">
+    <value>Bạn có chắc chắn muốn hủy đăng ký môn học này không ?</value>
+  </data>
+  <data name="ChooseClasses_CancelCourseTitleToast" xml:space="preserve">
+    <value>Hủy đăng ký</value>
+  </data>
+  <data name="ChooseClasses_CancelCourseMessageToast" xml:space="preserve">
+    <value>Môn học đã được hủy thành công.</value>
+  </data>
+  <data name="ChooseClasses_CancelCourseFailMessageToast" xml:space="preserve">
+    <value>Hủy thất bại !</value>
+  </data>
+  <data name="ChooseClasses_RegisterNotificationTitle" xml:space="preserve">
+    <value>Đăng ký lớp</value>
+  </data>
+  <data name="ChooseClasses_RegisterClassSuccessMessageDialog" xml:space="preserve">
+    <value>Đăng ký thành công !</value>
+  </data>
+  <data name="ChooseClasses_RegisterClassTimeDuplicateMessageDialog" xml:space="preserve">
+    <value>Đăng ký thất bại do lớp đã chọn có lịch học trùng với một lớp học đã đăng ký !</value>
+  </data>
+  <data name="ChooseClasses_RegisterClassNoSlotMessageDialog" xml:space="preserve">
+    <value>Đăng ký không thành công vì lớp đã hết số lượng đăng ký !</value>
+  </data>
+  <data name="ChooseClasses_RegisterClassFailMessageDialog" xml:space="preserve">
+    <value>Đã có lỗi xảy ra trong quá trình đăng ký !</value>
+  </data>
+  <data name="App_CrashMessage" xml:space="preserve">
+    <value>Đã có lỗi xảy ra !</value>
+  </data>
+  <data name="Login_OTPExpiredAfterText" xml:space="preserve">
+    <value>Mã OTP sẽ hết hạn sau</value>
+  </data>
+  <data name="Login_Second" xml:space="preserve">
+    <value>giây</value>
+  </data>
+  <data name="Login_OTPExpiredNoti" xml:space="preserve">
+    <value>Mã OTP đã hết hạn</value>
+  </data>
+  <data name="Login_DuplicateWithOld.Text" xml:space="preserve">
+    <value>Mật khẩu mới không được trùng mới mật khẩu hiện tại !</value>
+  </data>
+  <data name="ChangePasswordDialog_Title" xml:space="preserve">
+    <value>Đổi mật khẩu</value>
+  </data>
+  <data name="ChangePasswordDialog_ConfirmButton" xml:space="preserve">
+    <value>Xác nhận</value>
+  </data>
+  <data name="ChangePasswordDialog_CurrentPassword" xml:space="preserve">
+    <value>Mật khẩu hiện tại</value>
+  </data>
+  <data name="ChangePasswordDialog_NewPassword" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="ChangePasswordDialog_ConfirmNewPassword" xml:space="preserve">
+    <value>Nhập lại mật khẩu mới</value>
+  </data>
+  <data name="ChangePasswordDialog_EmptyField" xml:space="preserve">
+    <value>Các ô không được để trống !</value>
+  </data>
+  <data name="ChangePasswordDialog_PasswordNotMatch" xml:space="preserve">
+    <value>Mật khẩu mới và nhập lại không khớp !</value>
+  </data>
+  <data name="ChangePasswordDialog_PasswordNotValid" xml:space="preserve">
+    <value>Mật khẩu phải có độ dài tối thiểu là 8 kí tự, ít nhất 1 chữ số, 1 kí tự thường, 1 kí tự in hoa và 1 kí tự đặc biệt!</value>
+  </data>
+  <data name="ChangePasswordDialog_WrongPassword" xml:space="preserve">
+    <value>Mật khẩu hiện tại không chính xác !</value>
+  </data>
+  <data name="ChangePasswordDialog_DuplicatePassword" xml:space="preserve">
+    <value>Mật khẩu mới không được trùng với mật khẩu hiện tại !</value>
+  </data>
+  <data name="ChangePasswordDialog_Error" xml:space="preserve">
+    <value>Đã có lỗi xảy ra, vui lòng thử lại !</value>
+  </data>
+  <data name="ChangePasswordDialog_Success" xml:space="preserve">
+    <value>Đổi mật khẩu thành công !</value>
+  </data>
 </root>

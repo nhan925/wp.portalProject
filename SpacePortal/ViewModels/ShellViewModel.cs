@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml.Navigation;
 
 using SpacePortal.Contracts.Services;
 using SpacePortal.Core.Contracts;
+using SpacePortal.Core.Services;
 using SpacePortal.Models;
 using SpacePortal.Views;
 
@@ -63,5 +64,16 @@ public partial class ShellViewModel : ObservableRecipient
         {
             Selected = selectedItem;
         }
+    }
+
+    public string ChangePassword(string currentPassword, string newPassword)
+    {
+        var payload = new
+        {
+            current_password = currentPassword,
+            new_password = newPassword,
+        };
+
+        return App.GetService<ApiService>().Post<string>("/rpc/change_password", payload);
     }
 }

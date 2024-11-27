@@ -8,6 +8,7 @@ using Windows.Storage;
 using WinRT.Interop;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Windows.ApplicationModel.Resources;
+using SpacePortal.Contracts.Services;
 
 namespace SpacePortal.Views;
 
@@ -54,13 +55,14 @@ public sealed partial class InformationPage : Page
 
     private async void ShowErrorMessage(string message)
     {
-         ResourceLoader resourceLoader = new ResourceLoader();
+        ResourceLoader resourceLoader = new ResourceLoader();
         ContentDialog errorDialog = new ContentDialog
         {
             Title = resourceLoader.GetString("App_Error/Text"),
             Content = message,
             CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-            XamlRoot = this.Content.XamlRoot
+            XamlRoot = this.Content.XamlRoot,
+            RequestedTheme = App.GetService<IThemeSelectorService>().Theme
         };
 
         await errorDialog.ShowAsync();
