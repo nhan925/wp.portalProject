@@ -65,39 +65,8 @@ public sealed partial class ChooseClassesPage : Page
         }
     }
 
-    private void ClassesList_CellDoubleTapped(object sender, Syncfusion.UI.Xaml.DataGrid.GridCellDoubleTappedEventArgs e)
+    private async void checkStudiedCourseAndRegister()
     {
-        if ((e.Record as ClassOfCourse)?.Id != ViewModel.Informations.RegisteredClassId)
-        {
-            registerClass();
-        }
-    }
-
-    private async void Refresh_Click(object sender, RoutedEventArgs e)
-    {
-        ClassesListLoadingRing.Visibility = Visibility.Visible;
-        ClassesList.Opacity = 0.5;
-        await Task.Delay(10);
-
-        reloadInformations(ViewModel.Informations.PeriodId, ViewModel.Informations.CourseId, 
-            ViewModel.Informations.CourseName, ViewModel.Informations.Status);
-
-        ClassesListLoadingRing.Visibility = Visibility.Collapsed;
-        ClassesList.Opacity = 1;
-    }
-
-    private async void Register_Button_Click(object sender, RoutedEventArgs e)
-    {
-        if (ClassDataGrid.SelectedIndex < 0)
-        {
-            return;
-        }
-
-        if ((ClassDataGrid.SelectedItem as ClassOfCourse)?.Id == ViewModel.Informations.RegisteredClassId)
-        {
-            return;
-        }
-
         if (ViewModel.Informations.Status == resourceLoader.GetString("ChooseCourses_StudiedStatus"))
         {
             var dialog = new ContentDialog
@@ -119,6 +88,44 @@ public sealed partial class ChooseClassesPage : Page
         {
             registerClass();
         }
+    }
+
+    private void ClassesList_CellDoubleTapped(object sender, Syncfusion.UI.Xaml.DataGrid.GridCellDoubleTappedEventArgs e)
+    {
+        if ((e.Record as ClassOfCourse)?.Id == ViewModel.Informations.RegisteredClassId)
+        {
+            return;
+        }
+
+        checkStudiedCourseAndRegister();
+    }
+
+    private async void Refresh_Click(object sender, RoutedEventArgs e)
+    {
+        ClassesListLoadingRing.Visibility = Visibility.Visible;
+        ClassesList.Opacity = 0.5;
+        await Task.Delay(10);
+
+        reloadInformations(ViewModel.Informations.PeriodId, ViewModel.Informations.CourseId, 
+            ViewModel.Informations.CourseName, ViewModel.Informations.Status);
+
+        ClassesListLoadingRing.Visibility = Visibility.Collapsed;
+        ClassesList.Opacity = 1;
+    }
+
+    private void Register_Button_Click(object sender, RoutedEventArgs e)
+    {
+        if (ClassDataGrid.SelectedIndex < 0)
+        {
+            return;
+        }
+
+        if ((ClassDataGrid.SelectedItem as ClassOfCourse)?.Id == ViewModel.Informations.RegisteredClassId)
+        {
+            return;
+        }
+
+        checkStudiedCourseAndRegister();
     }
 
     private async void Cancel_Button_Click(object sender, RoutedEventArgs e)
