@@ -1,25 +1,24 @@
 ﻿using System.Collections.ObjectModel;
-using System.Diagnostics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using SpacePortal.Core.Contracts;
 using SpacePortal.Models;
 
 namespace SpacePortal.ViewModels;
 
-public partial class TuitionFeeViewModel : ObservableRecipient
+public partial class CourseFeedbackViewModel : ObservableRecipient
 {
-    public ObservableCollection<TuitionFeeListInformations> Information
+    public ObservableCollection<CourseFeedbackListInformations> Information
     {
         get; set;
     }
 
-    public TuitionFeeViewModel()
+    public CourseFeedbackViewModel()
     {
         Init();
     }
 
     public void Init()
     {
-        Information = App.GetService<IDao<TuitionFeeListInformations>>().GetAll();
+        Information = App.GetService<IDao<CourseFeedbackListInformations>>().GetAll();
     }
 }

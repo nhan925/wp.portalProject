@@ -294,4 +294,13 @@
   <data name="Shell_ChooseClasses.Content" xml:space="preserve">
     <value>ChooseClasses</value>
   </data>
+  <data name="Shell_TuitionFeeDetail.Content" xml:space="preserve">
+    <value>TuitionFeeDetail</value>
+  </data>
+  <data name="Shell_CourseFeedback.Content" xml:space="preserve">
+    <value>CourseFeedback</value>
+  </data>
+  <data name="Shell_CourseFeedbackDetail.Content" xml:space="preserve">
+    <value>CourseFeedbackDetail</value>
+  </data>
 </root>
