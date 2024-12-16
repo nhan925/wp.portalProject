@@ -1056,4 +1056,10 @@
   <data name="CourseFeedbackDetail_CompleteButton.Content" xml:space="preserve">
     <value>Hoàn thành đánh giá</value>
   </data>
+  <data name="CourseFeedbackDetail_EmptyFieldError.Text" xml:space="preserve">
+    <value>Không được để trống</value>
+  </data>
+  <data name="CourseFeedbackDetail_CompleteMessage.Text" xml:space="preserve">
+    <value>Cảm ơn bạn đã đánh giá!</value>
+  </data>
 </root>

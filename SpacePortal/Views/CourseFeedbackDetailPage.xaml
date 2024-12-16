@@ -122,7 +122,7 @@
                 
         
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.ColumnSpan="7">
-                    <ItemsControl ItemsSource="{x:Bind ViewModel.CourseQuesntion, Mode=OneWay}">
+                    <ItemsControl ItemsSource="{x:Bind ViewModel.CourseQuestion, Mode=OneWay}">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate x:DataType="models:Question">
                                 <Grid ColumnSpacing="12" RowSpacing="12" Padding="10">
