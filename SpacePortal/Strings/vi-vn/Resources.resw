@@ -1002,4 +1002,34 @@
   <data name="Scholarship_Expired" xml:space="preserve">
     <value>Đã hết hạn</value>
   </data>
+  <data name="PaymentHistory_Title.Text" xml:space="preserve">
+    <value>Lịch sử thanh toán</value>
+  </data>
+  <data name="PaymentHistory_Id.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="PaymentHistory_Amount.HeaderText" xml:space="preserve">
+    <value>Số tiền</value>
+  </data>
+  <data name="PaymentHistory_Date.HeaderText" xml:space="preserve">
+    <value>Ngày thực hiện</value>
+  </data>
+  <data name="PaymentHistory_Type.HeaderText" xml:space="preserve">
+    <value>Loại thanh toán</value>
+  </data>
+  <data name="PaymentHistory_Status.HeaderText" xml:space="preserve">
+    <value>Tình trạng</value>
+  </data>
+  <data name="PaymentHistory_StatusSucess" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="PaymentHistory_StatusCancelled" xml:space="preserve">
+    <value>Đã hủy</value>
+  </data>
+  <data name="PaymentHistory_TypeTuitionFee" xml:space="preserve">
+    <value>Học phí</value>
+  </data>
+  <data name="PaymentHistory_TypeGradeReview" xml:space="preserve">
+    <value>Phí phúc khảo</value>
+  </data>
 </root>

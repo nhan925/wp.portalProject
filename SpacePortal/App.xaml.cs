@@ -170,6 +170,7 @@ public partial class App : Application
             services.AddSingleton<IDao<ChooseCoursesInformations>, ChooseCoursesInformationsDao>();
             services.AddSingleton<IDao<ChooseClassesInformations>, ChooseClassesInformationsDao>();
             services.AddSingleton<IDao<InformationsForScholarshipPage>, InformationsForScholarshipPageDao>();
+            services.AddSingleton<IDao<PaymentHistoryInfomations>, PaymentHistoryInformationsDao>();
         }).
         Build();
          
