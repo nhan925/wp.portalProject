@@ -12,6 +12,10 @@ using Windows.Storage.Pickers;
 using Windows.UI;
 using Microsoft.UI.Xaml.Navigation;
 using Syncfusion.UI.Xaml.DataGrid;
+using Microsoft.UI.Xaml.Documents;
+using System.ComponentModel;
+using CommunityToolkit.WinUI;
+using Windows.UI.ViewManagement;
 
 namespace SpacePortal.Views;
 
@@ -114,7 +118,6 @@ public sealed partial class ScholarshipPage : Page
         {
             Content = new FontIcon { Glyph = "\uE8E5" },
             HorizontalAlignment = HorizontalAlignment.Right,
-            Margin = new Thickness(0, 0, 0, 14)
         };
 
         var container = new Grid
@@ -124,7 +127,8 @@ public sealed partial class ScholarshipPage : Page
                 new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
                 new ColumnDefinition { Width = GridLength.Auto }
             },
-            ColumnSpacing = 16
+            ColumnSpacing = 16,
+            VerticalAlignment = VerticalAlignment.Center
         };
         Grid.SetColumn(fileNameTextBlock, 0);
         container.Children.Add(fileNameTextBlock);
@@ -230,5 +234,37 @@ public sealed partial class ScholarshipPage : Page
 
         LoadingOverlay.Visibility = Visibility.Collapsed;
         splitView.Visibility = Visibility.Visible;
+    }
+
+    private async void Hyperlink_Click(Microsoft.UI.Xaml.Documents.Hyperlink sender, Microsoft.UI.Xaml.Documents.HyperlinkClickEventArgs args)
+    {
+        var url = ViewModel.SelectingItem.Attachment;
+
+        if (!string.IsNullOrEmpty(url))
+        {
+            var webView2 = new WebView2();
+            await webView2.EnsureCoreWebView2Async();
+
+            webView2.Source = new Uri(url);
+            
+            // Disable the right-click menu
+            webView2.CoreWebView2.ContextMenuRequested += (sender, e) =>
+            {
+                e.Handled = true;
+            };
+
+            var newWindow = new WindowEx
+            {
+                Title = resourceLoader.GetString("Scholarship_DocumentWindowsTitle"),
+                Content = webView2,
+                MinWidth = 1100,
+                MinHeight = 600,
+                SystemBackdrop = new MicaBackdrop(),
+            };
+            newWindow.SetIcon(Path.Combine(AppContext.BaseDirectory, "Assets/WindowIcon.ico"));
+            newWindow.CenterOnScreen();
+
+            newWindow.Activate();
+        }
     }
 }

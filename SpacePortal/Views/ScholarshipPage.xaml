@@ -129,7 +129,9 @@
                     <RichTextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" x:Name="RegisteredInfo">
                         <Paragraph>
                             <Run x:Uid="Scholarship_Attachment" FontWeight="Bold"/>:
-                            <Hyperlink NavigateUri="{x:Bind ViewModel.SelectingItem.Attachment, Mode=OneWay}">Link</Hyperlink>
+                            <Hyperlink Click="Hyperlink_Click">
+                                <Run x:Uid="Scholarship_AttachmentHyperlink"/>
+                            </Hyperlink>
                         </Paragraph>
                         <Paragraph>
                             <Run x:Uid="Scholarship_SubmitDate" FontWeight="Bold"/>:

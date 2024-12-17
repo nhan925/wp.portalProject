@@ -1032,4 +1032,10 @@
   <data name="PaymentHistory_TypeGradeReview" xml:space="preserve">
     <value>Phí phúc khảo</value>
   </data>
+  <data name="Scholarship_DocumentWindowsTitle" xml:space="preserve">
+    <value>Tài liệu</value>
+  </data>
+  <data name="Scholarship_AttachmentHyperlink.Text" xml:space="preserve">
+    <value>xem file</value>
+  </data>
 </root>
