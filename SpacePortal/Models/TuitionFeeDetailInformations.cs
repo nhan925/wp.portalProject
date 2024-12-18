@@ -8,6 +8,11 @@ using Windows.ApplicationModel.Resources;
 namespace SpacePortal.Models;
 public class TuitionFeeDetailInformations: INotifyPropertyChanged
 {
+    public int semesterID
+    {
+        get; set;
+    }  
+
     public string year
     {
         get; set;

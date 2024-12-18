@@ -47,7 +47,7 @@
 				</Button>
                 <TextBlock Grid.Column="1" Style="{ThemeResource SubtitleTextBlockStyle}" Text="{x:Bind ViewModel.Informations.Title, Mode=OneWay}"
 						   VerticalAlignment="Center" Margin="0,0,0,4"/>
-                <Button Grid.Column="2" HorizontalAlignment="Right"  x:Uid="TuitionFeeDetail_PayButton" Style="{StaticResource AccentButtonStyle}" Click="Paymetn_Click"/>
+                <Button Grid.Column="2" HorizontalAlignment="Right" x:Name="PaymentButton" x:Uid="TuitionFeeDetail_PayButton" Style="{StaticResource AccentButtonStyle}" Click="Payment_Click"/>
 			</Grid>
 
 

@@ -34,7 +34,7 @@ public sealed partial class TuitionFeePage : Page
         var button = sender as Button;
         var context = button?.DataContext as TuitionFeeListInformations;
 
-        Tuple<string, int, int, int> info = new(context.year, context.semester, context.totalCourse, context.totalTuitionFee);
+        Tuple<int, string, int, int, int> info = new(context.semesterID, context.year, context.semester, context.totalCourse, context.totalTuitionFee);
 
         var navigationService = App.GetService<INavigationService>();
         var pageKey = typeof(TuitionFeeDetailViewModel).FullName ?? "SpacePortal.ViewModels.TuitionFeeDetailViewModel";

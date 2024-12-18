@@ -86,6 +86,12 @@ public partial class App : Application
         // Get Imgur client ID
         var imgurClientId = Env.GetString("IMGUR_CLIENT_ID");
 
+        // Get Zalo Pay Service
+        
+        var zaloPayAppId = Env.GetString("ZaloPay_AppID");
+        var zaloPayKey1 = Env.GetString("ZaloPay_Key1");
+        var zaloPayRedirectUrl = Env.GetString("ZaloPay_RedirectUrl");
+
         // TODO: Set the default language here
         Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "vi-VN";
 
@@ -105,6 +111,7 @@ public partial class App : Application
             services.AddTransient<INavigationViewService, NavigationViewService>();
             services.AddSingleton<ApiService>(provider => new ApiService(apiUrl));
             services.AddSingleton<ImgurService>(provider => new ImgurService(imgurClientId));
+            services.AddSingleton<ZaloPayService>(provider => new ZaloPayService(zaloPayAppId, zaloPayKey1, zaloPayRedirectUrl));
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();

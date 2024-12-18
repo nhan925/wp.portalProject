@@ -1062,4 +1062,34 @@
   <data name="CourseFeedbackDetail_CompleteMessage.Text" xml:space="preserve">
     <value>Cảm ơn bạn đã đánh giá!</value>
   </data>
+  <data name="TuitionFee_Overdue.Text" xml:space="preserve">
+    <value>Quá hạn thanh toán</value>
+  </data>
+  <data name="TuitionFeeDetail_PaymentDialog_SuccessTitle.Text" xml:space="preserve">
+    <value>Thanh toán thành công</value>
+  </data>
+  <data name="TuitionFeeDetail_PaymentDialog_SuccessContent.Text" xml:space="preserve">
+    <value>Giao dịch thanh toán học phí đã hoàn tất</value>
+  </data>
+  <data name="TuitionFeeDetail_PaymentDialog_FailedTitle.Text" xml:space="preserve">
+    <value>Thanh toán thất bại</value>
+  </data>
+  <data name="TuitionFeeDetail_PaymentDialog_FailedContent.Text" xml:space="preserve">
+    <value>Giao dịch thanh toán học phí đã thất bại, vui lòng thanh toán lại!</value>
+  </data>
+  <data name="TuitionFeeDetail_WindowPaymentTitle.Text" xml:space="preserve">
+    <value>Thanh toán học phí</value>
+  </data>
+  <data name="TuitionFeeDetail_ZaloPayDescription_01.Text" xml:space="preserve">
+    <value>Thanh toán học phí</value>
+  </data>
+  <data name="TuitionFeeDetail_ZaloPayDescription_02.Text" xml:space="preserve">
+    <value>Học phí học kì</value>
+  </data>
+  <data name="TuitionFeeDetail_ZaloPayDescription_03.Text" xml:space="preserve">
+    <value>học kì</value>
+  </data>
+  <data name="TuitionFeeDetail_ZaloPayDescription_04.Text" xml:space="preserve">
+    <value>năm học</value>
+  </data>
 </root>

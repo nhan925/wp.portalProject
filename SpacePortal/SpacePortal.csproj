@@ -32,6 +32,7 @@
   <ItemGroup>
     <None Remove="Assets\edit.png" />
     <None Remove="Assets\LoginBackground.png" />
+    <None Remove="Assets\payment.html" />
     <None Remove="Assets\WelcomeIcon.png" />
     <None Remove="BlankWindow1.xaml" />
     <None Remove="Views\EstimateAverageGradeDialog.xaml" />
@@ -50,7 +51,7 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Labs.WinUI.Shimmer" Version="0.1.241113-pull-588.1786" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.1.240916" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.1.240916" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.SettingsControls" Version="8.1.240916" />
@@ -61,10 +62,10 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
-    <PackageReference Include="Syncfusion.Chart.WinUI" Version="27.2.3" />
-    <PackageReference Include="Syncfusion.Grid.WinUI" Version="27.2.3" />
-    <PackageReference Include="Syncfusion.GridExport.WinUI" Version="27.2.3" />
-    <PackageReference Include="Syncfusion.XlsIO.NET" Version="27.2.3" />
+    <PackageReference Include="Syncfusion.Chart.WinUI" Version="28.1.33" />
+    <PackageReference Include="Syncfusion.Grid.WinUI" Version="28.1.33" />
+    <PackageReference Include="Syncfusion.GridExport.WinUI" Version="28.1.33" />
+    <PackageReference Include="Syncfusion.XlsIO.NET" Version="28.1.33" />
     <PackageReference Include="WinUIEx" Version="2.5.0" />
   </ItemGroup>
 
@@ -123,6 +124,9 @@
     <None Update="Assets\defaultAvt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\payment.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Update="Assets\refresh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

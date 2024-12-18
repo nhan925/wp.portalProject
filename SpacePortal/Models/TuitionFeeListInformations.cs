@@ -5,9 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using SpacePortal.DataAccess;
 using Microsoft.Windows.ApplicationModel.Resources;
+using Windows.ApplicationModel.Resources;
 namespace SpacePortal.Models;
 public class TuitionFeeListInformations
 {
+    public int semesterID
+    {
+        get; set;
+    }
 
     public string year
     {
@@ -29,17 +34,25 @@ public class TuitionFeeListInformations
         get; set;
     }
 
-    public bool status
+    public string status
     {
         get;
         set;
-    }   
+    }
 
     public bool StautsForClick
     {
         get
         {
-            return !status;
+            if (status == "NOT_PAID")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 
@@ -47,7 +60,7 @@ public class TuitionFeeListInformations
     {
         get
         {
-            ResourceLoader resourceLoader = new();
+            Windows.ApplicationModel.Resources.ResourceLoader resourceLoader = new();
             return resourceLoader.GetString("TuitionFee_Year/Text") + " " + year + " | " + resourceLoader.GetString("TuitionFee_Semester/Text") + " " + semester.ToString();
         }
     }
@@ -56,17 +69,21 @@ public class TuitionFeeListInformations
     {
         get
         {
-            ResourceLoader resourceLoader = new();
+            Windows.ApplicationModel.Resources.ResourceLoader resourceLoader = new();
 
-            if (status)
+            if (status == "PAID")
             {
                 return new(resourceLoader.GetString("TuitionFee_Paid/Text"), "LimeGreen");
             }
-            else
+            else if (status == "NOT_PAID")
             {
                 return new(resourceLoader.GetString("TuitionFee_NotPaid/Text"), "Red");
             }
-         
+            else
+            {
+                return new(resourceLoader.GetString("TuitionFee_Overdue/Text"), "Orange");
+            }
+
         }
     }
 
