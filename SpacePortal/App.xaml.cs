@@ -35,6 +35,13 @@ using Windows.UI.Popups;
 
 using WinUIEx;
 using WinUIEx.Messaging;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.Windows.ApplicationModel.Resources;
+using Microsoft.UI.Xaml.Documents;
+using Windows.UI;
+using Microsoft.UI;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Syncfusion.UI.Xaml.Scheduler;
 
 namespace SpacePortal;
 
@@ -87,10 +94,14 @@ public partial class App : Application
         var imgurClientId = Env.GetString("IMGUR_CLIENT_ID");
 
         // Get Zalo Pay Service
-        
         var zaloPayAppId = Env.GetString("ZaloPay_AppID");
         var zaloPayKey1 = Env.GetString("ZaloPay_Key1");
         var zaloPayRedirectUrl = Env.GetString("ZaloPay_RedirectUrl");
+
+        // Get Supabase information
+        var supabaseUrl = Env.GetString("SUPABASE_URL");
+        var supabaseKey = Env.GetString("SUPABASE_KEY");
+        var supabaseBucketName = Env.GetString("SUPABASE_BUCKET_NAME");
 
         // TODO: Set the default language here
         Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "vi-VN";
@@ -112,6 +123,7 @@ public partial class App : Application
             services.AddSingleton<ApiService>(provider => new ApiService(apiUrl));
             services.AddSingleton<ImgurService>(provider => new ImgurService(imgurClientId));
             services.AddSingleton<ZaloPayService>(provider => new ZaloPayService(zaloPayAppId, zaloPayKey1, zaloPayRedirectUrl));
+            services.AddSingleton<SupabaseFileService>(provider => new SupabaseFileService(supabaseUrl, supabaseKey, supabaseBucketName));
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
@@ -184,6 +196,9 @@ public partial class App : Application
             services.AddSingleton<IDao<TuitionFeeListInformations>, TuitionFeeListInformationsDao>();
             services.AddSingleton<IDao<TuitionFeeDetailCourse>, TuitionFeeDetailCourseDao>();
             services.AddSingleton<IDao<CourseFeedbackListInformations>, CourseFeedbackListInformationsDao>();
+            services.AddSingleton<IDao<InformationsForSchedulePage_Class>, InformationsForSchedulePageDao>();
+            services.AddSingleton<IDao<InformationsForScholarshipPage>, InformationsForScholarshipPageDao>();
+            services.AddSingleton<IDao<PaymentHistoryInfomations>, PaymentHistoryInformationsDao>();
         }).
         Build();
          
