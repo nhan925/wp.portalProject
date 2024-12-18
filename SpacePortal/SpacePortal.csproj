@@ -32,6 +32,7 @@
   <ItemGroup>
     <None Remove="Assets\edit.png" />
     <None Remove="Assets\LoginBackground.png" />
+    <None Remove="Assets\payment.html" />
     <None Remove="Assets\WelcomeIcon.png" />
     <None Remove="BlankWindow1.xaml" />
     <None Remove="Views\EstimateAverageGradeDialog.xaml" />
@@ -124,6 +125,9 @@
     <None Update="Assets\defaultAvt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Update="Assets\payment.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Update="Assets\refresh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

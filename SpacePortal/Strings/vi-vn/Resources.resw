@@ -933,6 +933,164 @@
   <data name="ChangePasswordDialog_Success" xml:space="preserve">
     <value>Đổi mật khẩu thành công !</value>
   </data>
+  <data name="TuitionFee_Title.Text" xml:space="preserve">
+    <value>CÁC ĐỢT ĐÓNG HỌC PHÍ</value>
+  </data>
+  <data name="TuitionFee_Year.Text" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="TuitionFee_Semester.Text" xml:space="preserve">
+    <value>Học kì</value>
+  </data>
+  <data name="TuitionFee_TotalCourse.Text" xml:space="preserve">
+    <value>Tổng số môn học</value>
+  </data>
+  <data name="TuitionFee_TotalFee.Text" xml:space="preserve">
+    <value>Học phí</value>
+  </data>
+  <data name="TuitionFeeDetail_Year.Text" xml:space="preserve">
+    <value>Năm học</value>
+  </data>
+  <data name="TuitionFeeDetail_Semester.Text" xml:space="preserve">
+    <value>Học kì</value>
+  </data>
+  <data name="TuitionFeeDetail_TotalFee.Text" xml:space="preserve">
+    <value>Học phí</value>
+  </data>
+  <data name="TuitionFeeDetail_TotalCourse.Text" xml:space="preserve">
+    <value>Tổng số môn</value>
+  </data>
+  <data name="TuitionFeeDetail_Credit.HeaderText" xml:space="preserve">
+    <value>Tín chỉ</value>
+  </data>
+  <data name="TuitionFee_Paid.Text" xml:space="preserve">
+    <value>Đã đóng</value>
+  </data>
+  <data name="TuitionFee_NotPaid.Text" xml:space="preserve">
+    <value>Chưa đóng</value>
+  </data>
+  <data name="TuitionFeeDetail_CourseName.HeaderText" xml:space="preserve">
+    <value>Tên môn học</value>
+  </data>
+  <data name="TuitionFeeDetail_CourseID.HeaderText" xml:space="preserve">
+    <value>Mã môn học</value>
+  </data>
+  <data name="TuitionFeeDetail_CourseFee.HeaderText" xml:space="preserve">
+    <value>Học phí</value>
+  </data>
+  <data name="TuitionFeeDetail_PayButton.Content" xml:space="preserve">
+    <value>Đóng học phí</value>
+  </data>
+  <data name="Shell_CourseFeedback.Content" xml:space="preserve">
+    <value>Đánh giá môn học</value>
+  </data>
+  <data name="CourseFeedback_Title.Text" xml:space="preserve">
+    <value>CÁC MÔN HỌC CẦN ĐÁNH GIÁ</value>
+  </data>
+  <data name="CourseFeedback_CourseID.Text" xml:space="preserve">
+    <value>Mã môn học</value>
+  </data>
+  <data name="CourseFeedback_ClassID.Text" xml:space="preserve">
+    <value>Mã lớp</value>
+  </data>
+  <data name="CourseFeedback_LecturerName.Text" xml:space="preserve">
+    <value>Giảng viên</value>
+  </data>
+  <data name="CourseFeedback_Rated.Text" xml:space="preserve">
+    <value>Đã đánh giá</value>
+  </data>
+  <data name="CourseFeedback_NotRated.Text" xml:space="preserve">
+    <value>Chưa đánh giá</value>
+  </data>
+  <data name="CourseFeedbackDetail_CourseQuestion01.Text" xml:space="preserve">
+    <value>Mức độ khó của môn học này như thế nào đối với bạn?</value>
+  </data>
+  <data name="CourseFeedbackDetail_CourseQuestion02.Text" xml:space="preserve">
+    <value>Bạn có cảm thấy rằng các bài giảng và tài liệu học tập là đủ rõ ràng và dễ hiểu không?</value>
+  </data>
+  <data name="CourseFeedbackDetail_CourseQuestion03.Text" xml:space="preserve">
+    <value>Bạn đánh giá như thế nào về sự hỗ trợ từ giảng viên trong suốt quá trình học?</value>
+  </data>
+  <data name="CourseFeedbackDetail_CourseQuestion04.Text" xml:space="preserve">
+    <value>Bạn cảm thấy lượng kiến thức mà bạn học được từ môn học này có áp dụng được vào thực tế không?</value>
+  </data>
+  <data name="CourseFeedbackDetail_CourseQuestion05.Text" xml:space="preserve">
+    <value>Mức độ khó của các bài kiểm tra và bài tập trong môn học này như thế nào?</value>
+  </data>
+  <data name="CourseFeedbackDetail_TeacherQuestion01.Text" xml:space="preserve">
+    <value>Giảng viên giải thích các khái niệm theo cách dễ hiểu không?</value>
+  </data>
+  <data name="CourseFeedbackDetail_TeacherQuestion02.Text" xml:space="preserve">
+    <value>Giảng viên có dễ tiếp cận và sẵn sàng giúp đỡ khi có câu hỏi không?</value>
+  </data>
+  <data name="CourseFeedbackDetail_TeacherQuestion03.Text" xml:space="preserve">
+    <value>Giảng viên thu hút học sinh và khuyến khích sự tham gia của học sinh như thế nào?</value>
+  </data>
+  <data name="CourseFeedbackDetail_TeacherQuestion04.Text" xml:space="preserve">
+    <value>Giảng viên có hiểu biết và chuẩn bị tốt về môn học không?</value>
+  </data>
+  <data name="CourseFeedbackDetail_TeacherQuestion05.Text" xml:space="preserve">
+    <value>Giảng viên cung cấp phản hồi về bài tập và kỳ thi một cách hiệu quả như thế nào?</value>
+  </data>
+  <data name="CourseFeedbackDetail_CourseID.Text" xml:space="preserve">
+    <value>Mã môn học</value>
+  </data>
+  <data name="CourseFeedbackDetail_LecturerName.Text" xml:space="preserve">
+    <value>Tên giảng viên</value>
+  </data>
+  <data name="CourseFeedbackDetail_Instruction.Text" xml:space="preserve">
+    <value>Hướng dẫn đánh giá</value>
+  </data>
+  <data name="CourseFeedbackDetail_CourseInstruction.Text" xml:space="preserve">
+    <value>Anh/Chị hãy đánh giá mức độ hài lòng của mình đối với môn học và giảng viên này. Với thang điểm, 1 (không hài lòng), 2 (tạm hài lòng), 3 (hơi hài lòng), 4 (hài lòng), 5 (rất hài lòng) . Những đóng góp của anh/chị sẽ góp phần cải thiện môn học.</value>
+  </data>
+  <data name="CourseFeedbackDetail_CourseTitle.Text" xml:space="preserve">
+    <value>Đánh giá môn học</value>
+  </data>
+  <data name="CourseFeedbackDetail_TeacherTitle.Text" xml:space="preserve">
+    <value>Đánh giá giảng viên</value>
+  </data>
+  <data name="CourseFeedbackDetail_QuestionHeading.Text" xml:space="preserve">
+    <value>Câu hỏi</value>
+  </data>
+  <data name="CourseFeedbackDetail_CompleteButton.Content" xml:space="preserve">
+    <value>Hoàn thành đánh giá</value>
+  </data>
+  <data name="CourseFeedbackDetail_EmptyFieldError.Text" xml:space="preserve">
+    <value>Không được để trống</value>
+  </data>
+  <data name="CourseFeedbackDetail_CompleteMessage.Text" xml:space="preserve">
+    <value>Cảm ơn bạn đã đánh giá!</value>
+  </data>
+  <data name="TuitionFee_Overdue.Text" xml:space="preserve">
+    <value>Quá hạn thanh toán</value>
+  </data>
+  <data name="TuitionFeeDetail_PaymentDialog_SuccessTitle.Text" xml:space="preserve">
+    <value>Thanh toán thành công</value>
+  </data>
+  <data name="TuitionFeeDetail_PaymentDialog_SuccessContent.Text" xml:space="preserve">
+    <value>Giao dịch thanh toán học phí đã hoàn tất</value>
+  </data>
+  <data name="TuitionFeeDetail_PaymentDialog_FailedTitle.Text" xml:space="preserve">
+    <value>Thanh toán thất bại</value>
+  </data>
+  <data name="TuitionFeeDetail_PaymentDialog_FailedContent.Text" xml:space="preserve">
+    <value>Giao dịch thanh toán học phí đã thất bại, vui lòng thanh toán lại!</value>
+  </data>
+  <data name="TuitionFeeDetail_WindowPaymentTitle.Text" xml:space="preserve">
+    <value>Thanh toán học phí</value>
+  </data>
+  <data name="TuitionFeeDetail_ZaloPayDescription_01.Text" xml:space="preserve">
+    <value>Thanh toán học phí</value>
+  </data>
+  <data name="TuitionFeeDetail_ZaloPayDescription_02.Text" xml:space="preserve">
+    <value>Học phí học kì</value>
+  </data>
+  <data name="TuitionFeeDetail_ZaloPayDescription_03.Text" xml:space="preserve">
+    <value>học kì</value>
+  </data>
+  <data name="TuitionFeeDetail_ZaloPayDescription_04.Text" xml:space="preserve">
+    <value>năm học</value>
   <data name="SchedulePage_ScheduleLabel.Text" xml:space="preserve">
     <value>Thời khóa biểu</value>
   </data>

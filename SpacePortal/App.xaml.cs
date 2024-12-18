@@ -1,10 +1,18 @@
-﻿using DotNetEnv;
+﻿using System.Diagnostics;
+
+using DotNetEnv;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
-using Microsoft.Windows.AppNotifications.Builder;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Documents;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.Windows.ApplicationModel.Resources;
 using Microsoft.Windows.AppNotifications;
+using Microsoft.Windows.AppNotifications.Builder;
 using Microsoft.Windows.System;
 
 using SpacePortal.Activation;
@@ -19,12 +27,14 @@ using SpacePortal.Models;
 using SpacePortal.Services;
 using SpacePortal.ViewModels;
 using SpacePortal.Views;
+
 using Syncfusion.Licensing;
-using WinUIEx.Messaging;
+
+using Windows.UI;
 using Windows.UI.Popups;
-using Microsoft.UI.Xaml.Controls;
-using System.Diagnostics;
+
 using WinUIEx;
+using WinUIEx.Messaging;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.Windows.ApplicationModel.Resources;
 using Microsoft.UI.Xaml.Documents;
@@ -32,6 +42,7 @@ using Windows.UI;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Syncfusion.UI.Xaml.Scheduler;
+
 namespace SpacePortal;
 
 // To learn more about WinUI 3, see https://docs.microsoft.com/windows/apps/winui/winui3/.
@@ -82,6 +93,11 @@ public partial class App : Application
         // Get Imgur client ID
         var imgurClientId = Env.GetString("IMGUR_CLIENT_ID");
 
+        // Get Zalo Pay Service
+        var zaloPayAppId = Env.GetString("ZaloPay_AppID");
+        var zaloPayKey1 = Env.GetString("ZaloPay_Key1");
+        var zaloPayRedirectUrl = Env.GetString("ZaloPay_RedirectUrl");
+
         // Get Supabase information
         var supabaseUrl = Env.GetString("SUPABASE_URL");
         var supabaseKey = Env.GetString("SUPABASE_KEY");
@@ -106,6 +122,7 @@ public partial class App : Application
             services.AddTransient<INavigationViewService, NavigationViewService>();
             services.AddSingleton<ApiService>(provider => new ApiService(apiUrl));
             services.AddSingleton<ImgurService>(provider => new ImgurService(imgurClientId));
+            services.AddSingleton<ZaloPayService>(provider => new ZaloPayService(zaloPayAppId, zaloPayKey1, zaloPayRedirectUrl));
             services.AddSingleton<SupabaseFileService>(provider => new SupabaseFileService(supabaseUrl, supabaseKey, supabaseBucketName));
 
             services.AddSingleton<IActivationService, ActivationService>();
@@ -117,6 +134,12 @@ public partial class App : Application
             services.AddSingleton<IFileService, FileService>();
 
             // Views and ViewModels
+            services.AddTransient<CourseFeedbackDetailViewModel>();
+            services.AddTransient<CourseFeedbackDetailPage>();
+            services.AddTransient<CourseFeedbackViewModel>();
+            services.AddTransient<CourseFeedbackPage>();
+            services.AddTransient<TuitionFeeDetailViewModel>();
+            services.AddTransient<TuitionFeeDetailPage>();
             services.AddTransient<RequestDetailViewModel>();
             services.AddTransient<RequestDetailPage>();
             services.AddTransient<ChooseClassesViewModel>();
@@ -170,6 +193,9 @@ public partial class App : Application
             services.AddSingleton<IDao<CoursesRegistrationPeriodInformation>, CoursesRegistrationPeriodInformationDao>();
             services.AddSingleton<IDao<ChooseCoursesInformations>, ChooseCoursesInformationsDao>();
             services.AddSingleton<IDao<ChooseClassesInformations>, ChooseClassesInformationsDao>();
+            services.AddSingleton<IDao<TuitionFeeListInformations>, TuitionFeeListInformationsDao>();
+            services.AddSingleton<IDao<TuitionFeeDetailCourse>, TuitionFeeDetailCourseDao>();
+            services.AddSingleton<IDao<CourseFeedbackListInformations>, CourseFeedbackListInformationsDao>();
             services.AddSingleton<IDao<InformationsForSchedulePage_Class>, InformationsForSchedulePageDao>();
             services.AddSingleton<IDao<InformationsForScholarshipPage>, InformationsForScholarshipPageDao>();
             services.AddSingleton<IDao<PaymentHistoryInfomations>, PaymentHistoryInformationsDao>();

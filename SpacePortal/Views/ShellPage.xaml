@@ -166,7 +166,14 @@
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA58;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+                <NavigationViewItem x:Uid="Shell_CourseFeedback" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.CourseFeedbackViewModel">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8DF;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
+            
+            
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem x:Uid="Shell_AIChatbot" helpers:NavigationHelper.NavigateTo="SpacePortal.ViewModels.AIChatbotViewModel">
                     <NavigationViewItem.Icon>

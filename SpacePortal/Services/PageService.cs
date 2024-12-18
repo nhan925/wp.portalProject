@@ -30,6 +30,9 @@ public class PageService : IPageService
         Configure<RequestDetailViewModel, RequestDetailPage>();
         Configure<ChooseCoursesViewModel, ChooseCoursesPage>();
         Configure<ChooseClassesViewModel, ChooseClassesPage>();
+        Configure<TuitionFeeDetailViewModel, TuitionFeeDetailPage>();
+        Configure<CourseFeedbackViewModel, CourseFeedbackPage>();
+        Configure<CourseFeedbackDetailViewModel, CourseFeedbackDetailPage>();
     }
 
     public Type GetPageType(string key)
