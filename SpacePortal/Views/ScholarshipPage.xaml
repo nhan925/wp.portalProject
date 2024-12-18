@@ -4,9 +4,156 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:SpacePortal.Models"
+    xmlns:helpers="using:SpacePortal.Helpers"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Padding="36">
-        <TextBlock Text="Coming soon..."/>
+    <Page.Resources>
+        <helpers:DateTimeToStringConverter x:Key="DateTimeToStringConverter"/>
+        <helpers:CurrencyConverter x:Key="CurrencyConverter"/>
+    </Page.Resources>
+
+    <Grid x:Name="ContentArea" Padding="36" RowSpacing="16">
+        <Grid.Resources>
+            <Style x:Key="cardStyle" TargetType="Grid">
+                <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+            <DataTemplate x:Key="ScholarshipTemplate" x:DataType="models:InformationsForScholarshipPage">
+                <Grid RowSpacing="8" Padding="16" ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{ThemeResource BodyStrongTextBlockStyle}" 
+                               TextWrapping="WrapWholeWords"
+                               Text="{x:Bind Name, Mode=OneWay}"/>
+                    <TextBlock Grid.Column="0" Grid.Row="1" Style="{ThemeResource BodyTextStyle}" Opacity="0.8">
+                        <Run x:Uid="Scholarship_Sponsor"/>: <Run Text="{x:Bind Sponsor, Mode=OneWay}"/>
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Opacity="0.8" Text="{x:Bind StatusWithColor.Key, Mode=OneWay}" 
+                               Foreground="{x:Bind StatusWithColor.Value, Mode=OneWay}"/>
+                </Grid>
+
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" x:Uid="Scholarship_Title" Style="{ThemeResource SubtitleTextBlockStyle}"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <AutoSuggestBox x:Uid="Scholarship_SearchBox"
+                x:Name="SearchBox"
+                Grid.Column="0"
+                TextChanged="SearchBox_TextChanged"
+                Width="300"
+                QueryIcon="Find" />
+
+            <ComboBox 
+                Grid.Column="1"
+                SelectedIndex="0"
+                Width="100"
+                x:Name="YearComboBox"
+                SelectionChanged="YearComboBox_SelectionChanged"
+                HorizontalAlignment="Right"
+                ItemsSource="{x:Bind ViewModel.Years, Mode=OneTime}"
+                x:Uid="Scholarship_Year"/>
+        </Grid>
+
+        <Grid Style="{ThemeResource cardStyle}" Grid.Row="2">
+            <SplitView x:Name="splitView"
+                       Visibility="Collapsed"
+                       PaneBackground="{ThemeResource CardBackgroundFillColorDefaultBrush}"
+                       IsPaneOpen="True" OpenPaneLength="420" CompactPaneLength="48" DisplayMode="Inline"> 
+                <SplitView.Pane>
+                    <ListView ItemsSource="{x:Bind ViewModel.Informations, Mode=OneWay}"
+                              SelectionMode="Single"
+                              x:Name="ScholarshipListView"
+                              SelectionChanged="ListView_SelectionChanged"
+                              ItemTemplate="{StaticResource ScholarshipTemplate}" />
+                </SplitView.Pane>
+
+                <Grid Padding="8" Visibility="Collapsed" x:Name="DetailTextBox" RowSpacing="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <RichTextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="0">
+                        <Paragraph>
+                            <Run Text="{x:Bind ViewModel.SelectingItem.Description, Mode=OneWay}"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_Amount" FontWeight="Bold"/>: 
+                            <Run Text="{x:Bind ViewModel.SelectingItem.Amount, Mode=OneWay, Converter={StaticResource CurrencyConverter}}"/>
+                            <Run Text="{x:Bind ViewModel.SelectingItem.Currency, Mode=OneWay}"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_Slot" FontWeight="Bold"/>:
+                            <Run Text="{x:Bind ViewModel.SelectingItem.Slot, Mode=OneWay}"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_Criteria" FontWeight="Bold"/>:
+                            <Run Text="{x:Bind ViewModel.SelectingItem.Criteria, Mode=OneWay}"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_Deadline" FontWeight="Bold"/>:
+                            <Run Text="{x:Bind ViewModel.SelectingItem.Deadline, Mode=OneWay, Converter={StaticResource DateTimeToStringConverter}}"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_RequiredDocuments" FontWeight="Bold"/>:
+                        </Paragraph>
+                        <Paragraph Margin="12,0,0,0">
+                            <Run Text="{x:Bind ViewModel.SelectingItem.RequiredDocumentsString, Mode=OneWay}"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_DocumentInstruction" FontStyle="Italic" Foreground="Red"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Row="1" x:Name="RegisteredInfo">
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_Attachment" FontWeight="Bold"/>:
+                            <Hyperlink Click="Hyperlink_Click">
+                                <Run x:Uid="Scholarship_AttachmentHyperlink"/>
+                            </Hyperlink>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_SubmitDate" FontWeight="Bold"/>:
+                            <Run Text="{x:Bind ViewModel.SelectingItem.SubmittedDate, Mode=OneWay, Converter={StaticResource DateTimeToStringConverter}}"/>
+                        </Paragraph>
+                        <Paragraph>
+                            <Run x:Uid="Scholarship_ApplyStatus" FontWeight="Bold"/>:
+                            <Run Text="{x:Bind ViewModel.SelectingItem.ApplicationStatus, Mode=OneWay}"/>
+                        </Paragraph>
+                    </RichTextBlock>
+                </Grid>
+            </SplitView>
+        </Grid>
+
+        <Grid x:Name="LoadingOverlay" Visibility="Visible" Grid.Row="2">
+            <ProgressRing IsActive="True" Width="64" Height="64"/>
+        </Grid>
+
+        <Button Grid.Row="3" HorizontalAlignment="Right" 
+                x:Name="RegisterButton"
+                IsEnabled="False"
+                Click="RegisterButton_Click"
+                x:Uid="Scholarship_RegisterButton" Style="{ThemeResource AccentButtonStyle}"/>
     </Grid>
 </Page>
