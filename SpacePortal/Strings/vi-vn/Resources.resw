@@ -933,4 +933,40 @@
   <data name="ChangePasswordDialog_Success" xml:space="preserve">
     <value>Đổi mật khẩu thành công !</value>
   </data>
+  <data name="SchedulePage_ScheduleLabel.Text" xml:space="preserve">
+    <value>Thời khóa biểu</value>
+  </data>
+  <data name="SchedulePage_FullNameLecturer.Text" xml:space="preserve">
+    <value>Họ và tên</value>
+  </data>
+  <data name="SchedulePage_GenderLecturer.Text" xml:space="preserve">
+    <value>Giới tính</value>
+  </data>
+  <data name="SchedulePage_PhoneNumberLecturer.Text" xml:space="preserve">
+    <value>SĐT</value>
+  </data>
+  <data name="SchedulePage_EmailLecturer.Text" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="SchedulePage_AcademicRankLecturer.Text" xml:space="preserve">
+    <value>Học hàm</value>
+  </data>
+  <data name="SchedulePage_AcademicDegreeLecturer.Text" xml:space="preserve">
+    <value>Học vị</value>
+  </data>
+  <data name="SchedulePage_FacultyLecturer.Text" xml:space="preserve">
+    <value>Khoa</value>
+  </data>
+  <data name="SchedulePage_InformationOfLecturer.Text" xml:space="preserve">
+    <value>Thông tin giảng viên</value>
+  </data>
+  <data name="SchedulePage_CourseOutlineLink.Text" xml:space="preserve">
+    <value>Xem tại đây</value>
+  </data>
+  <data name="SchedulePage_CourseOutline.Text" xml:space="preserve">
+    <value>Đề cương môn học</value>
+  </data>
+  <data name="SchedulePage_Semester.Text" xml:space="preserve">
+    <value>Học kỳ</value>
+  </data>
 </root>

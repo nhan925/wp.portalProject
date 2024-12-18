@@ -31,6 +31,7 @@ using Microsoft.UI.Xaml.Documents;
 using Windows.UI;
 using Microsoft.UI;
 using Microsoft.UI.Xaml.Media.Imaging;
+using Syncfusion.UI.Xaml.Scheduler;
 namespace SpacePortal;
 
 // To learn more about WinUI 3, see https://docs.microsoft.com/windows/apps/winui/winui3/.
@@ -163,6 +164,7 @@ public partial class App : Application
             services.AddSingleton<IDao<CoursesRegistrationPeriodInformation>, CoursesRegistrationPeriodInformationDao>();
             services.AddSingleton<IDao<ChooseCoursesInformations>, ChooseCoursesInformationsDao>();
             services.AddSingleton<IDao<ChooseClassesInformations>, ChooseClassesInformationsDao>();
+            services.AddSingleton<IDao<InformationsForSchedulePage_Class>, InformationsForSchedulePageDao>();
         }).
         Build();
          
