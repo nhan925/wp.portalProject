@@ -968,5 +968,109 @@
   </data>
   <data name="SchedulePage_Semester.Text" xml:space="preserve">
     <value>Học kỳ</value>
+  <data name="Scholarship_Title.Text" xml:space="preserve">
+    <value>Học bổng</value>
+  </data>
+  <data name="Scholarship_RegisterButton.Content" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="Scholarship_SearchBox.PlaceholderText" xml:space="preserve">
+    <value>Tìm kiếm học bổng</value>
+  </data>
+  <data name="Scholarship_Year.PlaceholderText" xml:space="preserve">
+    <value>Năm</value>
+  </data>
+  <data name="Scholarship_AllYear" xml:space="preserve">
+    <value>Tất cả</value>
+  </data>
+  <data name="Scholarship_Applied" xml:space="preserve">
+    <value>Đã đăng ký</value>
+  </data>
+  <data name="Scholarship_NotApplied" xml:space="preserve">
+    <value>Chưa đăng ký</value>
+  </data>
+  <data name="Scholarship_Sponsor.Text" xml:space="preserve">
+    <value>Nhà tài trợ</value>
+  </data>
+  <data name="Scholarship_Amount.Text" xml:space="preserve">
+    <value>Giá trị học bổng</value>
+  </data>
+  <data name="Scholarship_Slot.Text" xml:space="preserve">
+    <value>Số suất</value>
+  </data>
+  <data name="Scholarship_Criteria.Text" xml:space="preserve">
+    <value>Điều kiện để được xét duyệt</value>
+  </data>
+  <data name="Scholarship_Deadline.Text" xml:space="preserve">
+    <value>Hạn chót nhận hồ sơ</value>
+  </data>
+  <data name="Scholarship_Attachment.Text" xml:space="preserve">
+    <value>File hồ sơ</value>
+  </data>
+  <data name="Scholarship_RequiredDocuments.Text" xml:space="preserve">
+    <value>Hồ sơ yêu cầu</value>
+  </data>
+  <data name="Scholarship_DocumentInstruction.Text" xml:space="preserve">
+    <value>Tất cả các hồ sơ yêu cầu phải được gộp thành 1 file PDF duy nhất</value>
+  </data>
+  <data name="Scholarship_DialogTitle" xml:space="preserve">
+    <value>Đăng ký</value>
+  </data>
+  <data name="Scholarship_DialogNoFile" xml:space="preserve">
+    <value>Chưa chọn file</value>
+  </data>
+  <data name="Scholarship_DialogContent" xml:space="preserve">
+    <value>Vui lòng chọn file hồ sơ (PDF)</value>
+  </data>
+  <data name="Scholarship_DialogApplyFailed" xml:space="preserve">
+    <value>Đã có lỗi xảy ra trong quá trình đăng ký !</value>
+  </data>
+  <data name="Scholarship_DialogApplySuccess" xml:space="preserve">
+    <value>Đăng ký thành công !</value>
+  </data>
+  <data name="Scholarship_ApplyStatus.Text" xml:space="preserve">
+    <value>Trạng thái</value>
+  </data>
+  <data name="Scholarship_SubmitDate.Text" xml:space="preserve">
+    <value>Ngày đăng ký</value>
+  </data>
+  <data name="Scholarship_Expired" xml:space="preserve">
+    <value>Đã hết hạn</value>
+  </data>
+  <data name="PaymentHistory_Title.Text" xml:space="preserve">
+    <value>Lịch sử thanh toán</value>
+  </data>
+  <data name="PaymentHistory_Id.HeaderText" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="PaymentHistory_Amount.HeaderText" xml:space="preserve">
+    <value>Số tiền</value>
+  </data>
+  <data name="PaymentHistory_Date.HeaderText" xml:space="preserve">
+    <value>Ngày thực hiện</value>
+  </data>
+  <data name="PaymentHistory_Type.HeaderText" xml:space="preserve">
+    <value>Loại thanh toán</value>
+  </data>
+  <data name="PaymentHistory_Status.HeaderText" xml:space="preserve">
+    <value>Tình trạng</value>
+  </data>
+  <data name="PaymentHistory_StatusSucess" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="PaymentHistory_StatusCancelled" xml:space="preserve">
+    <value>Đã hủy</value>
+  </data>
+  <data name="PaymentHistory_TypeTuitionFee" xml:space="preserve">
+    <value>Học phí</value>
+  </data>
+  <data name="PaymentHistory_TypeGradeReview" xml:space="preserve">
+    <value>Phí phúc khảo</value>
+  </data>
+  <data name="Scholarship_DocumentWindowsTitle" xml:space="preserve">
+    <value>Tài liệu</value>
+  </data>
+  <data name="Scholarship_AttachmentHyperlink.Text" xml:space="preserve">
+    <value>xem file</value>
   </data>
 </root>

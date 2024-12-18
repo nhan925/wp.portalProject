@@ -82,6 +82,11 @@ public partial class App : Application
         // Get Imgur client ID
         var imgurClientId = Env.GetString("IMGUR_CLIENT_ID");
 
+        // Get Supabase information
+        var supabaseUrl = Env.GetString("SUPABASE_URL");
+        var supabaseKey = Env.GetString("SUPABASE_KEY");
+        var supabaseBucketName = Env.GetString("SUPABASE_BUCKET_NAME");
+
         // TODO: Set the default language here
         Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "vi-VN";
 
@@ -101,6 +106,7 @@ public partial class App : Application
             services.AddTransient<INavigationViewService, NavigationViewService>();
             services.AddSingleton<ApiService>(provider => new ApiService(apiUrl));
             services.AddSingleton<ImgurService>(provider => new ImgurService(imgurClientId));
+            services.AddSingleton<SupabaseFileService>(provider => new SupabaseFileService(supabaseUrl, supabaseKey, supabaseBucketName));
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
@@ -165,6 +171,8 @@ public partial class App : Application
             services.AddSingleton<IDao<ChooseCoursesInformations>, ChooseCoursesInformationsDao>();
             services.AddSingleton<IDao<ChooseClassesInformations>, ChooseClassesInformationsDao>();
             services.AddSingleton<IDao<InformationsForSchedulePage_Class>, InformationsForSchedulePageDao>();
+            services.AddSingleton<IDao<InformationsForScholarshipPage>, InformationsForScholarshipPageDao>();
+            services.AddSingleton<IDao<PaymentHistoryInfomations>, PaymentHistoryInformationsDao>();
         }).
         Build();
          

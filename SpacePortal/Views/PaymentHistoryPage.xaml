@@ -4,9 +4,87 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.DataGrid" 
+    xmlns:helpers="using:SpacePortal.Helpers"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Padding="36">
-        <TextBlock Text="Coming soon..."/>
+    <Page.Resources>
+        <helpers:CurrencyConverter x:Key="CurrencyConverter"/>
+    </Page.Resources>
+
+    <Grid x:Name="ContentArea" Padding="36" RowSpacing="16">
+        <Grid.Resources>
+            <Style x:Key="cardStyle" TargetType="Grid">
+                <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+            <Style x:Key="filterControlCheckboxStyle" TargetType="syncfusion:GridFilterControl">
+                <Setter Property="AllowBlankFilters" Value="False"/>
+                <Setter Property="FilterMode" Value="CheckboxFilter"/>
+            </Style>
+            <Style x:Key="filterControlAdvancedStyle" TargetType="syncfusion:GridFilterControl">
+                <Setter Property="AllowBlankFilters" Value="False"/>
+                <Setter Property="FilterMode" Value="AdvancedFilter"/>
+            </Style>
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Uid="PaymentHistory_Title" Style="{ThemeResource SubtitleTextBlockStyle}" />
+        <Grid Grid.Row="1" Style="{ThemeResource cardStyle}">
+            <syncfusion:SfDataGrid x:Name="sfDataGrid"
+               AutoGenerateColumns="False"
+               AllowSorting="True"
+               AllowFiltering="True"
+               ItemsSource="{x:Bind ViewModel.Informations}"
+               ScrollViewer.VerticalScrollBarVisibility="Auto"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"
+               GridLinesVisibility="Horizontal"
+               CornerRadius="10"
+               NavigationMode="Row"
+               Visibility="Collapsed"
+               BorderBrush="Transparent"
+               QueryRowHeight="sfDataGrid_QueryRowHeight"
+               ColumnWidthMode="AutoWithLastColumnFill">
+
+                <syncfusion:SfDataGrid.Resources>
+                    <Style TargetType="syncfusion:GridHeaderCellControl">
+                        <Setter Property="Background" Value="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}"/>
+                        <Setter Property="Foreground" Value="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                        <Setter Property="FontSize" Value="{ThemeResource BodyStrongTextBlockFontSize}"/>
+                    </Style>
+                    <Style TargetType="syncfusion:DataGridRowControl">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="{ThemeResource CaptionTextBlockFontSize}"/>
+                    </Style>
+                </syncfusion:SfDataGrid.Resources>
+
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn x:Uid="PaymentHistory_Id" MappingName="Id" TextAlignment="Center" AllowFiltering="False"/>
+                    <syncfusion:GridTemplateColumn x:Uid="PaymentHistory_Amount" MappingName="Amount" Width="400" FilterBehavior="StronglyTyped" FilterPopupStyle="{StaticResource filterControlAdvancedStyle}">
+                        <syncfusion:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextAlignment="Center" VerticalAlignment="Center">
+                                    <Run Text="{Binding Amount, Converter={ThemeResource CurrencyConverter}}"/> VND
+                                </TextBlock>
+                            </DataTemplate>
+                        </syncfusion:GridTemplateColumn.CellTemplate>
+                    </syncfusion:GridTemplateColumn>
+                    <syncfusion:GridTextColumn x:Uid="PaymentHistory_Date" MappingName="Date" TextAlignment="Center" FilterBehavior="StronglyTyped" FilterPopupStyle="{StaticResource filterControlAdvancedStyle}"/>
+                    <syncfusion:GridTextColumn x:Uid="PaymentHistory_Type" MappingName="TypeString" TextAlignment="Center" FilterPopupStyle="{ThemeResource filterControlCheckboxStyle}"/>
+                    <syncfusion:GridTextColumn x:Uid="PaymentHistory_Status" MappingName="Status" TextAlignment="Center" FilterPopupStyle="{ThemeResource filterControlCheckboxStyle}"/>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+
+            <labs:Shimmer Visibility="Visible" CornerRadius="10" x:Name="DataGridLoadingShimmer"/>
+        </Grid>
+        
     </Grid>
 </Page>
