@@ -36,7 +36,7 @@
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
-			<Grid Grid.Row="0">
+			<Grid Grid.Row="0" ColumnSpacing="8">
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="*" />

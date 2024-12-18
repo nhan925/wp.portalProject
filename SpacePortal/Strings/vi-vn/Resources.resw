@@ -1091,6 +1091,7 @@
   </data>
   <data name="TuitionFeeDetail_ZaloPayDescription_04.Text" xml:space="preserve">
     <value>năm học</value>
+  </data>
   <data name="SchedulePage_ScheduleLabel.Text" xml:space="preserve">
     <value>Thời khóa biểu</value>
   </data>
@@ -1126,6 +1127,7 @@
   </data>
   <data name="SchedulePage_Semester.Text" xml:space="preserve">
     <value>Học kỳ</value>
+  </data>
   <data name="Scholarship_Title.Text" xml:space="preserve">
     <value>Học bổng</value>
   </data>

@@ -19,7 +19,8 @@
               SelectionChanged="ComboBoxSemester_SelectionChanged"/>
         </StackPanel>
         
-        <Grid Grid.Row="1">
+        <ScrollViewer Grid.Row="1" VerticalAlignment="Stretch">
+            <Grid VerticalAlignment="Stretch">
             <Grid.Resources>
                 <DataTemplate x:Key="viewHeaderTemplate">
                     <StackPanel Background="Transparent"  
@@ -39,6 +40,7 @@
             </Grid.Resources>
             <scheduler:SfScheduler x:Name="Schedule" 
                                ViewType="Week"
+                               MinHeight="550"
                                MinimumDate="{x:Bind ViewModel.MinimumDate, Mode=OneWay}"
                                MaximumDate="{x:Bind ViewModel.MaximumDate, Mode=OneWay}"
                                ItemsSource="{x:Bind ViewModel.Schedule, Mode=OneWay}"
@@ -107,6 +109,7 @@
             </scheduler:SfScheduler.AppointmentMapping>
             
             </scheduler:SfScheduler>
-        </Grid>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
