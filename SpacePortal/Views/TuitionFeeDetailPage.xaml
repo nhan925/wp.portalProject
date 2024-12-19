@@ -87,12 +87,13 @@
 
 
 			<labs:Shimmer Visibility="Visible" Grid.Row="3" Grid.Column="0" CornerRadius="10" x:Name="CourseFeeListLoading"/>
-			<Grid Grid.Row="3" Style="{ThemeResource cardStyle}" Visibility="Collapsed" x:Name="CourseFeeListGrid">
+			<Grid Grid.Row="3" Style="{ThemeResource cardStyle}" x:Name="CourseFeeListGrid">
 				<syncfusion:SfDataGrid x:Name="CourseFeeDataGrid"
 						SelectionUnit="Row"
 						NavigationMode="Row"
 						AutoGenerateColumns="False"
 						AllowSorting="True"
+                        Visibility="Collapsed"
 						ScrollViewer.VerticalScrollBarVisibility="Auto"
 						ItemsSource="{x:Bind ViewModel.courseDetail, Mode=OneWay}"
 						HorizontalAlignment="Stretch"

@@ -31,13 +31,13 @@ public sealed partial class TuitionFeeDetailPage : Page
     protected async override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
+        await Task.Delay(10);
         if (e.Parameter is Tuple<int, string, int, int, int> info)
         {
-            await Task.Delay(10);
             ViewModel.LoadInformations(info.Item1, info.Item2, info.Item3, info.Item4, info.Item5);
         }
 
-        CourseFeeListGrid.Visibility = Visibility.Visible;
+        CourseFeeDataGrid.Visibility = Visibility.Visible;
         CourseFeeListLoading.Visibility = Visibility.Collapsed;
     }
 

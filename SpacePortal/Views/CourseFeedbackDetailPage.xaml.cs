@@ -20,16 +20,14 @@ public sealed partial class CourseFeedbackDetailPage : Page
     protected async override void OnNavigatedTo(NavigationEventArgs e)
     {
         base.OnNavigatedTo(e);
+        await Task.Delay(10);
         if (e.Parameter is Tuple<string, string, string, string> info)
         {
-            await Task.Delay(10);
             ViewModel.LoadInformations(info.Item1, info.Item2, info.Item3, info.Item4);
         }
 
         ViewModel.LoadCourseQuestion();
         ViewModel.LoadTeacherQuestion();
-        //CourseFeeListGrid.Visibility = Visibility.Visible;
-        //CourseFeeListLoading.Visibility = Visibility.Collapsed;
     }
 
     private void GoBackButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

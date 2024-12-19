@@ -4,10 +4,12 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using Microsoft.Windows.ApplicationModel.Resources;
 using SpacePortal.Contracts.Services;
 using SpacePortal.Models;
 using SpacePortal.ViewModels;
+using Syncfusion.UI.Xaml.DataGrid;
 
 namespace SpacePortal.Views;
 
@@ -34,10 +36,17 @@ public sealed partial class SchedulePage : Page
         }
     }
 
-    private void ComboBoxSemester_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private async void ComboBoxSemester_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+        LoadingOverlay.Visibility = Visibility.Visible;
+        Schedule.Opacity = 0.5;
+        await Task.Delay(10);
+
         var cbSemester = ComboBoxSemester.SelectedItem?.ToString();
         ViewModel.ShowScheduleBySemester(cbSemester);
+
+        LoadingOverlay.Visibility = Visibility.Collapsed;
+        Schedule.Opacity = 1;
     }
 
     private async void Schedule_AppointmentTapped(object sender, Syncfusion.UI.Xaml.Scheduler.AppointmentTappedArgs e)
@@ -118,5 +127,14 @@ public sealed partial class SchedulePage : Page
         newWindow.CenterOnScreen();
 
         newWindow.Activate();
+    }
+
+    protected async override void OnNavigatedTo(NavigationEventArgs e)
+    {
+        base.OnNavigatedTo(e);
+        await Task.Delay(10);
+
+        LoadingOverlay.Visibility = Visibility.Collapsed;
+        Schedule.Visibility = Visibility.Visible;
     }
 }

@@ -93,7 +93,7 @@
 				<TransitionCollection />
 			</ListView.ItemContainerTransitions>
 		</ListView>
-		<Grid x:Name="ListViewLoadingOverlay" Grid.Row="1">
+		<Grid x:Name="ListViewLoadingOverlay" Grid.Row="1" Visibility="Visible">
 			<ProgressRing IsActive="True" Width="64" Height="64"/>
 		</Grid>
 	</Grid>

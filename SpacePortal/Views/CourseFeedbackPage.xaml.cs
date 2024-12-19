@@ -1,5 +1,5 @@
-﻿
-namespace SpacePortal.Views;
+﻿namespace SpacePortal.Views;
+
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;

@@ -44,6 +44,7 @@
                                ItemsSource="{x:Bind ViewModel.Schedule, Mode=OneWay}"
                                AppointmentEditFlag="None"
                                FirstDayOfWeek="Monday"
+                               Visibility="Collapsed"
                                AppointmentTapped="Schedule_AppointmentTapped">
                 <scheduler:SfScheduler.HeaderTemplate>
                     <DataTemplate>
@@ -107,6 +108,10 @@
                 </scheduler:SfScheduler.AppointmentMapping>
 
             </scheduler:SfScheduler>
+        </Grid>
+
+        <Grid x:Name="LoadingOverlay" Visibility="Visible" Grid.Row="1">
+            <ProgressRing IsActive="True" Width="64" Height="64"/>
         </Grid>
     </Grid>
 </Page>
