@@ -28,7 +28,7 @@ namespace SpacePortal.Models
             get; set;
         }
 
-        public bool status
+        public string status
         {
             get; set;
         }
@@ -37,7 +37,14 @@ namespace SpacePortal.Models
         {
             get
             {
-                return !status;
+                if (status == "NOT_FEEDBACK")
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -47,9 +54,13 @@ namespace SpacePortal.Models
             {
                 ResourceLoader resourceLoader = new();
 
-                if (status)
+                if (status == "DONE")
                 {
                     return new(resourceLoader.GetString("CourseFeedback_Rated/Text"), "LimeGreen");
+                }
+                else if (status == "NOT_YET")
+                {
+                    return new(resourceLoader.GetString("CourseFeedback_NotYet/Text"), "Gray");
                 }
                 else
                 {

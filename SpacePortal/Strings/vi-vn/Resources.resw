@@ -1242,4 +1242,7 @@
   <data name="TuitionFee_NotYet.Text" xml:space="preserve">
     <value>Chưa mở</value>
   </data>
+  <data name="CourseFeedback_NotYet.Text" xml:space="preserve">
+    <value>Chưa mở</value>
+  </data>
 </root>
