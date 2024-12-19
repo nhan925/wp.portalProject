@@ -1239,4 +1239,7 @@
   <data name="CourseFeedbackDetail_NumberOfRow.Text" xml:space="preserve">
     <value>STT</value>
   </data>
+  <data name="TuitionFee_NotYet.Text" xml:space="preserve">
+    <value>Chưa mở</value>
+  </data>
 </root>

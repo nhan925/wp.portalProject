@@ -79,6 +79,10 @@ public class TuitionFeeListInformations
             {
                 return new(resourceLoader.GetString("TuitionFee_NotPaid/Text"), "Red");
             }
+            else if (status == "NOT_YET")
+            {
+                return new(resourceLoader.GetString("TuitionFee_NotYet/Text"), "Gray");
+            }
             else
             {
                 return new(resourceLoader.GetString("TuitionFee_Overdue/Text"), "Orange");
