@@ -1201,7 +1201,7 @@
     <value>Lịch sử thanh toán</value>
   </data>
   <data name="PaymentHistory_Id.HeaderText" xml:space="preserve">
-    <value>ID</value>
+    <value>STT</value>
   </data>
   <data name="PaymentHistory_Amount.HeaderText" xml:space="preserve">
     <value>Số tiền</value>
@@ -1232,5 +1232,11 @@
   </data>
   <data name="Scholarship_AttachmentHyperlink.Text" xml:space="preserve">
     <value>xem file</value>
+  </data>
+  <data name="Schedule_AcademicRankAndDegreeNone" xml:space="preserve">
+    <value>Không</value>
+  </data>
+  <data name="CourseFeedbackDetail_NumberOfRow.Text" xml:space="preserve">
+    <value>STT</value>
   </data>
 </root>
