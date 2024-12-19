@@ -103,6 +103,10 @@ public partial class App : Application
         var supabaseKey = Env.GetString("SUPABASE_KEY");
         var supabaseBucketName = Env.GetString("SUPABASE_BUCKET_NAME");
 
+        // Get Gemini API
+        var geminiModelId = Env.GetString("GEMINI_MODEL_ID");
+        var geminiApiKey = Env.GetString("GEMINI_API_KEY");
+
         // TODO: Set the default language here
         Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = "vi-VN";
 
@@ -124,6 +128,7 @@ public partial class App : Application
             services.AddSingleton<ImgurService>(provider => new ImgurService(imgurClientId));
             services.AddSingleton<ZaloPayService>(provider => new ZaloPayService(zaloPayAppId, zaloPayKey1, zaloPayRedirectUrl));
             services.AddSingleton<SupabaseFileService>(provider => new SupabaseFileService(supabaseUrl, supabaseKey, supabaseBucketName));
+            services.AddSingleton<GeminiService>(provider => new GeminiService(geminiModelId, geminiApiKey));
 
             services.AddSingleton<IActivationService, ActivationService>();
             services.AddSingleton<IPageService, PageService>();
