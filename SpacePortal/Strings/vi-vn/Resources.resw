@@ -1239,4 +1239,16 @@
   <data name="CourseFeedbackDetail_NumberOfRow.Text" xml:space="preserve">
     <value>STT</value>
   </data>
+  <data name="AIChatbotPage_HelperText.Text" xml:space="preserve">
+    <value>Tôi có thể giúp gì cho bạn?</value>
+  </data>
+  <data name="AIChatbotPage_ErrorMessage.Text" xml:space="preserve">
+    <value>Chat history đã vượt quá giới hạn. Vui lòng restart để xóa lịch sử chat.</value>
+  </data>
+  <data name="AIChatbotPage_HelloText.Text" xml:space="preserve">
+    <value>Chào bạn !!!</value>
+  </data>
+  <data name="AIChatbotPage_RestartButton.Text" xml:space="preserve">
+    <value>Tạo mới trò chuyện</value>
+  </data>
 </root>

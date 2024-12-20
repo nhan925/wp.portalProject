@@ -26,13 +26,13 @@
         </Grid.RowDefinitions>
         <Grid.Resources>
             <DataTemplate x:Key="UserMessageTemplate">
-                <Grid HorizontalAlignment="Right" Style="{StaticResource Card}" Margin="0,20,0,20">
-                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" HorizontalAlignment="Right" LineHeight="28" FontSize="15"/>
+                <Grid HorizontalAlignment="Right" Style="{ThemeResource Card}" Margin="0,20,0,20">
+                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" HorizontalAlignment="Right" LineHeight="24" FontSize="15"/>
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="BotMessageTemplate">
                 <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" HorizontalAlignment="Left" LineHeight="28" FontSize="15"/>
+                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" HorizontalAlignment="Left" LineHeight="24" FontSize="15"/>
                 </StackPanel>
             </DataTemplate>
             <local1:ChatMessageTemplateSelector x:Key="ChatMessageTemplateSelector"
@@ -40,22 +40,40 @@
                                    BotMessageTemplate="{StaticResource BotMessageTemplate}"/>
         </Grid.Resources>
 
+        <TextBlock x:Name="HelperText" 
+                   Grid.Row="0" 
+                   x:Uid="AIChatbotPage_HelperText"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" 
+                   FontSize="20"
+                   Visibility="Visible"/>
+
         <ListView Name="ChatMessagesListView" 
               Grid.Row="0" 
-              Width="630"
+              Width="650"
               HorizontalAlignment="Center"
               VerticalAlignment="Stretch"
               ItemsSource="{x:Bind ViewModel.ChatMessages}"
-              ItemTemplateSelector="{StaticResource ChatMessageTemplateSelector}">
+              ItemTemplateSelector="{StaticResource ChatMessageTemplateSelector}"
+              Visibility="Collapsed">
         </ListView>
 
-        <Grid Grid.Row="1" HorizontalAlignment="Center" MaxHeight="200">
+        <Grid Grid.Row="1" Style="{ThemeResource Card}" HorizontalAlignment="Center" MaxHeight="200">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Name="InputPrompt" PlaceholderText="" Width="600" TextWrapping="Wrap"/>
-            <Button Grid.Column="1" Name="SendButton" Click="SendButton_Click" CornerRadius="15" Margin="8,0,0,0">
+            <TextBox Grid.Column="0" Name="InputPrompt" 
+                     PlaceholderText="" Width="600" 
+                     TextWrapping="Wrap"
+                     CornerRadius="20"
+                     Padding="14"
+                     FontSize="16"
+                     KeyDown="InputPrompt_KeyDown"/>
+            <Button Grid.Column="1" Name="SendButton" Click="SendButton_Click" 
+                    CornerRadius="50" 
+                    Margin="8,0,0,0"
+                    Background="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}">
                 <FontIcon Glyph="&#xE74A;" />
             </Button>
         </Grid>

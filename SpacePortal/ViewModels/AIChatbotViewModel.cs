@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.SemanticKernel.ChatCompletion;
+using Microsoft.Windows.ApplicationModel.Resources;
 using SpacePortal.Core.Services;
 using SpacePortal.Models;
 
@@ -16,27 +18,47 @@ public partial class AIChatbotViewModel : ObservableRecipient
         get; set;
     }
 
+    [ObservableProperty]
+    private string _errorMessage;
+
     public AIChatbotViewModel()
     {
         ChatMessages = new ObservableCollection<InformationsForAIChatbot>();
+        ErrorMessage = string.Empty;
     }
 
     public async Task GetResponse(string userInput)
     {
-        ChatMessages.Add(new InformationsForAIChatbot { Message = userInput, IsUser = true });
 
-        StringBuilder chatbotResponse = new StringBuilder();
-        var chatbotMessage = new InformationsForAIChatbot { Message = string.Empty, IsUser = false };
-        ChatMessages.Add(chatbotMessage);
-
-        var response = geminiService.CallApiToChat(userInput);
-        await foreach (var chunk in response)
+        try
         {
-            if (chunk.Content != null)
+            ChatMessages.Add(new InformationsForAIChatbot { Message = userInput, IsUser = true });
+
+            StringBuilder chatbotResponse = new StringBuilder();
+            var chatbotMessage = new InformationsForAIChatbot { Message = string.Empty, IsUser = false };
+            ChatMessages.Add(chatbotMessage);
+
+            var response = geminiService.CallApiToChat(userInput);
+            await foreach (var chunk in response)
             {
-                chatbotResponse.Append(chunk.Content);
-                chatbotMessage.Message = chatbotResponse.ToString();
+                if (chunk.Content != null)
+                {
+                    chatbotResponse.Append(chunk.Content);
+                    chatbotMessage.Message = chatbotResponse.ToString();
+                }
             }
         }
+        catch (InvalidOperationException ex)
+        {
+            ErrorMessage = ex.Message;
+        }
     }
+
+    public void ClearChatHistory()
+    {
+        ChatMessages.Clear();
+        ErrorMessage = string.Empty;
+        geminiService.ClearChatHistory();
+    }
+
 }
