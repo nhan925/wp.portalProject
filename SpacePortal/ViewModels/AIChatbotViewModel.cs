@@ -38,6 +38,5 @@ public partial class AIChatbotViewModel : ObservableRecipient
                 chatbotMessage.Message = chatbotResponse.ToString();
             }
         }
-        Debug.WriteLine(ChatMessages.Count);
     }
 }
