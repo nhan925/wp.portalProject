@@ -94,9 +94,9 @@ public partial class App : Application
         var imgurClientId = Env.GetString("IMGUR_CLIENT_ID");
 
         // Get Zalo Pay Service
-        var zaloPayAppId = Env.GetString("ZaloPay_AppID");
-        var zaloPayKey1 = Env.GetString("ZaloPay_Key1");
-        var zaloPayRedirectUrl = Env.GetString("ZaloPay_RedirectUrl");
+        var zaloPayAppId = Env.GetString("ZALOPAY_APP_ID");
+        var zaloPayKey1 = Env.GetString("ZALOPAY_KEY1");
+        var zaloPayRedirectUrl = Env.GetString("ZALOPAY_REDIRECT_URL");
 
         // Get Supabase information
         var supabaseUrl = Env.GetString("SUPABASE_URL");
