@@ -13,6 +13,8 @@ using Windows.Storage;
 using Windows.Storage.Pickers;
 using static System.Net.Mime.MediaTypeNames;
 using SpacePortal.Contracts.Services;
+using Microsoft.Windows.AppNotifications.Builder;
+using Microsoft.Windows.AppNotifications;
 
 
 namespace SpacePortal.Views;
@@ -50,7 +52,7 @@ public sealed partial class AIChatbotPage : Page
             InputPrompt.Text = string.Empty;
             if (!string.IsNullOrEmpty(_imageFilePath))
             {
-                DroppedImage.Visibility = Visibility.Collapsed;
+                ImageArea.Visibility = Visibility.Collapsed;
                 userInput += $"\n[{resourceLoader.GetString("AIChatbotPage_Image/Text")}]";
                 await ViewModel.GetResponse(userInput, _imageFilePath);
                 _imageFilePath = null;
@@ -65,7 +67,7 @@ public sealed partial class AIChatbotPage : Page
         {
             InputPrompt.Text = string.Empty;
             var errorMessage = resourceLoader.GetString("AIChatbotPage_ErrorMessage/Text");
-            ShowErrorDialog(errorMessage);
+            await ShowErrorDialog(errorMessage);
         }
     }
 
@@ -104,18 +106,18 @@ public sealed partial class AIChatbotPage : Page
 
     private void InputPrompt_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
     {
-            if (!string.IsNullOrWhiteSpace(InputPrompt.Text) && e.Key == Windows.System.VirtualKey.Enter)
-            {
-                SendButton_Click(sender, null);
-            }
+        if (!string.IsNullOrWhiteSpace(InputPrompt.Text) && e.Key == Windows.System.VirtualKey.Enter)
+        {
+            SendButton_Click(sender, null);
+        }
     }
 
-    private void ViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    private async void ViewModel_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(ViewModel.ErrorMessage) && !string.IsNullOrEmpty(ViewModel.ErrorMessage))
         {
             var errorMessage = resourceLoader.GetString("AIChatbotPage_ErrorMessage/Text");
-            ShowErrorDialog(errorMessage);
+            await ShowErrorDialog(errorMessage);
         }
     }
 
@@ -123,7 +125,7 @@ public sealed partial class AIChatbotPage : Page
     {
         var dialog = new ContentDialog();
         dialog.XamlRoot = this.XamlRoot;
-        dialog.Title = resourceLoader.GetString("AIChatbotPage_HelloText/Text");
+        dialog.Title = resourceLoader.GetString("AIChatbotPage_DialogTitle");
         dialog.Content = errorMessage;
         dialog.CloseButtonText = resourceLoader.GetString("App_Close/Text");
         if (hasPrimaryButton)
@@ -141,7 +143,14 @@ public sealed partial class AIChatbotPage : Page
 
     private void RestartButton_Click(object sender, RoutedEventArgs e)
     {
-        ViewModel.ClearChatHistory();
+        if (ViewModel.ChatMessages.Count > 0)
+        {
+            ViewModel.ClearChatHistory();
+            InputPrompt.Text = string.Empty;
+
+            showNotifications(resourceLoader.GetString("AIChatbotPage_DialogTitle"),
+                resourceLoader.GetString("AIChatbotPage_ResetSuccessfull"));
+        }
     }
 
     private void Grid_DragOver(object sender, DragEventArgs e)
@@ -161,15 +170,22 @@ public sealed partial class AIChatbotPage : Page
 
             if (storageFile != null && storageFile.ContentType.StartsWith("image/"))
             {
-                _imageFilePath = storageFile.Path;
-                var bitmap = new BitmapImage();
-                using (var stream = await storageFile.OpenAsync(FileAccessMode.Read))
+                if (await ViewModel.IsValidFileAsync(storageFile))
                 {
-                    bitmap.SetSource(stream);
-                }
+                    _imageFilePath = storageFile.Path;
+                    var bitmap = new BitmapImage();
+                    using (var stream = await storageFile.OpenAsync(FileAccessMode.Read))
+                    {
+                        bitmap.SetSource(stream);
+                    }
 
-                DroppedImage.Source = bitmap;
-                DroppedImage.Visibility = Visibility.Visible;
+                    DroppedImage.Source = bitmap;
+                    ImageArea.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    await ShowErrorDialog(resourceLoader.GetString("AIChatbotPage_ErrorImage/Text"), false);
+                }
             }
         }
     }
@@ -182,21 +198,39 @@ public sealed partial class AIChatbotPage : Page
         var file = await ViewModel.AttachImageAsync();
         if (file != null)
         {
-            _imageFilePath = file.Path;
-            var bitmap = new BitmapImage();
-            using (var stream = await file.OpenAsync(FileAccessMode.Read))
+            if (await ViewModel.IsValidFileAsync(file))
             {
-                bitmap.SetSource(stream);
+                _imageFilePath = file.Path;
+                var bitmap = new BitmapImage();
+                using (var stream = await file.OpenAsync(FileAccessMode.Read))
+                {
+                    bitmap.SetSource(stream);
+                }
+                DroppedImage.Source = bitmap;
+                ImageArea.Visibility = Visibility.Visible;
             }
-            DroppedImage.Source = bitmap;
-            DroppedImage.Visibility = Visibility.Visible;
-        }
-        else
-        {
-            ShowErrorDialog(resourceLoader.GetString("AIChatbotPage_ErrorImage/Text"), false);
+            else
+            {
+                await ShowErrorDialog(resourceLoader.GetString("AIChatbotPage_ErrorImage/Text"), false);
+            }
         }
 
         senderButton.IsEnabled = true;
     }
 
+    private void showNotifications(string title, string message)
+    {
+        var toastBuilder = new AppNotificationBuilder()
+            .AddText(title)
+            .AddText(message);
+
+        var toast = toastBuilder.BuildNotification();
+        AppNotificationManager.Default.Show(toast);
+    }
+
+    private void DeleteImage_Click(object sender, RoutedEventArgs e)
+    {
+        ImageArea.Visibility = Visibility.Collapsed;
+        _imageFilePath = null;
+    }
 }

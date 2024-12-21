@@ -1243,10 +1243,10 @@
     <value>Tôi có thể giúp gì cho bạn?</value>
   </data>
   <data name="AIChatbotPage_ErrorMessage.Text" xml:space="preserve">
-    <value>Chat history đã vượt quá giới hạn. Vui lòng restart để xóa lịch sử chat.</value>
+    <value>Đã vượt quá giới hạn tin nhắn. Vui lòng reset cuộc trò chuyện !</value>
   </data>
-  <data name="AIChatbotPage_HelloText.Text" xml:space="preserve">
-    <value>Chào bạn !!!</value>
+  <data name="AIChatbotPage_DialogTitle" xml:space="preserve">
+    <value>AI ChatBot</value>
   </data>
   <data name="AIChatbotPage_RestartPrimaryButtonDialog.Text" xml:space="preserve">
     <value>Tạo mới trò chuyện</value>
@@ -1258,9 +1258,12 @@
     <value>Hỏi Chatbot</value>
   </data>
   <data name="AIChatbotPage_Image.Text" xml:space="preserve">
-    <value>Hình</value>
+    <value>Hình ảnh</value>
   </data>
   <data name="AIChatbotPage_ErrorImage.Text" xml:space="preserve">
     <value>File ảnh quá lớn. Vui lòng chọn file ảnh nhỏ hơn 5MB.</value>
+  </data>
+  <data name="AIChatbotPage_ResetSuccessfull" xml:space="preserve">
+    <value>Cuộc trò chuyện đã được làm mới !</value>
   </data>
 </root>

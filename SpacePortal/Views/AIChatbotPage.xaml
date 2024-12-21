@@ -82,26 +82,42 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.ColumnSpan="2" Grid.Row="0" 
-                    MaxHeight="200" MaxWidth="600" 
-                    CornerRadius="25" 
-                    HorizontalAlignment="Left" VerticalAlignment="Center">
-                <Image Name="DroppedImage" Visibility="Collapsed" Stretch="Uniform" Margin="5"/>
-            </Border>
-            
+            <Grid Grid.ColumnSpan="2" Grid.Row="0" 
+                  MaxHeight="200" MaxWidth="600"  
+                  HorizontalAlignment="Left" VerticalAlignment="Center"
+                  x:Name="ImageArea"
+                  Visibility="Collapsed">
+
+                <Image Name="DroppedImage" Stretch="Uniform" Margin="5"/>
+
+                <Button HorizontalAlignment="Right" 
+                        VerticalAlignment="Top" 
+                        Margin="8" 
+                        Width="16" 
+                        Height="16"
+                        x:Name="DeleteImage"
+                        Click="DeleteImage_Click"
+                        Background="Transparent" 
+                        BorderThickness="0"
+                        CornerRadius="16"
+                        Padding="0">
+                    <Image Source="/Assets/mini_close_button.png"/>
+                </Button>
+            </Grid>
+
             <TextBox Grid.Column="0" Grid.Row="1"
                      Name="InputPrompt" 
                      x:Uid="AIChatbotPage_AskChatbot"  
                      VerticalAlignment="Center"
                      TextWrapping="Wrap"
-                     CornerRadius="19"
+                     CornerRadius="16"
                      Padding="14"
                      FontSize="16"
+                     MaxLength="200"
                      KeyDown="InputPrompt_KeyDown"
                      Background="Transparent"
                      FocusVisualPrimaryBrush="Transparent" 
                      FocusVisualSecondaryBrush="Transparent"
-                     SelectionHighlightColor="Transparent"
                      BorderBrush="Transparent"/>
 
             <Button x:Name="PickAPhotoButton"

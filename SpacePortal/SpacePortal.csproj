@@ -25,6 +25,7 @@
     <Content Remove="Assets\dashboard_scholarship.png" />
     <Content Remove="Assets\dashboard_student.png" />
     <Content Remove="Assets\defaultAvt.png" />
+    <Content Remove="Assets\mini_close_button.png" />
     <Content Remove="Assets\Outlook-Logo.png" />
     <Content Remove="Assets\refresh.png" />
     <Content Remove="Assets\WindowIcon.ico" />
@@ -128,6 +129,9 @@
     <Content Update="Assets\payment.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Update="Assets\mini_close_button.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Assets\refresh.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

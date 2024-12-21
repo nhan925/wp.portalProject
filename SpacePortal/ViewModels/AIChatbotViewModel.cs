@@ -65,22 +65,19 @@ public partial class AIChatbotViewModel : ObservableRecipient
             FileTypeFilter = { ".jpg", ".jpeg", ".png", ".gif" },
         };
 
-        nint windowHandle = WindowNative.GetWindowHandle(App.MainWindow);
+        var windowHandle = WindowNative.GetWindowHandle(App.MainWindow);
         InitializeWithWindow.Initialize(fileOpenPicker, windowHandle);
 
         StorageFile file = await fileOpenPicker.PickSingleFileAsync();
         if (file != null)
         {
-            if (await IsValidFileAsync(file))
-            {
-                return file;
-            }
+            return file;
         }
 
         return null;
     }
 
-    private async Task<bool> IsValidFileAsync(StorageFile file)
+    public async Task<bool> IsValidFileAsync(StorageFile file)
     {
         const ulong MaxFileSizeInBytes = 5 * 1024 * 1024;
 
