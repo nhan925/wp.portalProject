@@ -43,7 +43,6 @@ public partial class AIChatbotViewModel : ObservableRecipient
             {
                 if (chunk.Content != null)
                 {
-                    await Task.Delay(200);
                     chatbotResponse.Append(chunk.Content);
                     chatbotMessage.Message = chatbotResponse.ToString();
                 }
