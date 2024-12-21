@@ -1245,4 +1245,7 @@
   <data name="CourseFeedback_NotYet.Text" xml:space="preserve">
     <value>Chưa mở</value>
   </data>
+  <data name="Scholarship_DialogFileTooLarge" xml:space="preserve">
+    <value>File quá lớn (&gt;10MB)</value>
+  </data>
 </root>

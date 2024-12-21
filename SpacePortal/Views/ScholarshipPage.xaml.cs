@@ -150,8 +150,23 @@ public sealed partial class ScholarshipPage : Page
             if (file != null)
             {
                 filePath = file.Path;
-                fileNameTextBlock.Text = $"{file.Name}";
-                fileNameTextBlock.FontStyle = Windows.UI.Text.FontStyle.Normal; // Reset font style
+                var properties = await file.GetBasicPropertiesAsync();
+
+                if (properties.Size > 10 * 1024 * 1024)
+                {
+                    var message = resourceLoader.GetString("Scholarship_DialogFileTooLarge");
+
+                    showNotifications(resourceLoader.GetString("Scholarship_Title/Text"), message);
+
+                    fileNameTextBlock.Text = message;
+                    fileNameTextBlock.FontStyle = Windows.UI.Text.FontStyle.Italic;
+                    filePath = string.Empty; 
+                }
+                else
+                {
+                    fileNameTextBlock.Text = $"{file.Name}";
+                    fileNameTextBlock.FontStyle = Windows.UI.Text.FontStyle.Normal; // Reset font style
+                }
             }
             else
             {
