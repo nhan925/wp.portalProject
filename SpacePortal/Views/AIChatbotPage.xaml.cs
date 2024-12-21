@@ -46,7 +46,6 @@ public sealed partial class AIChatbotPage : Page
 
     private async void SendButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        Debug.WriteLine(ChatMessagesListView.Items.Count);
         if (string.IsNullOrEmpty(ViewModel.ErrorMessage) && !string.IsNullOrWhiteSpace(InputPrompt.Text))
         {
             InputPrompt.IsEnabled = false;
