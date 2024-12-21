@@ -41,6 +41,7 @@ public sealed partial class AIChatbotPage : Page
     private void SetupToolTipForButton()
     {
         ToolTipService.SetToolTip(RestartButton, resourceLoader.GetString("AIChatbotPage_RestartButton/ToolTip"));
+        ToolTipService.SetToolTip(PickAPhotoButton, resourceLoader.GetString("AIChatbotPage_AddImage/ToolTip"));
     }
 
     private async void SendButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
