@@ -6,6 +6,9 @@ using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.Windows.ApplicationModel.Resources;
 using SpacePortal.Core.Services;
 using SpacePortal.Models;
+using Windows.Storage.Pickers;
+using Windows.Storage;
+using WinRT.Interop;
 
 namespace SpacePortal.ViewModels;
 
@@ -61,4 +64,34 @@ public partial class AIChatbotViewModel : ObservableRecipient
         geminiService.ClearChatHistory();
     }
 
+    public async Task<StorageFile?> AttachImageAsync()
+    {
+        FileOpenPicker fileOpenPicker = new()
+        {
+            ViewMode = PickerViewMode.Thumbnail,
+            FileTypeFilter = { ".jpg", ".jpeg", ".png", ".gif" },
+        };
+
+        nint windowHandle = WindowNative.GetWindowHandle(App.MainWindow);
+        InitializeWithWindow.Initialize(fileOpenPicker, windowHandle);
+
+        StorageFile file = await fileOpenPicker.PickSingleFileAsync();
+        if (file != null)
+        {
+            if (await IsValidFileAsync(file))
+            {
+                return file;
+            }
+        }
+
+        return null;
+    }
+
+    private async Task<bool> IsValidFileAsync(StorageFile file)
+    {
+        const ulong MaxFileSizeInBytes = 5 * 1024 * 1024;
+
+        var properties = await file.GetBasicPropertiesAsync();
+        return properties.Size <= MaxFileSizeInBytes;
+    }
 }

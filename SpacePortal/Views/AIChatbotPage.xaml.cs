@@ -10,6 +10,9 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage;
+using Windows.Storage.Pickers;
+using static System.Net.Mime.MediaTypeNames;
+using SpacePortal.Contracts.Services;
 
 
 namespace SpacePortal.Views;
@@ -48,6 +51,7 @@ public sealed partial class AIChatbotPage : Page
             if (!string.IsNullOrEmpty(_imageFilePath))
             {
                 DroppedImage.Visibility = Visibility.Collapsed;
+                userInput += $"\n[{resourceLoader.GetString("AIChatbotPage_Image/Text")}]";
                 await ViewModel.GetResponse(userInput, _imageFilePath);
                 _imageFilePath = null;
             }
@@ -115,23 +119,23 @@ public sealed partial class AIChatbotPage : Page
         }
     }
 
-    private async Task ShowErrorDialog(string errorMessage)
+    private async Task ShowErrorDialog(string errorMessage, bool hasPrimaryButton = true)
     {
-        var dialog = new ContentDialog
+        var dialog = new ContentDialog();
+        dialog.XamlRoot = this.XamlRoot;
+        dialog.Title = resourceLoader.GetString("AIChatbotPage_HelloText/Text");
+        dialog.Content = errorMessage;
+        dialog.CloseButtonText = resourceLoader.GetString("App_Close/Text");
+        if (hasPrimaryButton)
         {
-            XamlRoot = this.XamlRoot,
-            Title = resourceLoader.GetString("AIChatbotPage_HelloText/Text"),
-            Content = errorMessage,
-            CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-            PrimaryButtonText = resourceLoader.GetString("AIChatbotPage_RestartPrimaryButtonDialog/Text"),
-            DefaultButton = ContentDialogButton.Primary
-        };
-
-        dialog.PrimaryButtonClick += (s, e) =>
-        {
-            ViewModel.ClearChatHistory();
-        };
-
+            dialog.PrimaryButtonText = resourceLoader.GetString("AIChatbotPage_RestartPrimaryButtonDialog/Text");
+            dialog.DefaultButton = ContentDialogButton.Primary;
+            dialog.PrimaryButtonClick += (s, e) =>
+            {
+                ViewModel.ClearChatHistory();
+            };
+        }
+        dialog.RequestedTheme = App.GetService<IThemeSelectorService>().Theme;
         await dialog.ShowAsync();
     }
 
@@ -168,6 +172,31 @@ public sealed partial class AIChatbotPage : Page
                 DroppedImage.Visibility = Visibility.Visible;
             }
         }
+    }
+
+    private async void PickAPhotoButton_Click(object sender, RoutedEventArgs e)
+    {
+        var senderButton = sender as Button;
+        senderButton.IsEnabled = false;
+
+        var file = await ViewModel.AttachImageAsync();
+        if (file != null)
+        {
+            _imageFilePath = file.Path;
+            var bitmap = new BitmapImage();
+            using (var stream = await file.OpenAsync(FileAccessMode.Read))
+            {
+                bitmap.SetSource(stream);
+            }
+            DroppedImage.Source = bitmap;
+            DroppedImage.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            ShowErrorDialog(resourceLoader.GetString("AIChatbotPage_ErrorImage/Text"), false);
+        }
+
+        senderButton.IsEnabled = true;
     }
 
 }

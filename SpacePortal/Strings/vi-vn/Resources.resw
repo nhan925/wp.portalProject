@@ -1257,4 +1257,10 @@
   <data name="AIChatbotPage_AskChatbot.PlaceholderText" xml:space="preserve">
     <value>Hỏi Chatbot</value>
   </data>
+  <data name="AIChatbotPage_Image.Text" xml:space="preserve">
+    <value>Hình</value>
+  </data>
+  <data name="AIChatbotPage_ErrorImage.Text" xml:space="preserve">
+    <value>File ảnh quá lớn. Vui lòng chọn file ảnh nhỏ hơn 5MB.</value>
+  </data>
 </root>
