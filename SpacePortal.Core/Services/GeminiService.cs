@@ -37,7 +37,7 @@ public class GeminiService
         kernel = kernelBuilder.Build();
     }
 
-    public IAsyncEnumerable<StreamingChatMessageContent> CallApiToChat(string message, string? imageFilePath = null)
+    public async Task<ChatMessageContent> CallApiToChatAsync(string message, string? imageFilePath = null)
     {
         if (history.Count >= MaxChatHistoryMessages)
         {
@@ -52,13 +52,13 @@ public class GeminiService
             history.AddUserMessage(
             [
                 new Microsoft.SemanticKernel.TextContent(message),
-                new Microsoft.SemanticKernel.ImageContent(imageBytes, mimeType),
-            ]);
+            new Microsoft.SemanticKernel.ImageContent(imageBytes, mimeType),
+        ]);
         }
         else { history.AddUserMessage(message); }
-        
 
-        var response = chatCompletionService.GetStreamingChatMessageContentsAsync(
+
+        var response = await chatCompletionService.GetChatMessageContentAsync(
             chatHistory: history,
             kernel: kernel
         );
