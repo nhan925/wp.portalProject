@@ -10,6 +10,7 @@ using Microsoft.Extensions.AI;
 using Google.Apis.Http;
 using Microsoft.SemanticKernel.Data;
 using Microsoft.SemanticKernel.Plugins.Web.Google;
+using System.Net.Http.Headers;
 
 
 namespace SpacePortal.Core.Services;
@@ -36,7 +37,7 @@ public class GeminiService
         kernel = kernelBuilder.Build();
     }
 
-    public IAsyncEnumerable<StreamingChatMessageContent> CallApiToChat(string message)
+    public IAsyncEnumerable<StreamingChatMessageContent> CallApiToChat(string message, string? imageFilePath = null)
     {
         if (history.Count >= MaxChatHistoryMessages)
         {
@@ -44,7 +45,18 @@ public class GeminiService
         }
 
         var chatCompletionService = kernel.GetRequiredService<IChatCompletionService>();
-        history.AddUserMessage(message);
+        if (!string.IsNullOrEmpty(imageFilePath))
+        {
+            var imageBytes = File.ReadAllBytes(imageFilePath);
+            var mimeType = GetMimeType(imageFilePath);
+            history.AddUserMessage(
+            [
+                new Microsoft.SemanticKernel.TextContent(message),
+                new Microsoft.SemanticKernel.ImageContent(imageBytes, mimeType),
+            ]);
+        }
+        else { history.AddUserMessage(message); }
+        
 
         var response = chatCompletionService.GetStreamingChatMessageContentsAsync(
             chatHistory: history,
@@ -56,5 +68,19 @@ public class GeminiService
     public void ClearChatHistory()
     {
         history = new ChatHistory();
+    }
+
+    private static string GetMimeType(string filePath)
+    {
+        var extension = Path.GetExtension(filePath)?.ToLower();
+        return extension switch
+        {
+            ".jpg" or ".jpeg" => "image/jpeg",
+            ".png" => "image/png",
+            ".gif" => "image/gif",
+            ".bmp" => "image/bmp",
+            ".tiff" => "image/tiff",
+            _ => throw new NotSupportedException("Unsupported image format")
+        };
     }
 }

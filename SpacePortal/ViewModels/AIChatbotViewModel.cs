@@ -27,7 +27,7 @@ public partial class AIChatbotViewModel : ObservableRecipient
         ErrorMessage = string.Empty;
     }
 
-    public async Task GetResponse(string userInput)
+    public async Task GetResponse(string userInput, string? imageFilePath = null)
     {
 
         try
@@ -38,11 +38,12 @@ public partial class AIChatbotViewModel : ObservableRecipient
             var chatbotMessage = new InformationsForAIChatbot { Message = string.Empty, IsUser = false };
             ChatMessages.Add(chatbotMessage);
 
-            var response = geminiService.CallApiToChat(userInput);
+            var response = geminiService.CallApiToChat(userInput,imageFilePath);
             await foreach (var chunk in response)
             {
                 if (chunk.Content != null)
                 {
+                    await Task.Delay(200);
                     chatbotResponse.Append(chunk.Content);
                     chatbotMessage.Message = chatbotResponse.ToString();
                 }

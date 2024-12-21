@@ -6,6 +6,10 @@ using System.Collections.Specialized;
 using System.Diagnostics;
 using Microsoft.UI.Xaml;
 using Microsoft.Windows.ApplicationModel.Resources;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
 
 
 namespace SpacePortal.Views;
@@ -13,6 +17,7 @@ namespace SpacePortal.Views;
 public sealed partial class AIChatbotPage : Page
 {
     private readonly ResourceLoader resourceLoader = new();
+    private string? _imageFilePath = null;
 
     public AIChatbotViewModel ViewModel
     {
@@ -23,20 +28,36 @@ public sealed partial class AIChatbotPage : Page
     {
         ViewModel = App.GetService<AIChatbotViewModel>();
         InitializeComponent();
+        SetupToolTipForButton();
         AddEventForChatMessageListView();
         ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+    }
+
+    private void SetupToolTipForButton()
+    {
+        ToolTipService.SetToolTip(RestartButton, resourceLoader.GetString("AIChatbotPage_RestartButton/ToolTip"));
     }
 
     private async void SendButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
         Debug.WriteLine(ChatMessagesListView.Items.Count);
-        if (string.IsNullOrEmpty(ViewModel.ErrorMessage))
+        if (string.IsNullOrEmpty(ViewModel.ErrorMessage) && !string.IsNullOrWhiteSpace(InputPrompt.Text))
         {
             var userInput = InputPrompt.Text;
             InputPrompt.Text = string.Empty;
-            await ViewModel.GetResponse(userInput);
+            if (!string.IsNullOrEmpty(_imageFilePath))
+            {
+                DroppedImage.Visibility = Visibility.Collapsed;
+                await ViewModel.GetResponse(userInput, _imageFilePath);
+                _imageFilePath = null;
+            }
+            else
+            {
+                await ViewModel.GetResponse(userInput);
+            }
+            
         }
-        else
+        else if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
         {
             InputPrompt.Text = string.Empty;
             var errorMessage = resourceLoader.GetString("AIChatbotPage_ErrorMessage/Text");
@@ -79,7 +100,7 @@ public sealed partial class AIChatbotPage : Page
 
     private void InputPrompt_KeyDown(object sender, Microsoft.UI.Xaml.Input.KeyRoutedEventArgs e)
     {
-            if (!string.IsNullOrEmpty(InputPrompt.Text) && e.Key == Windows.System.VirtualKey.Enter)
+            if (!string.IsNullOrWhiteSpace(InputPrompt.Text) && e.Key == Windows.System.VirtualKey.Enter)
             {
                 SendButton_Click(sender, null);
             }
@@ -102,7 +123,7 @@ public sealed partial class AIChatbotPage : Page
             Title = resourceLoader.GetString("AIChatbotPage_HelloText/Text"),
             Content = errorMessage,
             CloseButtonText = resourceLoader.GetString("App_Close/Text"),
-            PrimaryButtonText = resourceLoader.GetString("AIChatbotPage_RestartButton/Text"),
+            PrimaryButtonText = resourceLoader.GetString("AIChatbotPage_RestartPrimaryButtonDialog/Text"),
             DefaultButton = ContentDialogButton.Primary
         };
 
@@ -113,4 +134,40 @@ public sealed partial class AIChatbotPage : Page
 
         await dialog.ShowAsync();
     }
+
+    private void RestartButton_Click(object sender, RoutedEventArgs e)
+    {
+        ViewModel.ClearChatHistory();
+    }
+
+    private void Grid_DragOver(object sender, DragEventArgs e)
+    {
+        if (e.DataView.Contains(StandardDataFormats.StorageItems))
+        {
+            e.AcceptedOperation = DataPackageOperation.Copy;
+        }
+    }
+
+    private async void Grid_Drop(object sender, DragEventArgs e)
+    {
+        if (e.DataView.Contains(StandardDataFormats.StorageItems))
+        {
+            var items = await e.DataView.GetStorageItemsAsync();
+            var storageFile = items[0] as Windows.Storage.StorageFile;
+
+            if (storageFile != null && storageFile.ContentType.StartsWith("image/"))
+            {
+                _imageFilePath = storageFile.Path;
+                var bitmap = new BitmapImage();
+                using (var stream = await storageFile.OpenAsync(FileAccessMode.Read))
+                {
+                    bitmap.SetSource(stream);
+                }
+
+                DroppedImage.Source = bitmap;
+                DroppedImage.Visibility = Visibility.Visible;
+            }
+        }
+    }
+
 }

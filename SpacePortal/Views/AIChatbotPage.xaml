@@ -19,11 +19,16 @@
         </Style>
     </Page.Resources>
 
-    <Grid Padding="36" RowSpacing="16">
+    <Grid Padding="36" RowSpacing="32">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
         <Grid.Resources>
             <DataTemplate x:Key="UserMessageTemplate">
                 <Grid HorizontalAlignment="Right" Style="{ThemeResource Card}" Margin="0,20,0,20">
@@ -39,39 +44,71 @@
                                    UserMessageTemplate="{StaticResource UserMessageTemplate}"
                                    BotMessageTemplate="{StaticResource BotMessageTemplate}"/>
         </Grid.Resources>
+        <Button Grid.Row="0" Grid.Column="0" 
+                Name="RestartButton"
+                Padding="5"
+                VerticalAlignment="Top" 
+                Click="RestartButton_Click">
+            <FontIcon Glyph="&#xE932;" />
+        </Button>
 
         <TextBlock x:Name="HelperText" 
                    Grid.Row="0" 
+                   Grid.Column="1"
                    x:Uid="AIChatbotPage_HelperText"
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Center" 
                    FontSize="20"
                    Visibility="Visible"/>
 
-        <ListView Name="ChatMessagesListView" 
-              Grid.Row="0" 
-              Width="650"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Stretch"
-              ItemsSource="{x:Bind ViewModel.ChatMessages}"
-              ItemTemplateSelector="{StaticResource ChatMessageTemplateSelector}"
-              Visibility="Collapsed">
-        </ListView>
-
-        <Grid Grid.Row="1" Style="{ThemeResource Card}" HorizontalAlignment="Center" MaxHeight="200">
+        <Grid Style="{ThemeResource Card}" 
+              Grid.Row="0" Grid.Column="1" 
+              Width="720" 
+              Padding="10" 
+              ScrollViewer.VerticalScrollBarVisibility="Visible">
+            
+            <ListView Name="ChatMessagesListView" 
+                      Width="700"
+                      Grid.Row="0" Grid.Column="1"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch"
+                      ItemsSource="{x:Bind ViewModel.ChatMessages}"
+                      ItemTemplateSelector="{StaticResource ChatMessageTemplateSelector}"
+                      Visibility="Collapsed">       
+            </ListView>
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.Column="1" Style="{ThemeResource Card}" HorizontalAlignment="Center" MaxHeight="200"
+              AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Name="InputPrompt" 
-                     PlaceholderText="" Width="600" 
+            <Border Grid.ColumnSpan="2" Grid.Row="0" 
+                    MaxHeight="200" MaxWidth="600" 
+                    CornerRadius="10" 
+                    HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Image Name="DroppedImage" Visibility="Collapsed" Stretch="Uniform" Margin="5"/>
+            </Border>
+            
+            <TextBox Grid.Column="0" Grid.Row="1"
+                     Name="InputPrompt" 
+                     x:Uid="AIChatbotPage_AskChatbot"  
+                     Width="600" 
+                     VerticalAlignment="Center"
                      TextWrapping="Wrap"
-                     CornerRadius="20"
+                     CornerRadius="19"
                      Padding="14"
                      FontSize="16"
                      KeyDown="InputPrompt_KeyDown"/>
-            <Button Grid.Column="1" Name="SendButton" Click="SendButton_Click" 
-                    CornerRadius="50" 
+            <Button Grid.Column="1" Grid.Row="1"
+                    Name="SendButton" 
+                    Click="SendButton_Click" 
+                    CornerRadius="20" 
                     Margin="8,0,0,0"
                     Background="{ThemeResource AccentAcrylicBackgroundFillColorDefaultBrush}">
                 <FontIcon Glyph="&#xE74A;" />
