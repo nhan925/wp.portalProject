@@ -7,6 +7,7 @@
     xmlns:local="using:SpacePortal.Models" 
     xmlns:triggers="using:CommunityToolkit.WinUI" 
     xmlns:local1="using:SpacePortal.Helpers" 
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI.MarkdownTextBlock"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -17,6 +18,7 @@
             <Setter Property="Padding" Value="16"/>
             <Setter Property="CornerRadius" Value="15"/>
         </Style>
+        <labs:MarkdownConfig x:Key="MarkdownConfig"/>
     </Page.Resources>
 
     <Grid Padding="36" RowSpacing="32">
@@ -38,15 +40,24 @@
                 </Grid>
             </DataTemplate>
             <DataTemplate x:Key="BotMessageTemplate">
-                <StackPanel HorizontalAlignment="Left">
-                    <TextBlock Text="{Binding Message}" TextWrapping="Wrap" HorizontalAlignment="Left" LineHeight="24" FontSize="15"/>
-                </StackPanel>
+                <Grid HorizontalAlignment="Left" ColumnSpacing="16" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="/Assets/bot.png" Width="32" Height="32" Grid.Column="0" VerticalAlignment="Top"/>
+                    <labs:MarkdownTextBlock Grid.Column="1" Text="{Binding Message}" HorizontalAlignment="Left" FontSize="15" Config="{StaticResource MarkdownConfig}" />
+                </Grid>
             </DataTemplate>
             <local1:ChatMessageTemplateSelector x:Key="ChatMessageTemplateSelector"
                                    UserMessageTemplate="{StaticResource UserMessageTemplate}"
                                    BotMessageTemplate="{StaticResource BotMessageTemplate}"/>
         </Grid.Resources>
-
+        <ProgressBar IsIndeterminate="True" ShowPaused="False" 
+                     x:Name="ThinkingBar"
+                     Visibility="Collapsed"
+                     ShowError="False" Grid.Row="0" Grid.Column="2" 
+                     VerticalAlignment="Bottom" Margin="14,0,14,0"/>
         <Grid Style="{ThemeResource Card}" 
               Grid.Row="0" Grid.Column="2" 
               Padding="10" 
@@ -69,8 +80,9 @@
                       Visibility="Collapsed">       
             </ListView>
         </Grid>
-        
+
         <Grid Grid.Row="1" Grid.Column="2" Style="{ThemeResource Card}" HorizontalAlignment="Stretch" MaxHeight="200"
+              x:Name="ToolBarArea"
               AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop" Padding="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -106,7 +118,8 @@
             </Grid>
 
             <TextBox Grid.Column="0" Grid.Row="1"
-                     Name="InputPrompt" 
+                     Name="InputPrompt"
+                     IsSpellCheckEnabled="False"
                      x:Uid="AIChatbotPage_AskChatbot"  
                      VerticalAlignment="Center"
                      TextWrapping="Wrap"
@@ -144,6 +157,7 @@
                     BorderThickness="1">
                 <FontIcon Glyph="&#xE724;" />
             </Button>
+
         </Grid>
     </Grid>
 </Page>

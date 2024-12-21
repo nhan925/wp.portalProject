@@ -48,6 +48,14 @@ public sealed partial class AIChatbotPage : Page
         Debug.WriteLine(ChatMessagesListView.Items.Count);
         if (string.IsNullOrEmpty(ViewModel.ErrorMessage) && !string.IsNullOrWhiteSpace(InputPrompt.Text))
         {
+            InputPrompt.IsEnabled = false;
+            SendButton.IsEnabled = false;
+            RestartButton.IsEnabled = false;
+            PickAPhotoButton.IsEnabled = false;
+            ToolBarArea.Opacity = 0.5;
+            ThinkingBar.Visibility = Visibility.Visible;
+            await Task.Delay(10);
+
             var userInput = InputPrompt.Text;
             InputPrompt.Text = string.Empty;
             if (!string.IsNullOrEmpty(_imageFilePath))
@@ -61,7 +69,15 @@ public sealed partial class AIChatbotPage : Page
             {
                 await ViewModel.GetResponse(userInput);
             }
-            
+
+            ThinkingBar.Visibility = Visibility.Collapsed;
+            ToolBarArea.Opacity = 1;
+            SendButton.IsEnabled = true;
+            RestartButton.IsEnabled = true;
+            PickAPhotoButton.IsEnabled = true;
+            InputPrompt.IsEnabled = true;
+            InputPrompt.Focus(FocusState.Programmatic);
+
         }
         else if (!string.IsNullOrEmpty(ViewModel.ErrorMessage))
         {
@@ -108,7 +124,7 @@ public sealed partial class AIChatbotPage : Page
     {
         if (!string.IsNullOrWhiteSpace(InputPrompt.Text) && e.Key == Windows.System.VirtualKey.Enter)
         {
-            SendButton_Click(sender, null);
+            SendButton_Click(sender, new());
         }
     }
 

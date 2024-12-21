@@ -17,6 +17,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Assets\AppLogo.png" />
+    <Content Remove="Assets\bot.png" />
     <Content Remove="Assets\dashboard_fee.png" />
     <Content Remove="Assets\dashboard_grade.png" />
     <Content Remove="Assets\dashboard_info.png" />
@@ -51,6 +52,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Labs.WinUI.Controls.MarkdownTextBlock" Version="0.1.241129-build.1830" />
     <PackageReference Include="CommunityToolkit.Labs.WinUI.Shimmer" Version="0.1.241113-pull-588.1786" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="CommunityToolkit.WinUI.Behaviors" Version="8.1.240916" />
@@ -100,6 +102,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Assets\AppLogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\bot.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\dashboard_fee.png">

@@ -37,11 +37,9 @@ public partial class AIChatbotViewModel : ObservableRecipient
         {
             ChatMessages.Add(new InformationsForAIChatbot { Message = userInput, IsUser = true });
 
-            var chatbotMessage = new InformationsForAIChatbot { Message = string.Empty, IsUser = false };
-            ChatMessages.Add(chatbotMessage);
-
             var response = await geminiService.CallApiToChatAsync(userInput, imageFilePath);
-            chatbotMessage.Message = response.ToString();
+            var chatbotMessage = new InformationsForAIChatbot { Message = response.ToString(), IsUser = false };
+            ChatMessages.Add(chatbotMessage);
 
         }
         catch (InvalidOperationException ex)
