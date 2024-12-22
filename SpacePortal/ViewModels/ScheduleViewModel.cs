@@ -5,6 +5,7 @@ using SpacePortal.Core.Contracts;
 using SpacePortal.DataAccess;
 using SpacePortal.Models;
 using Syncfusion.UI.Xaml.Scheduler;
+using Windows.Data.Xml.Dom;
 
 
 namespace SpacePortal.ViewModels;
@@ -56,11 +57,10 @@ public partial class ScheduleViewModel : ObservableRecipient
 
     private DateTime GetDateOfDayOfWeek(DayOfWeek targetDay)
     {
-        var today = DateTime.Now;
-        int daysToTarget;
-        if (targetDay == DayOfWeek.Sunday) { daysToTarget = ((int)targetDay - (int)today.DayOfWeek + 7) % 7; }
-        else { daysToTarget = ((int)targetDay - (int)today.DayOfWeek) % 7; }
-        DateTime resultDate = today.AddDays(daysToTarget);
-        return resultDate;
+        var convertedTargetDay = targetDay == DayOfWeek.Sunday ? 6 : (int)targetDay - 1;
+        var convertedToday = DateTime.Now.DayOfWeek == DayOfWeek.Sunday ? 6 : (int)DateTime.Now.DayOfWeek - 1;
+        int daysToTarget = (convertedTargetDay - convertedToday);
+
+        return DateTime.Now.AddDays(daysToTarget);
     }
 }

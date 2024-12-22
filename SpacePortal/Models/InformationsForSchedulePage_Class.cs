@@ -68,10 +68,10 @@ public class InformationsForSchedulePage_Class : INotifyPropertyChanged
     public DateTime From
     {
         get {
-            DayOfWeek targetDay = vietnameseDays[Day];
-            DateTime today = DateTime.Now;
-            int daysToTarget = ((int)targetDay - (int)today.DayOfWeek) % 7;
-            DateTime resultDate = today.AddDays(daysToTarget);
+            var convertedTargetDay = vietnameseDays[Day] == DayOfWeek.Sunday ? 6 : (int)vietnameseDays[Day] - 1;
+            var convertedToday = DateTime.Now.DayOfWeek == DayOfWeek.Sunday ? 6 : (int)DateTime.Now.DayOfWeek - 1;
+            int daysToTarget = (convertedTargetDay - convertedToday);
+            DateTime resultDate = DateTime.Now.AddDays(daysToTarget);
             _from = new DateTime(resultDate.Year, resultDate.Month, resultDate.Day, StartPeriod, 0, 0);
             return _from;
         }
