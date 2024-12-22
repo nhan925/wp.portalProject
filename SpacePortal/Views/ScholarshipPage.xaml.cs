@@ -139,6 +139,7 @@ public sealed partial class ScholarshipPage : Page
 
         filePickerButton.Click += async (s, e) =>
         {
+            filePickerButton.IsEnabled = false;
             var picker = new FileOpenPicker();
             picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             picker.FileTypeFilter.Add(".pdf");
@@ -174,6 +175,8 @@ public sealed partial class ScholarshipPage : Page
                 fileNameTextBlock.Text = resourceLoader.GetString("Scholarship_DialogNoFile"); // Reset if no file chosen
                 fileNameTextBlock.FontStyle = Windows.UI.Text.FontStyle.Italic;
             }
+
+            filePickerButton.IsEnabled = true;
         };
 
         // Create dialog content

@@ -1239,6 +1239,36 @@
   <data name="CourseFeedbackDetail_NumberOfRow.Text" xml:space="preserve">
     <value>STT</value>
   </data>
+  <data name="AIChatbotPage_HelperText.Text" xml:space="preserve">
+    <value>Tôi có thể giúp gì cho bạn?</value>
+  </data>
+  <data name="AIChatbotPage_ErrorMessage.Text" xml:space="preserve">
+    <value>Đã vượt quá giới hạn tin nhắn. Vui lòng reset cuộc trò chuyện !</value>
+  </data>
+  <data name="AIChatbotPage_DialogTitle" xml:space="preserve">
+    <value>AI ChatBot</value>
+  </data>
+  <data name="AIChatbotPage_RestartPrimaryButtonDialog.Text" xml:space="preserve">
+    <value>Tạo mới trò chuyện</value>
+  </data>
+  <data name="AIChatbotPage_RestartButton.ToolTip" xml:space="preserve">
+    <value>Tạo mới trò chuyện</value>
+  </data>
+  <data name="AIChatbotPage_AskChatbot.PlaceholderText" xml:space="preserve">
+    <value>Hỏi Chatbot</value>
+  </data>
+  <data name="AIChatbotPage_Image.Text" xml:space="preserve">
+    <value>Hình ảnh</value>
+  </data>
+  <data name="AIChatbotPage_ErrorImage.Text" xml:space="preserve">
+    <value>File ảnh quá lớn. Vui lòng chọn file ảnh nhỏ hơn 5MB.</value>
+  </data>
+  <data name="AIChatbotPage_ResetSuccessfull" xml:space="preserve">
+    <value>Cuộc trò chuyện đã được làm mới !</value>
+  </data>
+  <data name="AIChatbotPage_AddImage.ToolTip" xml:space="preserve">
+    <value>Thêm hình ảnh</value>
+  </data>
   <data name="TuitionFee_NotYet.Text" xml:space="preserve">
     <value>Chưa mở</value>
   </data>
