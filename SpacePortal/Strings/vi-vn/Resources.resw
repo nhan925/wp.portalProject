@@ -1269,4 +1269,13 @@
   <data name="AIChatbotPage_AddImage.ToolTip" xml:space="preserve">
     <value>Thêm hình ảnh</value>
   </data>
+  <data name="TuitionFee_NotYet.Text" xml:space="preserve">
+    <value>Chưa mở</value>
+  </data>
+  <data name="CourseFeedback_NotYet.Text" xml:space="preserve">
+    <value>Chưa mở</value>
+  </data>
+  <data name="Scholarship_DialogFileTooLarge" xml:space="preserve">
+    <value>File quá lớn (&gt;10MB)</value>
+  </data>
 </root>
