@@ -11,6 +11,11 @@ public class DateTimeToStringConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, string language)
     {
+        if (value == null)
+        {
+            return string.Empty;
+        }
+
         var currentLangue = Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride;
 
         CultureInfo culture = new CultureInfo(currentLangue);

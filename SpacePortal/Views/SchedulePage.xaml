@@ -4,9 +4,114 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:scheduler="using:Syncfusion.UI.Xaml.Scheduler"
     mc:Ignorable="d">
 
-    <Grid x:Name="ContentArea" Padding="36">
-        <TextBlock Text="Coming soon..."/>
+    <Grid RowSpacing="16" Margin="36, 36, 36, 36">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock x:Uid="SchedulePage_Semester" Margin="0,0,8,0" VerticalAlignment="Center" TextAlignment="Center"/>
+            <ComboBox Grid.Row="0" x:Name="ComboBoxSemester" VerticalAlignment="Center" Width="148" Height="40"
+              ItemsSource="{x:Bind ViewModel.Semesters}"
+              SelectionChanged="ComboBoxSemester_SelectionChanged"/>
+        </StackPanel>
+
+        <Grid VerticalAlignment="Stretch" Grid.Row="1" >
+            <Grid.Resources>
+                <DataTemplate x:Key="viewHeaderTemplate">
+                    <StackPanel Background="Transparent"  
+                            Width="Auto"
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Stretch"
+                            Orientation="Vertical">
+                        <TextBlock 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center" 
+                            FontFamily="Arial"
+                            Text="{Binding DayText}"
+                            TextTrimming="CharacterEllipsis"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                </DataTemplate>
+            </Grid.Resources>
+            <scheduler:SfScheduler x:Name="Schedule" 
+                               ViewType="Week"
+                               MinimumDate="{x:Bind ViewModel.MinimumDate, Mode=OneWay}"
+                               MaximumDate="{x:Bind ViewModel.MaximumDate, Mode=OneWay}"
+                               ItemsSource="{x:Bind ViewModel.Schedule, Mode=OneWay}"
+                               AppointmentEditFlag="None"
+                               FirstDayOfWeek="Monday"
+                               Visibility="Collapsed"
+                               AppointmentTapped="Schedule_AppointmentTapped">
+                <scheduler:SfScheduler.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock
+                            x:Uid="SchedulePage_ScheduleLabel"
+                            TextAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="18"
+                            Margin="0, 8, 0, 0"
+                        />
+                    </DataTemplate>
+                </scheduler:SfScheduler.HeaderTemplate>
+                <scheduler:SfScheduler.DaysViewSettings>
+                    <scheduler:DaysViewSettings TimeRulerFormat="H"
+                                                StartHour="1"
+                                                EndHour="11"
+                                                TimeIntervalSize="-1" 
+                                                ViewHeaderTemplate="{StaticResource viewHeaderTemplate}"
+                                                CellRightPadding="0">
+                        <scheduler:DaysViewSettings.AppointmentTemplate>
+                            <DataTemplate>
+                                <Grid Background="{ThemeResource AccentAcrylicBackgroundFillColorBaseBrush}"
+                                          BorderBrush="{ThemeResource DividerStrokeColorDefaultBrush}"
+                                          BorderThickness="1"
+                                          VerticalAlignment="Stretch" 
+                                          HorizontalAlignment="Stretch">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="{ThemeResource TextFillColorPrimaryBrush}"/>
+                                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                                            <Setter Property="TextWrapping" Value="Wrap"/>
+                                            <Setter Property="TextAlignment" Value="Center"/>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <TextBlock Margin="5"
+                                            Grid.Row="0"
+                                            VerticalAlignment="Center"
+                                            Text="{Binding Data.CourseName}"
+                                            FontSize="14"
+                                            FontWeight="SemiBold"/>
+                                    <TextBlock
+                                            Grid.Row="1"
+                                            Text="{Binding Data.ClassDetails}"
+                                            FontSize="12"/>
+                                </Grid>
+                            </DataTemplate>
+                        </scheduler:DaysViewSettings.AppointmentTemplate>
+                    </scheduler:DaysViewSettings>
+                </scheduler:SfScheduler.DaysViewSettings>
+
+                <scheduler:SfScheduler.AppointmentMapping>
+                    <scheduler:AppointmentMapping
+                        Subject="CourseName"
+                        StartTime="From"
+                        EndTime="To"
+                        Location="Room"/>
+                </scheduler:SfScheduler.AppointmentMapping>
+
+            </scheduler:SfScheduler>
+        </Grid>
+
+        <Grid x:Name="LoadingOverlay" Visibility="Visible" Grid.Row="1">
+            <ProgressRing IsActive="True" Width="64" Height="64"/>
+        </Grid>
     </Grid>
 </Page>
